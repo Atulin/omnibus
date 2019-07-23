@@ -1,0 +1,118 @@
+{% extends './scaffolds/public_scaffold.twig' %}
+
+{% block body %}
+<div class="v-centered h-centered v-full h-full container">
+
+    <form id="register" class="form" method="POST" @submit="checkForm">
+
+        <div id="errors">
+            <div class="field" v-if="errors.length">
+                <b>Please correct the following error(s):</b>
+                <ul>
+                    <li v-for="error in errors">${ error }</li>
+                </ul>
+            </div>
+
+            {% if messages %}
+                <div class="field" v-if="!errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                        {% for m in messages %}
+                            <li>{{ m }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" v-model="name" type="text" required>
+        </div>
+
+        <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" v-model="email" type="email" required>
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" v-model="pass1" type="password" required>
+        </div>
+
+        <div class="field">
+            <label for="password2">Repeat password</label>
+            <input id="password2" name="password2" v-model="pass2" type="password" required>
+        </div>
+
+        <div class="checkbox field">
+            <label for="tos">I agree to Terms of Service</label>
+            <input id="tos" name="tos" v-model="tos" type="checkbox">
+        </div>
+
+        <input id="token" type="hidden" name="token" value="{{ token }}">
+
+        <div class="field">
+            <label for="submit" class="hidden">Submit</label>
+            <input id="submit" class="submit button" type="submit" value="Submit">
+        </div>
+
+    </form>
+
+    <script>
+        const app = new Vue({
+            delimiters: ['${', '}'],
+            el: '#register',
+            data: {
+                errors: [],
+                name: null,
+                email: null,
+                tos: null,
+                pass1: null,
+                pass2: null
+            },
+            methods:{
+                checkForm: function (e) {
+                    let token = document.getElementById('token').value;
+
+                    this.errors = [];
+
+                    if (!this.name) {
+                        this.errors.push('Name required.');
+                    }
+                    if (!this.email) {
+                        this.errors.push('Age required.');
+                    }
+                    if(this.pass1 !== this.pass2) {
+                        this.errors.push('Passwords are different.')
+                    }
+                    if(!this.tos) {
+                        this.errors.push('You need to agree to terms of service.')
+                    }
+
+                    if(this.name && this.email) {
+                        fetch(`/register/validate?name=${encodeURIComponent(this.name)}&email=${encodeURIComponent(this.email)}&token=${encodeURIComponent(token)}`)
+                            .then(res => res.json())
+                            .then(res => {
+                                if (!res.name) {
+                                    this.errors.push('Name already in use.');
+                                }
+                                if (!res.email) {
+                                    this.errors.push('Email already in use.');
+                                }
+                                if (!res.is_email) {
+                                    this.errors.push('Not a valid email address.');
+                                }
+                            })
+                    }
+
+                    if (this.errors.length <= 0) return true;
+
+                    e.preventDefault();
+                }
+            }
+        })
+    </script>
+
+</div>
+{% endblock %}

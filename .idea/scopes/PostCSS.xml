@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="PostCSS" pattern="file[omnibus2]:public/assets/css/**.css&amp;&amp;!file:*.min.css" />
+</component>

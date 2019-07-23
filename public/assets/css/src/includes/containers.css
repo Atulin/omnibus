@@ -1,0 +1,13 @@
+div.container {
+  display: flex;
+  flex-direction: row; }
+  div.container.v-centered {
+    align-items: center; }
+  div.container.h-centered {
+    justify-content: center; }
+  div.container.v-full {
+    height: 100vh; }
+  div.container.h-full {
+    width: 100vw; }
+
+/*# sourceMappingURL=containers.css.map */

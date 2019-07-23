@@ -1,0 +1,18 @@
+{% extends "scaffolds/public_scaffold.twig" %}
+
+{% block body %}
+    <div>{{ theme }}</div>
+    <div>{{ token }}</div>
+    <div>{{ user.name }}</div>
+    <div>{{ user.activated }}</div>
+    <div>{{ message }}</div>
+
+    {% if user %}
+        <a href="/logout">Log out</a>
+        <img src="{{ gravatar(user.email) }}" alt="{{ user.name }}'s avatar">
+    {% else %}
+        <a href="/login">Log in</a>
+        <a href="/register">Register</a>
+    {% endif %}
+
+{% endblock %}

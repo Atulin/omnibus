@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fbfbfb;
+  color: #060606;
+  font-family: "Montserrat", sans-serif; }
+
+div.container {
+  display: flex;
+  flex-direction: row; }
+  div.container.v-centered {
+    align-items: center; }
+  div.container.h-centered {
+    justify-content: center; }
+  div.container.v-full {
+    height: 100vh; }
+  div.container.h-full {
+    width: 100vw; }
+
+form.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2); }
+  form.form > div.field {
+    display: flex;
+    flex-direction: column;
+    margin: 4px; }
+    form.form > div.field.checkbox {
+      flex-direction: row; }
+    form.form > div.field > label {
+      font-size: 0.9rem;
+      margin: 2px; }
+      form.form > div.field > label.hidden {
+        visibility: collapse; }
+    form.form > div.field > input {
+      height: 24px;
+      width: 250px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #060606;
+      font-size: 1rem; }
+      form.form > div.field > input[type=checkbox] {
+        width: 24px; }
+    form.form > div.field > .submit.button {
+      height: 50px; }
+  form.form > div#errors {
+    position: absolute;
+    top: 50px; }
+    form.form > div#errors > div.field {
+      background: rgba(255, 77, 77, 0.6);
+      color: rgba(57, 17, 17, 0.84);
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(203, 61, 61, 0.64); }
+
+/*# sourceMappingURL=light.css.map */
