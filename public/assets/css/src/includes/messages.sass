@@ -1,0 +1,41 @@
+div.message
+  padding: 10px
+  border-radius: 10px
+  border: 1px solid
+  transition: opacity 1s ease-in-out 3s
+
+  &.timed
+    animation: vanish $message-delay ease-in-out $message-vanish forwards, remove 0s ease-in $message-vanish+$message-delay forwards
+
+  &.error
+    background: $error
+    color: $error-text
+    border-color: $error-dark
+
+  &.warning
+    background: $warning
+    color: $warning-text
+    border-color: $warning-dark
+
+  &.info
+    background: $info
+    color: $info-text
+    border-color: $info-dark
+
+  &.success
+    background: $success
+    color: $success-text
+    border-color: $success-dark
+
+
+@keyframes vanish
+  to
+    opacity: 0
+
+@keyframes remove
+  to
+    height: 0
+    width: 0
+    margin: 0
+    padding: 0
+

@@ -1,5 +1,9 @@
 {% extends './scaffolds/public_scaffold.twig' %}
 
+{% block scripts %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+
 {% block body %}
 <div class="v-centered h-centered v-full h-full container">
 
@@ -50,11 +54,15 @@
             <input id="tos" name="tos" v-model="tos" type="checkbox">
         </div>
 
+        <div class="field">
+            <div class="g-recaptcha" data-sitekey="6LduV68UAAAAAKV59SgfmnVEfVed0bUUsKUaN-sA"></div>
+        </div>
+
         <input id="token" type="hidden" name="token" value="{{ token }}">
 
         <div class="field">
-            <label for="submit" class="hidden">Submit</label>
-            <input id="submit" class="submit button" type="submit" value="Submit">
+            <label for="f-submit" class="hidden">Submit</label>
+            <input id="f-submit" class="submit button" type="submit" value="Submit">
         </div>
 
     </form>
@@ -73,7 +81,10 @@
             },
             methods:{
                 checkForm: function (e) {
+                    e.preventDefault();
+
                     let token = document.getElementById('token').value;
+                    let form  = document.getElementById('register');
 
                     this.errors = [];
 
@@ -81,10 +92,22 @@
                         this.errors.push('Name required.');
                     }
                     if (!this.email) {
-                        this.errors.push('Age required.');
+                        this.errors.push('Email required.');
                     }
                     if(this.pass1 !== this.pass2) {
                         this.errors.push('Passwords are different.')
+                    }
+                    if(this.pass1.length < 10) {
+                        this.errors.push('Password has to be at least 10 characters long.')
+                    }
+                    if(!/[_\W]/g.test(this.pass1)) {
+                        this.errors.push('Password needs at least one special character.')
+                    }
+                    if(!/[_0-9]/g.test(this.pass1)) {
+                        this.errors.push('Password needs at least one number.')
+                    }
+                    if(!/[_A-Z]/g.test(this.pass1)) {
+                        this.errors.push('Password needs at least one capital letter.')
                     }
                     if(!this.tos) {
                         this.errors.push('You need to agree to terms of service.')
@@ -104,11 +127,12 @@
                                     this.errors.push('Not a valid email address.');
                                 }
                             })
+                            .then(() => {
+                                if (this.errors.length <= 0) {
+                                    form.submit();
+                                }
+                            })
                     }
-
-                    if (this.errors.length <= 0) return true;
-
-                    e.preventDefault();
                 }
             }
         })

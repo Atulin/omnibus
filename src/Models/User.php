@@ -13,7 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     name="users",
  *     uniqueConstraints={
  *          @ORM\UniqueConstraint(name="user_name_idx", columns={"name"}),
- *          @ORM\UniqueConstraint(name="user_email_idx", columns={"email"})
+ *          @ORM\UniqueConstraint(name="user_email_idx", columns={"email"}),
+ *          @ORM\UniqueConstraint(name="user_code_idx", columns={"code"})
  *      }
  * )
  */
@@ -34,7 +35,7 @@ class User
     private $name;
 
     /**
-     * @var string $avatar
+     * @var string|null $avatar
      * @ORM\Column(type="string", length=128, nullable=true)
      */
     private $avatar;
@@ -53,19 +54,19 @@ class User
 
 
     /**
-     * @var string $bioŁ
+     * @var string|null $bioŁ
      * @ORM\Column(type="string", nullable=true)
      */
     private $bio;
 
     /**
-     * @var string $title
+     * @var string|null $title
      * @ORM\Column(type="string", length=40, nullable=true)
      */
     private $title;
 
     /**
-     * @var string $remember_me
+     * @var string|null $remember_me
      * @ORM\Column(type="string", length=512, nullable=true)
      */
     private $remember_me;
@@ -89,7 +90,7 @@ class User
     private $role;
 
     /**
-     * @var string $code
+     * @var string|null $code
      * @ORM\Column(type="string", length=32, nullable=true)
      */
     private $code;
@@ -137,17 +138,17 @@ class User
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
     /**
-     * @param string $code
+     * @param string|null $code
      */
-    public function setCode(string $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }

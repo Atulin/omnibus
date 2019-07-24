@@ -7,7 +7,14 @@
         <form class="form" id="login" method="POST" @submit="checkForm">
 
             <div id="errors">
-                <div class="field" v-if="errors.length">
+
+                {% if message %}
+                    <div class="success timed message field">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endif %}
+
+                <div class="error message field" v-if="errors.length">
                     <b>Please correct the following error(s):</b>
                     <ul>
                         <li v-for="error in errors">${ error }</li>
@@ -15,7 +22,7 @@
                 </div>
 
                 {% if messages %}
-                    <div class="field" v-if="!errors.length">
+                    <div class="error message field" v-if="!errors.length">
                         <b>Please correct the following error(s):</b>
                         <ul>
                             {% for m in messages %}

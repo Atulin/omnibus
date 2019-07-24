@@ -110,7 +110,11 @@ class Application
                     //Register
                     ['GET', '/register', 'Controllers\\User\\RegisterController#index', 'register'],
                     ['POST', '/register', 'Controllers\\User\\RegisterController#register'],
-                    ['GET', '/register/validate', 'Controllers\\User\\RegisterController#validate']
+                    ['GET', '/register/validate', 'Controllers\\User\\RegisterController#validate'],
+                    // Activate
+                    ['GET', '/activate/[a:code]', 'Controllers\\User\\ActivateController#activate'],
+                    ['GET', '/activate', 'Controllers\\User\\ActivateController#index'],
+                    ['POST', '/activate', 'Controllers\\User\\ActivateController#activate'],
                 ]);
             } catch (Exception $e) {
                 echo $e;
@@ -168,7 +172,7 @@ class Application
         if ($remember_cookie) {
             [$user_id, $token, $mac] = explode(':', $remember_cookie);
             if (!password_verify($user_id . ':' . $token, $mac)) {
-                die('Invalid!');
+                die('101: Corrupted rememberme cookie!');
             }
 
             $user = $this->em->find(User::class, $user_id);
@@ -176,9 +180,8 @@ class Application
             $user_token = $user === null ? '' : $user->getRememberme();
             if (hash_equals($user_token, $token)) {
                 $this->session->set('userid', $user_id);
-                echo "I 'member you, $user_id $user_token";
             } else {
-                echo "$user_token  :::  $token";
+                die('102: Corrupted rememberme cookie!');
             }
         }
 

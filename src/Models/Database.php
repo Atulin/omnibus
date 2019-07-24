@@ -11,8 +11,9 @@ use Doctrine\ORM\Tools\Setup;
  */
 class Database
 {
+
     /**
-     * @var string
+     * @var EntityManager
      */
     private $entityManager;
 

@@ -59,6 +59,7 @@ abstract class Controller
         }
 
         $this->session->set('token', $this->token);
+        $this->session->remove('message');
     }
 
     /**

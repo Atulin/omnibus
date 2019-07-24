@@ -1,0 +1,36 @@
+{% extends './scaffolds/public_scaffold.twig' %}
+
+{% block body %}
+    <div class="v-centered h-centered v-full h-full container">
+
+        <form id="activate" class="form" method="POST">
+
+            {% if messages %}
+                <div id="errors">
+                    <div class="field">
+                        <b>Please correct the following error(s):</b>
+                        <ul>
+                            {% for m in messages %}
+                                <li>{{ m }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="field">
+                <label for="code">Activation code</label>
+                <input id="code" name="code" type="text" required>
+            </div>
+
+            <input id="token" type="hidden" name="token" value="{{ token }}">
+
+            <div class="field">
+                <label for="submit" class="hidden">Submit</label>
+                <input id="submit" class="submit button" type="submit" value="Submit">
+            </div>
+
+        </form>
+
+    </div>
+{% endblock %}

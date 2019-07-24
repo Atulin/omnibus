@@ -14,7 +14,10 @@ class LoginController extends Controller
     public function index(): void
     {
         $this->setBaseData();
-        $this->render('user/login', ['messages' => $this->messages]);
+        $this->render('user/login', [
+            'messages' => $this->messages,
+            'message'  => $this->session->get('message')
+        ]);
     }
 
     /**
@@ -26,38 +29,48 @@ class LoginController extends Controller
     {
         $login    = $_POST['login'];
         $pass     = $_POST['password'];
-        $remember = $_POST['remember'];
+        $remember = $_POST['remember'] ?? '';
 
         $user = $this->em->getRepository(User::class)->findOneBy(['name' => $login]);
 
         if ($user) {
+
             if (password_verify($pass, $user->getPassword())) {
 
-                // Log the user in via session
-                $this->session->set('userid', $user->getId());
-                $this->session->set('message', "Welcome back, {$user->getName()}");
+                if (!$user->getCode()) {
 
-                // Set RememberMe
-                if ($remember !== null) {
-                    $r_token = bin2hex(random_bytes(256));
+                    // Log the user in via session
+                    $this->session->set('userid', $user->getId());
+                    $this->session->set('message', "Welcome back, {$user->getName()}");
 
-                    $cookie = $user->getId() . ':' . $r_token;
-                    $mac = password_hash($cookie, PASSWORD_BCRYPT);
-                    $cookie .= ':' . $mac;
-                    setcookie('__Secure-rememberme', $cookie, time() + 2592000, '/', '', true, true);
+                    // Set RememberMe
+                    if ($remember !== null) {
+                        $r_token = bin2hex(random_bytes(256));
 
-                    $user->setRememberme($r_token);
-                    $this->em->flush();
+                        $cookie = $user->getId() . ':' . $r_token;
+                        $mac = password_hash($cookie, PASSWORD_BCRYPT);
+                        $cookie .= ':' . $mac;
+                        setcookie('__Secure-rememberme', $cookie, time() + 2592000, '/', '', true, true);
+
+                        $user->setRememberme($r_token);
+                        $this->em->flush();
+                    }
+
+                    header('Location: /');
+                    die();
+
+                } else {
+                    $this->messages[] = 'Account not activated.';
                 }
 
-                header('Location: /');
             } else {
                 $this->messages[] = 'Wrong password.';
-                $this->index();
             }
+
         } else {
             $this->messages[] = 'User does not exist.';
-            $this->index();
         }
+
+        $this->index();
     }
 }

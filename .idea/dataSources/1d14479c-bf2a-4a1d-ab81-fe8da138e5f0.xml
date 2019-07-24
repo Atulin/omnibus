@@ -18,7 +18,7 @@
       <ObjectId>41036</ObjectId>
       <StateNumber>772</StateNumber>
       <Owner>Angius</Owner>
-      <IntrospectionStateNumber>811</IntrospectionStateNumber>
+      <IntrospectionStateNumber>835</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
@@ -130,7 +130,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>Angius</Owner>
-      <IntrospectionStateNumber>812</IntrospectionStateNumber>
+      <IntrospectionStateNumber>836</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -367,19 +367,25 @@
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="56" parent="33" name="idx_1483a5e9d60322ac">
+    <index id="56" parent="33" name="user_code_idx">
+      <ObjectId>49230</ObjectId>
+      <StateNumber>834</StateNumber>
+      <ColNames>code</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="57" parent="33" name="idx_1483a5e9d60322ac">
       <ObjectId>41062</ObjectId>
       <StateNumber>779</StateNumber>
       <ColNames>role_id</ColNames>
     </index>
-    <key id="57" parent="33" name="users_pkey">
+    <key id="58" parent="33" name="users_pkey">
       <ObjectId>41061</ObjectId>
       <StateNumber>778</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="58" parent="33" name="fk_1483a5e9d60322ac">
+    <foreign-key id="59" parent="33" name="fk_1483a5e9d60322ac">
       <ObjectId>41065</ObjectId>
       <StateNumber>782</StateNumber>
       <ColNames>role_id</ColNames>

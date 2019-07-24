@@ -4,7 +4,7 @@
     <div>{{ theme }}</div>
     <div>{{ token }}</div>
     <div>{{ user.name }}</div>
-    <div>{{ user.activated }}</div>
+    <div>{{ user.code ? "inactive" : "active" }}</div>
     <div>{{ message }}</div>
 
     {% if user %}
