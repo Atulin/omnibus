@@ -6,6 +6,8 @@ use Core\Controller;
 
 class HomeController extends Controller
 {
+    /**
+     */
     public function index(): void
     {
         $message = $this->session->get('message');

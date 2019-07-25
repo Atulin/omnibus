@@ -9,7 +9,8 @@
 
     <form id="register" class="form" method="POST" @submit="checkForm">
 
-        <div id="errors">
+        <div id="messages">
+
             <div class="field" v-if="errors.length">
                 <b>Please correct the following error(s):</b>
                 <ul>

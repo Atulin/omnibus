@@ -2,6 +2,7 @@
 	"devDependencies": {
 		"autoprefixer": "^9.6.1",
 		"cssnano": "^4.1.10",
+		"mjml": "^4.4.0",
 		"postcss": "^7.0.17",
 		"postcss-discard-comments": "^4.0.2"
 	},
