@@ -9,10 +9,9 @@ use Core\Utility\Email;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Exception;
+use Models\ActivationCode;
 use Models\User;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 
 /**
  * Class RegisterController
@@ -38,9 +37,6 @@ class RegisterController extends Controller
      * Register new user
      * @throws ORMException
      * @throws OptimisticLockException
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
      */
     public function register(): void
     {
@@ -105,17 +101,31 @@ class RegisterController extends Controller
                 $u = new User();
                 $u->setName($name);
                 $u->setEmail($email);
-                $u->setCode($code);
                 $u->setPassword(password_hash($pass, PASSWORD_ARGON2I));
 
                 $this->em->persist($u);
-            }
 
-            // Check if user exists
-            try {
-                $this->em->flush();
-            } catch (UniqueConstraintViolationException $e) {
-                $this->messages[] = 'User with that name or email already exists.';
+                // Check if user exists
+                try {
+                    $this->em->flush();
+
+                    // Insert activation code
+                    $ac = new ActivationCode();
+                    $ac->setUserId($u->getId());
+                    $ac->setCode($code);
+
+                    $this->em->persist($ac);
+
+                    try {
+                        $this->em->flush();
+                    } catch (Exception $e) {
+                        $this->messages[] = 'Could not create activation token.';
+                        $this->messages[] = $e->getMessage();
+                    }
+
+                } catch (UniqueConstraintViolationException $e) {
+                    $this->messages[] = 'User with that name or email already exists.';
+                }
             }
         } else {
             $this->messages[] = 'X-CSRF protection triggered.';

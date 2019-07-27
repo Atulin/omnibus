@@ -7,6 +7,7 @@ use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\TransactionRequiredException;
 use Exception;
+use Models\ActivationCode;
 use Models\Database;
 use Models\Role;
 use Models\User;
@@ -23,10 +24,14 @@ class Application
     protected $router;
     /** @var Run */
     protected $whoops;
+
     /** @var null|User */
     protected $user;
     /** @var null|Role */
     protected $role;
+    /** @var bool */
+    private $active;
+
     /** @var Session */
     public $session;
     /** @var EntityManager|string */
@@ -68,7 +73,7 @@ class Application
                 $parts = explode('#', $target);
                 if (count($parts) === 2) {
                     // instantiate a new controller
-                    $controller = new $parts[0]($this->session, $this->user, $this->em);
+                    $controller = new $parts[0]($this->session, $this->user, $this->em, $this->active);
                     // run the controller's method
                     $controller->{$parts[1]}(((array)$match)['params']);
                 }
@@ -115,6 +120,9 @@ class Application
                     ['GET', '/activate/[a:code]', 'Controllers\\User\\ActivateController#activate'],
                     ['GET', '/activate', 'Controllers\\User\\ActivateController#index'],
                     ['POST', '/activate', 'Controllers\\User\\ActivateController#activate'],
+                    // Recover
+                    ['GET', '/recover', 'Controllers\\User\\RecoverController#index', 'recover'],
+                    ['POST', '/recover', 'Controllers\\User\\RecoverController#recover']
                 ]);
             } catch (Exception $e) {
                 echo $e;
@@ -186,9 +194,18 @@ class Application
         }
 
         // Get user
-        $this->user = $this->session->has('userid') ? $this->em->find(User::class, $this->session->get('userid')) : null;
+        $this->user = $this->session->has('userid')
+            ? $this->em->find(User::class, $this->session->get('userid'))
+            : null;
 
         // Get user role
-        $this->role = ($this->session->has('userid') && $this->user !== null) ? $this->user->GetRole() : null;
+        $this->role = ($this->session->has('userid') && $this->user !== null)
+            ? $this->user->GetRole()
+            : null;
+
+        // Check if user is activated
+        $this->active = $this->user
+            ? ($this->em->getRepository(ActivationCode::class)->findOneBy(['user_id' => $this->user->getId()]) === null)
+            : false;
     }
 }

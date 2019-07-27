@@ -14,8 +14,12 @@
 </head>
 <body>
 
+{% include 'scaffolds/navbar.twig' %}
+
 {% block body %}
 {% endblock %}
+
+<script src="{{ vasset('js/hamburger', 'min.js') }}"></script>
 
 </body>
 </html>

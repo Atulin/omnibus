@@ -4,6 +4,7 @@ namespace Controllers\User;
 use Core\Controller;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Models\ActivationCode;
 use Models\User;
 
 class ActivateController extends Controller
@@ -32,10 +33,11 @@ class ActivateController extends Controller
         $code = ($_POST['code'] ?? $params['code']) ?? null;
         if (!empty($code)) {
 
-            $user = $this->em->getRepository(User::class)->findOneBy(['code' => $code]);
+            $ac = $this->em->getRepository(ActivationCode::class)->findOneBy(['code' => $code]);
+//            $user = $this->em->getRepository(User::class)->findOneBy(['code' => $code]);
 
-            if($user !== null) {
-                $user->setCode(null);
+            if($ac !== null) {
+                $this->em->remove($ac);
                 $this->em->flush();
                 $this->session->set('message', 'Your account has been activated successfully!');
                 header('Location: /login');

@@ -17,6 +17,8 @@ abstract class Controller
     private $twig;
     /** @var null|User */
     private $user;
+    /** @var bool */
+    private $active;
     /** @var string */
     private $token;
     /** @var array */
@@ -26,13 +28,14 @@ abstract class Controller
     /** @var EntityManager */
     protected $em;
 
-    public function __construct(Session $session, ?User $user, EntityManager $em)
+    public function __construct(Session $session, ?User $user, EntityManager $em, bool $active)
     {
         $this->session = $session;
-        $this->user = $user;
-        $this->em = $em;
-        $this->twig = TwigHandler::Get();
-        $this->token = Token::Get();
+        $this->user    = $user;
+        $this->active  = $active;
+        $this->em      = $em;
+        $this->twig    = TwigHandler::Get();
+        $this->token   = Token::Get(128);
     }
 
 
@@ -68,9 +71,10 @@ abstract class Controller
     public function setBaseData(): void
     {
         $this->base_data  = [
-            'theme' => $_COOKIE['theme'] ?? 'light',
-            'token' => $this->token,
-            'user'  => $this->user,
+            'theme'  => $_COOKIE['theme'] ?? 'light',
+            'token'  => $this->token,
+            'user'   => $this->user,
+            'active' => $this->active,
         ];
     }
 
@@ -90,5 +94,13 @@ abstract class Controller
     public function getToken(): string
     {
         return $this->token;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->active;
     }
 }

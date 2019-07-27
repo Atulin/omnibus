@@ -14,7 +14,6 @@ use Doctrine\ORM\Mapping as ORM;
  *     uniqueConstraints={
  *          @ORM\UniqueConstraint(name="user_name_idx", columns={"name"}),
  *          @ORM\UniqueConstraint(name="user_email_idx", columns={"email"}),
- *          @ORM\UniqueConstraint(name="user_code_idx", columns={"code"})
  *      }
  * )
  */
@@ -89,12 +88,6 @@ class User
      */
     private $role;
 
-    /**
-     * @var string|null $code
-     * @ORM\Column(type="string", length=32, nullable=true)
-     */
-    private $code;
-
 
     /**
      * User constructor.
@@ -137,21 +130,6 @@ class User
         $this->title = $title;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getCode(): ?string
-    {
-        return $this->code;
-    }
-
-    /**
-     * @param string|null $code
-     */
-    public function setCode(?string $code): void
-    {
-        $this->code = $code;
-    }
 
     /**
      * @return int

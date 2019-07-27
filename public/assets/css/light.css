@@ -25,7 +25,7 @@ form.form {
   padding: 20px;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 0 10px 1px rgba(6, 6, 6, 0.2); }
   form.form > div.field {
     display: flex;
     flex-direction: column;
@@ -90,5 +90,64 @@ div.message {
     width: 0;
     margin: 0;
     padding: 0; } }
+div#navbar {
+  display: flex;
+  padding: 0;
+  align-items: center;
+  box-shadow: 0 0 10px 1px rgba(6, 6, 6, 0.2); }
+  div#navbar hr {
+    height: 30px;
+    color: rgba(6, 6, 6, 0.2); }
+  div#navbar > .brand {
+    font-size: 1rem;
+    padding: 0.5rem 1rem; }
+  div#navbar > .hamburger {
+    display: none;
+    padding: 8px; }
+  div#navbar > .items {
+    display: flex;
+    align-items: center; }
+    div#navbar > .items.right {
+      margin-left: auto; }
+    div#navbar > .items > .item {
+      padding: 8px;
+      display: flex;
+      align-items: center; }
+      div#navbar > .items > .item.avatar {
+        padding: 4px; }
+        div#navbar > .items > .item.avatar > img {
+          border: 1px solid #060606;
+          border-radius: 10%; }
+        div#navbar > .items > .item.avatar > p {
+          margin: 4px 8px 4px 4px; }
+
+@media only screen and (max-width: 768px) {
+  div#navbar {
+    flex-direction: column;
+    align-items: normal; }
+    div#navbar hr {
+      display: none; }
+    div#navbar > .brand {
+      font-size: 1.5rem; }
+    div#navbar > .hamburger {
+      align-self: flex-end;
+      display: initial;
+      position: absolute;
+      cursor: pointer; }
+    div#navbar > .items {
+      display: none; }
+      div#navbar > .items.visible {
+        display: flex;
+        flex-direction: column;
+        align-items: end; }
+      div#navbar > .items.right {
+        margin-left: 0; }
+      div#navbar > .items > .item {
+        height: 40px; }
+        div#navbar > .items > .item.avatar {
+          padding: 4px; }
+          div#navbar > .items > .item.avatar > img {
+            width: 30px;
+            height: 30px; } }
 
 /*# sourceMappingURL=light.css.map */

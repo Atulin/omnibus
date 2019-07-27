@@ -1,5 +1,52 @@
-<nav id="nav">
+<div id="navbar">
 
-    
+        <div class="brand">
+            Website title
+        </div>
 
-</nav>
+        <div class="hamburger">
+            <i class="fas fa-bars">H</i>
+        </div>
+
+        <nav class="items">
+
+            <hr>
+
+            <div class="item">
+                Longer Link
+            </div>
+
+            <hr>
+
+            <div class="item">
+                Longer Link
+            </div>
+
+            <hr>
+
+            <div class="item">
+                Link
+            </div>
+
+            <hr>
+
+        </nav>
+
+        <nav class="right items">
+
+            <hr>
+
+            <div class="item">
+                Link
+            </div>
+
+            <hr>
+
+            <div class="avatar item">
+                <p>Profile</p>
+                <img src="{{ gravatar(user.email, 40) }}" alt="{{ user.name }}'s avatar">
+            </div>
+
+        </nav>
+
+</div>

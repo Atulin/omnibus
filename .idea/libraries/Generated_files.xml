@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/public/assets/js/hamburger.min.js" />
+        <item url="file://$PROJECT_DIR$/public/assets/js/v-login-validator.min.js" />
+        <item url="file://$PROJECT_DIR$/public/assets/js/v-registration-validator.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/public/assets/js/hamburger.min.js" />
+      <root url="file://$PROJECT_DIR$/public/assets/js/v-login-validator.min.js" />
+      <root url="file://$PROJECT_DIR$/public/assets/js/v-registration-validator.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

@@ -3,11 +3,6 @@ namespace Core\Utility;
 
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
-use Twig\Environment;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
-use Twig\Loader\FilesystemLoader;
 
 
 /**
@@ -16,8 +11,7 @@ use Twig\Loader\FilesystemLoader;
  */
 class Email
 {
-    /** @var Environment $twig */
-    private $twig;
+    private $template_root;
 
     /** @var PHPMailer $mailer */
     private $mailer;
@@ -45,12 +39,7 @@ class Email
      */
     public function __construct()
     {
-        $loader = new FilesystemLoader([
-            dirname(__DIR__, 2) . '/Views',
-            dirname(__DIR__, 3) . '/public/assets'
-        ]);
-
-        $this->twig = new Environment($loader);
+        $this->template_root = dirname(__DIR__, 2).'/Views/emails';
         $this->mailer = new PHPMailer();
     }
 
@@ -59,13 +48,10 @@ class Email
      * @param string $template
      * @param array $data
      * @return Email
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
      */
     public function setBody(string $template, array $data): Email
     {
-        $this->body = $this->twig->render("emails/$template.twig", $data);
+        $this->body = $this->renderTemplate($template, $data);
         return $this;
     }
 
@@ -149,5 +135,14 @@ class Email
         } catch (Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    protected function renderTemplate(string $template, array $data): string
+    {
+        $file = file_get_contents($this->template_root.'/'.$template.'.html');
+        foreach ($data as $key => $value) {
+            $file = str_replace("{{ $key }}", $value, $file);
+        }
+        return $file;
     }
 }

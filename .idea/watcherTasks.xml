@@ -62,14 +62,14 @@
       <envs />
     </TaskOptions>
     <TaskOptions isEnabled="true">
-      <option name="arguments" value="-r $FileName$ -o $FileNameWithoutAllExtensions$.twig --config.minify=true --config.validationLevel=strict" />
+      <option name="arguments" value="-r $FileName$ -o $FileNameWithoutAllExtensions$.html --config.minify=true --config.validationLevel=strict" />
       <option name="checkSyntaxErrors" value="false" />
       <option name="description" />
       <option name="exitCodeBehavior" value="ERROR" />
       <option name="fileExtension" value="*" />
       <option name="immediateSync" value="true" />
       <option name="name" value="MJML" />
-      <option name="output" value="$FileNameWithoutAllExtensions$.twig" />
+      <option name="output" value="$FileNameWithoutAllExtensions$.html" />
       <option name="outputFilters">
         <array />
       </option>

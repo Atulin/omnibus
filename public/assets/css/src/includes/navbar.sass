@@ -1,0 +1,74 @@
+div#navbar
+  display: flex
+  padding: 0
+  align-items: center
+  box-shadow: $subtle-shadow
+
+  & hr
+    height: 30px
+    color: $foreground-20
+
+  &>.brand
+    font-size: 1rem
+    padding: .5rem 1rem
+
+  &>.hamburger
+    display: none
+    padding: 8px
+
+  &>.items
+    display: flex
+    align-items: center
+
+    &.right
+      margin-left: auto
+
+    &>.item
+      padding: 8px
+      display: flex
+      align-items: center
+
+      &.avatar
+        padding: 4px
+        &>img
+          border: 1px solid $foreground
+          border-radius: 10%
+        &>p
+          margin: 4px 8px 4px 4px
+
+
+@media only screen and (max-width: 768px)
+  div#navbar
+    flex-direction: column
+    align-items: normal
+
+    & hr
+      display: none
+
+    &>.brand
+      font-size: 1.5rem
+
+    &>.hamburger
+      align-self: flex-end
+      display: initial
+      position: absolute
+      cursor: pointer
+
+    &>.items
+      display: none
+
+      &.visible
+        display: flex
+        flex-direction: column
+        align-items: end
+
+      &.right
+        margin-left: 0
+
+      &>.item
+        height: 40px
+        &.avatar
+          padding: 4px
+          &>img
+            width: 30px
+            height: 30px

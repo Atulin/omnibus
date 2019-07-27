@@ -37,7 +37,7 @@ class LoginController extends Controller
 
             if (password_verify($pass, $user->getPassword())) {
 
-                if (!$user->getCode()) {
+                if (!$this->isActive()) {
 
                     // Log the user in via session
                     $this->session->set('userid', $user->getId());

@@ -30,14 +30,14 @@ class TwigHandler
         ///
         /// Asset loading function
         ///
-        $twig->addFunction(new TwigFunction('asset', static function ($asset) {
+        $twig->addFunction(new TwigFunction('asset', static function (string $asset) {
             return sprintf('/public/%s', ltrim($asset, '/'));
         }));
 
         ///
         /// Versioned asset loading function
         ///
-        $twig->addFunction(new TwigFunction('vasset', static function ($asset, $extension) {
+        $twig->addFunction(new TwigFunction('vasset', static function (string $asset, string $extension) {
             $filename = ASSETS."/$asset.$extension";
             if (file_exists($filename)) {
                 $timestamp = filemtime($filename);
@@ -49,9 +49,9 @@ class TwigHandler
         ///
         /// Get a Gravatar from email
         ///
-        $twig->addFunction(new TwigFunction('gravatar', static function($email) {
+        $twig->addFunction(new TwigFunction('gravatar', static function(string $email, int $size = null) {
             $hash = md5( strtolower( trim( $email ) ) );
-            return "https://www.gravatar.com/avatar/$hash";
+            return "https://www.gravatar.com/avatar/$hash" . ($size ? "?s=$size" : '');
         }));
 
         // Date extension

@@ -6,32 +6,31 @@
     </root>
     <database id="2" parent="1" name="Angius">
       <ObjectId>16385</ObjectId>
-      <StateNumber>569</StateNumber>
       <Owner>Angius</Owner>
+      <Substituted>1</Substituted>
     </database>
     <database id="3" parent="1" name="CoCon">
       <ObjectId>24577</ObjectId>
-      <StateNumber>572</StateNumber>
       <Owner>Angius</Owner>
+      <Substituted>1</Substituted>
     </database>
     <database id="4" parent="1" name="Omnibus">
       <ObjectId>41036</ObjectId>
-      <StateNumber>772</StateNumber>
       <Owner>Angius</Owner>
-      <IntrospectionStateNumber>835</IntrospectionStateNumber>
+      <IntrospectionStateNumber>887</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
     <database id="5" parent="1" name="pCoCon">
       <ObjectId>24595</ObjectId>
-      <StateNumber>581</StateNumber>
       <Owner>postgres</Owner>
+      <Substituted>1</Substituted>
     </database>
     <database id="6" parent="1" name="postgres">
       <ObjectId>13012</ObjectId>
       <Comment>default administrative connection database</Comment>
-      <StateNumber>566</StateNumber>
       <Owner>Angius</Owner>
+      <Substituted>1</Substituted>
     </database>
     <role id="7" parent="1" name="Angius">
       <ObjectId>10</ObjectId>
@@ -93,48 +92,64 @@
       <CanLogin>1</CanLogin>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <schema id="17" parent="4" name="information_schema">
+    <schema id="17" parent="2" name="information_schema">
+      <Substituted>1</Substituted>
+    </schema>
+    <schema id="18" parent="2" name="pg_catalog">
+      <Comment>system catalog schema</Comment>
+      <Substituted>1</Substituted>
+    </schema>
+    <schema id="19" parent="3" name="information_schema">
+      <Substituted>1</Substituted>
+    </schema>
+    <schema id="20" parent="3" name="pg_catalog">
+      <Comment>system catalog schema</Comment>
+      <Substituted>1</Substituted>
+    </schema>
+    <schema id="21" parent="4" name="information_schema">
       <ObjectId>12716</ObjectId>
       <StateNumber>365</StateNumber>
       <Owner>Angius</Owner>
       <IntrospectionStateNumber>787</IntrospectionStateNumber>
+      <Substituted>1</Substituted>
     </schema>
-    <schema id="18" parent="4" name="pg_catalog">
+    <schema id="22" parent="4" name="pg_catalog">
       <ObjectId>11</ObjectId>
       <Comment>system catalog schema</Comment>
       <StateNumber>358</StateNumber>
       <Owner>Angius</Owner>
       <IntrospectionStateNumber>788</IntrospectionStateNumber>
+      <Substituted>1</Substituted>
     </schema>
-    <schema id="19" parent="4" name="pg_temp_1">
+    <schema id="23" parent="4" name="pg_temp_1">
       <ObjectId>11804</ObjectId>
       <StateNumber>120</StateNumber>
       <Owner>Angius</Owner>
       <IntrospectionStateNumber>789</IntrospectionStateNumber>
     </schema>
-    <schema id="20" parent="4" name="pg_toast">
+    <schema id="24" parent="4" name="pg_toast">
       <ObjectId>99</ObjectId>
       <Comment>reserved schema for TOAST tables</Comment>
       <StateNumber>1</StateNumber>
       <Owner>Angius</Owner>
       <IntrospectionStateNumber>790</IntrospectionStateNumber>
     </schema>
-    <schema id="21" parent="4" name="pg_toast_temp_1">
+    <schema id="25" parent="4" name="pg_toast_temp_1">
       <ObjectId>11805</ObjectId>
       <StateNumber>120</StateNumber>
       <Owner>Angius</Owner>
       <IntrospectionStateNumber>791</IntrospectionStateNumber>
     </schema>
-    <schema id="22" parent="4" name="public">
+    <schema id="26" parent="4" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>Angius</Owner>
-      <IntrospectionStateNumber>836</IntrospectionStateNumber>
+      <IntrospectionStateNumber>888</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <access-method id="23" parent="4" name="btree">
+    <access-method id="27" parent="4" name="btree">
       <ObjectId>403</ObjectId>
       <Comment>b-tree index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -142,7 +157,7 @@
       <HandlerId>330</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="24" parent="4" name="hash">
+    <access-method id="28" parent="4" name="hash">
       <ObjectId>405</ObjectId>
       <Comment>hash index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -150,7 +165,7 @@
       <HandlerId>331</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="25" parent="4" name="gist">
+    <access-method id="29" parent="4" name="gist">
       <ObjectId>783</ObjectId>
       <Comment>GiST index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -158,7 +173,7 @@
       <HandlerId>332</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="26" parent="4" name="gin">
+    <access-method id="30" parent="4" name="gin">
       <ObjectId>2742</ObjectId>
       <Comment>GIN index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -166,7 +181,7 @@
       <HandlerId>333</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="27" parent="4" name="spgist">
+    <access-method id="31" parent="4" name="spgist">
       <ObjectId>4000</ObjectId>
       <Comment>SP-GiST index access method</Comment>
       <StateNumber>1</StateNumber>
@@ -174,7 +189,7 @@
       <HandlerId>334</HandlerId>
       <Type>index</Type>
     </access-method>
-    <access-method id="28" parent="4" name="brin">
+    <access-method id="32" parent="4" name="brin">
       <ObjectId>3580</ObjectId>
       <Comment>block range index (BRIN) access method</Comment>
       <StateNumber>1</StateNumber>
@@ -182,7 +197,7 @@
       <HandlerId>335</HandlerId>
       <Type>index</Type>
     </access-method>
-    <extension id="29" parent="4" name="plpgsql">
+    <extension id="33" parent="4" name="plpgsql">
       <ObjectId>12998</ObjectId>
       <Comment>PL/pgSQL procedural language</Comment>
       <StateNumber>518</StateNumber>
@@ -190,7 +205,29 @@
       <SchemaName>pg_catalog</SchemaName>
       <SchemaId>11</SchemaId>
     </extension>
-    <sequence id="30" parent="22" name="roles_id_seq">
+    <schema id="34" parent="5" name="information_schema">
+      <Substituted>1</Substituted>
+    </schema>
+    <schema id="35" parent="5" name="pg_catalog">
+      <Comment>system catalog schema</Comment>
+      <Substituted>1</Substituted>
+    </schema>
+    <schema id="36" parent="6" name="information_schema">
+      <Substituted>1</Substituted>
+    </schema>
+    <schema id="37" parent="6" name="pg_catalog">
+      <Comment>system catalog schema</Comment>
+      <Substituted>1</Substituted>
+    </schema>
+    <sequence id="38" parent="26" name="activation_codes_id_seq">
+      <ObjectId>57425</ObjectId>
+      <StateNumber>875</StateNumber>
+      <Owner>Angius</Owner>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <sequence id="39" parent="26" name="roles_id_seq">
       <ObjectId>41037</ObjectId>
       <StateNumber>774</StateNumber>
       <Owner>Angius</Owner>
@@ -198,7 +235,7 @@
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="31" parent="22" name="users_id_seq">
+    <sequence id="40" parent="26" name="users_id_seq">
       <ObjectId>41039</ObjectId>
       <StateNumber>775</StateNumber>
       <Owner>Angius</Owner>
@@ -206,31 +243,71 @@
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <table id="32" parent="22" name="roles">
+    <table id="41" parent="26" name="activation_codes">
+      <ObjectId>57427</ObjectId>
+      <Owner>Angius</Owner>
+      <StateNumber>879</StateNumber>
+    </table>
+    <table id="42" parent="26" name="roles">
       <ObjectId>41041</ObjectId>
       <Owner>Angius</Owner>
       <StateNumber>782</StateNumber>
     </table>
-    <table id="33" parent="22" name="users">
+    <table id="43" parent="26" name="users">
       <ObjectId>41049</ObjectId>
       <Owner>Angius</Owner>
       <StateNumber>807</StateNumber>
     </table>
-    <column id="34" parent="32" name="id">
+    <column id="44" parent="41" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>879</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="45" parent="41" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>886</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="46" parent="41" name="code">
+      <Position>3</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>879</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="47" parent="41" name="activation_codes_pkey">
+      <ObjectId>57430</ObjectId>
+      <StateNumber>879</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="48" parent="41" name="activation_codes_pkey">
+      <ObjectId>57431</ObjectId>
+      <StateNumber>879</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>activation_codes_pkey</UnderlyingIndexName>
+    </key>
+    <column id="49" parent="42" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>776</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="35" parent="32" name="name">
+    <column id="50" parent="42" name="name">
       <Position>2</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>776</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="36" parent="32" name="is_admin">
+    <column id="51" parent="42" name="is_admin">
       <Position>3</Position>
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
@@ -238,7 +315,7 @@
       <DefaultExpression>false</DefaultExpression>
       <TypeId>16</TypeId>
     </column>
-    <column id="37" parent="32" name="is_moderator">
+    <column id="52" parent="42" name="is_moderator">
       <Position>4</Position>
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
@@ -246,93 +323,93 @@
       <DefaultExpression>false</DefaultExpression>
       <TypeId>16</TypeId>
     </column>
-    <index id="38" parent="32" name="roles_pkey">
+    <index id="53" parent="42" name="roles_pkey">
       <ObjectId>41046</ObjectId>
       <StateNumber>776</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="39" parent="32" name="role_name_idx">
+    <index id="54" parent="42" name="role_name_idx">
       <ObjectId>41048</ObjectId>
       <StateNumber>777</StateNumber>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="40" parent="32" name="roles_pkey">
+    <key id="55" parent="42" name="roles_pkey">
       <ObjectId>41047</ObjectId>
       <StateNumber>776</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>roles_pkey</UnderlyingIndexName>
     </key>
-    <column id="41" parent="33" name="id">
+    <column id="56" parent="43" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>778</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="42" parent="33" name="role_id">
+    <column id="57" parent="43" name="role_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>778</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="43" parent="33" name="name">
+    <column id="58" parent="43" name="name">
       <Position>3</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>778</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="44" parent="33" name="avatar">
+    <column id="59" parent="43" name="avatar">
       <Position>4</Position>
       <DataType>varchar(128)|0s</DataType>
       <StateNumber>778</StateNumber>
       <DefaultExpression>NULL::character varying</DefaultExpression>
       <TypeId>1043</TypeId>
     </column>
-    <column id="45" parent="33" name="email">
+    <column id="60" parent="43" name="email">
       <Position>5</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>778</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="46" parent="33" name="password">
+    <column id="61" parent="43" name="password">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>778</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="47" parent="33" name="remember_me">
+    <column id="62" parent="43" name="remember_me">
       <Position>7</Position>
       <DataType>varchar(512)|0s</DataType>
       <StateNumber>810</StateNumber>
       <DefaultExpression>NULL::character varying</DefaultExpression>
       <TypeId>1043</TypeId>
     </column>
-    <column id="48" parent="33" name="bio">
+    <column id="63" parent="43" name="bio">
       <Position>11</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>801</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="49" parent="33" name="title">
+    <column id="64" parent="43" name="title">
       <Position>12</Position>
       <DataType>varchar(40)|0s</DataType>
       <StateNumber>802</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="50" parent="33" name="code">
+    <column id="65" parent="43" name="code">
       <Position>13</Position>
       <DataType>varchar(32)|0s</DataType>
       <StateNumber>803</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="51" parent="33" name="creation_date">
+    <column id="66" parent="43" name="creation_date">
       <Position>14</Position>
       <DataType>timestamp(0)|0s</DataType>
       <NotNull>1</NotNull>
@@ -340,7 +417,7 @@
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <TypeId>1114</TypeId>
     </column>
-    <column id="52" parent="33" name="last_seen">
+    <column id="67" parent="43" name="last_seen">
       <Position>15</Position>
       <DataType>timestamp(0)|0s</DataType>
       <NotNull>1</NotNull>
@@ -348,44 +425,44 @@
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <TypeId>1114</TypeId>
     </column>
-    <index id="53" parent="33" name="users_pkey">
+    <index id="68" parent="43" name="users_pkey">
       <ObjectId>41060</ObjectId>
       <StateNumber>778</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="54" parent="33" name="user_name_idx">
+    <index id="69" parent="43" name="user_name_idx">
       <ObjectId>41063</ObjectId>
       <StateNumber>780</StateNumber>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="55" parent="33" name="user_email_idx">
+    <index id="70" parent="43" name="user_email_idx">
       <ObjectId>41064</ObjectId>
       <StateNumber>781</StateNumber>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="56" parent="33" name="user_code_idx">
+    <index id="71" parent="43" name="user_code_idx">
       <ObjectId>49230</ObjectId>
       <StateNumber>834</StateNumber>
       <ColNames>code</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="57" parent="33" name="idx_1483a5e9d60322ac">
+    <index id="72" parent="43" name="idx_1483a5e9d60322ac">
       <ObjectId>41062</ObjectId>
       <StateNumber>779</StateNumber>
       <ColNames>role_id</ColNames>
     </index>
-    <key id="58" parent="33" name="users_pkey">
+    <key id="73" parent="43" name="users_pkey">
       <ObjectId>41061</ObjectId>
       <StateNumber>778</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="59" parent="33" name="fk_1483a5e9d60322ac">
+    <foreign-key id="74" parent="43" name="fk_1483a5e9d60322ac">
       <ObjectId>41065</ObjectId>
       <StateNumber>782</StateNumber>
       <ColNames>role_id</ColNames>

@@ -9,8 +9,8 @@
     </root>
     <schema id="2" parent="1" name="angius_omnibus">
       <Current>1</Current>
-      <Visible>1</Visible>
       <Collation>utf8_general_ci</Collation>
+      <Visible>1</Visible>
     </schema>
     <schema id="3" parent="1" name="craft">
       <Collation>utf8_general_ci</Collation>
@@ -23,6 +23,7 @@
     </schema>
     <schema id="6" parent="1" name="information_schema">
       <Collation>utf8_general_ci</Collation>
+      <Substituted>1</Substituted>
     </schema>
     <schema id="7" parent="1" name="librus">
       <Collation>utf8_general_ci</Collation>

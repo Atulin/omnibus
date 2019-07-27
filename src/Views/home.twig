@@ -6,6 +6,7 @@
     <div>{{ user.name }}</div>
     <div>{{ user.code ? "inactive" : "active" }}</div>
     <div>{{ message }}</div>
+    <div>Active: {{ active ? "true" : "false" }}</div>
 
     {% if user %}
         <a href="/logout">Log out</a>
