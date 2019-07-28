@@ -33,42 +33,48 @@ class LoginController extends Controller
 
         $user = $this->em->getRepository(User::class)->findOneBy(['name' => $login]);
 
-        if ($user) {
+        if ($this->session->get('token') === $_POST['token']) {
 
-            if (password_verify($pass, $user->getPassword())) {
+            if ($user) {
 
-                if (!$this->isActive()) {
+                if (password_verify($pass, $user->getPassword())) {
 
-                    // Log the user in via session
-                    $this->session->set('userid', $user->getId());
-                    $this->session->set('message', "Welcome back, {$user->getName()}");
+                    if (!$this->isActive()) {
 
-                    // Set RememberMe
-                    if ($remember !== null) {
-                        $r_token = bin2hex(random_bytes(256));
+                        // Log the user in via session
+                        $this->session->set('userid', $user->getId());
+                        $this->session->set('message', "Welcome back, {$user->getName()}");
 
-                        $cookie = $user->getId() . ':' . $r_token;
-                        $mac = password_hash($cookie, PASSWORD_BCRYPT);
-                        $cookie .= ':' . $mac;
-                        setcookie('__Secure-rememberme', $cookie, time() + 2592000, '/', '', true, true);
+                        // Set RememberMe
+                        if ($remember !== null) {
+                            $r_token = bin2hex(random_bytes(256));
 
-                        $user->setRememberme($r_token);
-                        $this->em->flush();
+                            $cookie = $user->getId() . ':' . $r_token;
+                            $mac = password_hash($cookie, PASSWORD_BCRYPT);
+                            $cookie .= ':' . $mac;
+                            setcookie('__Secure-rememberme', $cookie, time() + 2592000, '/', '', true, true);
+
+                            $user->setRememberme($r_token);
+                            $this->em->flush();
+                        }
+
+                        header('Location: /');
+                        die();
+
+                    } else {
+                        $this->messages[] = 'Account not activated.';
                     }
 
-                    header('Location: /');
-                    die();
-
                 } else {
-                    $this->messages[] = 'Account not activated.';
+                    $this->messages[] = 'Wrong password.';
                 }
 
             } else {
-                $this->messages[] = 'Wrong password.';
+                $this->messages[] = 'User does not exist.';
             }
 
         } else {
-            $this->messages[] = 'User does not exist.';
+            $this->messages[] = 'X-CSRF protection triggered.';
         }
 
         $this->index();

@@ -3,6 +3,7 @@
 namespace Controllers\User;
 
 use Core\Controller;
+use Core\Security\PasswordUtils;
 use Core\Security\ReCaptcha\ReCaptchaHandler;
 use Core\Security\Token;
 use Core\Utility\Email;
@@ -57,7 +58,7 @@ class RegisterController extends Controller
                 $captcha
             );
             $res = $ch->Check();
-            echo '<pre>'.var_export($res, true).'</pre>';
+
             if (!$res->isSuccess()) {
                 $this->messages[] = 'Incorrect ReCaptcha';
             }
@@ -66,22 +67,14 @@ class RegisterController extends Controller
             if ($pass !== $pass2) {
                 $this->messages[] = 'Passwords have to be identical.';
             }
-            // Check password length
-            if (strlen($pass) < 10) {
-                $this->messages[] = 'Password has to be at least 10 characters long.';
+
+            // Validate password
+            $messages = PasswordUtils::Check($pass);
+
+            if ($messages) {
+                $this->messages = array_merge($this->messages, $messages);
             }
-            // Check password special chars
-            if (!preg_match('/[_\W]/', $pass)) {
-                $this->messages[] = 'Password needs at least one special character.';
-            }
-            // Check password numbers
-            if (!preg_match('/[_0-9]/', $pass)) {
-                $this->messages[] = 'Password needs at least one number.';
-            }
-            // Check password capital letters
-            if (!preg_match('/[_A-Z]/', $pass)) {
-                $this->messages[] = 'Password needs at least one capital letter.';
-            }
+
             // Check email
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $this->messages[] = 'The email format is invalid.';
@@ -94,7 +87,7 @@ class RegisterController extends Controller
             // Generate a unique activation code
             do {
                 $code = Token::Get(32);
-            } while ($this->em->getRepository(User::class)->count(['code' => $code]) !== 0);
+            } while ($this->em->getRepository(ActivationCode::class)->count(['code' => $code]) !== 0);
 
             // If all's fine, create user
             if (count($this->messages) <= 0) {
@@ -148,7 +141,7 @@ class RegisterController extends Controller
 
             $this->session->set('message', 'Registration successful! Confirmation email should arrive shortly.');
             header('Location: /');
-
+            die();
         }
     }
 

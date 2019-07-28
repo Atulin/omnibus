@@ -25,7 +25,7 @@ abstract class Controller
     private $base_data = [];
     /** @var Session */
     protected $session;
-    /** @var EntityManager */
+    /** @var EntityManager $em */
     protected $em;
 
     public function __construct(Session $session, ?User $user, EntityManager $em, bool $active)

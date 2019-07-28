@@ -1,52 +1,67 @@
 <div id="navbar">
 
-        <div class="brand">
-            Website title
+    <div class="brand">
+        Website title
+    </div>
+
+    <div class="hamburger">
+        <i class="fas fa-bars">H</i>
+    </div>
+
+    <nav class="items">
+
+        <hr>
+
+        <div class="item">
+            Longer Link
         </div>
 
-        <div class="hamburger">
-            <i class="fas fa-bars">H</i>
+        <hr>
+
+        <div class="item">
+            Longer Link
         </div>
 
-        <nav class="items">
+        <hr>
 
-            <hr>
+        <div class="item">
+            Link
+        </div>
 
-            <div class="item">
-                Longer Link
-            </div>
+        <hr>
 
-            <hr>
+    </nav>
 
-            <div class="item">
-                Longer Link
-            </div>
+    <nav class="right items">
 
-            <hr>
+        <hr>
 
-            <div class="item">
-                Link
-            </div>
+        <div class="item">
+            Link
+        </div>
 
-            <hr>
+        <hr>
 
-        </nav>
-
-        <nav class="right items">
-
-            <hr>
-
-            <div class="item">
-                Link
-            </div>
-
-            <hr>
+        {% if user %}
 
             <div class="avatar item">
-                <p>Profile</p>
+                <p>{{ user.name }}</p>
                 <img src="{{ gravatar(user.email, 40) }}" alt="{{ user.name }}'s avatar">
             </div>
 
-        </nav>
+        {% else %}
+
+            <div class="item">
+                <a href="/register">Register</a>
+            </div>
+
+            <hr>
+            <div class="item">
+                <a href="/login">Login</a>
+            </div>
+
+        {% endif %}
+
+    </nav>
 
 </div>

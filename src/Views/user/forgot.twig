@@ -11,13 +11,6 @@
 
             <div id="messages">
 
-                <div class="error message field" v-if="errors.length">
-                    <b>Please correct the following error(s):</b>
-                    <ul>
-                        <li v-for="error in errors">${ error }</li>
-                    </ul>
-                </div>
-
                 {% if messages %}
                     <div class="error message field" v-if="!errors.length">
                         <b>Please correct the following error(s):</b>
@@ -31,23 +24,8 @@
             </div>
 
             <div class="field">
-                <label for="name">Login</label>
-                <input id="name" name="name" v-model="name" type="text" required>
-            </div>
-
-            <div class="field">
                 <label for="email">Email</label>
                 <input id="email" name="email" v-model="email" type="email" required>
-            </div>
-
-            <div class="field">
-                <label for="password">New password</label>
-                <input id="password" name="password" v-model="pass1" type="password" required>
-            </div>
-
-            <div class="field">
-                <label for="password2">Repeat password</label>
-                <input id="password2" name="password2" v-model="pass2" type="password" required>
             </div>
 
             <div class="field">
@@ -62,8 +40,6 @@
             </div>
 
         </form>
-
-        <script src="{{ vasset('js/v-recovery-validator', 'min.js') }}"></script>
 
     </div>
 {% endblock %}

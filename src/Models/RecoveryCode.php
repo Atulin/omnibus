@@ -4,12 +4,12 @@ namespace Models;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class ActivationCode
+ * Class RecoveryCode
  * @package Models
  * @ORM\Entity
- * @ORM\Table(name="activation_codes")
+ * @ORM\Table(name="recovery_codes")
  */
-class ActivationCode
+class RecoveryCode
 {
 
     /**
@@ -73,5 +73,4 @@ class ActivationCode
     {
         $this->code = $code;
     }
-
 }

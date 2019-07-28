@@ -2,6 +2,10 @@
 namespace Core;
 
 use AltoRouter;
+use Controllers\HomeController;
+use Controllers\User\ForgottenPasswordController;
+use Controllers\User\LogoutController;
+use Controllers\User\RecoverController;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -17,6 +21,9 @@ use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHa
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
+use Controllers\User\LoginController;
+use Controllers\User\RegisterController;
+use Controllers\User\ActivateController;
 
 class Application
 {
@@ -99,7 +106,7 @@ class Application
         try {
             $this->router->addRoutes([
                 //Home
-                ['GET', '/', 'Controllers\\HomeController#index', 'home'],
+                ['GET', '/', HomeController::class . '#index', 'home'],
             ]);
         } catch (Exception $e) {
             echo $e;
@@ -110,19 +117,22 @@ class Application
             try {
                 $this->router->addRoutes([
                     //Login
-                    ['GET', '/login', 'Controllers\\User\\LoginController#index', 'login'],
-                    ['POST', '/login', 'Controllers\\User\\LoginController#login'],
+                    ['GET', '/login',                LoginController::class    . '#index', 'login'   ],
+                    ['POST', '/login',               LoginController::class    . '#login'            ],
                     //Register
-                    ['GET', '/register', 'Controllers\\User\\RegisterController#index', 'register'],
-                    ['POST', '/register', 'Controllers\\User\\RegisterController#register'],
-                    ['GET', '/register/validate', 'Controllers\\User\\RegisterController#validate'],
+                    ['GET', '/register',             RegisterController::class . '#index', 'register'],
+                    ['POST', '/register',            RegisterController::class . '#register'         ],
+                    ['GET', '/register/validate',    RegisterController::class . '#validate'         ],
                     // Activate
-                    ['GET', '/activate/[a:code]', 'Controllers\\User\\ActivateController#activate'],
-                    ['GET', '/activate', 'Controllers\\User\\ActivateController#index'],
-                    ['POST', '/activate', 'Controllers\\User\\ActivateController#activate'],
-                    // Recover
-                    ['GET', '/recover', 'Controllers\\User\\RecoverController#index', 'recover'],
-                    ['POST', '/recover', 'Controllers\\User\\RecoverController#recover']
+                    ['GET', '/activate/[a:code]',    ActivateController::class . '#activate'         ],
+                    ['GET', '/activate',             ActivateController::class . '#index'            ],
+                    ['POST', '/activate',            ActivateController::class . '#activate'         ],
+                    // Forgot password
+                    ['GET', '/forgot',               ForgottenPasswordController::class . '#index'    ],
+                    ['POST', '/forgot',              ForgottenPasswordController::class . '#forgot'   ],
+                    // Recover password
+                    ['GET', '/recover/[a:code]',     RecoverController::class  . '#index', 'recover' ],
+                    ['POST', '/recover/[a:code]',    RecoverController::class  . '#recover'          ],
                 ]);
             } catch (Exception $e) {
                 echo $e;
@@ -132,7 +142,7 @@ class Application
             try {
                 $this->router->addRoutes([
                     //Logout
-                    ['GET', '/logout', 'Controllers\\User\\LogoutController#index', 'logout'],
+                    ['GET', '/logout', LogoutController::class . '#index', 'logout'],
                 ]);
             } catch (Exception $e) {
                 echo $e;

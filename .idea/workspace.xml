@@ -2,51 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/hamburger.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/hamburger.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/v-login-validator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/v-login-validator.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/v-registration-validator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/v-registration-validator.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/ActivationCode.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/user/recover.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/Security/PasswordUtils.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/RecoveryCode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/emails/pass-forgot.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/emails/pass-forgot.mjml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/emails/pass-recovered.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/emails/pass-recovered.mjml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/user/forgot.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a34e2ef9-1036-483b-a6b3-daefa441f21a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a34e2ef9-1036-483b-a6b3-daefa441f21a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Angius.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Angius.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/main.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/TwigHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/TwigHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Utility/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/Email.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/emails/activation.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/emails/activation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/home.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/home.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/ActivationCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/ActivationCode.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/navbar.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/navbar.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/activate.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/activate.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/login.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/login.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/register.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/register.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/recover.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/recover.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,9 +92,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Twig Template" />
         <option value="SASS" />
         <option value="JavaScript File" />
+        <option value="Twig Template" />
       </list>
     </option>
   </component>
@@ -204,7 +179,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;true&#10;E:/Software/Laragon/www/plaincocon/.env" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/.bin/mjml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Views/emails" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -215,10 +190,13 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\emails" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\emails" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Core\Security\ReCaptcha" />
@@ -246,12 +224,7 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7dedf09a" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
+          <expand />
           <select />
         </treeState>
       </serviceView>
@@ -283,7 +256,8 @@
       <workItem from="1564184411700" duration="16000" />
       <workItem from="1564184446296" duration="809000" />
       <workItem from="1564185278702" duration="16000" />
-      <workItem from="1564185313001" duration="12469000" />
+      <workItem from="1564185313001" duration="13932000" />
+      <workItem from="1564273387276" duration="11543000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -341,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564016419412</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Better activation codes handling, beginning of recovery process, and navbar">
+      <created>1564198466765</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1564198466765</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +351,8 @@
     <MESSAGE value="Initial commit for Omnibus" />
     <MESSAGE value="Account activation" />
     <MESSAGE value="Activation emails with MJML" />
-    <option name="LAST_COMMIT_MESSAGE" value="Activation emails with MJML" />
+    <MESSAGE value="Better activation codes handling, beginning of recovery process, and navbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better activation codes handling, beginning of recovery process, and navbar" />
   </component>
   <component name="masterDetails">
     <states>

@@ -1,0 +1,46 @@
+<mjml>
+    <mj-body>
+        <mj-section>
+            <mj-column>
+
+                <mj-text font-size="30px" color="#F45E43" align="center">Omnibus</mj-text>
+
+                <mj-divider border-color="#F45E43"></mj-divider>
+
+                <mj-text font-size="20px">
+                    Hi, {{ name }}!
+                </mj-text>
+
+                <mj-text font-size="20px" align="justify">
+                    You seem to have forgotten your password?
+                </mj-text>
+
+                <mj-text font-size="20px" align="justify">
+                    Don't worry, it happens to the best of us. Just click the button below:
+                </mj-text>
+
+                <mj-button href="https://sfnw.online" background-color="#F45E43" font-size="30px" width="100%">Recover!</mj-button>
+
+                <mj-text font-size="20px" align="justify">
+                    Or copy and paste this address into your browser's address bar:
+                </mj-text>
+
+                <mj-text font-size="20px" align="justify">
+                    https://sfnw.online/activate/{{ code }}
+                </mj-text>
+
+                <mj-divider border-color="#F45E43"></mj-divider>
+
+                <mj-social font-size="15px" icon-size="30px" mode="horizontal">
+                    <mj-social-element name="patreon" href="https://mjml.io/">
+                        Patreon
+                    </mj-social-element>
+                    <mj-social-element name="twitter" href="https://mjml.io/">
+                        Twitter
+                    </mj-social-element>
+                </mj-social>
+
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>
