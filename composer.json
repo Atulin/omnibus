@@ -11,7 +11,8 @@
     "twig/extensions": "^1.5",
     "doctrine/orm": "^2.6",
     "phpmailer/phpmailer": "^6.0",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "robthree/twofactorauth": "^1.6"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",

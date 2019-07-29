@@ -13,19 +13,13 @@
         <hr>
 
         <div class="item">
-            Longer Link
+            <a href="#">Longer Link</a>
         </div>
 
         <hr>
 
         <div class="item">
             Longer Link
-        </div>
-
-        <hr>
-
-        <div class="item">
-            Link
         </div>
 
         <hr>
@@ -44,9 +38,15 @@
 
         {% if user %}
 
-            <div class="avatar item">
-                <p>{{ user.name }}</p>
-                <img src="{{ gravatar(user.email, 40) }}" alt="{{ user.name }}'s avatar">
+            <div class="dropdown">
+                <div class="avatar item">
+                    <p>{{ user.name }}</p>
+                    <img src="{{ gravatar(user.email, 40) }}" alt="{{ user.name }}'s avatar">
+                </div>
+                <div class="dropdown-content">
+                    <a class="dropdown-item" >Profile</a>
+                    <a class="dropdown-item" href="/logout" >Logout</a>
+                </div>
             </div>
 
         {% else %}

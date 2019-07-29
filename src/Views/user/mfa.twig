@@ -1,18 +1,14 @@
 {% extends './scaffolds/public_scaffold.twig' %}
 
-{% block scripts %}
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-{% endblock %}
-
 {% block body %}
+
     <div class="v-centered h-centered v-full h-full container">
 
-        <form id="forgot" class="form" method="POST">
+        <form class="form" id="login" method="POST" @submit="checkForm">
 
             <div id="messages">
-
                 {% if messages %}
-                    <div class="error message field">
+                    <div class="error message field" v-if="!errors.length">
                         <b>Please correct the following error(s):</b>
                         <ul>
                             {% for m in messages %}
@@ -24,22 +20,24 @@
             </div>
 
             <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" v-model="email" type="email" required>
+                <label for="qr">QR code</label>
+                <img id="qr" src="{{ qr }}" alt="QR code">
             </div>
 
             <div class="field">
-                <div class="g-recaptcha" data-sitekey="6LduV68UAAAAAKV59SgfmnVEfVed0bUUsKUaN-sA"></div>
+                <label for="code">Confirmation</label>
+                <input type="password" id="code" name="2fa" required>
             </div>
 
             <input id="token" type="hidden" name="token" value="{{ token }}">
 
             <div class="field">
-                <label for="f-submit" class="hidden">Submit</label>
-                <input id="f-submit" class="submit button" type="submit" value="Submit">
+                <label for="submit" class="hidden">Log in</label>
+                <input id="submit" class="submit button" type="submit" value="Log in">
             </div>
 
         </form>
 
     </div>
+
 {% endblock %}

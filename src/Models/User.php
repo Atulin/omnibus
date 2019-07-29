@@ -88,6 +88,12 @@ class User
      */
     private $role;
 
+    /**
+     * @var string $mfa
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $mfa;
+
 
     /**
      * User constructor.
@@ -267,4 +273,23 @@ class User
         $role->addUser($this);
         $this->role = $role;
     }
+
+    /**
+     * @return string
+     */
+    public function getMfa(): string
+    {
+        return $this->mfa;
+    }
+
+    /**
+     * @param string $mfa
+     */
+    public function setMfa(string $mfa): void
+    {
+        $this->mfa = $mfa;
+    }
+
+
+
 }

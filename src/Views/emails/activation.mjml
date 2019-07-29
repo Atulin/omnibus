@@ -12,21 +12,26 @@
                 </mj-text>
 
                 <mj-text font-size="20px" align="justify">
-                    We're glad you decided to join our little community. We sincerely hope you find the resources contained within useful, and perhaps decide to share your expertise in the future.
+                    We're glad you decided to join our little community. We sincerely hope you find the resources
+                    contained within useful, and perhaps decide to share your expertise in the future.
                 </mj-text>
 
                 <mj-text font-size="20px" align="justify">
-                    Meanwhile, there's but one more step left for you to become a fully-fledget member – account activation.
+                    Meanwhile, there's but one more step left for you to become a fully-fledget member – account
+                    activation.
                 </mj-text>
 
                 <mj-text font-size="20px" align="justify">
                     To activate your account, either click the button below:
                 </mj-text>
 
-                <mj-button href="https://sfnw.online" background-color="#F45E43" font-size="30px" width="100%">Activate!</mj-button>
+                <mj-button href="https://sfnw.online" background-color="#F45E43" font-size="30px" width="100%">
+                    Activate!
+                </mj-button>
 
                 <mj-text font-size="20px" align="justify">
-                    or go to <a href="https://sfnw.online/activate">sfnw.online/activate</a> and enter the code you can find below:
+                    or go to <a href="https://sfnw.online/activate">sfnw.online/activate</a> and enter the code you can
+                    find below:
                 </mj-text>
 
                 <mj-text font-weight="10" font-size="30px" color="#F45E43" align="center">{{ code }}</mj-text>

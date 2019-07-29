@@ -94,6 +94,7 @@ div#navbar {
   display: flex;
   padding: 0;
   align-items: center;
+  z-index: 9999;
   box-shadow: 0 0 10px 1px rgba(6, 6, 6, 0.2); }
   div#navbar hr {
     height: 30px;
@@ -109,16 +110,16 @@ div#navbar {
     align-items: center; }
     div#navbar > .items.right {
       margin-left: auto; }
-    div#navbar > .items > .item {
+    div#navbar > .items .item {
       padding: 8px;
       display: flex;
       align-items: center; }
-      div#navbar > .items > .item.avatar {
+      div#navbar > .items .item.avatar {
         padding: 4px; }
-        div#navbar > .items > .item.avatar > img {
+        div#navbar > .items .item.avatar > img {
           border: 1px solid #060606;
           border-radius: 10%; }
-        div#navbar > .items > .item.avatar > p {
+        div#navbar > .items .item.avatar > p {
           margin: 4px 8px 4px 4px; }
 
 @media only screen and (max-width: 768px) {
@@ -149,5 +150,49 @@ div#navbar {
           div#navbar > .items > .item.avatar > img {
             width: 30px;
             height: 30px; } }
+.dropdown {
+  height: auto;
+  padding: 0; }
+  .dropdown > .dropdown-content {
+    display: none;
+    position: absolute;
+    color: #060606;
+    right: 0;
+    background: #fbfbfb;
+    min-width: 160px;
+    box-shadow: 0 0 10px 1px rgba(6, 6, 6, 0.2);
+    padding: 12px 0;
+    z-index: 0;
+    transition: display 0.5s; }
+  .dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column; }
+  .dropdown > i {
+    font-size: 1.5em;
+    margin: 10px; }
+  .dropdown a.dropdown-item {
+    border: none;
+    padding: 4px 6px;
+    margin: 4px 0;
+    cursor: pointer; }
+
+a {
+  text-decoration: none;
+  color: #060606;
+  transition: color 250ms ease-in-out; }
+  a:after {
+    margin-top: -1px;
+    display: block;
+    content: "";
+    border-bottom: solid 1px #060606;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out, border-bottom-color 250ms ease-in-out; }
+  a:hover {
+    color: #00cbc3;
+    transition: color 250ms ease-in-out; }
+    a:hover:after {
+      border-bottom-color: #00cbc3;
+      transform: scaleX(1);
+      transition: transform 250ms ease-in-out, border-bottom-color 250ms ease-in-out; }
 
 /*# sourceMappingURL=light.css.map */

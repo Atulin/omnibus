@@ -1,0 +1,24 @@
+.dropdown {
+  max-width: 300px;
+  margin: 20px auto; }
+  .dropdown > label {
+    display: block;
+    border: 1px solid #ccc;
+    padding: 6px;
+    cursor: pointer; }
+  .dropdown > input {
+    display: none; }
+  .dropdown > .content {
+    background-color: #FFF;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s; }
+    .dropdown > .content > li > a {
+      display: block;
+      padding: 4px;
+      border-bottom: 1px dashed #ccc; }
+  .dropdown input:checked + .menu-list {
+    max-height: 300px; }
+
+/*# sourceMappingURL=dropdown.css.map */

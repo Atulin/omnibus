@@ -5,7 +5,6 @@ use Core\Controller;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Models\ActivationCode;
-use Models\User;
 
 class ActivateController extends Controller
 {
@@ -34,7 +33,6 @@ class ActivateController extends Controller
         if (!empty($code)) {
 
             $ac = $this->em->getRepository(ActivationCode::class)->findOneBy(['code' => $code]);
-//            $user = $this->em->getRepository(User::class)->findOneBy(['code' => $code]);
 
             if($ac !== null) {
                 $this->em->remove($ac);

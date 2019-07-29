@@ -5,6 +5,7 @@ use AltoRouter;
 use Controllers\HomeController;
 use Controllers\User\ForgottenPasswordController;
 use Controllers\User\LogoutController;
+use Controllers\User\MFAController;
 use Controllers\User\RecoverController;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
@@ -116,22 +117,22 @@ class Application
         if ($this->user === null) {
             try {
                 $this->router->addRoutes([
-                    //Login
-                    ['GET', '/login',                LoginController::class    . '#index', 'login'   ],
+                    // Login
+                    ['GET',  '/login',               LoginController::class    . '#index', 'login'   ],
                     ['POST', '/login',               LoginController::class    . '#login'            ],
-                    //Register
-                    ['GET', '/register',             RegisterController::class . '#index', 'register'],
+                    // Register
+                    ['GET',  '/register',            RegisterController::class . '#index', 'register'],
                     ['POST', '/register',            RegisterController::class . '#register'         ],
-                    ['GET', '/register/validate',    RegisterController::class . '#validate'         ],
+                    ['GET',  '/register/validate',   RegisterController::class . '#validate'         ],
                     // Activate
-                    ['GET', '/activate/[a:code]',    ActivateController::class . '#activate'         ],
-                    ['GET', '/activate',             ActivateController::class . '#index'            ],
+                    ['GET',  '/activate/[a:code]',   ActivateController::class . '#activate'         ],
+                    ['GET',  '/activate',            ActivateController::class . '#index'            ],
                     ['POST', '/activate',            ActivateController::class . '#activate'         ],
                     // Forgot password
-                    ['GET', '/forgot',               ForgottenPasswordController::class . '#index'    ],
-                    ['POST', '/forgot',              ForgottenPasswordController::class . '#forgot'   ],
+                    ['GET',  '/forgot',              ForgottenPasswordController::class . '#index'   ],
+                    ['POST', '/forgot',              ForgottenPasswordController::class . '#forgot'  ],
                     // Recover password
-                    ['GET', '/recover/[a:code]',     RecoverController::class  . '#index', 'recover' ],
+                    ['GET',  '/recover/[a:code]',    RecoverController::class  . '#index', 'recover' ],
                     ['POST', '/recover/[a:code]',    RecoverController::class  . '#recover'          ],
                 ]);
             } catch (Exception $e) {
@@ -142,7 +143,10 @@ class Application
             try {
                 $this->router->addRoutes([
                     //Logout
-                    ['GET', '/logout', LogoutController::class . '#index', 'logout'],
+                    ['GET', '/logout',               LogoutController::class . '#index', 'logout'    ],
+                    // Set up MFA
+                    ['GET',  '/setup-mfa',           MFAController::class . '#index', 'mfa'          ],
+                    ['POST', '/setup-mfa',           MFAController::class . '#setup'                 ],
                 ]);
             } catch (Exception $e) {
                 echo $e;

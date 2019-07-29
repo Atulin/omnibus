@@ -1,0 +1,29 @@
+.dropdown
+  height: auto
+  padding: 0
+
+  &>.dropdown-content
+    display: none
+    position: absolute
+    color: $foreground
+    right: 0
+    background: $background
+    min-width: 160px
+    box-shadow: $subtle-shadow
+    padding: 12px 0
+    z-index: 0
+    transition: display 0.5s
+
+  &:hover .dropdown-content
+    display: flex
+    flex-direction: column
+
+  &>i
+    font-size: 1.5em
+    margin: 10px
+
+  & a.dropdown-item
+    border: none
+    padding: 4px 6px
+    margin: 4px 0
+    cursor: pointer

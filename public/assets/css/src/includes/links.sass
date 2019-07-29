@@ -1,0 +1,18 @@
+a
+  text-decoration: none
+  color: $foreground
+  transition: color 250ms ease-in-out
+  &:after
+    margin-top: -1px
+    display: block
+    content: ''
+    border-bottom: solid 1px $foreground
+    transform: scaleX(0)
+    transition: transform 250ms ease-in-out, border-bottom-color 250ms ease-in-out
+  &:hover
+    color: $accent
+    transition: color 250ms ease-in-out
+    &:after
+      border-bottom-color: $accent
+      transform: scaleX(1)
+      transition: transform 250ms ease-in-out, border-bottom-color 250ms ease-in-out
