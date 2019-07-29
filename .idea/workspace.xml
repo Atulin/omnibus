@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/login.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/login.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/emails/activation.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/emails/activation.mjml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/emails/pass-forgot.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/emails/pass-forgot.mjml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/emails/pass-recovered.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/emails/pass-recovered.mjml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -251,7 +253,7 @@
       <workItem from="1564185313001" duration="13932000" />
       <workItem from="1564273387276" duration="13321000" />
       <workItem from="1564365652520" duration="2956000" />
-      <workItem from="1564370959130" duration="8907000" />
+      <workItem from="1564370959130" duration="9749000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -330,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564384602556</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="MFA authentication done">
+      <created>1564386108041</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1564386108041</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +371,8 @@
     <MESSAGE value="Better activation codes handling, beginning of recovery process, and navbar" />
     <MESSAGE value="Functional password recovery process" />
     <MESSAGE value="MFA setup implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="MFA setup implemented" />
+    <MESSAGE value="MFA authentication done" />
+    <option name="LAST_COMMIT_MESSAGE" value="MFA authentication done" />
   </component>
   <component name="masterDetails">
     <states>

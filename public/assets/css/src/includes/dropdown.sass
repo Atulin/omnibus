@@ -10,9 +10,20 @@
     background: $background
     min-width: 160px
     box-shadow: $subtle-shadow
-    padding: 12px 0
+    padding: 2px 0 12px
+    margin-top: 10px
     z-index: 0
     transition: display 0.5s
+
+    &:before
+      content: ""
+      height: 9px
+      width: 100%
+      position: absolute
+      top: -10px
+      background: inherit
+      border-top: 1px solid $foreground-20
+      z-index: 2
 
   &:hover .dropdown-content
     display: flex

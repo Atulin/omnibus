@@ -161,9 +161,19 @@ div#navbar {
     background: #fbfbfb;
     min-width: 160px;
     box-shadow: 0 0 10px 1px rgba(6, 6, 6, 0.2);
-    padding: 12px 0;
+    padding: 2px 0 12px;
+    margin-top: 10px;
     z-index: 0;
     transition: display 0.5s; }
+    .dropdown > .dropdown-content:before {
+      content: "";
+      height: 9px;
+      width: 100%;
+      position: absolute;
+      top: -10px;
+      background: inherit;
+      border-top: 1px solid rgba(6, 6, 6, 0.2);
+      z-index: 2; }
   .dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column; }
