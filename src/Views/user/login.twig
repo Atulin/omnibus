@@ -43,6 +43,13 @@
                 <input type="password" name="password" id="password" v-model="pass" required>
             </div>
 
+            {% if has_mfa %}
+                <div class="field">
+                    <label for="mfa">2FA token</label>
+                    <input type="password" name="mfa" id="mfa" required>
+                </div>
+            {% endif %}
+
             <div class="checkbox field">
                 <label for="remember">Remember me</label>
                 <input id="remember" name="remember" v-model="remember" type="checkbox">

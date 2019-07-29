@@ -6,17 +6,19 @@ use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Exception;
 use Models\User;
+use RobThree\Auth\TwoFactorAuth;
 
 class LoginController extends Controller
 {
     private $messages = [];
 
-    public function index(): void
+    public function index(array $params = [], bool $has_mfa = false): void
     {
         $this->setBaseData();
         $this->render('user/login', [
             'messages' => $this->messages,
-            'message'  => $this->session->get('message')
+            'message'  => $this->session->get('message'),
+            'has_mfa'  => $has_mfa,
         ]);
     }
 
@@ -27,39 +29,64 @@ class LoginController extends Controller
      */
     public function login(): void
     {
+        $mfa = new TwoFactorAuth();
+
         $login    = $_POST['login'];
         $pass     = $_POST['password'];
         $remember = $_POST['remember'] ?? '';
+        $mfa_code = $_POST['mfa'] ?? null;
 
+        /** @var User $user */
         $user = $this->em->getRepository(User::class)->findOneBy(['name' => $login]);
 
+        // Check X-CSRF
         if ($this->session->get('token') === $_POST['token']) {
 
+            // Check if user exists
             if ($user) {
 
+                // Check if user has MFA, redirect to MFA form if so
+                if ($mfa_code === null && $user->getMfa()) {
+                    $this->index([], true);
+                    return;
+                }
+
+                // Check password
                 if (password_verify($pass, $user->getPassword())) {
 
+                    // Check if user has an active account
                     if (!$this->isActive()) {
 
-                        // Log the user in via session
-                        $this->session->set('userid', $user->getId());
-                        $this->session->set('message', "Welcome back, {$user->getName()}");
+                        // Check MFA code
+                        if (
+                            (!$user->getMfa() && $mfa_code === null) ||                         // User has no MFA set up, no MFA sent from form
+                            ($user->getMfa() && $mfa->verifyCode($user->getMfa(), $mfa_code))   // User has MFA set up, MFA sent from form is correct
+                        ) {
 
-                        // Set RememberMe
-                        if ($remember !== null) {
-                            $r_token = bin2hex(random_bytes(256));
+                            // Log the user in via session
+                            $this->session->set('userid', $user->getId());
+                            $this->session->set('message', "Welcome back, {$user->getName()}");
 
-                            $cookie = $user->getId() . ':' . $r_token;
-                            $mac = password_hash($cookie, PASSWORD_BCRYPT);
-                            $cookie .= ':' . $mac;
-                            setcookie('__Secure-rememberme', $cookie, time() + 2592000, '/', '', true, true);
+                            // Set RememberMe
+                            if ($remember !== null) {
+                                $r_token = bin2hex(random_bytes(256));
 
-                            $user->setRememberme($r_token);
-                            $this->em->flush();
+                                $cookie = $user->getId() . ':' . $r_token;
+                                $mac = password_hash($cookie, PASSWORD_BCRYPT);
+                                $cookie .= ':' . $mac;
+                                setcookie('__Secure-rememberme', $cookie, time() + 2592000, '/', '', true, true);
+
+                                $user->setRememberme($r_token);
+                                $this->em->flush();
+                            }
+
+                            header('Location: /');
+                            die();
+
+                        } else {
+                            $this->messages[] = 'Incorrect 2FA token';
+                            $needs_mfa = true;
                         }
-
-                        header('Location: /');
-                        die();
 
                     } else {
                         $this->messages[] = 'Account not activated.';
@@ -77,6 +104,6 @@ class LoginController extends Controller
             $this->messages[] = 'X-CSRF protection triggered.';
         }
 
-        $this->index();
+        $this->index([], $needs_mfa ?? false);
     }
 }

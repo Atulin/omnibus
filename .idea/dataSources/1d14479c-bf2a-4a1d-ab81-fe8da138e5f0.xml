@@ -17,7 +17,7 @@
     <database id="4" parent="1" name="Omnibus">
       <ObjectId>41036</ObjectId>
       <Owner>Angius</Owner>
-      <IntrospectionStateNumber>904</IntrospectionStateNumber>
+      <IntrospectionStateNumber>915</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
@@ -145,7 +145,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>Angius</Owner>
-      <IntrospectionStateNumber>905</IntrospectionStateNumber>
+      <IntrospectionStateNumber>916</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -269,7 +269,7 @@
     <table id="45" parent="26" name="users">
       <ObjectId>41049</ObjectId>
       <Owner>Angius</Owner>
-      <StateNumber>807</StateNumber>
+      <StateNumber>912</StateNumber>
     </table>
     <column id="46" parent="42" name="id">
       <Position>1</Position>
@@ -467,38 +467,45 @@
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <TypeId>1114</TypeId>
     </column>
-    <index id="74" parent="45" name="users_pkey">
+    <column id="74" parent="45" name="mfa">
+      <Position>16</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>912</StateNumber>
+      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="75" parent="45" name="users_pkey">
       <ObjectId>41060</ObjectId>
       <StateNumber>778</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="75" parent="45" name="user_name_idx">
+    <index id="76" parent="45" name="user_name_idx">
       <ObjectId>41063</ObjectId>
       <StateNumber>780</StateNumber>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="76" parent="45" name="user_email_idx">
+    <index id="77" parent="45" name="user_email_idx">
       <ObjectId>41064</ObjectId>
       <StateNumber>781</StateNumber>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="77" parent="45" name="idx_1483a5e9d60322ac">
+    <index id="78" parent="45" name="idx_1483a5e9d60322ac">
       <ObjectId>41062</ObjectId>
       <StateNumber>779</StateNumber>
       <ColNames>role_id</ColNames>
     </index>
-    <key id="78" parent="45" name="users_pkey">
+    <key id="79" parent="45" name="users_pkey">
       <ObjectId>41061</ObjectId>
       <StateNumber>778</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="79" parent="45" name="fk_1483a5e9d60322ac">
+    <foreign-key id="80" parent="45" name="fk_1483a5e9d60322ac">
       <ObjectId>41065</ObjectId>
       <StateNumber>782</StateNumber>
       <ColNames>role_id</ColNames>

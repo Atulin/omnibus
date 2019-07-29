@@ -89,7 +89,7 @@ class User
     private $role;
 
     /**
-     * @var string $mfa
+     * @var string|null $mfa
      * @ORM\Column(type="string", nullable=true)
      */
     private $mfa;
@@ -275,17 +275,17 @@ class User
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getMfa(): string
+    public function getMfa(): ?string
     {
         return $this->mfa;
     }
 
     /**
-     * @param string $mfa
+     * @param string|null $mfa
      */
-    public function setMfa(string $mfa): void
+    public function setMfa(?string $mfa): void
     {
         $this->mfa = $mfa;
     }
