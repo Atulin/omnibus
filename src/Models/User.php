@@ -105,33 +105,33 @@ class User
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getBio(): string
+    public function getBio(): ?string
     {
         return $this->bio;
     }
 
     /**
-     * @param string $bio
+     * @param string|null $bio
      */
-    public function setBio(string $bio): void
+    public function setBio(?string $bio): void
     {
         $this->bio = $bio;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     /**
-     * @param string $title
+     * @param string|null $title
      */
-    public function setTitle(string $title): void
+    public function setTitle(?string $title): void
     {
         $this->title = $title;
     }

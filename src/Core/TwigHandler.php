@@ -54,6 +54,20 @@ class TwigHandler
             return "https://www.gravatar.com/avatar/$hash" . ($size ? "?s=$size" : '');
         }));
 
+        ///
+        /// Dump data
+        ///
+        $twig->addFunction(new TwigFunction('prevex', static function($data) {
+            return '<pre>'.var_export($data, true).'</pre>';
+        }, ['is_safe' => ['html']]));
+
+        ///
+        /// Lorem ipsum generator
+        ///
+        $twig->addFunction(new TwigFunction('lipsum', static function(int $paragraphs = 1) {
+            return file_get_contents("https://loripsum.net/api/$paragraphs");
+        }, ['is_safe' => ['html']]));
+
         // Date extension
         $twig->addExtension(new Twig_Extensions_Extension_Date());
 

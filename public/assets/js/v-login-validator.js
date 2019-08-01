@@ -27,4 +27,4 @@ const app = new Vue({
             e.preventDefault();
         }
     }
-})
+});

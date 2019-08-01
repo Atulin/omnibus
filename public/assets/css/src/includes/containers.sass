@@ -9,7 +9,18 @@ div.container
     justify-content: center
 
   &.v-full
-    height: 100vh
+    height: calc(100vh - #{$nav-height})
+    margin-top: $nav-height
 
   &.h-full
     width: 100vw
+
+
+div.column
+  &.main
+    width: 50vw
+    padding: 2rem
+
+  @media only screen and (max-width: 768px)
+    &.main
+      width: 100vw

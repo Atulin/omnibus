@@ -1,0 +1,71 @@
+{% extends './scaffolds/public_scaffold.twig' %}
+
+{% set owner = profile_owner ?: user %}
+
+{% block body %}
+    <div id="profile">
+
+        <div class="left column">
+            <div class="container">
+
+                <div class="top part">
+                    <h1 class="name">{{ owner.name }}</h1>
+
+                    <img class="avatar" src="{{ gravatar(owner.email, 300) }}" alt="">
+
+                    <h2 class="title">{{ owner.title ?: "The Titleless" }}</h2>
+                </div>
+
+                <div class="bottom part">
+                    <div class="date">
+                        <p class="label">Joined</p>
+                        <p class="date">{{ owner.creation_date|date }}</p>
+                    </div>
+                    <div class="date">
+                        <p class="label">Last seen</p>
+                        <p class="date">{{ owner.last_seen|date }}</p>
+                    </div>
+                    {% if owner.id is same as(user.id) %}
+                        <a href="#" class="fluid edit button">Edit profile</a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+
+        <div class="right column">
+
+            <div class="container">
+                <div class="bio">
+                    <h2>Bio</h2>
+                    {{ owner.bio ?: lipsum() }}
+                </div>
+            </div>
+
+            <div class="container">
+                <div id="comments">
+                    <div class="comment-box form">
+
+                        <div class="main">
+                            <label for="body" class="hidden">Comment body</label>
+                            <textarea name="body" id="body" rows="10" v-model="comment_body"></textarea>
+
+                            <p class="error">${ error }</p>
+                        </div>
+
+                        <div class="aside">
+                            <div class="counter">${charsLeft}</div>
+
+                            <button class="send" @click="sendComment">>>></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="application/javascript" src="{{ vasset('js/v-comments', 'min.js') }}"></script>
+{% endblock %}

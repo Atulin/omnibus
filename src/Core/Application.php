@@ -6,6 +6,7 @@ use Controllers\HomeController;
 use Controllers\User\ForgottenPasswordController;
 use Controllers\User\LogoutController;
 use Controllers\User\MFAController;
+use Controllers\User\Profile\ProfileController;
 use Controllers\User\RecoverController;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
@@ -20,6 +21,7 @@ use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
+use Twig\Profiler\Profile;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 use Controllers\User\LoginController;
@@ -143,10 +145,12 @@ class Application
             try {
                 $this->router->addRoutes([
                     //Logout
-                    ['GET', '/logout',               LogoutController::class . '#index', 'logout'    ],
+                    ['GET',  '/logout',                    LogoutController::class . '#index', 'logout'    ],
                     // Set up MFA
-                    ['GET',  '/setup-mfa',           MFAController::class . '#index', 'mfa'          ],
-                    ['POST', '/setup-mfa',           MFAController::class . '#setup'                 ],
+                    ['GET',  '/setup-mfa',                 MFAController::class . '#index', 'mfa'          ],
+                    ['POST', '/setup-mfa',                 MFAController::class . '#setup'                 ],
+                    // User profile
+                    ['GET',  '/profile/[i:id]?/[f:furl]?', ProfileController::class . '#index', 'profile'   ],
                 ]);
             } catch (Exception $e) {
                 echo $e;

@@ -16,8 +16,12 @@
 
 {% include 'scaffolds/navbar.twig' %}
 
-{% block body %}
-{% endblock %}
+<div class="v-full h-full h-centered container">
+    <div class="main column">
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
 
 <script src="{{ vasset('js/hamburger', 'min.js') }}"></script>
 

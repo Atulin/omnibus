@@ -44,7 +44,7 @@ abstract class Controller
      * @param string $template The template name
      * @param array $data The data to render as an associative array
      */
-    protected function render($template, $data): void
+    protected function render(string $template, array $data = []): void
     {
         // Append twig template extension
         $template .= '.twig';

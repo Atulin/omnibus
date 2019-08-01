@@ -1,0 +1,12 @@
+div#profile {
+  width: 100%;
+  display: flex;
+  flex-direction: row; }
+  div#profile > .column {
+    border: 1px solid black; }
+    div#profile > .column.left {
+      width: 100px; }
+    div#profile > .column.right {
+      width: auto; }
+
+/*# sourceMappingURL=profile.css.map */

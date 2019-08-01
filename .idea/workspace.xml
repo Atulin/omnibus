@@ -2,14 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/profile.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/profile.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/v-comments.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/emails/activation.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/emails/activation.mjml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/emails/pass-forgot.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/emails/pass-forgot.mjml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/emails/pass-recovered.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/emails/pass-recovered.mjml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/main.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/v-login-validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-login-validator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/TwigHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/TwigHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/home.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/home.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/navbar.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/navbar.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,15 +97,21 @@
     </expand>
     <select />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Main">
+      <favorite_root url="file://$PROJECT_DIR$/src/Core/Application.php" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+    </favorites_list>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="SASS" />
-        <option value="JavaScript File" />
         <option value="Twig Template" />
         <option value="PHP Controller" />
         <option value="Twig" />
+        <option value="Twig template" />
         <option value="SASS stylesheet" />
+        <option value="JavaScript File" />
       </list>
     </option>
     <option name="SCHEME" value="Project" />
@@ -168,6 +194,7 @@
     <property name="DatabaseDriversLRU" value="mariadb&#10;postgresql" />
     <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ToolWindowFavorites.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;true&#10;E:/Software/Laragon/www/plaincocon/.env" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
@@ -253,7 +280,13 @@
       <workItem from="1564185313001" duration="13932000" />
       <workItem from="1564273387276" duration="13321000" />
       <workItem from="1564365652520" duration="2956000" />
-      <workItem from="1564370959130" duration="9749000" />
+      <workItem from="1564370959130" duration="9815000" />
+      <workItem from="1564458123829" duration="620000" />
+      <workItem from="1564541115624" duration="20000" />
+      <workItem from="1564600136207" duration="92000" />
+      <workItem from="1564600260941" duration="662000" />
+      <workItem from="1564600947200" duration="37000" />
+      <workItem from="1564601007488" duration="17165000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -339,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564386108041</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Made dropdowns a tad prettier">
+      <created>1564386891259</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1564386891259</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,7 +412,8 @@
     <MESSAGE value="Functional password recovery process" />
     <MESSAGE value="MFA setup implemented" />
     <MESSAGE value="MFA authentication done" />
-    <option name="LAST_COMMIT_MESSAGE" value="MFA authentication done" />
+    <MESSAGE value="Made dropdowns a tad prettier" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made dropdowns a tad prettier" />
   </component>
   <component name="masterDetails">
     <states>
