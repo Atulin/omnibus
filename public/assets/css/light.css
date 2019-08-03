@@ -18,6 +18,8 @@ div.container {
     margin-top: 50px; }
   div.container.h-full {
     width: 100vw; }
+  div.container.narrow {
+    width: auto; }
 
 div.column.main {
   width: 50vw;
@@ -34,6 +36,8 @@ form.form {
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 10px 1px rgba(6, 6, 6, 0.2); }
+  form.form > .auto-width {
+    width: auto; }
   form.form > div.field {
     display: flex;
     flex-direction: column;
@@ -73,9 +77,9 @@ div.message {
   div.message.timed {
     animation: vanish 2s ease-in-out 1s forwards, remove 0s ease-in 3s forwards; }
   div.message.error {
-    background: rgba(255, 77, 77, 0.6);
-    color: rgba(57, 17, 17, 0.84);
-    border-color: rgba(203, 61, 61, 0.64); }
+    background: rgba(255, 30, 35, 0.6);
+    color: rgba(57, 7, 8, 0.84);
+    border-color: rgba(203, 24, 28, 0.64); }
   div.message.warning {
     background: rgba(255, 255, 77, 0.6);
     color: rgba(57, 57, 17, 0.84);
@@ -310,44 +314,6 @@ div#profile {
           color: rgba(6, 6, 6, 0.5);
           border-bottom: 2px solid rgba(6, 6, 6, 0.2);
           margin: 0; }
-      div#profile > .column.right > .container > #comments {
-        width: 100%; }
-        div#profile > .column.right > .container > #comments > .comment-box {
-          box-shadow: none;
-          display: flex;
-          flex-direction: row;
-          padding: 20px 0 20px 20px; }
-          div#profile > .column.right > .container > #comments > .comment-box > .main {
-            display: block;
-            width: 100%;
-            border-right: 1px solid rgba(6, 6, 6, 0.2); }
-            div#profile > .column.right > .container > #comments > .comment-box > .main label.hidden {
-              display: none; }
-            div#profile > .column.right > .container > #comments > .comment-box > .main > textarea {
-              width: 98%;
-              border: none; }
-            div#profile > .column.right > .container > #comments > .comment-box > .main > p.error {
-              margin: 0;
-              font-size: 0.8rem;
-              height: 0.8rem;
-              font-weight: lighter;
-              color: rgba(57, 17, 17, 0.84); }
-          div#profile > .column.right > .container > #comments > .comment-box > .aside {
-            display: flex;
-            flex-direction: column;
-            width: 4rem;
-            height: 100%;
-            align-items: center;
-            align-self: end; }
-            div#profile > .column.right > .container > #comments > .comment-box > .aside > .counter {
-              margin: 1rem 0; }
-            div#profile > .column.right > .container > #comments > .comment-box > .aside > button.send {
-              border: 1px solid rgba(6, 6, 6, 0.2);
-              border-radius: 1rem;
-              background: transparent;
-              padding: 0;
-              width: 3rem;
-              height: 4rem; }
 
 @media only screen and (max-width: 768px) {
   div#profile {
@@ -366,5 +332,64 @@ div#profile {
   .button.fluid {
     width: 100%;
     height: auto; }
+
+#comments {
+  padding: 0;
+  margin: 0; }
+  #comments > form {
+    width: 100%; }
+    #comments > form > .comment-box {
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      padding: calc(20px - 1rem) 20px 20px;
+      align-items: center;
+      border-radius: 20px; }
+      #comments > form > .comment-box > .main {
+        display: block;
+        width: 100%; }
+        #comments > form > .comment-box > .main label.hidden {
+          display: none; }
+        #comments > form > .comment-box > .main > textarea {
+          width: 100%;
+          border: none;
+          border-bottom: 1px solid rgba(6, 6, 6, 0.2); }
+        #comments > form > .comment-box > .main > p.error {
+          margin: 0;
+          padding: 0 4px;
+          font-size: 0.8rem;
+          height: 1rem;
+          font-weight: lighter;
+          color: rgba(57, 7, 8, 0.84); }
+          #comments > form > .comment-box > .main > p.error.active {
+            background: rgba(255, 30, 35, 0.6); }
+      #comments > form > .comment-box > .bottom {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-top: 4px;
+        justify-content: space-between;
+        align-items: center; }
+        #comments > form > .comment-box > .bottom > .counter {
+          margin: 0 1rem; }
+        #comments > form > .comment-box > .bottom > button.send {
+          border: none;
+          background: transparent;
+          padding: 0;
+          width: 6rem;
+          height: 2rem;
+          transition: background-color 200ms ease-in-out; }
+          #comments > form > .comment-box > .bottom > button.send:hover {
+            background: rgba(0, 203, 195, 0.5); }
+  #comments > .comments-list {
+    width: 100%; }
+    #comments > .comments-list > .comment {
+      display: flex;
+      flex-direction: column;
+      width: 100%; }
+      #comments > .comments-list > .comment-ph {
+        color: rgba(17, 36, 58, 0.844);
+        background: rgba(77, 160, 255, 0.61);
+        border: 1px solid rgba(61, 128, 203, 0.649); }
 
 /*# sourceMappingURL=light.css.map */

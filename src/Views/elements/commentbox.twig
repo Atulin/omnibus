@@ -1,0 +1,47 @@
+<div id="comments" class="container">
+
+    {#====================#}
+    {#    COMMENT FORM    #}
+    {#====================#}
+
+    <form method="post" @submit.stop.prevent="sendComment" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+        <input id="token" type="hidden" name="token" value="{{ token }}">
+
+        <div class="comment-box">
+
+            <div class="main">
+                <p class="error" v-bind:class="{ active: error }">${ error }</p>
+
+                <label for="body" class="hidden">Comment body</label>
+                <textarea name="body" id="body" rows="10" v-model="comment_body"></textarea>
+            </div>
+
+            <div class="bottom">
+                <div class="counter">${charsLeft}</div>
+
+                <button class="send" @click="sendComment">>>></button>
+            </div>
+
+        </div>
+    </form>
+
+    {#=====================#}
+    {#    BOX O'COMMENTS   #}
+    {#=====================#}
+
+    <div class="comments-list">
+        <div class="comment" v-for="c in comments_list">
+            <strong>${c.user}</strong>
+            <em>${c.date}</em>
+            <p>${c.body}</p>
+        </div>
+        <div class="comment-ph" v-if="comments_list.length <= 0">
+            <strong>C</strong>
+            <em>c.c.c</em>
+            <p>cccc</p>
+        </div>
+    </div>
+
+</div>
+
+<script type="application/javascript" src="{{ vasset('js/v-comments', 'min.js') }}"></script>

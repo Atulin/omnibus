@@ -151,6 +151,9 @@ class Application
                     ['POST', '/setup-mfa',                 MFAController::class . '#setup'                 ],
                     // User profile
                     ['GET',  '/profile/[i:id]?/[f:furl]?', ProfileController::class . '#index', 'profile'   ],
+
+                    // Comments API
+                    ['POST', '/api/comments', static function(){echo json_encode(['status'=>200, 'message'=>'success']);}],
                 ]);
             } catch (Exception $e) {
                 echo $e;

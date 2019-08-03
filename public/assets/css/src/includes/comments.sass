@@ -1,0 +1,80 @@
+$err-height: 1rem
+
+#comments
+  padding: 0
+  margin: 0
+
+  //====================//
+  //    COMMENT FORM    //
+  //====================//
+  &>form
+    width: 100%
+    &>.comment-box
+      box-shadow: none
+      display: flex
+      flex-direction: column
+      padding: calc(20px - #{$err-height}) 20px 20px
+      align-items: center
+      border-radius: 20px
+
+      &>.main
+        display: block
+        width: 100%
+
+        & label
+          &.hidden
+            display: none
+
+        &>textarea
+          width: 100%
+          border: none
+          border-bottom: 1px solid $foreground-20
+
+        &>p.error
+          margin: 0
+          padding: 0 4px
+          font-size: .8rem
+          height: $err-height
+          font-weight: lighter
+          color: $error-text
+          &.active
+            background: $error
+
+      &>.bottom
+        display: flex
+        flex-direction: row
+        width: 100%
+        margin-top: 4px
+        justify-content: space-between
+        align-items: center
+
+        &>.counter
+          margin: 0 1rem
+
+        &>button.send
+          border: none
+          background: transparent
+          padding: 0
+          width: 6rem
+          height: 2rem
+          transition: background-color 200ms ease-in-out
+
+          &:hover
+            background: $accent-50
+
+
+    //======================//
+    //    BOX O'COMMENTS    //
+    //======================//
+  &>.comments-list
+    width: 100%
+
+    &>.comment
+      display: flex
+      flex-direction: column
+      width: 100%
+
+      &-ph
+        color: $info-text
+        background: $info
+        border: 1px solid $info-dark

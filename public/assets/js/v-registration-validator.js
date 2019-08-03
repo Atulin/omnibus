@@ -48,25 +48,32 @@ const app = new Vue({
             }
 
             if(this.name && this.email) {
-                fetch(`/register/validate?name=${encodeURIComponent(this.name)}&email=${encodeURIComponent(this.email)}&token=${encodeURIComponent(token)}`)
-                    .then(res => res.json())
-                    .then(res => {
-                        if (!res.name) {
-                            this.errors.push('Name already in use.');
-                        }
-                        if (!res.email) {
-                            this.errors.push('Email already in use.');
-                        }
-                        if (!res.is_email) {
-                            this.errors.push('Not a valid email address.');
-                        }
-                    })
-                    .then(() => {
-                        if (this.errors.length <= 0) {
-                            form.submit();
-                        }
-                    })
+                axios.get('/register/validate', {
+                    params: {
+                        name: this.name,
+                        email: this.email,
+                        token: token
+                    }
+                })
+                .then(res => {
+                    if (!res.data.name) {
+                        this.errors.push('Name already in use.');
+                    }
+                    if (!res.data.email) {
+                        this.errors.push('Email already in use.');
+                    }
+                    if (!res.data.is_email) {
+                        this.errors.push('Not a valid email address.');
+                    }
+                    if (this.errors.length <= 0) {
+                        form.submit();
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+
             }
         }
     }
-})
+});

@@ -42,30 +42,12 @@
                 </div>
             </div>
 
-            <div class="container">
-                <div id="comments">
-                    <div class="comment-box form">
 
-                        <div class="main">
-                            <label for="body" class="hidden">Comment body</label>
-                            <textarea name="body" id="body" rows="10" v-model="comment_body"></textarea>
+                {% include 'elements/commentbox.twig' %}
 
-                            <p class="error">${ error }</p>
-                        </div>
-
-                        <div class="aside">
-                            <div class="counter">${charsLeft}</div>
-
-                            <button class="send" @click="sendComment">>>></button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
 
         </div>
 
     </div>
 
-    <script type="application/javascript" src="{{ vasset('js/v-comments', 'min.js') }}"></script>
 {% endblock %}
