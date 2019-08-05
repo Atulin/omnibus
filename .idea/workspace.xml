@@ -2,35 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/comments.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/comments.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/omnibus2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/omnibus2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/CommentThread.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/profile.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/profile.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/main.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-registration-validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-registration-validator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-registration-validator.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-registration-validator.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/activate.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/activate.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/forgot.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/forgot.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/login.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/login.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/mfa.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/mfa.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/TwigHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/TwigHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/recover.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/recover.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/register.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/register.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -297,7 +284,10 @@
       <workItem from="1564601007488" duration="17213000" />
       <workItem from="1564794337519" duration="73000" />
       <workItem from="1564794438360" duration="689000" />
-      <workItem from="1564795151370" duration="10340000" />
+      <workItem from="1564795151370" duration="10381000" />
+      <workItem from="1564973213665" duration="31000" />
+      <workItem from="1564973266717" duration="5680000" />
+      <workItem from="1564983096425" duration="8022000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -397,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564629983513</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Comment system grows!">
+      <created>1564807629644</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1564807629644</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,7 +429,8 @@
     <MESSAGE value="MFA authentication done" />
     <MESSAGE value="Made dropdowns a tad prettier" />
     <MESSAGE value="Profile and the beginning of a comment system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile and the beginning of a comment system" />
+    <MESSAGE value="Comment system grows!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment system grows!" />
   </component>
   <component name="masterDetails">
     <states>

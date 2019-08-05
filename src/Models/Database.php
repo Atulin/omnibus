@@ -29,7 +29,13 @@ class Database
         $password = $_ENV['PASS'];
 
         $isDevMode = true;
-        $config = Setup::createAnnotationMetadataConfiguration([__DIR__], $isDevMode, null, null, false);
+        $config = Setup::createAnnotationMetadataConfiguration(
+            [__DIR__],
+            $isDevMode,
+            null,
+            null,
+            false,
+        );
 
         $conn = [
             'driver'   => 'pdo_pgsql',

@@ -5,6 +5,8 @@ use Core\Controller;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\TransactionRequiredException;
+use Models\Comment;
+use Models\CommentThread;
 use Models\User;
 
 class ProfileController extends Controller
@@ -18,12 +20,26 @@ class ProfileController extends Controller
      */
     public function index(array $params): void
     {
+        /** @var User $owner */
         $owner = ($params && $params['id']) ? $this->em->find(User::class, $params['id']) : null;
+        /** @var CommentThread $thread */
+        $thread = $owner ? $owner->getCommentThread() : $this->getUser()->getCommentThread();
+
+        $comments = $this->em->getRepository(Comment::class)->findBy(['thread' => $thread]);
 
         $this->setBaseData();
         $this->render('user/profile/profile', [
             'data' => var_export($params, true),
-            'profile_owner' => $owner
+            'profile_owner' => $owner,
+            'thread' => $thread,
+            'comments' => array_map(static function(Comment $c) {
+                return [
+                    'user' => $c->getAuthor()->getName(),
+                    'date' => $c->getDate()->format('d.m.Y H:i'),
+                    'body' => $c->getBody(),
+                    'id'   => $c->getId(),
+                ];
+            }, $comments)
         ]);
     }
 

@@ -2,6 +2,7 @@
 namespace Core;
 
 use AltoRouter;
+use Controllers\API\CommentsApiController;
 use Controllers\HomeController;
 use Controllers\User\ForgottenPasswordController;
 use Controllers\User\LogoutController;
@@ -21,7 +22,6 @@ use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
-use Twig\Profiler\Profile;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 use Controllers\User\LoginController;
@@ -150,10 +150,11 @@ class Application
                     ['GET',  '/setup-mfa',                 MFAController::class . '#index', 'mfa'          ],
                     ['POST', '/setup-mfa',                 MFAController::class . '#setup'                 ],
                     // User profile
-                    ['GET',  '/profile/[i:id]?/[f:furl]?', ProfileController::class . '#index', 'profile'   ],
+                    ['GET',  '/profile/[i:id]?/[f:furl]?', ProfileController::class . '#index', 'profile'  ],
 
                     // Comments API
-                    ['POST', '/api/comments', static function(){echo json_encode(['status'=>200, 'message'=>'success']);}],
+                    ['GET',  '/api/comments',              CommentsApiController::class . '#get'           ],
+                    ['POST', '/api/comments',              CommentsApiController::class . '#add'           ],
                 ]);
             } catch (Exception $e) {
                 echo $e;

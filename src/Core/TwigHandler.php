@@ -57,8 +57,13 @@ class TwigHandler
         ///
         /// Dump data
         ///
-        $twig->addFunction(new TwigFunction('prevex', static function($data) {
-            return '<pre>'.var_export($data, true).'</pre>';
+        $twig->addFunction(new TwigFunction('prevex', static function($data, $circular = false) {
+            if ($circular) {
+                $var = print_r($data, true);
+                return '<pre>'.$var.'</pre>';
+            } else {
+                return '<pre>'.var_export($data, true).'</pre>';
+            }
         }, ['is_safe' => ['html']]));
 
         ///

@@ -3,6 +3,7 @@
 namespace Models;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,7 +52,6 @@ class User
      */
     private $password;
 
-
     /**
      * @var string|null $bioŁ
      * @ORM\Column(type="string", nullable=true)
@@ -89,6 +89,13 @@ class User
     private $role;
 
     /**
+     * @var
+     * @ORM\OneToOne(targetEntity="CommentThread")
+     * @ORM\JoinColumn(name="thread_id", referencedColumnName="id")
+     */
+    private $comment_thread;
+
+    /**
      * @var string|null $mfa
      * @ORM\Column(type="string", nullable=true)
      */
@@ -102,6 +109,7 @@ class User
     {
         $this->creation_date = new DateTime('now');
         $this->last_seen = new DateTime('now');
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -272,6 +280,22 @@ class User
     {
         $role->addUser($this);
         $this->role = $role;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentThread()
+    {
+        return $this->comment_thread;
+    }
+
+    /**
+     * @param mixed $comment_thread
+     */
+    public function setCommentThread($comment_thread): void
+    {
+        $this->comment_thread = $comment_thread;
     }
 
     /**

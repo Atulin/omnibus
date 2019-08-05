@@ -6,6 +6,7 @@
 
     <form method="post" @submit.stop.prevent="sendComment" xmlns:v-bind="http://www.w3.org/1999/xhtml">
         <input id="token" type="hidden" name="token" value="{{ token }}">
+        <input id="thread" type="hidden" name="thread" value="{{ thread }}">
 
         <div class="comment-box">
 
@@ -30,16 +31,23 @@
     {#=====================#}
 
     <div class="comments-list">
+
+        {# Comments shown by JS #}
         <div class="comment" v-for="c in comments_list">
             <strong>${c.user}</strong>
             <em>${c.date}</em>
             <p>${c.body}</p>
         </div>
-        <div class="comment-ph" v-if="comments_list.length <= 0">
-            <strong>C</strong>
-            <em>c.c.c</em>
-            <p>cccc</p>
+
+        {# Comments shown by default #}
+        <div class="comment" v-if="comments_list.length <= 0">
+            {% for c in comments %}
+                <strong>{{ c.user }}</strong>
+                <em>{{ c.date }}</em>
+                <p>{{ c.body }}</p>
+            {% endfor %}
         </div>
+
     </div>
 
 </div>

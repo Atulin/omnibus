@@ -18,31 +18,34 @@ const app = new Vue({
             e.preventDefault();
 
             let token = document.getElementById('token').value;
+            let thread = document.getElementById('thread').value;
 
             if (this.comment_body.length > limit) {
                 this.error = 'Your message is ' + Math.abs(this.chars_left) + ' characters too long'
             } else {
 
-                axios.post('/api/comments', {
-                    body: this.comment_body,
-                    token: token
-                })
+                let data = new FormData();
+                data.append('body', this.comment_body);
+                data.append('thread', thread);
+                data.append('token', token);
+
+                axios.post('/api/comments', data)
                 .then(response =>{
-                    console.log(response);
-                    this.comments_list.push(
-                        {
-                            user: 'A',
-                            body: 'aaaa',
-                            date: 'a.a.a'
-                        }
-                    );
-                    this.comments_list.push(
-                        {
-                            user: 'B',
-                            body: 'bbbb',
-                            date: 'b.b.b'
-                        }
-                    )
+
+                    let data = new FormData();
+                    data.append('thread', thread);
+
+                    axios.get('/api/comments', {params:{thread: thread}})
+                        .then(response => {
+                            console.log(response);
+                            this.comments_list = [];
+
+                            for (let c of response.data.comments) {
+                                this.comments_list.push(c);
+                            }
+
+                        })
+
                 })
                 .catch(err => {
                     console.error(err)

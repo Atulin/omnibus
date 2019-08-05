@@ -94,7 +94,7 @@ class Role
     /**
      * @return bool
      */
-    public function getIsAdmin(): bool
+    public function isAdmin(): bool
     {
         return $this->is_admin;
     }
@@ -110,7 +110,7 @@ class Role
     /**
      * @return bool
      */
-    public function isIsModerator(): bool
+    public function isModerator(): bool
     {
         return $this->is_moderator;
     }
