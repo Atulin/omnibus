@@ -1,4 +1,4 @@
-<div id="comments" class="container">
+<div id="comments" class="container" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
     {#====================#}
     {#    COMMENT FORM    #}
@@ -35,17 +35,23 @@
         {# Comments shown by JS #}
         <div class="comment" v-for="c in comments_list">
 
-            <div class="head">
-                <div class="author">${c.user}</div>
-                <div class="date item">${c.date}</div>
+            <div class="avatar">
+                <img v-bind:src="c.avatar " v-bind:alt="'c.user\'s' + avatar">
             </div>
+
+            <div class="top">
+                <div class="author">${ c.user }</div>
+                <div class="date item">${ c.date }</div>
+            </div>
+
             <div class="body" v-html="c.body"></div>
+
             <div class="meta">
-                <div class="id item">
-                    >>${c.id}
-                </div>
                 <div class="buttons">
                     <button class="item">R</button>
+                </div>
+                <div class="id item">
+                    >>>${ c.id }
                 </div>
             </div>
 
@@ -54,19 +60,27 @@
         {# Comments shown by default #}
         {% for c in comments %}
             <div class="comment" v-if="comments_list.length <= 0">
-                <div class="head">
+
+                <div class="avatar">
+                    <img src="{{ c.avatar }}" alt="{{ c.user }}'s avatar">
+                </div>
+
+                <div class="top">
                     <div class="author">{{ c.user }}</div>
                     <div class="date item">{{ c.date }}</div>
                 </div>
+
                 <div class="body">{{ c.body|raw }}</div>
+
                 <div class="meta">
-                    <div class="id item">
-                        >>{{ c.id }}
-                    </div>
                     <div class="buttons">
                         <button class="item">R</button>
                     </div>
+                    <div class="id item">
+                        >>>{{ c.id }}
+                    </div>
                 </div>
+
             </div>
         {% endfor %}
 

@@ -16,7 +16,7 @@ const app = new Vue({
     },
 
     methods: {
-        sendComment: function(e) {
+        sendComment: function (e) {
             e.preventDefault();
 
             let token = document.getElementById('token').value;
@@ -34,31 +34,34 @@ const app = new Vue({
 
                 // Add comment
                 axios.post('/api/comments', data)
-                .then(response =>{
+                    .then(response => {
 
-                    // Create GET data
-                    let data = new FormData();
-                    data.append('thread', thread);
+                        // Clear textarea
+                        this.comment_body = '';
 
-                    // Get comments
-                    axios.get('/api/comments', {params:{thread: thread}})
-                        .then(response => {
-                            console.log(response);
-                            this.comments_list = [];
+                        // Create GET data
+                        let data = new FormData();
+                        data.append('thread', thread);
 
-                            for (let c of response.data.comments) {
-                                this.comments_list.push(c);
-                            }
+                        // Get comments
+                        axios.get('/api/comments', {params: {thread: thread}})
+                            .then(response => {
+                                console.log(response);
+                                this.comments_list = [];
 
-                        })
-                        .catch(err => {
-                            console.error(err)
-                        });
+                                for (let c of response.data.comments) {
+                                    this.comments_list.push(c);
+                                }
 
-                })
-                .catch(err => {
-                    console.error(err)
-                });
+                            })
+                            .catch(err => {
+                                console.error(err)
+                            });
+
+                    })
+                    .catch(err => {
+                        console.error(err)
+                    });
 
                 return true;
             }

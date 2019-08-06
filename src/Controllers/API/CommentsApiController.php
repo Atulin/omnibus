@@ -2,6 +2,8 @@
 namespace Controllers\API;
 
 use Core\Controller;
+use Core\Utility\Gravatar;
+use Core\Utility\HttpStatus;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\TransactionRequiredException;
@@ -17,8 +19,10 @@ class CommentsApiController extends Controller
 
         $data = array_map(static function(Comment $c) {
             $c->parse();
+            $a = $c->getAuthor();
             return [
-                'user' => $c->getAuthor()->getName(),
+                'user' => $a->getName(),
+                'avatar' => (new Gravatar($a->getEmail(), 50))->getGravatar(),
                 'date' => $c->getDate()->format('d.m.Y H:i'),
                 'body' => $c->getBody(),
                 'id'   => $c->getId(),
@@ -26,7 +30,7 @@ class CommentsApiController extends Controller
         }, $comments);
 
         $msg = [
-            'status' => 200,
+            'status' => HttpStatus::S200(),
             'comments' => $data,
         ];
         echo json_encode($msg);
@@ -74,10 +78,12 @@ class CommentsApiController extends Controller
         }
 
         $msg = [
-            'status' => $errors ? 500 : 200,
+            'status' => $errors ? HttpStatus::S500() : HttpStatus::S201(),
             'message' => $errors ? 'Successfully added the comment.' : 'An error has occurred:',
             'errors' => $errors ?: null,
         ];
+
+        http_response_code($errors ? 500 : 201);
         echo json_encode($msg);
 
     }

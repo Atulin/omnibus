@@ -321,7 +321,11 @@ div#profile {
 
 @media only screen and (max-width: 768px) {
   div#profile {
-    flex-direction: column; } }
+    flex-direction: column; }
+    div#profile > .column > .container {
+      width: calc(100vw - 1rem);
+      margin: 1rem 0;
+      border-radius: 0; } }
 .button {
   display: flex;
   align-items: center;
@@ -390,32 +394,57 @@ div#profile {
   #comments > .comments-list {
     width: 100%;
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    padding: 0 1rem; }
     #comments > .comments-list > .comment {
-      display: flex;
-      flex-direction: column;
-      margin: 0 20px 1rem;
-      padding: 0 0 0.2rem;
+      width: 100%;
+      display: grid;
+      grid-column-gap: 1rem;
+      grid-template-columns: 50px 1fr;
+      grid-template-rows: 1rem 1fr 1rem;
+      grid-template-areas: "avatar top" "avatar body" "meta meta";
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.5rem;
       border-bottom: 1px solid rgba(6, 6, 6, 0.5); }
       #comments > .comments-list > .comment .item {
         color: rgba(6, 6, 6, 0.2);
         transition: color 100ms ease-in-out; }
         #comments > .comments-list > .comment .item:hover {
           color: rgba(6, 6, 6, 0.5); }
-      #comments > .comments-list > .comment > .head {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between; }
-        #comments > .comments-list > .comment > .head > .author {
-          font-weight: 400; }
-      #comments > .comments-list > .comment > .body {
-        margin: 0.5rem 0; }
       #comments > .comments-list > .comment > .meta {
+        grid-area: meta;
         display: flex;
         justify-content: space-between;
         font-size: 0.8rem; }
         #comments > .comments-list > .comment > .meta > .buttons > button {
           background: transparent;
-          border: none; }
+          border: none;
+          width: 1.5rem;
+          margin: 0;
+          padding: 0; }
+      #comments > .comments-list > .comment > .avatar {
+        grid-area: avatar; }
+        #comments > .comments-list > .comment > .avatar > img {
+          width: 50px;
+          height: 50px;
+          border: 1px solid #060606;
+          border-radius: 10%; }
+      #comments > .comments-list > .comment > .top {
+        grid-area: top;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; }
+        #comments > .comments-list > .comment > .top > .author {
+          font-weight: 400;
+          text-decoration: underline; }
+      #comments > .comments-list > .comment > .body {
+        grid-area: body;
+        margin: 0; }
+        #comments > .comments-list > .comment > .body > p {
+          margin: 0.2rem 0; }
+
+@media only screen and (max-width: 768px) {
+  #comments {
+    border-radius: 0; } }
 
 /*# sourceMappingURL=light.css.map */

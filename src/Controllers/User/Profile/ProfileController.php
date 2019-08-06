@@ -2,6 +2,7 @@
 namespace Controllers\User\Profile;
 
 use Core\Controller;
+use Core\Utility\Gravatar;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\TransactionRequiredException;
@@ -34,8 +35,10 @@ class ProfileController extends Controller
             'thread' => $thread,
             'comments' => array_map(static function(Comment $c) {
                 $c->parse();
+                $a = $c->getAuthor();
                 return [
-                    'user' => $c->getAuthor()->getName(),
+                    'user' => $a->getName(),
+                    'avatar' => (new Gravatar($a->getEmail(), 50))->getGravatar(),
                     'date' => $c->getDate()->format('d.m.Y H:i'),
                     'body' => $c->getBody(),
                     'id'   => $c->getId(),

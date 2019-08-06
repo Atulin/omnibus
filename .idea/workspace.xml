@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Core/Utility/Gravatar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Core/Utility/HttpStatus.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/fonts.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/fonts.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/main.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/profile.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/profile.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/TwigHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/TwigHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -286,7 +286,7 @@
       <workItem from="1564973213665" duration="31000" />
       <workItem from="1564973266717" duration="5680000" />
       <workItem from="1564983096425" duration="8099000" />
-      <workItem from="1565074943989" duration="3447000" />
+      <workItem from="1565074943989" duration="15006000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -400,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564991188220</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Comment visuals and Markdown parsing">
+      <created>1565078447681</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1565078447681</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,7 +444,8 @@
     <MESSAGE value="Profile and the beginning of a comment system" />
     <MESSAGE value="Comment system grows!" />
     <MESSAGE value="Comment system DONE" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comment system DONE" />
+    <MESSAGE value="Comment visuals and Markdown parsing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment visuals and Markdown parsing" />
   </component>
   <component name="masterDetails">
     <states>

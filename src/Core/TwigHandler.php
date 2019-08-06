@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use Core\Utility\Gravatar;
 use ParsedownExtra;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -50,8 +51,7 @@ class TwigHandler
         /// Get a Gravatar from email
         ///
         $twig->addFunction(new TwigFunction('gravatar', static function(string $email, int $size = null) {
-            $hash = md5( strtolower( trim( $email ) ) );
-            return "https://www.gravatar.com/avatar/$hash" . ($size ? "?s=$size" : '');
+            return (new Gravatar($email, $size))->getGravatar();
         }));
 
         ///
