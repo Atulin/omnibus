@@ -3,6 +3,7 @@ namespace Models;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Parsedown;
 
 /**
  * @ORM\Entity
@@ -126,5 +127,13 @@ class Comment
         $this->thread = $thread;
     }
 
+    /**
+     * Parse raw comment with Markdown
+     */
+    public function parse(): void
+    {
+        $pd = new Parsedown();
+        $this->body = $pd->parse($this->body);
+    }
 
 }

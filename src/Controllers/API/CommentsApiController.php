@@ -16,6 +16,7 @@ class CommentsApiController extends Controller
         $comments = $this->em->getRepository(Comment::class)->findBy(['thread' => $_GET['thread']]);
 
         $data = array_map(static function(Comment $c) {
+            $c->parse();
             return [
                 'user' => $c->getAuthor()->getName(),
                 'date' => $c->getDate()->format('d.m.Y H:i'),

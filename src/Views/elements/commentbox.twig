@@ -34,19 +34,42 @@
 
         {# Comments shown by JS #}
         <div class="comment" v-for="c in comments_list">
-            <strong>${c.user}</strong>
-            <em>${c.date}</em>
-            <p>${c.body}</p>
+
+            <div class="head">
+                <div class="author">${c.user}</div>
+                <div class="date item">${c.date}</div>
+            </div>
+            <div class="body" v-html="c.body"></div>
+            <div class="meta">
+                <div class="id item">
+                    >>${c.id}
+                </div>
+                <div class="buttons">
+                    <button class="item">R</button>
+                </div>
+            </div>
+
         </div>
 
         {# Comments shown by default #}
-        <div class="comment" v-if="comments_list.length <= 0">
-            {% for c in comments %}
-                <strong>{{ c.user }}</strong>
-                <em>{{ c.date }}</em>
-                <p>{{ c.body }}</p>
-            {% endfor %}
-        </div>
+        {% for c in comments %}
+            <div class="comment" v-if="comments_list.length <= 0">
+                <div class="head">
+                    <div class="author">{{ c.user }}</div>
+                    <div class="date item">{{ c.date }}</div>
+                </div>
+                <div class="body">{{ c.body|raw }}</div>
+                <div class="meta">
+                    <div class="id item">
+                        >>{{ c.id }}
+                    </div>
+                    <div class="buttons">
+                        <button class="item">R</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
 
     </div>
 

@@ -7,12 +7,14 @@ const limit = 140;
 const app = new Vue({
     delimiters: ['${', '}'],
     el: '#comments',
+
     data: {
         error: null,
         comment_body: '',
         chars_left: limit,
         comments_list: []
     },
+
     methods: {
         sendComment: function(e) {
             e.preventDefault();
@@ -24,17 +26,21 @@ const app = new Vue({
                 this.error = 'Your message is ' + Math.abs(this.chars_left) + ' characters too long'
             } else {
 
+                // Create POST data
                 let data = new FormData();
                 data.append('body', this.comment_body);
                 data.append('thread', thread);
                 data.append('token', token);
 
+                // Add comment
                 axios.post('/api/comments', data)
                 .then(response =>{
 
+                    // Create GET data
                     let data = new FormData();
                     data.append('thread', thread);
 
+                    // Get comments
                     axios.get('/api/comments', {params:{thread: thread}})
                         .then(response => {
                             console.log(response);
@@ -45,6 +51,9 @@ const app = new Vue({
                             }
 
                         })
+                        .catch(err => {
+                            console.error(err)
+                        });
 
                 })
                 .catch(err => {
@@ -55,6 +64,7 @@ const app = new Vue({
             }
         }
     },
+
     computed: {
         charsLeft() {
             let chars = this.comment_body.length;

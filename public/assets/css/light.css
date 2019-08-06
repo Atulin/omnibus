@@ -1,10 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap");
 html, body {
   margin: 0;
   padding: 0;
   background: #fbfbfb;
   color: #060606;
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  overflow-x: hidden; }
 
 div.container {
   display: flex;
@@ -119,7 +121,8 @@ div#navbar {
     color: rgba(6, 6, 6, 0.2); }
   div#navbar > .brand {
     font-size: 1rem;
-    padding: 0.5rem 1rem; }
+    padding: 0.5rem 1rem;
+    font-weight: 400; }
   div#navbar > .hamburger {
     display: none;
     padding: 8px; }
@@ -148,7 +151,8 @@ div#navbar {
     div#navbar hr {
       display: none; }
     div#navbar > .brand {
-      font-size: 1.5rem; }
+      font-size: 1.5rem;
+      font-weight: 400; }
     div#navbar > .hamburger {
       align-self: flex-end;
       display: initial;
@@ -353,7 +357,9 @@ div#profile {
         #comments > form > .comment-box > .main > textarea {
           width: 100%;
           border: none;
-          border-bottom: 1px solid rgba(6, 6, 6, 0.2); }
+          border-bottom: 1px solid rgba(6, 6, 6, 0.2);
+          font-family: "Montserrat", sans-serif;
+          font-weight: 300; }
         #comments > form > .comment-box > .main > p.error {
           margin: 0;
           padding: 0 4px;
@@ -382,14 +388,34 @@ div#profile {
           #comments > form > .comment-box > .bottom > button.send:hover {
             background: rgba(0, 203, 195, 0.5); }
   #comments > .comments-list {
-    width: 100%; }
+    width: 100%;
+    display: flex;
+    flex-direction: column; }
     #comments > .comments-list > .comment {
       display: flex;
       flex-direction: column;
-      width: 100%; }
-      #comments > .comments-list > .comment-ph {
-        color: rgba(17, 36, 58, 0.844);
-        background: rgba(77, 160, 255, 0.61);
-        border: 1px solid rgba(61, 128, 203, 0.649); }
+      margin: 0 20px 1rem;
+      padding: 0 0 0.2rem;
+      border-bottom: 1px solid rgba(6, 6, 6, 0.5); }
+      #comments > .comments-list > .comment .item {
+        color: rgba(6, 6, 6, 0.2);
+        transition: color 100ms ease-in-out; }
+        #comments > .comments-list > .comment .item:hover {
+          color: rgba(6, 6, 6, 0.5); }
+      #comments > .comments-list > .comment > .head {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; }
+        #comments > .comments-list > .comment > .head > .author {
+          font-weight: 400; }
+      #comments > .comments-list > .comment > .body {
+        margin: 0.5rem 0; }
+      #comments > .comments-list > .comment > .meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem; }
+        #comments > .comments-list > .comment > .meta > .buttons > button {
+          background: transparent;
+          border: none; }
 
 /*# sourceMappingURL=light.css.map */

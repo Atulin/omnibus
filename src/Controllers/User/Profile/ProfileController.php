@@ -33,6 +33,7 @@ class ProfileController extends Controller
             'profile_owner' => $owner,
             'thread' => $thread,
             'comments' => array_map(static function(Comment $c) {
+                $c->parse();
                 return [
                     'user' => $c->getAuthor()->getName(),
                     'date' => $c->getDate()->format('d.m.Y H:i'),
