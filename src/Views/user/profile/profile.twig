@@ -2,6 +2,8 @@
 
 {% set owner = profile_owner ?: user %}
 
+{% block title %}{{ owner.name }}'s profile{% endblock %}
+
 {% block body %}
     <div id="profile">
 

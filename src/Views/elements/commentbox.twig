@@ -53,7 +53,7 @@
                     <button class="item" v-on:click="reportComment(c.id)">R</button>
                 </div>
                 <div class="id item">
-                    >>>${ c.id }
+                    @${ c.id }
                 </div>
             </div>
 
@@ -79,7 +79,7 @@
                         <button class="item" v-on:click="reportComment({{ c.id }})">R</button>
                     </div>
                     <div class="id item">
-                        >>>{{ c.id }}
+                        @{{ c.id }}
                     </div>
                 </div>
 

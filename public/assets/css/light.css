@@ -184,8 +184,8 @@ div#navbar {
   .dropdown > .dropdown-content {
     display: none;
     position: absolute;
+    top: 50px;
     color: #060606;
-    right: 0;
     background: #fbfbfb;
     min-width: 160px;
     box-shadow: 0 0 10px 1px rgba(6, 6, 6, 0.2);
@@ -400,14 +400,14 @@ div#profile {
     flex-direction: column;
     padding: 0 1rem; }
     #comments > .comments-list > .comment {
-      width: 100%;
+      width: 96%;
       display: grid;
       grid-column-gap: 1rem;
       grid-template-columns: 50px 1fr;
       grid-template-rows: 1.5rem 1fr 1rem;
       grid-template-areas: "avatar top" "avatar body" "meta meta";
       padding-bottom: 0.2rem;
-      margin-bottom: 0.5rem;
+      margin: 0 2% 0.5rem;
       border-bottom: 1px solid rgba(6, 6, 6, 0.5); }
       #comments > .comments-list > .comment .item {
         color: rgba(6, 6, 6, 0.2);
@@ -436,8 +436,7 @@ div#profile {
         grid-area: top;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        border-bottom: 1px solid rgba(6, 6, 6, 0.2); }
+        justify-content: space-between; }
         #comments > .comments-list > .comment > .top > .author {
           font-weight: 400; }
       #comments > .comments-list > .comment > .body {
@@ -453,21 +452,21 @@ div#profile {
             width: 90%;
             margin: 0 5%;
             border-radius: 1rem; }
+        #comments > .comments-list > .comment > .body h1, #comments > .comments-list > .comment > .body h2, #comments > .comments-list > .comment > .body h3, #comments > .comments-list > .comment > .body h4, #comments > .comments-list > .comment > .body h5, #comments > .comments-list > .comment > .body h6 {
+          margin: 0.2rem 0 0.5rem;
+          color: rgba(6, 6, 6, 0.5); }
         #comments > .comments-list > .comment > .body h1 {
-          font-size: 1.5rem;
-          margin: 0.2rem 0 0.5rem; }
+          font-size: 1.5rem; }
         #comments > .comments-list > .comment > .body h2 {
-          font-size: 1.4rem;
-          margin: 0.2rem 0 0.5rem; }
+          font-size: 1.4rem; }
         #comments > .comments-list > .comment > .body h3 {
-          font-size: 1.3rem;
-          margin: 0.2rem 0 0.5rem; }
+          font-size: 1.3rem; }
         #comments > .comments-list > .comment > .body h4 {
-          font-size: 1.2rem;
-          margin: 0.2rem 0 0.5rem; }
+          font-size: 1.2rem; }
         #comments > .comments-list > .comment > .body h5 {
-          font-size: 1.1rem;
-          margin: 0.2rem 0 0.5rem; }
+          font-size: 1.1rem; }
+        #comments > .comments-list > .comment > .body h6 {
+          font-size: 1.05rem; }
         #comments > .comments-list > .comment > .body blockquote {
           margin: 0.2rem 0;
           padding-left: 1rem;

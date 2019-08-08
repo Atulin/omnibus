@@ -30,15 +30,21 @@
 
         <hr>
 
-        <div class="item">
-            Link
+        <div class="dropdown" aria-haspopup="true">
+            <div class="item">
+                <p>{{ theme }}</p>
+            </div>
+            <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Dark</a>
+                <a class="dropdown-item" href="#" >Light</a>
+            </div>
         </div>
 
         <hr>
 
         {% if user %}
 
-            <div class="dropdown">
+            <div class="dropdown" aria-haspopup="true">
                 <div class="avatar item">
                     <p>{{ user.name }}</p>
                     <img src="{{ gravatar(user.email, 40) }}" alt="{{ user.name }}'s avatar">

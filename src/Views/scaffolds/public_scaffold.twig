@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="{{ vasset('css/light', 'min.css') }}">
     {% block scripts %}{% endblock %}
 
-    <title>Document</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 
-{% include 'scaffolds/navbar.twig' %}
+{% include 'elements/navbar.twig' %}
 
 <div class="v-full h-full h-centered container">
     <div class="main column">

@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Models/Report.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/CommentThread.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/CommentThread.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/navbar.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/navbar.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -209,14 +203,15 @@
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\emails" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Core\Security\ReCaptcha" />
-      <recent name="E:\Software\Laragon\www\plaincocon\public" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\emails" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\elements" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\emails" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Core\Security\ReCaptcha" />
+      <recent name="E:\Software\Laragon\www\plaincocon\public" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -295,7 +290,12 @@
       <workItem from="1564983096425" duration="8099000" />
       <workItem from="1565074943989" duration="15154000" />
       <workItem from="1565219364933" duration="38000" />
-      <workItem from="1565219424867" duration="5768000" />
+      <workItem from="1565219424867" duration="5902000" />
+      <workItem from="1565292787789" duration="325000" />
+      <workItem from="1565293136328" duration="44000" />
+      <workItem from="1565293202475" duration="70000" />
+      <workItem from="1565293308780" duration="580000" />
+      <workItem from="1565293913070" duration="3411000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -423,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565114820791</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Report system and comment body styling">
+      <created>1565225230400</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1565225230400</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,7 +469,8 @@
     <MESSAGE value="Comment system DONE" />
     <MESSAGE value="Comment visuals and Markdown parsing" />
     <MESSAGE value="Comment responsiveness and switch to CSS Grid layout for them" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comment responsiveness and switch to CSS Grid layout for them" />
+    <MESSAGE value="Report system and comment body styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Report system and comment body styling" />
   </component>
   <component name="masterDetails">
     <states>
