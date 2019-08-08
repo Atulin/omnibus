@@ -9,7 +9,12 @@ use Doctrine\ORM\ORMException;
 use Doctrine\ORM\TransactionRequiredException;
 use Models\Comment;
 use Models\CommentThread;
+use Models\Report;
 
+/**
+ * Class CommentsApiController
+ * @package Controllers\API
+ */
 class CommentsApiController extends Controller
 {
 
@@ -41,11 +46,18 @@ class CommentsApiController extends Controller
     {
         $errors = [];
 
-        if($_POST['token'] === $this->session->get('token')) {
+        $POST = filter_input_array(INPUT_POST, [
+            'token'  => FILTER_SANITIZE_STRING,
+            'thread' => FILTER_VALIDATE_INT,
+            'body'   => FILTER_SANITIZE_STRING
+        ]);
 
+        if($POST['token'] === $this->session->get('token')) {
+
+            /** @var CommentThread $thread */
             $thread = null;
             try {
-                $thread = $this->em->find(CommentThread::class, $_POST['thread']);
+                $thread = $this->em->find(CommentThread::class, $POST['thread']);
             } catch (OptimisticLockException $e) {
                 $errors[] = $e->getMessage();
             } catch (TransactionRequiredException $e) {
@@ -56,7 +68,7 @@ class CommentsApiController extends Controller
 
             $comment = new Comment();
             $comment->setAuthor($this->getUser());
-            $comment->setBody($_POST['body']);
+            $comment->setBody($POST['body']);
             $comment->setThread($thread);
 
             try {
@@ -79,7 +91,66 @@ class CommentsApiController extends Controller
 
         $msg = [
             'status' => $errors ? HttpStatus::S500() : HttpStatus::S201(),
-            'message' => $errors ? 'Successfully added the comment.' : 'An error has occurred:',
+            'message' => $errors ? 'An error has occurred:' : 'Successfully added the comment.',
+            'errors' => $errors ?: null,
+        ];
+
+        http_response_code($errors ? 500 : 201);
+        echo json_encode($msg);
+
+    }
+
+
+    public function report(): void
+    {
+        $errors = [];
+
+        $POST = filter_input_array(INPUT_POST, [
+            'token'   => FILTER_SANITIZE_STRING,
+            'comment' => FILTER_VALIDATE_INT,
+            'reason'  => FILTER_SANITIZE_STRING
+        ]);
+
+
+        if($POST['token'] === $this->session->get('token')) {
+
+            /** @var Comment $comment */
+            $comment = null;
+            try {
+                $comment = $this->em->find(Comment::class, ['id' => $POST['comment']]);
+            } catch (OptimisticLockException $e) {
+                $errors[] = $e->getMessage();
+            } catch (TransactionRequiredException $e) {
+                $errors[] = $e->getMessage();
+            } catch (ORMException $e) {
+                $errors[] = $e->getMessage();
+            }
+            $report = new Report();
+            $report->setUser($this->getUser());
+            $report->setComment($comment);
+            $report->setReason($POST['reason'] ?: '');
+
+            try {
+                $this->em->persist($report);
+            } catch (ORMException $e) {
+                $errors[] = $e->getMessage();
+            }
+
+            try {
+                $this->em->flush();
+            } catch (OptimisticLockException $e) {
+                $errors[] = $e->getMessage();
+            } catch (ORMException $e) {
+                $errors[] = $e->getMessage();
+            }
+
+        } else {
+            $errors[] = 'X-CSRD protection triggered';
+        }
+
+        $msg = [
+            'status' => $errors ? HttpStatus::S500() : HttpStatus::S201(),
+            'message' => $errors ? 'An error has occurred:' : 'Successfully added the comment.',
             'errors' => $errors ?: null,
         ];
 

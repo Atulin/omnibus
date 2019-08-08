@@ -65,6 +65,25 @@ const app = new Vue({
 
                 return true;
             }
+        },
+
+        reportComment: function (c, e) {
+            let token = document.getElementById('token').value;
+
+            console.log(c);
+
+            let data = new FormData();
+            data.append('comment', c);
+            data.append('token', token);
+            // Report comment
+            axios.post('/api/comments/report', data)
+                .then(response => {
+                    console.log('Reported!');
+                    console.info(response.data);
+                })
+                .catch(err => {
+                    console.error(err)
+                });
         }
     },
 

@@ -6,8 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Parsedown;
 
 /**
+ * @package Models
  * @ORM\Entity
- * @ORM\Table(name="comment")
+ * @ORM\Table(name="comments")
  */
 class Comment
 {
@@ -133,6 +134,7 @@ class Comment
     public function parse(): void
     {
         $pd = new Parsedown();
+        $pd->setSafeMode(true);
         $this->body = $pd->parse($this->body);
     }
 

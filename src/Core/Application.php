@@ -9,6 +9,7 @@ use Controllers\User\LogoutController;
 use Controllers\User\MFAController;
 use Controllers\User\Profile\ProfileController;
 use Controllers\User\RecoverController;
+use Core\Utility\HttpStatus;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -155,6 +156,7 @@ class Application
                     // Comments API
                     ['GET',  '/api/comments',              CommentsApiController::class . '#get'           ],
                     ['POST', '/api/comments',              CommentsApiController::class . '#add'           ],
+                    ['POST', '/api/comments/report',       CommentsApiController::class . '#report'        ],
                 ]);
             } catch (Exception $e) {
                 echo $e;

@@ -1,4 +1,6 @@
-<div id="comments" class="container" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<div id="comments" class="container"
+     xmlns:v-bind="http://www.w3.org/1999/xhtml"
+     xmlns:v-on="http://www.w3.org/1999/xhtml">
 
     {#====================#}
     {#    COMMENT FORM    #}
@@ -36,7 +38,7 @@
         <div class="comment" v-for="c in comments_list">
 
             <div class="avatar">
-                <img v-bind:src="c.avatar " v-bind:alt="'c.user\'s' + avatar">
+                <img v-bind:src="c.avatar " v-bind:alt="'c.user'+'\'s avatar'">
             </div>
 
             <div class="top">
@@ -48,7 +50,7 @@
 
             <div class="meta">
                 <div class="buttons">
-                    <button class="item">R</button>
+                    <button class="item" v-on:click="reportComment(c.id)">R</button>
                 </div>
                 <div class="id item">
                     >>>${ c.id }
@@ -74,7 +76,7 @@
 
                 <div class="meta">
                     <div class="buttons">
-                        <button class="item">R</button>
+                        <button class="item" v-on:click="reportComment({{ c.id }})">R</button>
                     </div>
                     <div class="id item">
                         >>>{{ c.id }}

@@ -79,11 +79,12 @@ $err-height: 1rem
       display: grid
       grid-column-gap: 1rem
       grid-template-columns: 50px 1fr
-      grid-template-rows: 1rem 1fr 1rem
+      grid-template-rows: 1.5rem 1fr 1rem
       grid-template-areas: "avatar top" "avatar body" "meta meta"
       padding-bottom: .2rem
       margin-bottom: .5rem
       border-bottom: 1px solid $foreground-50
+
 
       & .item
         color: $foreground-20
@@ -118,16 +119,69 @@ $err-height: 1rem
         display: flex
         flex-direction: row
         justify-content: space-between
+        border-bottom: 1px solid $foreground-20
 
         &>.author
           font-weight: 400
-          text-decoration: underline
 
       &>.body
         grid-area: body
         margin: 0
-        &>p
+
+        & p
           margin: .2rem 0
+
+          &>code
+            background-color: $foreground-20
+            padding: .2rem
+            border-radius: 3px
+
+          &>img
+            width: 90%
+            margin: 0 5%
+            border-radius: 1rem
+
+        & h1
+          font-size: 1.5rem
+          margin: .2rem 0 .5rem
+
+        & h2
+          font-size: 1.4rem
+          margin: .2rem 0 .5rem
+
+        & h3
+          font-size: 1.3rem
+          margin: .2rem 0 .5rem
+
+        & h4
+          font-size: 1.2rem
+          margin: .2rem 0 .5rem
+
+        & h5
+          font-size: 1.1rem
+          margin: .2rem 0 .5rem
+
+        & blockquote
+          margin: .2rem 0
+          padding-left: 1rem
+          border-left: 3px solid $foreground-20
+          font-style: italic
+
+        & pre
+          padding: .2rem
+          background-color: $foreground-20
+          border-radius: 3px
+
+        & a
+          display: inline-block
+          box-sizing: border-box
+          border-bottom: 1px dashed $foreground-50
+          transition: border-bottom-color 100ms ease-in-out
+          &:hover
+            border-bottom-color: transparent
+
+
+
 
 
 @media only screen and (max-width: 768px)

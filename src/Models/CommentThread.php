@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class CommentThread
  * @package Models
  * @ORM\Entity
- * @ORM\Table(name="thread")
+ * @ORM\Table(name="threads")
  */
 class CommentThread
 {
