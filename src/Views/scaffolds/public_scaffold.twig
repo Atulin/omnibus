@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <link rel="stylesheet" href="{{ vasset('css/light', 'min.css') }}">
+    <link id="style" rel="stylesheet" href="{{ vasset('css/'~theme, 'min.css') }}">
     {% block scripts %}{% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
@@ -25,6 +25,7 @@
 </div>
 
 <script src="{{ vasset('js/hamburger', 'min.js') }}"></script>
+<script src="{{ vasset('js/themeswap', 'min.js') }}"></script>
 
 </body>
 </html>

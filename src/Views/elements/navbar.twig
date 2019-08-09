@@ -32,11 +32,11 @@
 
         <div class="dropdown" aria-haspopup="true">
             <div class="item">
-                <p>{{ theme }}</p>
+                <p>T</p>
             </div>
             <div class="dropdown-content">
-                <a class="dropdown-item" href="#">Dark</a>
-                <a class="dropdown-item" href="#" >Light</a>
+                <a class="dropdown-item theme" data-theme="{{ vasset('css/dark', 'min.css', true) }}" href="#">Dark</a>
+                <a class="dropdown-item theme" data-theme="{{ vasset('css/light', 'min.css', true) }}" href="#" >Light</a>
             </div>
         </div>
 

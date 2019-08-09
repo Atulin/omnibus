@@ -38,13 +38,17 @@ class TwigHandler
         ///
         /// Versioned asset loading function
         ///
-        $twig->addFunction(new TwigFunction('vasset', static function (string $asset, string $extension) {
+        $twig->addFunction(new TwigFunction('vasset', static function (string $asset, string $extension, bool $strip = false) {
             $filename = ASSETS."/$asset.$extension";
             if (file_exists($filename)) {
-                $timestamp = filemtime($filename);
-                return ASSETS."/$asset.$timestamp.$extension";
+                $timestamp = dechex(filemtime($filename));
+                if ($strip) {
+                    return "$asset.$timestamp";
+                } else {
+                    return ASSETS . "/$asset.$timestamp.$extension";
+                }
             }
-            return ASSETS."/$asset.$extension";
+            return $filename;
         }));
 
         ///

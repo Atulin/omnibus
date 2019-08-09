@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 use Core\Application;
 
 define('IS_DEV', true);
-define('ASSETS', '/assets');
+define('ASSETS', 'assets');
 
 $application = new Application();
 $application->run();

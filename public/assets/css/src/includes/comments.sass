@@ -28,9 +28,11 @@ $err-height: 1rem
         &>textarea
           width: 100%
           border: none
+          background-color: transparent
           border-bottom: 1px solid $foreground-20
           font-family: "Montserrat", sans-serif
           font-weight: 300
+          color: $foreground
 
         &>p.error
           margin: 0
@@ -56,6 +58,7 @@ $err-height: 1rem
         &>button.send
           border: none
           background: transparent
+          color: $foreground
           padding: 0
           width: 6rem
           height: 2rem
@@ -89,6 +92,7 @@ $err-height: 1rem
       & .item
         color: $foreground-20
         transition: color 100ms ease-in-out
+        cursor: pointer
         &:hover
           color: $foreground-50
 
@@ -119,7 +123,6 @@ $err-height: 1rem
         display: flex
         flex-direction: row
         justify-content: space-between
-        //border-bottom: 1px solid $foreground-20
 
         &>.author
           font-weight: 400

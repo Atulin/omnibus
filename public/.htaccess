@@ -22,7 +22,7 @@ RewriteRule ^(.*)/$ /$1 [R] # <- for test, for prod use [L,R=301]
 
 # Redirects for versioned assets
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)\.\d+\.(js|css|min\.css|min\.js)$ $1.$2 [L]
+RewriteRule ^(.+)\.[a-zA-Z0-9]+\.(js|css|min\.css|min\.js)$ $1.$2 [L]
 
 # Redirect to index.php
 RewriteCond %{REQUEST_FILENAME} !-f
