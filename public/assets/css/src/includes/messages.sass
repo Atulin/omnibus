@@ -7,6 +7,10 @@ div.message
   &.timed
     animation: vanish $message-delay ease-in-out $message-vanish forwards, remove 0s ease-in $message-vanish+$message-delay forwards
 
+  &.dismissed
+    animation: vanish 0ms ease-in-out $message-vanish forwards, remove 0s ease-in $message-vanish forwards
+
+
   &.error
     background: $error
     color: $error-text

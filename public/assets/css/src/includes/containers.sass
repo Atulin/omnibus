@@ -1,6 +1,7 @@
-div.container
-  display: flex
-  flex-direction: row
+div
+  &.container
+    display: flex
+    flex-direction: row
 
   &.v-centered
     align-items: center
@@ -20,6 +21,15 @@ div.container
 
 
 div.column
+  display: flex
+  flex-direction: column
+
+  &.v-centered
+    justify-content: center
+
+  &.h-centered
+    align-items: center
+
   &.main
     width: 50vw
     padding: 2rem

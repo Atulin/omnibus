@@ -71,10 +71,11 @@ abstract class Controller
     public function setBaseData(): void
     {
         $this->base_data  = [
-            'theme'  => $_COOKIE['theme'] ?? 'light',
-            'token'  => $this->token,
-            'user'   => $this->user,
-            'active' => $this->active,
+            'theme'   => $_COOKIE['theme'] ?? 'light',
+            'token'   => $this->token,
+            'user'    => $this->user,
+            'active'  => $this->active,
+            'message' => $this->session->get('message'),
         ];
     }
 

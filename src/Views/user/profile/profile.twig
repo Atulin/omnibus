@@ -28,7 +28,7 @@
                         <p class="date">{{ owner.last_seen|date }}</p>
                     </div>
                     {% if owner.id is same as(user.id) %}
-                        <a href="#" class="fluid edit button">Edit profile</a>
+                        <a href="profile/edit" class="fluid edit button">Edit profile</a>
                     {% endif %}
                 </div>
 
@@ -37,10 +37,15 @@
 
         <div class="right column">
 
+            {% if message %}
+                <div class="success timed message">
+                    <p>{{ message }}</p>
+                </div>
+            {% endif %}
+
             <div class="container">
                 <div class="bio">
-                    <h2>Bio</h2>
-                    {{ owner.bio ?: lipsum() }}
+                    {{ owner.bio|md|raw ?: lipsum() }}
                 </div>
             </div>
 

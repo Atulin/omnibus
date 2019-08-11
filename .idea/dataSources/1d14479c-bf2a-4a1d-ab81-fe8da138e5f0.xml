@@ -17,7 +17,7 @@
     <database id="4" parent="1" name="Omnibus">
       <ObjectId>41036</ObjectId>
       <Owner>Angius</Owner>
-      <IntrospectionStateNumber>1026</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1059</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
@@ -145,7 +145,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>Angius</Owner>
-      <IntrospectionStateNumber>1027</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1060</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -410,14 +410,14 @@
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="66" parent="49" name="idx_9474526ca76ed395">
+    <index id="66" parent="49" name="idx_5f9e962aa76ed395">
       <ObjectId>73816</ObjectId>
-      <StateNumber>927</StateNumber>
+      <StateNumber>1028</StateNumber>
       <ColNames>user_id</ColNames>
     </index>
-    <index id="67" parent="49" name="idx_9474526ce2904019">
+    <index id="67" parent="49" name="idx_5f9e962ae2904019">
       <ObjectId>73834</ObjectId>
-      <StateNumber>935</StateNumber>
+      <StateNumber>1029</StateNumber>
       <ColNames>thread_id</ColNames>
     </index>
     <key id="68" parent="49" name="comment_pkey">
@@ -523,14 +523,14 @@
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="82" parent="51" name="idx_c42f7784f8697d13">
+    <index id="82" parent="51" name="idx_f11fa745f8697d13">
       <ObjectId>82006</ObjectId>
-      <StateNumber>990</StateNumber>
+      <StateNumber>1030</StateNumber>
       <ColNames>comment_id</ColNames>
     </index>
-    <index id="83" parent="51" name="idx_c42f7784a76ed395">
+    <index id="83" parent="51" name="idx_f11fa745a76ed395">
       <ObjectId>82007</ObjectId>
-      <StateNumber>991</StateNumber>
+      <StateNumber>1031</StateNumber>
       <ColNames>user_id</ColNames>
     </index>
     <key id="84" parent="51" name="report_pkey">
@@ -681,8 +681,8 @@
     </column>
     <column id="104" parent="54" name="bio">
       <Position>11</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <StateNumber>801</StateNumber>
+      <DataType>varchar(1000)|0s</DataType>
+      <StateNumber>1058</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="105" parent="54" name="title">
@@ -765,6 +765,16 @@
       <RefColPositions>1</RefColPositions>
       <RefTableName>roles</RefTableName>
       <RefKeyName>roles_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="117" parent="54" name="fk_1483a5e9e2904019">
+      <ObjectId>82074</ObjectId>
+      <StateNumber>1032</StateNumber>
+      <ColNames>thread_id</ColNames>
+      <RefTableId>73824</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>threads</RefTableName>
+      <RefKeyName>thread_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
   </database-model>

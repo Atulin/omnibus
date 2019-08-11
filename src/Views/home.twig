@@ -9,7 +9,7 @@
 
     {% if user %}
         <a href="/logout">Log out</a>
-        <img src="{{ gravatar(user.email) }}" alt="{{ user.name }}'s avatar">
+        <img src="{{ gravatar(user.email,200) }}" alt="{{ user.name }}'s avatar">
     {% else %}
         <a href="/login">Log in</a>
         <a href="/register">Register</a>

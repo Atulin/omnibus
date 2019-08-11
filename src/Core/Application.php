@@ -7,7 +7,9 @@ use Controllers\HomeController;
 use Controllers\User\ForgottenPasswordController;
 use Controllers\User\LogoutController;
 use Controllers\User\MFAController;
+use Controllers\User\Profile\AccountEditController;
 use Controllers\User\Profile\ProfileController;
+use Controllers\User\Profile\ProfileEditController;
 use Controllers\User\RecoverController;
 use Core\Utility\HttpStatus;
 use Doctrine\ORM\EntityManager;
@@ -151,7 +153,13 @@ class Application
                     ['GET',  '/setup-mfa',                 MFAController::class . '#index', 'mfa'          ],
                     ['POST', '/setup-mfa',                 MFAController::class . '#setup'                 ],
                     // User profile
+                    ['GET',  '/profile/edit',              ProfileEditController::class . '#index'         ],
+                    ['POST', '/profile/edit',              ProfileEditController::class . '#edit'          ],
                     ['GET',  '/profile/[i:id]?/[f:furl]?', ProfileController::class . '#index', 'profile'  ],
+                    // User account
+                    ['GET',  '/account',                   AccountEditController::class . '#index'         ],
+                    ['POST', '/account',                   AccountEditController::class . '#edit'          ],
+                    ['GET',  '/account/validate',          AccountEditController::class . '#validate'      ],
 
                     // Comments API
                     ['GET',  '/api/comments',              CommentsApiController::class . '#get'           ],

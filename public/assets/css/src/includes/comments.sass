@@ -30,9 +30,10 @@ $err-height: 1rem
           border: none
           background-color: transparent
           border-bottom: 1px solid $foreground-20
-          font-family: "Montserrat", sans-serif
+          font-family: "Inconsolata", monospace
           font-weight: 300
           color: $foreground
+          resize: vertical
 
         &>p.error
           margin: 0
@@ -140,6 +141,7 @@ $err-height: 1rem
           margin: .2rem 0
 
           &>code
+            font-family: "Inconsolata", monospace
             background-color: $foreground-20
             padding: .2rem
             border-radius: 3px
@@ -178,6 +180,7 @@ $err-height: 1rem
           font-style: italic
 
         & pre
+          font-family: "Inconsolata", monospace
           padding: .2rem
           background-color: $foreground-20
           border-radius: 3px
@@ -194,3 +197,5 @@ $err-height: 1rem
 @media only screen and (max-width: 768px)
   #comments
     border-radius: 0
+    &>.top.date
+      margin-right: -5rem

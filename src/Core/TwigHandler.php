@@ -39,7 +39,7 @@ class TwigHandler
         /// Versioned asset loading function
         ///
         $twig->addFunction(new TwigFunction('vasset', static function (string $asset, string $extension, bool $strip = false) {
-            $filename = ASSETS."/$asset.$extension";
+            $filename = ltrim(ASSETS, '/')."/$asset.$extension";
             if (file_exists($filename)) {
                 $timestamp = dechex(filemtime($filename));
                 if ($strip) {

@@ -10,9 +10,7 @@ class HomeController extends Controller
      */
     public function index(): void
     {
-        $message = $this->session->get('message');
-
         $this->setBaseData();
-        $this->render('home', ['message' => $message]);
+        $this->render('home');
     }
 }

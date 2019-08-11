@@ -3,18 +3,24 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/public/assets/js/hamburger.min.js" />
+        <item url="file://$PROJECT_DIR$/public/assets/js/messages.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/themeswap.min.js" />
+        <item url="file://$PROJECT_DIR$/public/assets/js/v-account-validator.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/v-comments.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/v-login-validator.min.js" />
+        <item url="file://$PROJECT_DIR$/public/assets/js/v-profile-validator.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/v-recovery-validator.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/v-registration-validator.min.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/public/assets/js/hamburger.min.js" />
+      <root url="file://$PROJECT_DIR$/public/assets/js/messages.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/themeswap.min.js" />
+      <root url="file://$PROJECT_DIR$/public/assets/js/v-account-validator.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/v-comments.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/v-login-validator.min.js" />
+      <root url="file://$PROJECT_DIR$/public/assets/js/v-profile-validator.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/v-recovery-validator.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/v-registration-validator.min.js" />
     </CLASSES>

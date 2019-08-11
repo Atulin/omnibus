@@ -54,13 +54,13 @@ class User
 
     /**
      * @var string|null $bioŁ
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", length=2000, nullable=true)
      */
     private $bio;
 
     /**
      * @var string|null $title
-     * @ORM\Column(type="string", length=40, nullable=true)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $title;
 

@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <div class="narrow h-centered container">
+    <div class="narrow h-centered container" xmlns:v-on="http://www.w3.org/1999/xhtml">
 
         <form class="form" id="login" method="POST" @submit="checkForm">
 
@@ -14,7 +14,7 @@
                     </div>
                 {% endif %}
 
-                <div class="error message field" v-if="errors.length">
+                <div class="error message field" v-if="errors.length" v-on:click="errors = []">
                     <b>Please correct the following error(s):</b>
                     <ul>
                         <li v-for="error in errors">${ error }</li>

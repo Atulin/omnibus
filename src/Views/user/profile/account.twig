@@ -1,0 +1,76 @@
+{% extends './scaffolds/public_scaffold.twig' %}
+
+{% block title %}{{ user.name }} – edit profile{% endblock %}
+
+{% block body %}
+    <div class="h-centered container" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+        <div class="h-centered main column">
+
+            <form id="account" class="form" method="POST" @submit="checkForm">
+
+                <h2>Edit account</h2>
+
+                <div id="messages">
+
+                    <div class="error message field" v-if="errors.length" v-on:click="errors = []">
+                        <b>Please correct the following error(s):</b>
+                        <ul>
+                            <li v-for="error in errors">${ error }</li>
+                        </ul>
+                    </div>
+
+                    {% if messages %}
+                        <div class="error message field" v-if="!errors.length">
+                            <b>Please correct the following error(s):</b>
+                            <ul>
+                                {% for m in messages %}
+                                    <li>{{ m }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="field">
+                    <a href="/setup-mfa" class="button">{{ user.mfa ? "Regenerate 2FA token" : "Set up 2FA" }}</a>
+                </div>
+
+                <hr>
+
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" v-model="name" type="text" value="{{ user.name }}" readonly>
+                </div>
+
+                <div class="field">
+                    <label for="email">New email</label>
+                    <input id="email" name="email" v-model="email" type="email" value="{{ user.email }}" >
+                </div>
+
+                <div class="field">
+                    <label for="new_password">New password</label>
+                    <input id="new_password" name="new_password" v-model="new_password" type="password" >
+                </div>
+
+                <div class="field">
+                    <label for="password">Current password</label>
+                    <input id="password" name="password" v-model="password" type="password" required>
+                </div>
+
+                <input id="token" type="hidden" name="token" value="{{ token }}">
+
+                <div class="field">
+                    <label for="f-submit" class="hidden">Save</label>
+                    <input id="f-submit" class="submit button" type="submit" value="Save">
+                </div>
+
+            </form>
+
+        </div>
+
+        <script src="{{ vasset('js/v-account-validator', 'min.js') }}"></script>
+
+    </div>
+
+{% endblock %}
