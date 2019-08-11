@@ -2,24 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/dark.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/themeswap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/themeswap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/main.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/TwigHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/TwigHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/elements/navbar.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/navbar.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -304,7 +296,10 @@
       <workItem from="1565293136328" duration="44000" />
       <workItem from="1565293202475" duration="70000" />
       <workItem from="1565293308780" duration="580000" />
-      <workItem from="1565293913070" duration="10113000" />
+      <workItem from="1565293913070" duration="10216000" />
+      <workItem from="1565398193232" duration="17000" />
+      <workItem from="1565398229074" duration="2496000" />
+      <workItem from="1565482381120" duration="660000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -446,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565298025069</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Implemented themes and theme switching">
+      <created>1565332648931</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1565332648931</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +489,8 @@
     <MESSAGE value="Comment responsiveness and switch to CSS Grid layout for them" />
     <MESSAGE value="Report system and comment body styling" />
     <MESSAGE value=" – Fixed dropdowns to be usable anywhere&#10; – Added page title block to scaffolding&#10; – Modified comments look slightly" />
-    <option name="LAST_COMMIT_MESSAGE" value=" – Fixed dropdowns to be usable anywhere&#10; – Added page title block to scaffolding&#10; – Modified comments look slightly" />
+    <MESSAGE value="Implemented themes and theme switching" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented themes and theme switching" />
   </component>
   <component name="masterDetails">
     <states>

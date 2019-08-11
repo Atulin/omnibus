@@ -413,9 +413,9 @@ div#profile {
       grid-template-columns: 50px 1fr;
       grid-template-rows: 1.5rem 1fr 1rem;
       grid-template-areas: "avatar top" "avatar body" "meta meta";
-      padding-bottom: 0.2rem;
+      padding: 0.5rem 0;
       margin: 0 2% 0.5rem;
-      border-bottom: 1px solid rgba(238, 238, 238, 0.5); }
+      border-bottom: 1px solid rgba(238, 238, 238, 0.2); }
       #comments > .comments-list > .comment .item {
         color: rgba(238, 238, 238, 0.2);
         transition: color 100ms ease-in-out;
@@ -444,9 +444,14 @@ div#profile {
         grid-area: top;
         display: flex;
         flex-direction: row;
-        justify-content: space-between; }
+        justify-content: space-between;
+        font-size: 0.9rem; }
         #comments > .comments-list > .comment > .top > .author {
           font-weight: 400; }
+        #comments > .comments-list > .comment > .top > .date {
+          color: rgba(238, 238, 238, 0.5); }
+          #comments > .comments-list > .comment > .top > .date:hover {
+            color: rgba(238, 238, 238, 0.8); }
       #comments > .comments-list > .comment > .body {
         grid-area: body;
         margin: 0; }
