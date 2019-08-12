@@ -11,19 +11,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Report
 {
-    /** @var int $id
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /** @var Comment $comment
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Comment")
      */
     private $comment;
 
     /** @var User $user
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="User")
      */
     private $user;
@@ -47,14 +43,6 @@ class Report
         $this->date = new DateTime('now');
     }
 
-
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
 
     /**
      * @return Comment

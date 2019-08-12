@@ -4,6 +4,7 @@ namespace Controllers\API;
 use Core\Controller;
 use Core\Utility\Gravatar;
 use Core\Utility\HttpStatus;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\TransactionRequiredException;
@@ -126,6 +127,7 @@ class CommentsApiController extends Controller
             } catch (ORMException $e) {
                 $errors[] = $e->getMessage();
             }
+
             $report = new Report();
             $report->setUser($this->getUser());
             $report->setComment($comment);
@@ -139,6 +141,8 @@ class CommentsApiController extends Controller
 
             try {
                 $this->em->flush();
+            } catch (UniqueConstraintViolationException $e) {
+                $errors[] = 'Already reported';
             } catch (OptimisticLockException $e) {
                 $errors[] = $e->getMessage();
             } catch (ORMException $e) {
