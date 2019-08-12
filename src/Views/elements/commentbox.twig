@@ -42,18 +42,18 @@
             </div>
 
             <div class="top">
-                <div class="author">${ c.user }</div>
+                <div class="author" v-on:click="insertMention(c.user_id)">${ c.user }</div>
                 <div class="date item">${ c.date }</div>
             </div>
 
-            <div class="body" v-html="c.body"></div>
+            <div class="body md" v-html="c.body"></div>
 
             <div class="meta">
                 <div class="buttons">
                     <button class="item" v-on:click="reportComment(c.id)">R</button>
                 </div>
                 <div class="id item">
-                    @${ c.id }
+                    #${ c.id }
                 </div>
             </div>
 
@@ -68,18 +68,18 @@
                 </div>
 
                 <div class="top">
-                    <div class="author">{{ c.user }}</div>
+                    <div class="author" v-on:click="insertMention({{ c.user_id }})">{{ c.user }}</div>
                     <div class="date item">{{ c.date }}</div>
                 </div>
 
-                <div class="body">{{ c.body|raw }}</div>
+                <div class="body md">{{ c.body|raw }}</div>
 
                 <div class="meta">
                     <div class="buttons">
                         <button class="item" v-on:click="reportComment({{ c.id }})">R</button>
                     </div>
                     <div class="id item">
-                        @{{ c.id }}
+                        #{{ c.id }}
                     </div>
                 </div>
 

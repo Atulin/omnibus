@@ -10,6 +10,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Environment;
+use Core\Utility\TwigHandler;
 
 abstract class Controller
 {

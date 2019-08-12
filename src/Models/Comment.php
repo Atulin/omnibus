@@ -1,6 +1,7 @@
 <?php
 namespace Models;
 
+use Core\Utility\ParsedownExtended;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Parsedown;
@@ -133,7 +134,7 @@ class Comment
      */
     public function parse(): void
     {
-        $pd = new Parsedown();
+        $pd = new ParsedownExtended();
         $pd->setSafeMode(true);
         $this->body = $pd->parse($this->body);
     }

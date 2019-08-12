@@ -1,0 +1,86 @@
+.md
+  & p
+    margin: .2rem 0
+
+    &>code
+      background-color: $foreground-20
+      padding: .3rem
+      border-radius: 3px
+
+  & code
+    font-family: "Inconsolata", monospace
+    font-size: .9rem
+    line-height: .9rem
+
+  & pre
+    background-color: $foreground-20
+    padding: .3rem
+    border-radius: 3px
+
+    &>code
+      padding: 0
+
+  & img
+    width: 90%
+    margin: 0 5%
+    border-radius: 1rem
+
+  & table
+    border: 1px solid $foreground-50
+    border-collapse: collapse
+
+    & th, td
+      border: 1px solid $foreground-20
+      padding: .2rem .5rem
+
+    & th
+      background: $foreground-20
+
+    & tr
+      transition: 200ms background-color ease-in-out
+      &:hover
+        background-color: $accent-20
+
+  & h1,h2,h3,h4,h5,h6
+    margin: .2rem 0 .5rem
+    color: $foreground-50
+
+  & h1
+    font-size: 1.5rem
+
+  & h2
+    font-size: 1.4rem
+
+  & h3
+    font-size: 1.3rem
+
+  & h4
+    font-size: 1.2rem
+
+  & h5
+    font-size: 1.1rem
+
+  & h6
+    font-size: 1rem
+
+  & blockquote
+    margin: .2rem 0
+    padding-left: 1rem
+    border-left: 3px solid $foreground-20
+    font-style: italic
+
+  & a
+    display: inline-block
+    box-sizing: border-box
+    border-bottom: 1px dashed $foreground-50
+    transition: border-bottom-color 100ms ease-in-out
+    &:hover
+      border-bottom-color: transparent
+
+    &.mention
+      border-bottom: none
+      font-weight: 400
+      color: $accent-80
+      transition: color 100ms ease-in-out
+      &:hover
+        color: $accent

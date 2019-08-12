@@ -1,9 +1,7 @@
 <?php
 
-namespace Core;
+namespace Core\Utility;
 
-use Core\Utility\Gravatar;
-use ParsedownExtra;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\TwigFilter;
@@ -14,9 +12,8 @@ class TwigHandler
 {
     public static function Get(): Environment
     {
-        $loader = new FilesystemLoader([
-            dirname(__DIR__, 1) . '/Views',
-            dirname(__DIR__, 2) . '/public/assets'
+        $loader = new FilesystemLoader([dirname(__DIR__, 2) . '/Views',
+            dirname(__DIR__, 3) . '/public/assets'
         ]);
         $twig = new Environment($loader);
 
@@ -24,7 +21,7 @@ class TwigHandler
         /// Markdown parse filter
         ///
         $twig->addFilter(new TwigFilter('md', static function (?string $string): ?string {
-            $Extra = new ParsedownExtra();
+            $Extra = new ParsedownExtended();
             return $string ? $Extra->parse($string) : null;
         }));
 

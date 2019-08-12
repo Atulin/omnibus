@@ -357,49 +357,6 @@ div#profile {
       div#profile > .column.right > .container > .bio {
         width: 96%;
         margin: 1rem 2%; }
-        div#profile > .column.right > .container > .bio p {
-          margin: 0.2rem 0; }
-          div#profile > .column.right > .container > .bio p > code {
-            font-family: "Inconsolata", monospace;
-            background-color: rgba(6, 6, 6, 0.2);
-            padding: 0.2rem;
-            border-radius: 3px; }
-          div#profile > .column.right > .container > .bio p > img {
-            width: 90%;
-            margin: 0 5%;
-            border-radius: 1rem; }
-        div#profile > .column.right > .container > .bio h1, div#profile > .column.right > .container > .bio h2, div#profile > .column.right > .container > .bio h3, div#profile > .column.right > .container > .bio h4, div#profile > .column.right > .container > .bio h5, div#profile > .column.right > .container > .bio h6 {
-          margin: 0.2rem 0 0.5rem;
-          color: rgba(6, 6, 6, 0.5); }
-        div#profile > .column.right > .container > .bio h1 {
-          font-size: 1.5rem; }
-        div#profile > .column.right > .container > .bio h2 {
-          font-size: 1.4rem; }
-        div#profile > .column.right > .container > .bio h3 {
-          font-size: 1.3rem; }
-        div#profile > .column.right > .container > .bio h4 {
-          font-size: 1.2rem; }
-        div#profile > .column.right > .container > .bio h5 {
-          font-size: 1.1rem; }
-        div#profile > .column.right > .container > .bio h6 {
-          font-size: 1.05rem; }
-        div#profile > .column.right > .container > .bio blockquote {
-          margin: 0.2rem 0;
-          padding-left: 1rem;
-          border-left: 3px solid rgba(6, 6, 6, 0.2);
-          font-style: italic; }
-        div#profile > .column.right > .container > .bio pre {
-          font-family: "Inconsolata", monospace;
-          padding: 0.2rem;
-          background-color: rgba(6, 6, 6, 0.2);
-          border-radius: 3px; }
-        div#profile > .column.right > .container > .bio a {
-          display: inline-block;
-          box-sizing: border-box;
-          border-bottom: 1px dashed rgba(6, 6, 6, 0.5);
-          transition: border-bottom-color 100ms ease-in-out; }
-          div#profile > .column.right > .container > .bio a:hover {
-            border-bottom-color: transparent; }
 
 @media only screen and (max-width: 768px) {
   div#profile {
@@ -531,54 +488,77 @@ div#profile {
       #comments > .comments-list > .comment > .body {
         grid-area: body;
         margin: 0; }
-        #comments > .comments-list > .comment > .body p {
-          margin: 0.2rem 0; }
-          #comments > .comments-list > .comment > .body p > code {
-            font-family: "Inconsolata", monospace;
-            background-color: rgba(6, 6, 6, 0.2);
-            padding: 0.2rem;
-            border-radius: 3px; }
-          #comments > .comments-list > .comment > .body p > img {
-            width: 90%;
-            margin: 0 5%;
-            border-radius: 1rem; }
-        #comments > .comments-list > .comment > .body h1, #comments > .comments-list > .comment > .body h2, #comments > .comments-list > .comment > .body h3, #comments > .comments-list > .comment > .body h4, #comments > .comments-list > .comment > .body h5, #comments > .comments-list > .comment > .body h6 {
-          margin: 0.2rem 0 0.5rem;
-          color: rgba(6, 6, 6, 0.5); }
-        #comments > .comments-list > .comment > .body h1 {
-          font-size: 1.5rem; }
-        #comments > .comments-list > .comment > .body h2 {
-          font-size: 1.4rem; }
-        #comments > .comments-list > .comment > .body h3 {
-          font-size: 1.3rem; }
-        #comments > .comments-list > .comment > .body h4 {
-          font-size: 1.2rem; }
-        #comments > .comments-list > .comment > .body h5 {
-          font-size: 1.1rem; }
-        #comments > .comments-list > .comment > .body h6 {
-          font-size: 1.05rem; }
-        #comments > .comments-list > .comment > .body blockquote {
-          margin: 0.2rem 0;
-          padding-left: 1rem;
-          border-left: 3px solid rgba(6, 6, 6, 0.2);
-          font-style: italic; }
-        #comments > .comments-list > .comment > .body pre {
-          font-family: "Inconsolata", monospace;
-          padding: 0.2rem;
-          background-color: rgba(6, 6, 6, 0.2);
-          border-radius: 3px; }
-        #comments > .comments-list > .comment > .body a {
-          display: inline-block;
-          box-sizing: border-box;
-          border-bottom: 1px dashed rgba(6, 6, 6, 0.5);
-          transition: border-bottom-color 100ms ease-in-out; }
-          #comments > .comments-list > .comment > .body a:hover {
-            border-bottom-color: transparent; }
 
 @media only screen and (max-width: 768px) {
   #comments {
     border-radius: 0; }
     #comments > .top.date {
       margin-right: -5rem; } }
+.md p {
+  margin: 0.2rem 0; }
+  .md p > code {
+    background-color: rgba(6, 6, 6, 0.2);
+    padding: 0.3rem;
+    border-radius: 3px; }
+.md code {
+  font-family: "Inconsolata", monospace;
+  font-size: 0.9rem;
+  line-height: 0.9rem; }
+.md pre {
+  background-color: rgba(6, 6, 6, 0.2);
+  padding: 0.3rem;
+  border-radius: 3px; }
+  .md pre > code {
+    padding: 0; }
+.md img {
+  width: 90%;
+  margin: 0 5%;
+  border-radius: 1rem; }
+.md table {
+  border: 1px solid rgba(6, 6, 6, 0.5);
+  border-collapse: collapse; }
+  .md table th, .md table td {
+    border: 1px solid rgba(6, 6, 6, 0.2);
+    padding: 0.2rem 0.5rem; }
+  .md table th {
+    background: rgba(6, 6, 6, 0.2); }
+  .md table tr {
+    transition: 200ms background-color ease-in-out; }
+    .md table tr:hover {
+      background-color: rgba(0, 203, 195, 0.2); }
+.md h1, .md h2, .md h3, .md h4, .md h5, .md h6 {
+  margin: 0.2rem 0 0.5rem;
+  color: rgba(6, 6, 6, 0.5); }
+.md h1 {
+  font-size: 1.5rem; }
+.md h2 {
+  font-size: 1.4rem; }
+.md h3 {
+  font-size: 1.3rem; }
+.md h4 {
+  font-size: 1.2rem; }
+.md h5 {
+  font-size: 1.1rem; }
+.md h6 {
+  font-size: 1rem; }
+.md blockquote {
+  margin: 0.2rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid rgba(6, 6, 6, 0.2);
+  font-style: italic; }
+.md a {
+  display: inline-block;
+  box-sizing: border-box;
+  border-bottom: 1px dashed rgba(6, 6, 6, 0.5);
+  transition: border-bottom-color 100ms ease-in-out; }
+  .md a:hover {
+    border-bottom-color: transparent; }
+  .md a.mention {
+    border-bottom: none;
+    font-weight: 400;
+    color: rgba(0, 203, 195, 0.8);
+    transition: color 100ms ease-in-out; }
+    .md a.mention:hover {
+      color: #00cbc3; }
 
 /*# sourceMappingURL=light.css.map */
