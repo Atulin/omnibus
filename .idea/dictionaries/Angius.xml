@@ -1,6 +1,7 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Angius">
     <words>
+      <w>csrf</w>
       <w>gravatar</w>
       <w>opacify</w>
       <w>parsedown</w>

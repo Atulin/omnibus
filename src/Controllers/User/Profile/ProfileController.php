@@ -39,7 +39,7 @@ class ProfileController extends Controller
                 return [
                     'user' => $a->getName(),
                     'user_id' => $a->getId(),
-                    'avatar' => (new Gravatar($a->getEmail(), 50))->getGravatar(),
+                    'avatar' => $a->getAvatar() ?? (new Gravatar($a->getEmail(), 50))->getGravatar(),
                     'date' => $c->getDate()->format('d.m.Y H:i'),
                     'body' => $c->getBody(),
                     'id'   => $c->getId(),

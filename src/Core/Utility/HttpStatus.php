@@ -1,12 +1,14 @@
 <?php
 namespace Core\Utility;
 
+use Exception;
+
 class HttpStatus
 {
     /** @var int $code */
-    private $code;
+    public $code;
     /** @var string $message */
-    private $message;
+    public $message;
 
     /**
      * HttpStatus constructor.
@@ -20,19 +22,23 @@ class HttpStatus
     }
 
     /**
-     * @return int
+     * @param $name
+     * @param $value
+     * @throws Exception
      */
-    public function getCode(): int
+    public function __set($name, $value)
     {
-        return $this->code;
+        throw new Exception('Public getters not available.');
     }
 
-    /**
-     * @return string
-     */
-    public function getMessage(): string
+    public function __isset($name)
     {
-        return $this->message;
+        return isset($this->$name);
+    }
+
+    public function __get($name)
+    {
+        return $this->$name;
     }
 
 

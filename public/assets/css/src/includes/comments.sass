@@ -1,4 +1,4 @@
-$err-height: 1rem
+$err-height: 1.1rem
 
 #comments
   padding: 0
@@ -13,7 +13,7 @@ $err-height: 1rem
       box-shadow: none
       display: flex
       flex-direction: column
-      padding: calc(20px - #{$err-height}) 20px 20px
+      padding: calc(20px - #{$err-height}) 1rem 1rem
       align-items: center
       border-radius: 20px
 
@@ -27,22 +27,33 @@ $err-height: 1rem
 
         &>textarea
           width: 100%
-          border: none
+          margin-top: 1rem
+          padding: .5rem
+          box-sizing: border-box
           background-color: transparent
-          border-bottom: 1px solid $foreground-20
+          border: 1px solid transparent
+          border-bottom-color: $foreground-20
           font-family: "Inconsolata", monospace
           font-weight: 300
           color: $foreground
           resize: vertical
+          transition: border-color 100ms ease-in-out
+          &:hover
+            border-color: $foreground-20
+          &:focus
+            border-color: $foreground-20
 
         &>p.error
           margin: 0
-          padding: 0 4px
-          font-size: .8rem
+          padding: .2rem .5rem
+          font-size: .9rem
           height: $err-height
           font-weight: lighter
           color: $error-text
+          border-radius: .2rem
+          display: none
           &.active
+            display: block
             background: $error
 
       &>.bottom
@@ -69,9 +80,9 @@ $err-height: 1rem
             background: $accent-50
 
 
-    //======================//
-    //    BOX O'COMMENTS    //
-    //======================//
+  //======================//
+  //    BOX O'COMMENTS    //
+  //======================//
   &>.comments-list
     width: 100%
     display: flex

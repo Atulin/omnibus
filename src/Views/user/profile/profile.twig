@@ -13,7 +13,7 @@
                 <div class="top part">
                     <h1 class="name">{{ owner.name }}</h1>
 
-                    <img class="avatar" src="{{ gravatar(owner.email, 300) }}" alt="">
+                    <img class="avatar" src="{{ owner.avatar ?? gravatar(owner.email, 300) }}" alt="">
 
                     <h2 class="title">{{ owner.title ?: "The Titleless" }}</h2>
                 </div>
@@ -21,11 +21,11 @@
                 <div class="bottom part">
                     <div class="date">
                         <p class="label">Joined</p>
-                        <p class="date">{{ owner.creation_date|date }}</p>
+                        <p class="date">{{ owner.creation_date|date('d.m.Y') }}</p>
                     </div>
                     <div class="date">
                         <p class="label">Last seen</p>
-                        <p class="date">{{ owner.last_seen|date }}</p>
+                        <p class="date">{{ owner.last_seen|date('d.m.Y') }}</p>
                     </div>
                     {% if owner.id is same as(user.id) %}
                         <a href="profile/edit" class="fluid edit button">Edit profile</a>

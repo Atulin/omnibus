@@ -13,7 +13,7 @@
         <div class="comment-box">
 
             <div class="main">
-                <p class="error" v-bind:class="{ active: error }">${ error }</p>
+                <p class="error" v-bind:class="{ active: error }" v-on:click="dismissError()">${ error }</p>
 
                 <label for="body" class="hidden">Comment body</label>
                 <textarea name="body" id="body" rows="10" v-model="comment_body"></textarea>
@@ -22,11 +22,14 @@
             <div class="bottom">
                 <div class="counter">${charsLeft}</div>
 
-                <button class="send" @click="sendComment">>>></button>
+                <button class="send" @click="sendComment">
+                    <i class="send icon"></i>
+                </button>
             </div>
 
         </div>
     </form>
+
 
     {#=====================#}
     {#    BOX O'COMMENTS   #}
@@ -50,7 +53,9 @@
 
             <div class="meta">
                 <div class="buttons">
-                    <button class="item" v-on:click="reportComment(c.id)">R</button>
+                    <button class="item" v-on:click.self="reportComment($event, c.id)">
+                        <i class="warning icon"></i>
+                    </button>
                 </div>
                 <div class="id item">
                     #${ c.id }
@@ -76,7 +81,9 @@
 
                 <div class="meta">
                     <div class="buttons">
-                        <button class="item" v-on:click="reportComment({{ c.id }})">R</button>
+                        <button class="item" v-on:click.self="reportComment($event, {{ c.id }})">
+                            <i class="warning icon"></i>
+                        </button>
                     </div>
                     <div class="id item">
                         #{{ c.id }}

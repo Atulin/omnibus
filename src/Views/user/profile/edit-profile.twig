@@ -7,7 +7,7 @@
 
         <div class="h-centered main column">
 
-            <form id="profile" class="full form" method="POST" @submit="checkForm">
+            <form id="profile" class="full form" method="POST" @submit="checkForm" enctype="multipart/form-data">
 
                 <h2>Edit profile</h2>
 
@@ -30,6 +30,11 @@
                             </ul>
                         </div>
                     {% endif %}
+                </div>
+
+                <div class="full field">
+                    <label for="avatar">Avatar</label>
+                    <input id="avatar" name="avatar" v-model="avatar" type="file">
                 </div>
 
                 <div class="full field">

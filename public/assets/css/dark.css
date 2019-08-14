@@ -1,5 +1,46 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Inconsolata&display=swap");
+@font-face {
+  font-family: "icomoon";
+  src: url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.eot");
+  src: url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.eot") format("embedded-opentype"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.ttf") format("truetype"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.woff") format("woff"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  pointer-events: none;
+  font-family: "icomoon", sans-serif !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  .icon.spinning {
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; }
+  .icon.spinner:before {
+    content: ""; }
+  .icon.check:before {
+    content: ""; }
+  .icon.cross:before {
+    content: ""; }
+  .icon.send:before {
+    content: ""; }
+  .icon.warning:before {
+    content: ""; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
 * {
   scrollbar-color: rgba(238, 238, 238, 0.2) rgba(238, 238, 238, 0.2);
   scrollbar-width: thin; }
@@ -107,9 +148,6 @@ form.form {
       form.form > div.field > .submit.button:hover {
         color: #00cbc3;
         transition: color 250ms ease-in-out; }
-  form.form > div#messages {
-    position: absolute;
-    top: 50px; }
 
 div.message {
   padding: 10px;
@@ -122,20 +160,20 @@ div.message {
     animation: vanish 0ms ease-in-out 1s forwards, remove 0s ease-in 1s forwards; }
   div.message.error {
     background: rgba(255, 30, 35, 0.6);
-    color: rgba(57, 7, 8, 0.84);
-    border-color: rgba(203, 24, 28, 0.64); }
+    color: rgba(255, 233, 234, 0.92);
+    border-color: rgba(255, 76, 80, 0.64); }
   div.message.warning {
     background: rgba(255, 255, 77, 0.6);
-    color: rgba(57, 57, 17, 0.84);
-    border-color: rgba(203, 203, 61, 0.64); }
+    color: rgba(255, 255, 238, 0.92);
+    border-color: rgba(255, 255, 114, 0.64); }
   div.message.info {
     background: rgba(77, 160, 255, 0.61);
-    color: rgba(17, 36, 58, 0.844);
-    border-color: rgba(61, 128, 203, 0.649); }
+    color: rgba(237, 246, 255, 0.922);
+    border-color: rgba(113, 179, 255, 0.649); }
   div.message.success {
     background: rgba(77, 255, 77, 0.61);
-    color: rgba(17, 58, 17, 0.844);
-    border-color: rgba(61, 203, 61, 0.649); }
+    color: rgba(237, 255, 237, 0.922);
+    border-color: rgba(113, 255, 113, 0.649); }
 
 @keyframes vanish {
   to {
@@ -180,6 +218,8 @@ div#navbar {
       div#navbar > .items .item.avatar {
         padding: 4px; }
         div#navbar > .items .item.avatar > img {
+          height: 40px;
+          width: 40px;
           border: 1px solid #eeeeee;
           border-radius: 10%; }
         div#navbar > .items .item.avatar > p {
@@ -389,7 +429,7 @@ div#profile {
       box-shadow: none;
       display: flex;
       flex-direction: column;
-      padding: calc(20px - 1rem) 20px 20px;
+      padding: calc(20px - 1.1rem) 1rem 1rem;
       align-items: center;
       border-radius: 20px; }
       #comments > form > .comment-box > .main {
@@ -399,21 +439,32 @@ div#profile {
           display: none; }
         #comments > form > .comment-box > .main > textarea {
           width: 100%;
-          border: none;
+          margin-top: 1rem;
+          padding: 0.5rem;
+          box-sizing: border-box;
           background-color: transparent;
-          border-bottom: 1px solid rgba(238, 238, 238, 0.2);
+          border: 1px solid transparent;
+          border-bottom-color: rgba(238, 238, 238, 0.2);
           font-family: "Inconsolata", monospace;
           font-weight: 300;
           color: #eeeeee;
-          resize: vertical; }
+          resize: vertical;
+          transition: border-color 100ms ease-in-out; }
+          #comments > form > .comment-box > .main > textarea:hover {
+            border-color: rgba(238, 238, 238, 0.2); }
+          #comments > form > .comment-box > .main > textarea:focus {
+            border-color: rgba(238, 238, 238, 0.2); }
         #comments > form > .comment-box > .main > p.error {
           margin: 0;
-          padding: 0 4px;
-          font-size: 0.8rem;
-          height: 1rem;
+          padding: 0.2rem 0.5rem;
+          font-size: 0.9rem;
+          height: 1.1rem;
           font-weight: lighter;
-          color: rgba(57, 7, 8, 0.84); }
+          color: rgba(255, 233, 234, 0.92);
+          border-radius: 0.2rem;
+          display: none; }
           #comments > form > .comment-box > .main > p.error.active {
+            display: block;
             background: rgba(255, 30, 35, 0.6); }
       #comments > form > .comment-box > .bottom {
         display: flex;

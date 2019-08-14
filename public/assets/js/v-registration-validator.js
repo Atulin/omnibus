@@ -56,13 +56,13 @@ const app = new Vue({
                     }
                 })
                 .then(res => {
-                    if (!res.data.name) {
+                    if (!res.data.data.name) {
                         this.errors.push('Name already in use.');
                     }
-                    if (!res.data.email) {
+                    if (!res.data.data.email) {
                         this.errors.push('Email already in use.');
                     }
-                    if (!res.data.is_email) {
+                    if (!res.data.data.is_email) {
                         this.errors.push('Not a valid email address.');
                     }
                     if (this.errors.length <= 0) {

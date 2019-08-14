@@ -1,9 +1,12 @@
 <?php
 namespace Controllers\User\Profile;
 
+use BackblazeB2\File;
 use Core\Controller;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use BackblazeB2\Client;
+use Exception;
 
 class ProfileEditController extends Controller
 {
@@ -19,6 +22,7 @@ class ProfileEditController extends Controller
     /**
      * @throws ORMException
      * @throws OptimisticLockException
+     * @throws Exception
      */
     public function edit(): void
     {
@@ -45,12 +49,25 @@ class ProfileEditController extends Controller
                 $this->messages[] = "Bio can't be longer than 2000 characters";
             }
 
+            if ($_FILES['avatar']['size'] < 200 * 1024) {
+                $client = new Client($_SERVER['BACKBLAZE_ID'], $_SERVER['BACKBLAZE_MASTER']);
+                /** @var File $file */
+                $file = $client->upload([
+                    'BucketName' => 'Omnibus',
+                    'FileName' => 'avatars/' . $u->getName() . '.' . explode('/', $_FILES['avatar']['type'])[1],
+                    'Body' => fopen($_FILES['avatar']['tmp_name'], 'rb')
+                ]);
+                $u->setAvatar('https://f002.backblazeb2.com/file/Omnibus/' . $file->getName());
+            } else {
+                $this->messages[] = 'File too big. Maximum size is 200 KB';
+            }
+
             if (!$this->messages) {
                 $this->em->flush();
             }
 
         } else {
-            $this->messages[] = 'X-CSRD protection triggered';
+            $this->messages[] = 'X-CSRF protection triggered';
         }
 
         if ($this->messages) {

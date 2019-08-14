@@ -18,6 +18,7 @@ use Doctrine\ORM\ORMException;
 use Doctrine\ORM\TransactionRequiredException;
 use Exception;
 use Models\ActivationCode;
+use Models\Comment;
 use Models\Database;
 use Models\Role;
 use Models\User;
@@ -109,10 +110,18 @@ class Application
         |*                    PUBLIC ACCESS ROUTES                     *|
         |*             Parts of the site anyone can access             *|
         \***************************************************************/
+        $em = $this->em;
         try {
             $this->router->addRoutes([
                 //Home
                 ['GET', '/', HomeController::class . '#index', 'home'],
+                // User profiles
+                ['GET',  '/profile/[i:id]/[f:furl]?', ProfileController::class . '#index'  ],
+                ['GET', '/t', static function() use (&$em) {
+                    $c = $em->find(Comment::class, 13);
+                    $em->remove($c);
+                    $em->flush();
+                }]
             ]);
         } catch (Exception $e) {
             echo $e;
@@ -155,7 +164,7 @@ class Application
                     // User profile
                     ['GET',  '/profile/edit',              ProfileEditController::class . '#index'         ],
                     ['POST', '/profile/edit',              ProfileEditController::class . '#edit'          ],
-                    ['GET',  '/profile/[i:id]?/[f:furl]?', ProfileController::class . '#index', 'profile'  ],
+                    ['GET',  '/profile',                   ProfileController::class . '#index', 'profile'  ],
                     // User account
                     ['GET',  '/account',                   AccountEditController::class . '#index'         ],
                     ['POST', '/account',                   AccountEditController::class . '#edit'          ],

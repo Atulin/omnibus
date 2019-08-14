@@ -12,6 +12,7 @@ const app = new Vue({
         errors: [],
         title: document.getElementById('title').value,
         bio: document.getElementById('bio').value,
+        avatar: null,
         chars_left: {
             title: title_length,
             bio: bio_length
@@ -38,12 +39,6 @@ const app = new Vue({
         TitleCharsLeft() {
             let chars = this.title.length;
             this.chars_left.title = title_length - chars;
-
-            // if (this.comment_body.length > limit) {
-            //     this.error = 'Your message is ' + Math.abs(this.chars_left) + ' characters too long'
-            // } else {
-            //     this.error = null;
-            // }
 
             return this.chars_left.title;
         },

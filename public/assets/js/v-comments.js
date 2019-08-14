@@ -2,7 +2,7 @@
 // @compilation_level SIMPLE_OPTIMIZATIONS
 // ==/ClosureCompiler==
 
-const limit = 140;
+const limit = 300;
 
 const app = new Vue({
     delimiters: ['${', '}'],
@@ -24,6 +24,8 @@ const app = new Vue({
 
             if (this.comment_body.length > limit) {
                 this.error = 'Your message is ' + Math.abs(this.chars_left) + ' characters too long'
+            } else if (this.comment_body.replace(/\s/g, "").length <= 0) {
+                this.error = 'Message cannot be empty.'
             } else {
 
                 // Create POST data
@@ -49,7 +51,7 @@ const app = new Vue({
                                 console.log(response);
                                 this.comments_list = [];
 
-                                for (let c of response.data.comments) {
+                                for (let c of response.data.data) {
                                     this.comments_list.push(c);
                                 }
 
@@ -67,22 +69,31 @@ const app = new Vue({
             }
         },
 
-        reportComment: function (c, e) {
+        reportComment: function (event, c) {
             let token = document.getElementById('token').value;
 
-            console.log(c);
+            let btn = event.target;
+
+            console.log(btn);
+            console.log(btn.childNodes);
+
+            let icon = btn.querySelector('i');
+            icon.className = 'spinning spinner icon';
 
             let data = new FormData();
             data.append('comment', c);
             data.append('token', token);
+
             // Report comment
             axios.post('/api/comments/report', data)
                 .then(response => {
                     console.log('Reported!');
                     console.info(response.data);
+                    icon.className = 'check icon';
                 })
                 .catch(err => {
-                    console.error(err)
+                    console.error(err);
+                    icon.className = 'cross icon';
                 });
         },
 
@@ -94,6 +105,10 @@ const app = new Vue({
             } else {
                 this.comment_body += ` @${c} `;
             }
+        },
+
+        dismissError: function () {
+            this.error = null;
         }
     },
 

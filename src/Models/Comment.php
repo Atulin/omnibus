@@ -47,6 +47,7 @@ class Comment
      */
     private $body;
 
+    /// TODO    Add reports reflection
 
     /**
      * Comment constructor.

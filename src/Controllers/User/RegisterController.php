@@ -6,7 +6,9 @@ use Core\Controller;
 use Core\Security\PasswordUtils;
 use Core\Security\ReCaptcha\ReCaptchaHandler;
 use Core\Security\Token;
+use Core\Utility\APIMessage;
 use Core\Utility\Email;
+use Core\Utility\HttpStatus;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -147,8 +149,13 @@ class RegisterController extends Controller
 
 
     /**
-     * Validate whether the username or email is taken and whether or not the email is valid
      * Returns true if OK
+     * @api {get} ?name=:name&email=:email&token=:token& Validate
+     * @apiName Validate
+     * @apiDescription Validate whether the username or email is taken and whether or not the email is valid
+     * @apiParam {string} name Name to check
+     * @apiParam {string} email Email to check
+     * @apiParam {string} token CSRF token
      */
     public function validate(): void
     {
@@ -158,14 +165,22 @@ class RegisterController extends Controller
 
             $is_email = filter_var($_GET['email'], FILTER_VALIDATE_EMAIL);
 
+            $is_valid = $name&&$email&&$is_email;
+
+            http_response_code(200);
             header('Content-Type: application/json');
-            echo json_encode([
-                'name' => $name,
-                'email' => $email,
-                'is_email' => $is_email ? true : false
-            ]);
+            echo json_encode(new APIMessage(
+                $is_valid ? HttpStatus::S200() : HttpStatus::S409(),
+                $is_valid ? 'Valid' : 'Invalid. Check data for more details.',
+                [],
+                [
+                    'name' => $name,
+                    'email' => $email,
+                    'is_email' => $is_email ? true : false
+                ]
+            ));
         } else {
-            header($_SERVER['SERVER_PROTOCOL'] . ' 401 Access Denied');
+            http_response_code(401);
             die('X-CSRF protection triggered');
         }
     }
