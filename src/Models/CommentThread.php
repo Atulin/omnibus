@@ -22,7 +22,7 @@ class CommentThread
 
     /**
      * @var ArrayCollection $comments
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="thread")
+     * @ORM\OneToMany(targetEntity="Models\Comment", mappedBy="thread", orphanRemoval=true)
      */
     private $comments;
 

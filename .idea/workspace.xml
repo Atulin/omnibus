@@ -2,37 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/icons/hamburger.ai" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/icons/hamburger.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/icons/palette.ai" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/icons/palette.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/icons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/icons.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/links.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/links.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/profile.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/profile.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Utility/ParsedownExtended.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/ParsedownExtended.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Utility/TwigHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/TwigHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/CommentThread.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/CommentThread.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/elements/navbar.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/navbar.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -330,7 +303,7 @@
       <workItem from="1565482381120" duration="13122000" />
       <workItem from="1565631397910" duration="9756000" />
       <workItem from="1565720541031" duration="19929000" />
-      <workItem from="1565832520344" duration="9247000" />
+      <workItem from="1565832520344" duration="10230000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -514,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565757700354</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary=" – Improved comment handling for not-registered users&#10; – Added hamburger and palette icons&#10; – Improved styling">
+      <created>1565842737036</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1565842737036</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Moved to Doctrine, added user roles" />
     <MESSAGE value="Now with more proper mappings" />
     <MESSAGE value="Roles work, switched to not-simple annotation mapper" />
     <MESSAGE value="Login and logout&#10; – User login and logout now work&#10; – Made the forms look prettier&#10; – Fixed double error messages" />
@@ -560,7 +539,8 @@
     <MESSAGE value="Markdown rendering improvements and mention system" />
     <MESSAGE value="Improved report system" />
     <MESSAGE value=" – Improved comments handling&#10; – Added Backblaze B2 backend for avatars&#10; – Moved API response to objects" />
-    <option name="LAST_COMMIT_MESSAGE" value=" – Improved comments handling&#10; – Added Backblaze B2 backend for avatars&#10; – Moved API response to objects" />
+    <MESSAGE value=" – Improved comment handling for not-registered users&#10; – Added hamburger and palette icons&#10; – Improved styling" />
+    <option name="LAST_COMMIT_MESSAGE" value=" – Improved comment handling for not-registered users&#10; – Added hamburger and palette icons&#10; – Improved styling" />
   </component>
   <component name="masterDetails">
     <states>

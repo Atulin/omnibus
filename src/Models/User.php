@@ -90,7 +90,7 @@ class User
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="CommentThread")
+     * @ORM\OneToOne(targetEntity="CommentThread", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="thread_id", referencedColumnName="id")
      */
     private $comment_thread;
@@ -109,7 +109,7 @@ class User
     {
         $this->creation_date = new DateTime('now');
         $this->last_seen = new DateTime('now');
-        $this->comments = new ArrayCollection();
+        $this->setCommentThread(new CommentThread());
     }
 
     /**
