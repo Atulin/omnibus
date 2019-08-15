@@ -3,8 +3,8 @@
 @import url("https://fonts.googleapis.com/css?family=Inconsolata&display=swap");
 @font-face {
   font-family: "icomoon";
-  src: url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.eot");
-  src: url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.eot") format("embedded-opentype"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.ttf") format("truetype"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.woff") format("woff"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.svg") format("svg");
+  src: url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.eot?v=2.0.0");
+  src: url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.eot?v=2.0.0") format("embedded-opentype"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.ttf?v=2.0.0") format("truetype"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.woff?v=2.0.0") format("woff"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.svg?v=2.0.0") format("svg");
   font-weight: normal;
   font-style: normal; }
 .icon {
@@ -35,6 +35,10 @@
     content: ""; }
   .icon.warning:before {
     content: ""; }
+  .icon.palette:before {
+    content: ""; }
+  .icon.hamburger:before {
+    content: ""; }
 
 @keyframes rotate {
   from {
@@ -212,6 +216,8 @@ div#navbar {
     div#navbar > .items.right {
       margin-left: auto; }
     div#navbar > .items .item {
+      height: 50px;
+      min-width: 34px;
       padding: 8px;
       display: flex;
       align-items: center; }
@@ -221,7 +227,8 @@ div#navbar {
           height: 40px;
           width: 40px;
           border: 1px solid #060606;
-          border-radius: 10%; }
+          border-radius: 10%;
+          object-fit: cover; }
         div#navbar > .items .item.avatar > p {
           margin: 4px 8px 4px 4px; }
 
@@ -260,6 +267,9 @@ div#navbar {
 .dropdown {
   height: auto;
   padding: 0; }
+  .dropdown > .item > i.icon {
+    width: 100%;
+    text-align: center; }
   .dropdown > .dropdown-content {
     display: none;
     position: absolute;
@@ -317,21 +327,21 @@ div#navbar {
       padding: auto;
       margin: auto 0.5rem;
       cursor: pointer; } }
-a {
+a.link {
   text-decoration: none;
   color: #060606;
   transition: color 250ms ease-in-out; }
-  a:after {
+  a.link:after {
     margin-top: -1px;
     display: block;
     content: "";
     border-bottom: solid 1px #060606;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out, border-bottom-color 250ms ease-in-out; }
-  a:hover {
+  a.link:hover {
     color: #00cbc3;
     transition: color 250ms ease-in-out; }
-    a:hover:after {
+    a.link:hover:after {
       border-bottom-color: #00cbc3;
       transform: scaleX(1);
       transition: transform 250ms ease-in-out, border-bottom-color 250ms ease-in-out; }
@@ -361,23 +371,27 @@ div#profile {
         box-sizing: border-box;
         border: 2px solid #060606;
         border-radius: 50%;
-        width: 100%; }
+        object-fit: cover;
+        width: 190px;
+        height: 190px; }
       div#profile > .column.left > .container > div.top > h2.title {
         font-size: 1.1rem;
         font-weight: normal; }
-      div#profile > .column.left > .container > div.bottom > div.date {
-        font-size: 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center; }
-        div#profile > .column.left > .container > div.bottom > div.date > p {
-          margin: 0; }
-          div#profile > .column.left > .container > div.bottom > div.date > p.label {
-            color: rgba(6, 6, 6, 0.5); }
-          div#profile > .column.left > .container > div.bottom > div.date > p.date {
-            color: #060606; }
-      div#profile > .column.left > .container > div.bottom > .edit {
-        margin-top: 1rem; }
+      div#profile > .column.left > .container > div.bottom {
+        margin-bottom: 1rem; }
+        div#profile > .column.left > .container > div.bottom > div.date {
+          font-size: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center; }
+          div#profile > .column.left > .container > div.bottom > div.date > p {
+            margin: 0; }
+            div#profile > .column.left > .container > div.bottom > div.date > p.label {
+              color: rgba(6, 6, 6, 0.5); }
+            div#profile > .column.left > .container > div.bottom > div.date > p.date {
+              color: #060606; }
+        div#profile > .column.left > .container > div.bottom > .edit {
+          margin-top: 1rem; }
   @media only screen and (max-width: 768px) {
     div#profile > .column.left {
       width: 100%; }
@@ -485,6 +499,24 @@ div#profile {
           transition: background-color 200ms ease-in-out; }
           #comments > form > .comment-box > .bottom > button.send:hover {
             background: rgba(0, 203, 195, 0.5); }
+  #comments div.ph {
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box; }
+    #comments div.ph > .inner {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: #060606;
+      cursor: pointer;
+      padding: 5rem 2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(6, 6, 6, 0.2);
+      background-color: transparent;
+      transition: border-color 100ms ease-in-out, background-color 200ms ease-in-out; }
+      #comments div.ph > .inner:hover {
+        border-color: rgba(6, 6, 6, 0.5);
+        background-color: rgba(6, 6, 6, 0.2); }
   #comments > .comments-list {
     width: 100%;
     display: flex;
@@ -503,7 +535,7 @@ div#profile {
       #comments > .comments-list > .comment .item {
         color: rgba(6, 6, 6, 0.2);
         transition: color 100ms ease-in-out;
-        cursor: pointer; }
+        cursor: default; }
         #comments > .comments-list > .comment .item:hover {
           color: rgba(6, 6, 6, 0.5); }
       #comments > .comments-list > .comment > .meta {
@@ -523,6 +555,8 @@ div#profile {
           width: 50px;
           height: 50px;
           border: 1px solid #060606;
+          object-fit: cover;
+          object-position: center;
           border-radius: 10%; }
       #comments > .comments-list > .comment > .top {
         grid-area: top;
@@ -531,7 +565,10 @@ div#profile {
         justify-content: space-between;
         font-size: 0.9rem; }
         #comments > .comments-list > .comment > .top > .author {
-          font-weight: 400; }
+          font-weight: 400;
+          cursor: pointer; }
+          #comments > .comments-list > .comment > .top > .author:hover {
+            text-decoration: underline; }
         #comments > .comments-list > .comment > .top > .date {
           color: rgba(6, 6, 6, 0.5); }
           #comments > .comments-list > .comment > .top > .date:hover {

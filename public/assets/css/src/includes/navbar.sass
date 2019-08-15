@@ -32,6 +32,8 @@ div#navbar
       margin-left: auto
 
     & .item
+      height: $nav-height
+      min-width: $nav-height - 16px
       padding: 8px
       display: flex
       align-items: center
@@ -43,6 +45,7 @@ div#navbar
           width: 40px
           border: 1px solid $foreground
           border-radius: 10%
+          object-fit: cover
         &>p
           margin: 4px 8px 4px 4px
 

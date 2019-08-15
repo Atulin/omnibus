@@ -1,11 +1,11 @@
 <div id="navbar">
 
     <div class="brand">
-        <a href="/">Website title</a>
+        <a class="link" href="/">{{ cfg('name') }}</a>
     </div>
 
     <div class="hamburger">
-        <i class="fas fa-bars">H</i>
+        <i class="hamburger icon"></i>
     </div>
 
     <nav class="items">
@@ -13,19 +13,7 @@
         <hr>
 
         <div class="item">
-            <a href="#">Longer Link</a>
-        </div>
-
-        <hr>
-
-        <div class="dropdown" aria-haspopup="true">
-            <div class="item">
-                <p>T</p>
-            </div>
-            <div class="dropdown-content">
-                <a class="dropdown-item theme" data-theme="{{ vasset('css/dark', 'min.css', true) }}" href="#">Dark</a>
-                <a class="dropdown-item theme" data-theme="{{ vasset('css/light', 'min.css', true) }}" href="#" >Light</a>
-            </div>
+            <a class="link" href="#">Longer Link</a>
         </div>
 
         <hr>
@@ -38,11 +26,11 @@
 
         <div class="dropdown" aria-haspopup="true">
             <div class="item">
-                <p>T</p>
+                <i class="palette icon"></i>
             </div>
             <div class="dropdown-content">
-                <a class="dropdown-item theme" data-theme="{{ vasset('css/dark', 'min.css', true) }}" href="#">Dark</a>
-                <a class="dropdown-item theme" data-theme="{{ vasset('css/light', 'min.css', true) }}" href="#" >Light</a>
+                <a class="dropdown-item link theme" data-theme="{{ vasset('css/dark', 'min.css', true) }}" href="#">Dark</a>
+                <a class="dropdown-item link theme" data-theme="{{ vasset('css/light', 'min.css', true) }}" href="#" >Light</a>
             </div>
         </div>
 
@@ -56,21 +44,21 @@
                     <img src="{{ user.avatar ?? gravatar(user.email, 40) }}" alt="{{ user.name }}'s avatar">
                 </div>
                 <div class="dropdown-content">
-                    <a class="dropdown-item" href="/profile">Profile</a>
-                    <a class="dropdown-item" href="/account">Account</a>
-                    <a class="dropdown-item" href="/logout" >Logout</a>
+                    <a class="dropdown-item link" href="/profile">Profile</a>
+                    <a class="dropdown-item link" href="/account">Account</a>
+                    <a class="dropdown-item link" href="/logout" >Logout</a>
                 </div>
             </div>
 
         {% else %}
 
             <div class="item">
-                <a href="/register">Register</a>
+                <a class="link" href="/register">Register</a>
             </div>
 
             <hr>
             <div class="item">
-                <a href="/login">Login</a>
+                <a class="link" href="/login">Login</a>
             </div>
 
         {% endif %}

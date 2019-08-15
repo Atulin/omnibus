@@ -100,7 +100,7 @@ const app = new Vue({
         insertMention: function (c, e) {
             console.log(c, e);
 
-            if (this.comment_body.endsWith(' ')) {
+            if (this.comment_body.endsWith(' ') || this.comment_body.length <= 0) {
                 this.comment_body += `@${c} `;
             } else {
                 this.comment_body += ` @${c} `;

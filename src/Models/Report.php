@@ -14,7 +14,7 @@ class Report
 
     /** @var Comment $comment
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Comment")
+     * @ORM\ManyToOne(targetEntity="Comment", inversedBy="reports")
      */
     private $comment;
 
@@ -58,6 +58,7 @@ class Report
     public function setComment(Comment $comment): void
     {
         $this->comment = $comment;
+        $comment->addReport($this);
     }
 
     /**

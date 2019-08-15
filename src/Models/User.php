@@ -170,17 +170,17 @@ class User
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAvatar(): string
+    public function getAvatar(): ?string
     {
         return $this->avatar;
     }
 
     /**
-     * @param string $avatar
+     * @param string|null $avatar
      */
-    public function setAvatar(string $avatar): void
+    public function setAvatar(?string $avatar): void
     {
         $this->avatar = $avatar;
     }

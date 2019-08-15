@@ -56,6 +56,13 @@ class TwigHandler
         }));
 
         ///
+        /// Get a value from site config
+        ///
+        $twig->addFunction(new TwigFunction('cfg', static function(string $key) {
+            return CONFIG[$key];
+        }));
+
+        ///
         /// Dump data
         ///
         $twig->addFunction(new TwigFunction('prevex', static function($data, $circular = false) {

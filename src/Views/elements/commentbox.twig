@@ -6,29 +6,41 @@
     {#    COMMENT FORM    #}
     {#====================#}
 
-    <form method="post" @submit.stop.prevent="sendComment" xmlns:v-bind="http://www.w3.org/1999/xhtml">
-        <input id="token" type="hidden" name="token" value="{{ token }}">
-        <input id="thread" type="hidden" name="thread" value="{{ thread }}">
+    {% if user %}
 
-        <div class="comment-box">
+        <form method="post" @submit.stop.prevent="sendComment" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+            <input id="token" type="hidden" name="token" value="{{ token }}">
+            <input id="thread" type="hidden" name="thread" value="{{ thread }}">
 
-            <div class="main">
-                <p class="error" v-bind:class="{ active: error }" v-on:click="dismissError()">${ error }</p>
+            <div class="comment-box">
 
-                <label for="body" class="hidden">Comment body</label>
-                <textarea name="body" id="body" rows="10" v-model="comment_body"></textarea>
+                <div class="main">
+                    <p class="error" v-bind:class="{ active: error }" v-on:click="dismissError()">${ error }</p>
+
+                    <label for="body" class="hidden">Comment body</label>
+                    <textarea name="body" id="body" rows="10" v-model="comment_body"></textarea>
+                </div>
+
+                <div class="bottom">
+                    <div class="counter">${charsLeft}</div>
+
+                    <button class="send" @click="sendComment">
+                        <i class="send icon"></i>
+                    </button>
+                </div>
+
             </div>
+        </form>
 
-            <div class="bottom">
-                <div class="counter">${charsLeft}</div>
+    {% else %}
 
-                <button class="send" @click="sendComment">
-                    <i class="send icon"></i>
-                </button>
-            </div>
-
+        <div class="ph">
+            <a class="inner" href="/register">
+                You need an account to post comments. Why not make one now?
+            </a>
         </div>
-    </form>
+
+    {% endif %}
 
 
     {#=====================#}
@@ -46,16 +58,18 @@
 
             <div class="top">
                 <div class="author" v-on:click="insertMention(c.user_id)">${ c.user }</div>
-                <div class="date item">${ c.date }</div>
+                <time class="date item" v-bind:datetime="c.date">${ c.date }</time>
             </div>
 
             <div class="body md" v-html="c.body"></div>
 
             <div class="meta">
                 <div class="buttons">
+                    {% if user %}
                     <button class="item" v-on:click.self="reportComment($event, c.id)">
                         <i class="warning icon"></i>
                     </button>
+                    {% endif %}
                 </div>
                 <div class="id item">
                     #${ c.id }
@@ -74,16 +88,18 @@
 
                 <div class="top">
                     <div class="author" v-on:click="insertMention({{ c.user_id }})">{{ c.user }}</div>
-                    <div class="date item">{{ c.date }}</div>
+                    <time class="date item" datetime="{{ c.date|date('c') }}">{{ c.date }}</time>
                 </div>
 
                 <div class="body md">{{ c.body|raw }}</div>
 
                 <div class="meta">
                     <div class="buttons">
+                        {% if user %}
                         <button class="item" v-on:click.self="reportComment($event, {{ c.id }})">
                             <i class="warning icon"></i>
                         </button>
+                        {% endif %}
                     </div>
                     <div class="id item">
                         #{{ c.id }}

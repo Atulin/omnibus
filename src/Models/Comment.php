@@ -1,10 +1,13 @@
 <?php
 namespace Models;
 
+use Controllers\User\RecoverController;
 use Core\Utility\ParsedownExtended;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Parsedown;
+use Symfony\Component\Translation\Tests\Util\ArrayConverterTest;
 
 /**
  * @package Models
@@ -47,7 +50,12 @@ class Comment
      */
     private $body;
 
-    /// TODO    Add reports reflection
+
+    /**
+     * @var ArrayCollection $reports
+     * @ORM\OneToMany(targetEntity="Report", mappedBy="comment", orphanRemoval=true)
+     */
+    private $reports;
 
     /**
      * Comment constructor.
@@ -55,6 +63,7 @@ class Comment
     public function __construct()
     {
         $this->date = new DateTime('now');
+        $this->reports = new ArrayCollection();
     }
 
 
@@ -128,6 +137,22 @@ class Comment
     public function setThread($thread): void
     {
         $this->thread = $thread;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getReports(): ArrayCollection
+    {
+        return $this->reports;
+    }
+
+    /**
+     * @param Report $report
+     */
+    public function addReport(Report $report): void
+    {
+        $this->reports[] = $report;
     }
 
     /**

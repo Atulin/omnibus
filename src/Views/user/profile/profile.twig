@@ -21,14 +21,18 @@
                 <div class="bottom part">
                     <div class="date">
                         <p class="label">Joined</p>
-                        <p class="date">{{ owner.creation_date|date('d.m.Y') }}</p>
+                        <time class="date" datetime="{{ owner.creation_date|date('c') }}">
+                            {{ owner.creation_date|date('d.m.Y') }}
+                        </time>
                     </div>
                     <div class="date">
                         <p class="label">Last seen</p>
-                        <p class="date">{{ owner.last_seen|date('d.m.Y') }}</p>
+                        <time class="date" datetime="{{ owner.last_seen|date('c') }}">
+                            {{ owner.last_seen|date('d.m.Y') }}
+                        </time>
                     </div>
                     {% if owner.id is same as(user.id) %}
-                        <a href="profile/edit" class="fluid edit button">Edit profile</a>
+                        <a href="profile/edit" class="fluid edit link button">Edit profile</a>
                     {% endif %}
                 </div>
 

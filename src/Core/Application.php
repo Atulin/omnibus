@@ -11,14 +11,12 @@ use Controllers\User\Profile\AccountEditController;
 use Controllers\User\Profile\ProfileController;
 use Controllers\User\Profile\ProfileEditController;
 use Controllers\User\RecoverController;
-use Core\Utility\HttpStatus;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\TransactionRequiredException;
 use Exception;
 use Models\ActivationCode;
-use Models\Comment;
 use Models\Database;
 use Models\Role;
 use Models\User;
@@ -110,18 +108,12 @@ class Application
         |*                    PUBLIC ACCESS ROUTES                     *|
         |*             Parts of the site anyone can access             *|
         \***************************************************************/
-        $em = $this->em;
         try {
             $this->router->addRoutes([
                 //Home
                 ['GET', '/', HomeController::class . '#index', 'home'],
                 // User profiles
                 ['GET',  '/profile/[i:id]/[f:furl]?', ProfileController::class . '#index'  ],
-                ['GET', '/t', static function() use (&$em) {
-                    $c = $em->find(Comment::class, 13);
-                    $em->remove($c);
-                    $em->flush();
-                }]
             ]);
         } catch (Exception $e) {
             echo $e;

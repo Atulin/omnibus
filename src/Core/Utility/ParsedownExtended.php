@@ -30,6 +30,7 @@ class ParsedownExtended extends Parsedown
     {
         $link['target'] = '_blank';
         $link['rel'] = 'nofollow';
+        $link['class'] = 'link';
     }
 
 
@@ -84,7 +85,7 @@ class ParsedownExtended extends Parsedown
                         'text' => '@'.$u->getName(),
                         'attributes' => [
                             'href' => 'https://omnibus2.test/profile/'.$id,
-                            'class' => 'mention',
+                            'class' => 'mention link',
                             'target' => '_blank'
                         ]
                     ]
