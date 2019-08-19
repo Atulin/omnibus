@@ -4,11 +4,11 @@
 
     <div class="narrow h-centered container">
 
-        <form class="form" id="login" method="POST" @submit="checkForm">
+        <form class="form" id="login" action="setup-mfa" method="POST">
 
             <div id="messages">
                 {% if messages %}
-                    <div class="error message field" v-if="!errors.length">
+                    <div class="error message field">
                         <b>Please correct the following error(s):</b>
                         <ul>
                             {% for m in messages %}
@@ -32,8 +32,8 @@
             <input id="token" type="hidden" name="token" value="{{ token }}">
 
             <div class="field">
-                <label for="submit" class="hidden">Log in</label>
-                <input id="submit" class="submit button" type="submit" value="Log in">
+                <label for="submit" class="hidden">Enable</label>
+                <input id="submit" class="submit button" type="submit" value="Enable">
             </div>
 
         </form>

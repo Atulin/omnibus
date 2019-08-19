@@ -1,0 +1,43 @@
+{% extends './scaffolds/public_scaffold.twig' %}
+
+{% block body %}
+
+    <div class="narrow h-centered container">
+
+        <form class="form" id="login" action="remove-mfa" method="POST">
+
+            <div class="error message field">
+                <h3>Warning!</h3>
+                Removing two factor authentication will lower your account security!
+            </div>
+
+            <div id="messages">
+                {% if messages %}
+                    <div class="error message field">
+                        <b>Please correct the following error(s):</b>
+                        <ul>
+                            {% for m in messages %}
+                                <li>{{ m }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <input id="token" type="hidden" name="token" value="{{ token }}">
+
+            <div class="field">
+                <label for="submit" class="hidden">Confirm</label>
+                <input id="submit" class="submit button" type="submit" value="Confirm">
+            </div>
+
+        </form>
+
+    </div>
+
+{% endblock %}

@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="//unpkg.com/axios/dist/axios.min.js"></script>
 
     <link id="style" rel="stylesheet" href="{{ vasset('css/'~theme, 'min.css') }}">
     {% block scripts %}{% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
 </head>
+
+<script src="//instant.page/2.0.0" type="module" integrity="sha384-D7B5eODAUd397+f4zNFAVlnDNDtO1ppV8rPnfygILQXhqu3cUndgHvlcJR2Bhig8"></script>
+
 <body>
 
 {% include 'elements/navbar.twig' %}

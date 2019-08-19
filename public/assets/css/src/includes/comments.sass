@@ -1,3 +1,7 @@
+/*!
+ / Copyright © 2019 by Angius
+ / Last modified: 19.08.2019, 06:37
+ /
 $err-height: 1.1rem
 
 #comments
@@ -166,6 +170,7 @@ $err-height: 1.1rem
 
         &>.date
           color: $foreground-50
+          transition: margin-right 200ms ease-in-out
           &:hover
             color: $foreground-80
 
@@ -173,7 +178,7 @@ $err-height: 1.1rem
         grid-area: body
         margin: 0
 
-@media only screen and (max-width: 768px)
+@media only screen and (max-width: 760px)
   #comments
     border-radius: 0
     &>.top.date

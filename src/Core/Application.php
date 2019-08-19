@@ -1,7 +1,13 @@
 <?php
+/**
+ * Copyright © 2019 by Angius
+ * Last modified: 19.08.2019, 05:52
+ */
+
 namespace Core;
 
 use AltoRouter;
+use Core\Utility\Email;
 use Controllers\API\CommentsApiController;
 use Controllers\HomeController;
 use Controllers\User\ForgottenPasswordController;
@@ -112,6 +118,7 @@ class Application
             $this->router->addRoutes([
                 //Home
                 ['GET', '/', HomeController::class . '#index', 'home'],
+
                 // User profiles
                 ['GET',  '/profile/[i:id]/[f:furl]?', ProfileController::class . '#index'  ],
             ]);
@@ -126,17 +133,21 @@ class Application
                     // Login
                     ['GET',  '/login',               LoginController::class    . '#index', 'login'   ],
                     ['POST', '/login',               LoginController::class    . '#login'            ],
+
                     // Register
                     ['GET',  '/register',            RegisterController::class . '#index', 'register'],
                     ['POST', '/register',            RegisterController::class . '#register'         ],
                     ['GET',  '/register/validate',   RegisterController::class . '#validate'         ],
+
                     // Activate
                     ['GET',  '/activate/[a:code]',   ActivateController::class . '#activate'         ],
                     ['GET',  '/activate',            ActivateController::class . '#index'            ],
                     ['POST', '/activate',            ActivateController::class . '#activate'         ],
+
                     // Forgot password
                     ['GET',  '/forgot',              ForgottenPasswordController::class . '#index'   ],
                     ['POST', '/forgot',              ForgottenPasswordController::class . '#forgot'  ],
+
                     // Recover password
                     ['GET',  '/recover/[a:code]',    RecoverController::class  . '#index', 'recover' ],
                     ['POST', '/recover/[a:code]',    RecoverController::class  . '#recover'          ],
@@ -150,13 +161,17 @@ class Application
                 $this->router->addRoutes([
                     //Logout
                     ['GET',  '/logout',                    LogoutController::class . '#index', 'logout'    ],
+
                     // Set up MFA
-                    ['GET',  '/setup-mfa',                 MFAController::class . '#index', 'mfa'          ],
+                    ['GET',  '/mfa',                       MFAController::class . '#index', 'mfa'          ],
                     ['POST', '/setup-mfa',                 MFAController::class . '#setup'                 ],
+                    ['POST', '/remove-mfa',                MFAController::class . '#remove'                ],
+
                     // User profile
                     ['GET',  '/profile/edit',              ProfileEditController::class . '#index'         ],
                     ['POST', '/profile/edit',              ProfileEditController::class . '#edit'          ],
                     ['GET',  '/profile',                   ProfileController::class . '#index', 'profile'  ],
+
                     // User account
                     ['GET',  '/account',                   AccountEditController::class . '#index'         ],
                     ['POST', '/account',                   AccountEditController::class . '#edit'          ],

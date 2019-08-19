@@ -1,3 +1,7 @@
+/*!
+ / Copyright © 2019 by Angius
+ / Last modified: 19.08.2019, 06:52
+ /
 div#navbar
   display: flex
   position: fixed
@@ -19,10 +23,11 @@ div#navbar
     font-size: 1rem
     padding: .5rem 1rem
     font-weight: 400
+    transition: font-size 100ms ease-in-out
 
   &>.hamburger
     display: none
-    padding: 8px
+    padding: 14px 20px
 
   &>.items
     display: flex
@@ -65,9 +70,13 @@ div#navbar
 
     &>.hamburger
       align-self: flex-end
-      display: initial
+      display: flex
       position: absolute
       cursor: pointer
+      box-sizing: border-box
+      align-items: center
+      &>i.icon
+        height: 1rem
 
     &>.items
       display: none

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright © 2019 by Angius
+ * Last modified: 19.08.2019, 07:06
+ */
+
 namespace Controllers\User\Profile;
 
 use BackblazeB2\File;
@@ -7,6 +12,8 @@ use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use BackblazeB2\Client;
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
+
 
 class ProfileEditController extends Controller
 {
@@ -18,11 +25,11 @@ class ProfileEditController extends Controller
         $this->render('user/profile/edit-profile', ['messages' => $this->messages]);
     }
 
-
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      * @throws Exception
+     * @throws GuzzleException
      */
     public function edit(): void
     {
@@ -51,6 +58,17 @@ class ProfileEditController extends Controller
 
             if ($_FILES['avatar']['size'] < 200 * 1024) {
                 $client = new Client($_SERVER['BACKBLAZE_ID'], $_SERVER['BACKBLAZE_MASTER']);
+
+                // Delete old avatar if it exists
+                $file_arr = explode('/', $u->getAvatar());
+                if ($u->getAvatar()) {
+                    $client->deleteFile([
+                        'FileName' => 'avatars/' . $file_arr[array_key_last($file_arr)],
+                        'BucketName' => 'Omnibus'
+                    ]);
+                }
+
+                // Upload new avatar
                 /** @var File $file */
                 $file = $client->upload([
                     'BucketName' => 'Omnibus',

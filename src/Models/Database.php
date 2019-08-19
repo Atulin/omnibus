@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright © 2019 by Angius
+ * Last modified: 19.08.2019, 07:38
+ */
+
 namespace Models;
 
 use Doctrine\ORM\EntityManager;
@@ -34,7 +39,7 @@ class Database
             $isDevMode,
             null,
             null,
-            false,
+            false
         );
 
         $conn = [

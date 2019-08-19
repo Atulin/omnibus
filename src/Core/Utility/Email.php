@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright © 2019 by Angius
+ * Last modified: 19.08.2019, 05:50
+ */
+
 namespace Core\Utility;
 
 use PHPMailer\PHPMailer\Exception;
@@ -39,7 +44,7 @@ class Email
      */
     public function __construct()
     {
-        $this->template_root = dirname(__DIR__, 2).'/Views/emails';
+        $this->template_root = dirname(__DIR__, 3).'/public/assets/emails';
         $this->mailer = new PHPMailer();
     }
 

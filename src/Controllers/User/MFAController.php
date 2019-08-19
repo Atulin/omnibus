@@ -1,12 +1,23 @@
 <?php
+/**
+ * Copyright © 2019 by Angius
+ * Last modified: 19.08.2019, 06:53
+ */
+
 namespace Controllers\User;
 
 use Core\Controller;
-use Doctrine\ORM\OptimisticLockException;
+use Core\Utility\Email;
 use Doctrine\ORM\ORMException;
 use RobThree\Auth\TwoFactorAuth;
+use Doctrine\ORM\OptimisticLockException;
 use RobThree\Auth\TwoFactorAuthException;
 
+
+/**
+ * Class MFAController
+ * @package Controllers\User
+ */
 class MFAController extends Controller
 {
     /** @var array $messages */
@@ -19,21 +30,30 @@ class MFAController extends Controller
      */
     public function index(): void
     {
-        // Set MFA
-        $this->mfa = new TwoFactorAuth('Omnibus');
+        $data = ['messages' => $this->messages];
+        $template = 'user/setup-mfa';
 
-        // Set secret
-        $secret = $this->mfa->createSecret();
-        $this->session->set('mfa-secret', $secret);
+        if (!$this->getUser()->getMfa()) {
 
-        // Get QR code
-        $qr = $this->mfa->getQRCodeImageAsDataUri('Omnibus', $secret);
+            // Set MFA
+            $this->mfa = new TwoFactorAuth('Omnibus');
+
+            // Set secret
+            $secret = $this->mfa->createSecret();
+            $this->session->set('mfa-secret', $secret);
+
+            // Get QR code
+            $qr = $this->mfa->getQRCodeImageAsDataUri('Omnibus', $secret);
+            $data['qr'] = $qr;
+
+        } else {
+
+            $template = 'user/remove-mfa';
+
+        }
 
         $this->setBaseData();
-        $this->render('user/mfa', [
-            'messages' => $this->messages,
-            'qr' => $qr
-        ]);
+        $this->render($template, $data);
     }
 
     /**
@@ -52,27 +72,76 @@ class MFAController extends Controller
 
         if ($this->session->get('token') === $_POST['token']) {
 
-            // Verify 2FA
-            $result = $this->mfa->verifyCode($this->session->get('mfa-secret'), $code);
+            if (!$user->getMfa()) {
 
-            if ($result) {
-                $user->setMfa($this->session->get('mfa-secret'));
-                $this->em->flush();
+                // Verify 2FA
+                $result = $this->mfa->verifyCode($this->session->get('mfa-secret'), $code);
 
-                $this->session->remove('mfa-secret');
+                if ($result) {
 
-                $this->session->set('message', 'Multi-factor authentication set up succesfully!');
-                header('Location: /');
-                die();
+                    $user->setMfa($this->session->get('mfa-secret'));
+                    $this->em->flush();
+
+                    $this->session->remove('mfa-secret');
+                    $this->session->set('message', 'Multi-factor authentication set up succesfully!');
+
+                    header('Location: /');
+                    die();
+
+                } else {
+                    $this->messages[] = 'Error setting up MFA. Try again.';
+                }
 
             } else {
-                $this->messages[] = 'Error setting up MFA. Try again.';
+                $this->messages[] = '2FA has already been set up.';
             }
 
         } else {
             $this->messages[] = 'X-CSRF protection triggered.';
         }
 
+        $this->index();
+    }
+
+    /**
+     * @throws TwoFactorAuthException
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function remove(): void
+    {
+        // Set MFA
+        $user = $this->getUser();
+        if ($this->session->get('token') === $_POST['token']) {
+
+            if ($user->getMfa()) {
+
+                // Remove MFA token
+                $user->setMfa(null);
+
+                $this->em->flush();
+                $this->session->set('message', 'Multi-factor authentication removed succesfully!');
+
+                // Send information email
+                $em = new Email();
+                $em ->setSubject('Omnibus – 2FA removal')
+                    ->setToEmail($user->getEmail())
+                    ->setToName($user->getEmail())
+                    ->setFromEmail('admin@omnibus.org')
+                    ->setFromName('Admin')
+                    ->setBody('mfa-removal', ['name' => $user->getName()])
+                    ->Send();
+
+                header('Location: /');
+                die();
+
+            } else {
+                $this->messages[] = 'No 2FA has been set up.';
+            }
+
+        } else {
+            $this->messages[] = 'X-CSRF protection triggered.';
+        }
         $this->index();
     }
 }

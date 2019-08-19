@@ -1,3 +1,7 @@
+/*!
+ / Copyright © 2019 by Angius
+ / Last modified: 19.08.2019, 06:39
+ /
 div
   &.container
     display: flex
@@ -33,11 +37,16 @@ div.column
   &.main
     width: 50vw
     padding: 2rem
+    transition: width 200ms ease-in-out
+
+  @media only screen and (max-width: 1600px)
+    &.main
+      width: 60vw
 
   @media only screen and (max-width: 1300px)
     &.main
       width: 80vw
 
-  @media only screen and (max-width: 768px)
+  @media only screen and (max-width: 760px)
     &.main
       width: 100vw

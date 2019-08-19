@@ -1,0 +1,56 @@
+<!--
+  ~ Copyright © 2019 by Angius
+  ~ Last modified: 19.08.2019, 06:28
+  -->
+
+<!--suppress ALL -->
+<mjml>
+    <mj-body background-color="#FFFFFF">
+        <mj-section>
+            <mj-column>
+
+                <mj-text font-size="30px" color="#F45E43" align="center">Omnibus</mj-text>
+
+                <mj-divider border-color="#F45E43"></mj-divider>
+
+                <mj-text font-size="20px">
+                    Hi, {{ name }}!
+                </mj-text>
+
+                <mj-text font-size="20px" align="justify">
+                    We noticed that you removed two-factor authentication from your account.
+                </mj-text>
+
+                <mj-text font-size="20px" align="justify">
+                    If that was you, great, nothing to worry about (except maybe lowered security
+                    of your account)
+                </mj-text>
+
+                <mj-text font-size="20px" align="justify">
+                    If it wasn't you, someone that isn't you must've gotten into your account and knows
+                    your password.
+                </mj-text>
+
+                <mj-text font-size="20px" align="justify">
+                    You might want to change all your passwords and enable 2FA whenever possible.
+                </mj-text>
+
+                <mj-text font-size="20px" align="justify">
+                    Stay safe!
+                </mj-text>
+
+                <mj-divider border-color="#F45E43"></mj-divider>
+
+                <mj-social font-size="15px" icon-size="30px" mode="horizontal">
+                    <mj-social-element name="patreon" href="https://mjml.io/">
+                        Patreon
+                    </mj-social-element>
+                    <mj-social-element name="twitter" href="https://mjml.io/">
+                        Twitter
+                    </mj-social-element>
+                </mj-social>
+
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>

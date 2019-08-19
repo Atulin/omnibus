@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright © 2019 by Angius
+ * Last modified: 19.08.2019, 05:29
+ */
+
 require '../vendor/autoload.php';
 require '../config.php';
 

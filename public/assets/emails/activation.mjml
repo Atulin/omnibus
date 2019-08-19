@@ -1,6 +1,11 @@
+<!--
+  ~ Copyright © 2019 by Angius
+  ~ Last modified: 19.08.2019, 05:40
+  -->
+
 <!--suppress ALL -->
 <mjml>
-    <mj-body>
+    <mj-body background-color="#FFFFFF">
         <mj-section>
             <mj-column>
 
@@ -13,21 +18,32 @@
                 </mj-text>
 
                 <mj-text font-size="20px" align="justify">
-                    You seem to have forgotten your password?
+                    We're glad you decided to join our little community. We sincerely hope you find the resources
+                    contained within useful, and perhaps decide to share your expertise in the future.
                 </mj-text>
 
                 <mj-text font-size="20px" align="justify">
-                    Don't worry, it happens to the best of us. Just click the button below:
-                </mj-text>
-
-                <mj-button href="https://sfnw.online" background-color="#F45E43" font-size="30px" width="100%">Recover!</mj-button>
-
-                <mj-text font-size="20px" align="justify">
-                    Or copy and paste this address into your browser's address bar:
+                    Meanwhile, there's but one more step left for you to become a fully-fledget member – account
+                    activation.
                 </mj-text>
 
                 <mj-text font-size="20px" align="justify">
-                    https://sfnw.online/activate/{{ code }}
+                    To activate your account, either click the button below:
+                </mj-text>
+
+                <mj-button href="https://sfnw.online" background-color="#F45E43" font-size="30px" width="100%">
+                    Activate!
+                </mj-button>
+
+                <mj-text font-size="20px" align="justify">
+                    or go to <a href="https://sfnw.online/activate">sfnw.online/activate</a> and enter the code you can
+                    find below:
+                </mj-text>
+
+                <mj-text font-weight="10" font-size="30px" color="#F45E43" align="center">{{ code }}</mj-text>
+
+                <mj-text font-size="20px" align="justify">
+                    See you soon!
                 </mj-text>
 
                 <mj-divider border-color="#F45E43"></mj-divider>
