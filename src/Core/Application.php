@@ -133,6 +133,7 @@ class Application
                     // Login
                     ['GET',  '/login',               LoginController::class    . '#index', 'login'   ],
                     ['POST', '/login',               LoginController::class    . '#login'            ],
+                    ['GET',  '/login/validate',      LoginController::class    . '#validate'         ],
 
                     // Register
                     ['GET',  '/register',            RegisterController::class . '#index', 'register'],

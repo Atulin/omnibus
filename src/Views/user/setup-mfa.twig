@@ -1,43 +1,45 @@
 {% extends './scaffolds/public_scaffold.twig' %}
 
 {% block body %}
+    <div class="v-centered main column">
 
-    <div class="narrow h-centered container">
+        <div class="narrow h-centered container">
 
-        <form class="form" id="login" action="setup-mfa" method="POST">
+            <form class="form" id="login" action="setup-mfa" method="POST">
 
-            <div id="messages">
-                {% if messages %}
-                    <div class="error message field">
-                        <b>Please correct the following error(s):</b>
-                        <ul>
-                            {% for m in messages %}
-                                <li>{{ m }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-            </div>
+                <div id="messages">
+                    {% if messages %}
+                        <div class="error message field">
+                            <b>Please correct the following error(s):</b>
+                            <ul>
+                                {% for m in messages %}
+                                    <li>{{ m }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
 
-            <div class="field">
-                <label for="qr">QR code</label>
-                <img id="qr" src="{{ qr }}" alt="QR code">
-            </div>
+                <div class="field">
+                    <label for="qr">QR code</label>
+                    <img id="qr" src="{{ qr }}" alt="QR code">
+                </div>
 
-            <div class="field">
-                <label for="code">Confirmation</label>
-                <input type="password" id="code" name="2fa" required>
-            </div>
+                <div class="field">
+                    <label for="code">Confirmation</label>
+                    <input type="password" id="code" name="2fa" required>
+                </div>
 
-            <input id="token" type="hidden" name="token" value="{{ token }}">
+                <input id="token" type="hidden" name="token" value="{{ token }}">
 
-            <div class="field">
-                <label for="submit" class="hidden">Enable</label>
-                <input id="submit" class="submit button" type="submit" value="Enable">
-            </div>
+                <div class="field">
+                    <label for="submit" class="hidden">Enable</label>
+                    <input id="submit" class="submit button" type="submit" value="Enable">
+                </div>
 
-        </form>
+            </form>
 
+        </div>
     </div>
 
 {% endblock %}

@@ -21,10 +21,8 @@
 {% include 'elements/navbar.twig' %}
 
 <div class="v-full h-full h-centered container">
-    <div class="main column">
-        {% block body %}
-        {% endblock %}
-    </div>
+    {% block body %}
+    {% endblock %}
 </div>
 
 <script src="{{ vasset('js/hamburger', 'min.js') }}"></script>

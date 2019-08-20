@@ -6,5 +6,10 @@
     <option name="codeFoldingPhpModel" value="false" />
     <option name="codeFoldingPhpTemplate" value="false" />
     <option name="dismissEnableNotification" value="true" />
+    <option name="twigNamespaces">
+      <list>
+        <twig_namespace custom="true" namespaceType="ADD_PATH" path="src/Views" />
+      </list>
+    </option>
   </component>
 </project>

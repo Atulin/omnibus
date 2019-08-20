@@ -5,70 +5,72 @@
 {% endblock %}
 
 {% block body %}
-    <div class="narrow h-centered container" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <div class="v-centered main column">
+        <div class="narrow h-centered container" xmlns:v-on="http://www.w3.org/1999/xhtml">
 
-        <form id="register" class="form" method="POST" @submit="checkForm">
+            <form id="register" class="form" method="POST" @submit="checkForm">
 
-            <div id="messages">
+                <div id="messages">
 
-                <div class="error message field" v-if="errors.length" v-on:click="errors = []">
-                    <b>Please correct the following error(s):</b>
-                    <ul>
-                        <li v-for="error in errors">${ error }</li>
-                    </ul>
-                </div>
-
-                {% if messages %}
-                    <div class="error message field" v-if="!errors.length">
+                    <div class="error message field" v-if="errors.length" v-on:click="errors = []">
                         <b>Please correct the following error(s):</b>
                         <ul>
-                            {% for m in messages %}
-                                <li>{{ m }}</li>
-                            {% endfor %}
+                            <li v-for="error in errors">${ error }</li>
                         </ul>
                     </div>
-                {% endif %}
-            </div>
 
-            <div class="field">
-                <label for="name">Name</label>
-                <input id="name" name="name" v-model="name" type="text" required>
-            </div>
+                    {% if messages %}
+                        <div class="error message field" v-if="!errors.length">
+                            <b>Please correct the following error(s):</b>
+                            <ul>
+                                {% for m in messages %}
+                                    <li>{{ m }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
 
-            <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" v-model="email" type="email" required>
-            </div>
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" v-model="name" type="text" required>
+                </div>
 
-            <div class="field">
-                <label for="password">Password</label>
-                <input id="password" name="password" v-model="pass1" type="password" required>
-            </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" v-model="email" type="email" required>
+                </div>
 
-            <div class="field">
-                <label for="password2">Repeat password</label>
-                <input id="password2" name="password2" v-model="pass2" type="password" required>
-            </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" v-model="pass1" type="password" required>
+                </div>
 
-            <div class="checkbox field">
-                <label for="tos">I agree to Terms of Service</label>
-                <input id="tos" name="tos" v-model="tos" type="checkbox">
-            </div>
+                <div class="field">
+                    <label for="password2">Repeat password</label>
+                    <input id="password2" name="password2" v-model="pass2" type="password" required>
+                </div>
 
-            <div class="field">
-                <div class="g-recaptcha" data-sitekey="6LduV68UAAAAAKV59SgfmnVEfVed0bUUsKUaN-sA"></div>
-            </div>
+                <div class="checkbox field">
+                    <label for="tos">I agree to Terms of Service</label>
+                    <input id="tos" name="tos" v-model="tos" type="checkbox">
+                </div>
 
-            <input id="token" type="hidden" name="token" value="{{ token }}">
+                <div class="field">
+                    <div class="g-recaptcha" data-sitekey="6LduV68UAAAAAKV59SgfmnVEfVed0bUUsKUaN-sA"></div>
+                </div>
 
-            <div class="field">
-                <label for="f-submit" class="hidden">Submit</label>
-                <input id="f-submit" class="submit button" type="submit" value="Submit">
-            </div>
+                <input id="token" type="hidden" name="token" value="{{ token }}">
 
-        </form>
+                <div class="field">
+                    <label for="f-submit" class="hidden">Submit</label>
+                    <input id="f-submit" class="submit button" type="submit" value="Submit">
+                </div>
 
-        <script src="{{ vasset('js/v-registration-validator', 'min.js') }}"></script>
+            </form>
 
+            <script src="{{ vasset('js/v-registration-validator', 'min.js') }}"></script>
+
+        </div>
     </div>
 {% endblock %}

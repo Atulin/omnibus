@@ -14,7 +14,9 @@ const app = new Vue({
         errors: [],
         login: null,
         pass: null,
-        remember: null
+        remember: null,
+        mfa: false,
+        avatar: null,
     },
     methods: {
         checkForm: function(e) {
@@ -30,6 +32,25 @@ const app = new Vue({
             if (this.errors.length <= 0) return true;
 
             e.preventDefault();
+        },
+
+        getInfo: function (e) {
+            let token = document.getElementById('token').value;
+
+            axios.get('/login/validate', {
+                params: {
+                    login: this.login,
+                    token: token
+                }
+            })
+            .then(res => {
+                this.avatar = res.data.data.avatar;
+                this.mfa = res.data.data.mfa;
+            })
+            .catch(err => {
+                this.errors.push('Incorrect token. Refresh the page.')
+            })
+
         }
     }
 });

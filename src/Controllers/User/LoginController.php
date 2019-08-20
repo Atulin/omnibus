@@ -7,23 +7,36 @@
 namespace Controllers\User;
 
 use Core\Controller;
+use Core\Utility\Gravatar;
+use Core\Utility\APIMessage;
+use Core\Utility\HttpStatus;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Exception;
 use Models\User;
 use RobThree\Auth\TwoFactorAuth;
 
+
+/**
+ * Class LoginController
+ * @package Controllers\User
+ */
 class LoginController extends Controller
 {
+    /**
+     * @var array
+     */
     private $messages = [];
 
-    public function index(array $params = [], bool $has_mfa = false): void
+    /**
+     * @param array $params
+     */
+    public function index(array $params = []): void
     {
         $this->setBaseData();
         $this->render('user/login', [
             'messages' => $this->messages,
-            'message'  => $this->session->get('message'),
-            'has_mfa'  => $has_mfa,
+            'message'  => $this->session->get('message')
         ]);
     }
 
@@ -49,12 +62,6 @@ class LoginController extends Controller
 
             // Check if user exists
             if ($user) {
-
-                // Check if user has MFA, redirect to MFA form if so
-                if ($mfa_code === null && $user->getMfa()) {
-                    $this->index([], true);
-                    return;
-                }
 
                 // Check password
                 if (password_verify($pass, $user->getPassword())) {
@@ -89,8 +96,7 @@ class LoginController extends Controller
                             die();
 
                         } else {
-                            $this->messages[] = 'Incorrect 2FA token';
-                            $needs_mfa = true;
+                            $this->messages[] = 'Incorrect 2FA token.';
                         }
 
                     } else {
@@ -109,6 +115,41 @@ class LoginController extends Controller
             $this->messages[] = 'X-CSRF protection triggered.';
         }
 
-        $this->index([], $needs_mfa ?? false);
+        $this->index();
+    }
+
+    /**
+     *
+     */
+    public function validate(): void
+    {
+        $GET = filter_var_array($_GET,  [
+           'login' => FILTER_SANITIZE_STRING
+        ]);
+
+        if ($this->session->get('token') === $_GET['token']) {
+
+            /** @var User $u */
+            $u = $this->em->getRepository(User::class)->findOneBy(['name' => $GET['login']]);
+
+            http_response_code(200);
+            echo json_encode(new APIMessage (
+                HttpStatus::S200(),
+                'Data retrieved',
+                [],
+                [
+                    'avatar' => $u->getAvatar() ?? (new Gravatar($u->getEmail()))->getGravatar(),
+                    'mfa' => $u->getMfa() !== null,
+                ]
+            ));
+
+        } else {
+            http_response_code(401);
+            echo json_encode(new APIMessage (
+                HttpStatus::S401(),
+                'X-CSRF protection triggered.',
+                []
+            ));
+        }
     }
 }

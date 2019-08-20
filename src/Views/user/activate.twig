@@ -1,36 +1,38 @@
 {% extends './scaffolds/public_scaffold.twig' %}
 
 {% block body %}
-    <div class="narrow h-centered container">
+    <div class="v-centered main column">
+        <div class="narrow h-centered container">
 
-        <form id="activate" class="form" method="POST">
+            <form id="activate" class="form" method="POST">
 
-            {% if messages %}
-                <div id="messages">
-                    <div class="error message field">
-                        <b>Please correct the following error(s):</b>
-                        <ul>
-                            {% for m in messages %}
-                                <li>{{ m }}</li>
-                            {% endfor %}
-                        </ul>
+                {% if messages %}
+                    <div id="messages">
+                        <div class="error message field">
+                            <b>Please correct the following error(s):</b>
+                            <ul>
+                                {% for m in messages %}
+                                    <li>{{ m }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </div>
+                {% endif %}
+
+                <div class="field">
+                    <label for="code">Activation code</label>
+                    <input id="code" name="code" type="text" required>
                 </div>
-            {% endif %}
 
-            <div class="field">
-                <label for="code">Activation code</label>
-                <input id="code" name="code" type="text" required>
-            </div>
+                <input id="token" type="hidden" name="token" value="{{ token }}">
 
-            <input id="token" type="hidden" name="token" value="{{ token }}">
+                <div class="field">
+                    <label for="submit" class="hidden">Submit</label>
+                    <input id="submit" class="submit button" type="submit" value="Submit">
+                </div>
 
-            <div class="field">
-                <label for="submit" class="hidden">Submit</label>
-                <input id="submit" class="submit button" type="submit" value="Submit">
-            </div>
+            </form>
 
-        </form>
-
+        </div>
     </div>
 {% endblock %}

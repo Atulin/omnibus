@@ -81,6 +81,18 @@ form.form
           color: $accent
           transition: color 250ms ease-in-out
 
-  //&>div#messages
-    //position: absolute
-    //top: 50px
+    &.avatar
+      margin-top: -120px
+      &>img.avatar
+        box-sizing: border-box
+        border: 2px solid $foreground
+        border-radius: 50%
+        object-fit: cover
+        width: 190px
+        height: 190px
+
+
+@media only screen and (max-width: 400px)
+  form.form
+    width: 100vw
+    border-radius: 0
