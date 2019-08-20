@@ -11,7 +11,7 @@
     <link id="style" rel="stylesheet" href="{{ vasset('css/'~theme, 'min.css') }}">
     {% block scripts %}{% endblock %}
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{{ cfg('name') }}{% endblock %}</title>
 </head>
 
 <script src="//instant.page/2.0.0" type="module" integrity="sha384-D7B5eODAUd397+f4zNFAVlnDNDtO1ppV8rPnfygILQXhqu3cUndgHvlcJR2Bhig8"></script>
@@ -24,6 +24,10 @@
     {% block body %}
     {% endblock %}
 </div>
+
+<footer>
+    Copyright © {{ 'now'|date('Y') }} {{ cfg('owner') }}
+</footer>
 
 <script src="{{ vasset('js/hamburger', 'min.js') }}"></script>
 <script src="{{ vasset('js/themeswap', 'min.js') }}"></script>

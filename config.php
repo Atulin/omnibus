@@ -8,5 +8,8 @@ define('CONFIG', [
     'domain' => 'omnibus.test',
 
     // Domain of the content delivery network
-    'cdn domain' => 'cdn.sfnw.site'
+    'cdn domain' => 'cdn.sfnw.site',
+
+    // Website owner
+    'owner' => 'School for New Writers',
 ]);

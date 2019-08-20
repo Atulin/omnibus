@@ -44,7 +44,7 @@ class Email
      */
     public function __construct()
     {
-        $this->template_root = dirname(__DIR__, 3).'/public/assets/emails';
+        $this->template_root = dirname(__DIR__, 3).'/public/assets/static/emails';
         $this->mailer = new PHPMailer();
     }
 

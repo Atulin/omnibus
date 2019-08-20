@@ -1,3 +1,3 @@
 <component name="DependencyValidationManager">
-  <scope name="Not emails" pattern="!file:public/assets/emails/*" />
+  <scope name="Not emails" pattern="!file:public/assets/static/emails/*" />
 </component>

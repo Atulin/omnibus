@@ -14,7 +14,7 @@ div
     justify-content: center
 
   &.v-full
-    height: calc(100vh - #{$nav-height})
+    min-height: calc(100vh - #{$nav-height+$foot-height})
     margin-top: $nav-height
 
   &.h-full
@@ -50,3 +50,8 @@ div.column
   @media only screen and (max-width: 760px)
     &.main
       width: 100vw
+
+footer
+  height: $foot-height
+  box-sizing: border-box
+  padding: 0 1rem

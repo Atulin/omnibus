@@ -3,13 +3,14 @@
 {% block body %}
 <div class="v-centered main column">
 
-    <div class="narrow h-centered container" xmlns:v-on="http://www.w3.org/1999/xhtml"
-         xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <div class="narrow h-centered container"
+         xmlns:v-on="http://www.w3.org/1999/xhtml">
 
         <form class="form" id="login" method="POST" @submit="checkForm">
 
             <div class="avatar field">
-                <img :src="avatar" src="{{ gravatar('a@a.a') }}" alt="" class="avatar">
+                <img v-if="!avatar" src="{{ gravatar('a@a.a') }}" alt="Placeholder avatar" class="avatar">
+                <img v-if="avatar" :src="avatar" alt="User avatar" class="avatar">
             </div>
 
             <div id="messages">

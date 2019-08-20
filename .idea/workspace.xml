@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Angius.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Angius.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+    <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="Made login and registration prettier, added doc viewer (TOS and stuff), added footer">
+      <change afterPath="$PROJECT_DIR$/public/assets/static/docs/Terms-of-Service.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/StaticDocsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/static-doc.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scopes/Not_emails.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scopes/Not_emails.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-login-validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-login-validator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-login-validator.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-login-validator.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/emails/activation.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/activation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/emails/activation.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/activation.mjml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/emails/mfa-removal.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/mfa-removal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/emails/mfa-removal.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/mfa-removal.mjml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/emails/pass-forgot.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/pass-forgot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/emails/pass-forgot.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/pass-forgot.mjml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/emails/pass-recovered.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/pass-recovered.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/emails/pass-recovered.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/pass-recovered.mjml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/Email.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/activate.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/activate.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/forgot.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/forgot.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/user/login.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/login.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/recover.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/recover.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/user/register.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/register.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/remove-mfa.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/remove-mfa.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/setup-mfa.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/setup-mfa.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +133,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/public/assets/emails/activation.html" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/public/assets/static/emails/activation.html" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -220,6 +231,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;true&#10;E:/Software/Laragon/www/plaincocon/.env" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
     <property name="database.console.LAST_STATE" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Views/user" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -231,22 +243,22 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\static" />
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\emails\src" />
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Core\Utility" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\elements" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\user" />
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\user\profile" />
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\css" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\emails" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\emails\src" />
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Core\Utility" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\elements" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\emails" />
     </key>
   </component>
@@ -339,7 +351,8 @@
       <workItem from="1566183938703" duration="9803000" />
       <workItem from="1566254036133" duration="1344000" />
       <workItem from="1566256472376" duration="39000" />
-      <workItem from="1566256535059" duration="6343000" />
+      <workItem from="1566256535059" duration="6585000" />
+      <workItem from="1566275571070" duration="8294000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -544,7 +557,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566193545034</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Added dynamic avatar and MFA field to login form">
+      <created>1566264392942</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1566264392942</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,8 +585,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Login and logout&#10; – User login and logout now work&#10; – Made the forms look prettier&#10; – Fixed double error messages" />
-    <MESSAGE value="Initial commit for Omnibus" />
     <MESSAGE value="Account activation" />
     <MESSAGE value="Activation emails with MJML" />
     <MESSAGE value="Better activation codes handling, beginning of recovery process, and navbar" />
@@ -590,6 +608,8 @@
     <MESSAGE value=" – Improved comment handling for not-registered users&#10; – Added hamburger and palette icons&#10; – Improved styling" />
     <MESSAGE value="Added cascade to users, users' comment threads, and those threads' comments" />
     <MESSAGE value="Added MFA removal and file headers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added MFA removal and file headers" />
+    <MESSAGE value="Added dynamic avatar and MFA field to login form" />
+    <MESSAGE value="Made login and registration prettier, added doc viewer (TOS and stuff), added footer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made login and registration prettier, added doc viewer (TOS and stuff), added footer" />
   </component>
 </project>

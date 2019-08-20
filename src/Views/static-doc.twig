@@ -1,0 +1,14 @@
+{% extends "scaffolds/public_scaffold.twig" %}
+
+{% block title %}
+{{ name }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="main column">
+        {{ text|md|raw }}
+        {{ lipsum(30) }}
+    </div>
+
+{% endblock %}

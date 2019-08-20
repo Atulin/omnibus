@@ -35,6 +35,7 @@ form.form
 
     &.checkbox
       flex-direction: row
+      align-items: center
 
     &>label
       font-size: 0.9rem
@@ -42,6 +43,15 @@ form.form
 
       &.hidden
         visibility: collapse
+
+      &>a
+        color: $accent
+        text-decoration: none
+        border-bottom: 1px solid transparent
+        transition: border-bottom-color 200ms ease-in-out
+        &:hover
+          color: $accent-80
+          border-bottom: 1px solid $accent-80
 
     &>input
       height: 24px

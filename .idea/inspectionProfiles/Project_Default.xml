@@ -175,7 +175,7 @@
       <scope name="email-templates" level="WARNING" enabled="true">
         <option name="myAdditionalRequiredHtmlAttributes" value="" />
       </scope>
-      <option name="myAdditionalRequiredHtmlAttributes" value="" />
+      <option name="myAdditionalRequiredHtmlAttributes" value="src" />
     </inspection_tool>
     <inspection_tool class="SecurityAdvisoriesInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="optionConfiguration">

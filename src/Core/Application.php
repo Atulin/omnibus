@@ -8,6 +8,7 @@ namespace Core;
 
 use AltoRouter;
 use Core\Utility\Email;
+use Controllers\StaticDocsController;
 use Controllers\API\CommentsApiController;
 use Controllers\HomeController;
 use Controllers\User\ForgottenPasswordController;
@@ -121,6 +122,9 @@ class Application
 
                 // User profiles
                 ['GET',  '/profile/[i:id]/[f:furl]?', ProfileController::class . '#index'  ],
+
+                // Documents
+                ['GET',  '/tos', StaticDocsController::class . '#tos'],
             ]);
         } catch (Exception $e) {
             echo $e;

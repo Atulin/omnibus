@@ -6,15 +6,15 @@
 
 namespace Controllers\User;
 
+use Exception;
+use Models\User;
 use Core\Controller;
 use Core\Utility\Gravatar;
 use Core\Utility\APIMessage;
 use Core\Utility\HttpStatus;
-use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
-use Exception;
-use Models\User;
 use RobThree\Auth\TwoFactorAuth;
+use Doctrine\ORM\OptimisticLockException;
 
 
 /**
@@ -29,16 +29,14 @@ class LoginController extends Controller
     private $messages = [];
 
     /**
-     * @param array $params
+     *
      */
-    public function index(array $params = []): void
+    public function index(): void
     {
         $this->setBaseData();
-        $this->render('user/login', [
-            'messages' => $this->messages,
-            'message'  => $this->session->get('message')
-        ]);
+        $this->render('user/login', ['messages' => $this->messages, 'message' => $this->session->get('message')]);
     }
+
 
     /**
      * @throws ORMException
@@ -49,8 +47,8 @@ class LoginController extends Controller
     {
         $mfa = new TwoFactorAuth();
 
-        $login    = $_POST['login'];
-        $pass     = $_POST['password'];
+        $login = $_POST['login'];
+        $pass = $_POST['password'];
         $remember = $_POST['remember'] ?? '';
         $mfa_code = $_POST['mfa'] ?? null;
 
@@ -60,55 +58,47 @@ class LoginController extends Controller
         // Check X-CSRF
         if ($this->session->get('token') === $_POST['token']) {
 
-            // Check if user exists
-            if ($user) {
+            // Check if user exists and verify the password
+            if ($user && password_verify($pass, $user->getPassword())) {
 
-                // Check password
-                if (password_verify($pass, $user->getPassword())) {
+                // Check if user has an active account
+                if (!$this->isActive()) {
 
-                    // Check if user has an active account
-                    if (!$this->isActive()) {
+                    // Check MFA code
+                    if ((!$user->getMfa() && $mfa_code === null) ||                         // User has no MFA set up, no MFA sent from form
+                        ($user->getMfa() && $mfa->verifyCode($user->getMfa(), $mfa_code))   // User has MFA set up, MFA sent from form is correct
+                    ) {
 
-                        // Check MFA code
-                        if (
-                            (!$user->getMfa() && $mfa_code === null) ||                         // User has no MFA set up, no MFA sent from form
-                            ($user->getMfa() && $mfa->verifyCode($user->getMfa(), $mfa_code))   // User has MFA set up, MFA sent from form is correct
-                        ) {
+                        // Log the user in via session
+                        $this->session->set('userid', $user->getId());
+                        $this->session->set('message', "Welcome back, {$user->getName()}");
 
-                            // Log the user in via session
-                            $this->session->set('userid', $user->getId());
-                            $this->session->set('message', "Welcome back, {$user->getName()}");
+                        // Set RememberMe
+                        if ($remember !== null) {
+                            $r_token = bin2hex(random_bytes(256));
 
-                            // Set RememberMe
-                            if ($remember !== null) {
-                                $r_token = bin2hex(random_bytes(256));
+                            $cookie = $user->getId() . ':' . $r_token;
+                            $mac = password_hash($cookie, PASSWORD_BCRYPT);
+                            $cookie .= ':' . $mac;
+                            setcookie('__Secure-rememberme', $cookie, time() + 2592000, '/', '', true, true);
 
-                                $cookie = $user->getId() . ':' . $r_token;
-                                $mac = password_hash($cookie, PASSWORD_BCRYPT);
-                                $cookie .= ':' . $mac;
-                                setcookie('__Secure-rememberme', $cookie, time() + 2592000, '/', '', true, true);
-
-                                $user->setRememberme($r_token);
-                                $this->em->flush();
-                            }
-
-                            header('Location: /');
-                            die();
-
-                        } else {
-                            $this->messages[] = 'Incorrect 2FA token.';
+                            $user->setRememberme($r_token);
+                            $this->em->flush();
                         }
 
+                        header('Location: /');
+                        die();
+
                     } else {
-                        $this->messages[] = 'Account not activated.';
+                        $this->messages[] = 'Incorrect 2FA token.';
                     }
 
                 } else {
-                    $this->messages[] = 'Wrong password.';
+                    $this->messages[] = 'Account not activated.';
                 }
 
             } else {
-                $this->messages[] = 'User does not exist.';
+                $this->messages[] = 'Incorrect credentials.';
             }
 
         } else {
@@ -118,14 +108,13 @@ class LoginController extends Controller
         $this->index();
     }
 
+
     /**
      *
      */
     public function validate(): void
     {
-        $GET = filter_var_array($_GET,  [
-           'login' => FILTER_SANITIZE_STRING
-        ]);
+        $GET = filter_var_array($_GET, ['login' => FILTER_SANITIZE_STRING]);
 
         if ($this->session->get('token') === $_GET['token']) {
 
@@ -144,6 +133,7 @@ class LoginController extends Controller
             ));
 
         } else {
+
             http_response_code(401);
             echo json_encode(new APIMessage (
                 HttpStatus::S401(),
