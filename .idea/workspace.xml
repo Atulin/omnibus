@@ -2,19 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Models/Article.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Category.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/Admin/Dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Utility/TwigHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/TwigHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/elements/navbar.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/navbar.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/home.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/home.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/login.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/login.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -226,19 +227,19 @@
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\static" />
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\emails\src" />
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Core\Utility" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\elements" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\user" />
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\user\profile" />
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\css" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\emails" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\static" />
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\emails\src" />
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Core\Utility" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\elements" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -262,7 +263,17 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@312ad1b0" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@312ad1b0" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@269f4482" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -333,7 +344,7 @@
       <workItem from="1566256535059" duration="6585000" />
       <workItem from="1566275571070" duration="8323000" />
       <workItem from="1566288707711" duration="277000" />
-      <workItem from="1566317819686" duration="5252000" />
+      <workItem from="1566317819686" duration="10491000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -559,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566288943821</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Added Article, Category and Tag models">
+      <created>1566323835600</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1566323835600</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +598,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Activation emails with MJML" />
     <MESSAGE value="Better activation codes handling, beginning of recovery process, and navbar" />
     <MESSAGE value="Functional password recovery process" />
     <MESSAGE value="MFA setup implemented" />
@@ -605,6 +622,7 @@
     <MESSAGE value="Added dynamic avatar and MFA field to login form" />
     <MESSAGE value="Made login and registration prettier, added doc viewer (TOS and stuff), added footer" />
     <MESSAGE value="Fixed some leftover Twig errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some leftover Twig errors" />
+    <MESSAGE value="Added Article, Category and Tag models" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Article, Category and Tag models" />
   </component>
 </project>

@@ -200,6 +200,7 @@ form.form {
         box-sizing: border-box;
         border: 2px solid #060606;
         border-radius: 50%;
+        background-color: #fbfbfb;
         object-fit: cover;
         width: 190px;
         height: 190px; }
@@ -286,7 +287,8 @@ div#navbar {
       display: flex;
       align-items: center; }
       div#navbar > .items .item.avatar {
-        padding: 4px; }
+        padding: 4px;
+        margin: 0 1rem 0 0; }
         div#navbar > .items .item.avatar > img {
           height: 40px;
           width: 40px;

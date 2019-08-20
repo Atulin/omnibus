@@ -6,7 +6,7 @@
     <div class="narrow h-centered container"
          xmlns:v-on="http://www.w3.org/1999/xhtml">
 
-        <form class="form" id="login" method="POST" @submit="checkForm">
+        <form class="form" id="login" method="POST" @submit="checkForm" v-on:mouseenter="getInfo">
 
             <div class="avatar field">
                 <img v-if="!avatar" src="{{ gravatar('a@a.a') }}" alt="Placeholder avatar" class="avatar">

@@ -127,7 +127,7 @@ class LoginController extends Controller
                 'Data retrieved',
                 [],
                 [
-                    'avatar' => $u->getAvatar() ?? (new Gravatar($u->getEmail()))->getGravatar(),
+                    'avatar' => '//'.CONFIG['cdn domain'].'/file/Omnibus/' . $u->getAvatar() ?? (new Gravatar($u->getEmail()))->getGravatar(),
                     'mfa' => $u->getMfa() !== null,
                 ]
             ));

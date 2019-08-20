@@ -8,6 +8,7 @@ namespace Core;
 
 use AltoRouter;
 use Core\Utility\Email;
+use Controllers\Admin\Dashboard;
 use Controllers\StaticDocsController;
 use Controllers\API\CommentsApiController;
 use Controllers\HomeController;
@@ -160,6 +161,7 @@ class Application
             } catch (Exception $e) {
                 echo $e;
             }
+
         // Routes only fur users that are logged in
         } else {
             try {
@@ -190,6 +192,14 @@ class Application
             } catch (Exception $e) {
                 echo $e;
             }
+        }
+
+        try {
+            $this->router->addRoutes([
+                ['GET',  '/dashboard', Dashboard::class . '#index'],
+            ]);
+        } catch (Exception $e) {
+            echo $e;
         }
 
     }
