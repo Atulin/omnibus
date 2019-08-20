@@ -1,62 +1,63 @@
-{% extends './scaffolds/public_scaffold.twig' %}
+{% extends 'scaffolds/public_scaffold.twig' %}
 
 {% set owner = profile_owner ?: user %}
 
 {% block title %}{{ owner.name }}'s profile{% endblock %}
 
 {% block body %}
-    <div id="profile">
+    <div class="v-centered main column">
+        <div id="profile">
 
-        <div class="left column">
-            <div class="container">
+            <div class="left column">
+                <div class="container">
 
-                <div class="top part">
-                    <h1 class="name">{{ owner.name }}</h1>
+                    <div class="top part">
+                        <h1 class="name">{{ owner.name }}</h1>
 
-                    <img class="avatar" src="{{ owner.avatar ?? gravatar(owner.email, 300) }}" alt="">
+                        <img class="avatar" src="{{ owner.avatar ?? gravatar(owner.email, 300) }}" alt="">
 
-                    <h2 class="title">{{ owner.title ?: "The Titleless" }}</h2>
-                </div>
-
-                <div class="bottom part">
-                    <div class="date">
-                        <p class="label">Joined</p>
-                        <time class="date" datetime="{{ owner.creation_date|date('c') }}">
-                            {{ owner.creation_date|date('d.m.Y') }}
-                        </time>
+                        <h2 class="title">{{ owner.title ?: "The Titleless" }}</h2>
                     </div>
-                    <div class="date">
-                        <p class="label">Last seen</p>
-                        <time class="date" datetime="{{ owner.last_seen|date('c') }}">
-                            {{ owner.last_seen|date('d.m.Y') }}
-                        </time>
+
+                    <div class="bottom part">
+                        <div class="date">
+                            <p class="label">Joined</p>
+                            <time class="date" datetime="{{ owner.creation_date|date('c') }}">
+                                {{ owner.creation_date|date('d.m.Y') }}
+                            </time>
+                        </div>
+                        <div class="date">
+                            <p class="label">Last seen</p>
+                            <time class="date" datetime="{{ owner.last_seen|date('c') }}">
+                                {{ owner.last_seen|date('d.m.Y') }}
+                            </time>
+                        </div>
+                        {% if owner.id is same as(user.id) %}
+                            <a href="profile/edit" class="fluid edit link button">Edit profile</a>
+                        {% endif %}
                     </div>
-                    {% if owner.id is same as(user.id) %}
-                        <a href="profile/edit" class="fluid edit link button">Edit profile</a>
-                    {% endif %}
-                </div>
 
-            </div>
-        </div>
-
-        <div class="right column">
-
-            {% if message %}
-                <div class="success timed message">
-                    <p>{{ message }}</p>
-                </div>
-            {% endif %}
-
-            <div class="container">
-                <div class="bio md">
-                    {{ owner.bio|md|raw ?: lipsum() }}
                 </div>
             </div>
 
-            {% include 'elements/commentbox.twig' with {'thread': thread.id} %}
+            <div class="right column">
+
+                {% if message %}
+                    <div class="success timed message">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endif %}
+
+                <div class="container">
+                    <div class="bio md">
+                        {{ owner.bio|md|raw ?: lipsum() }}
+                    </div>
+                </div>
+
+                {% include 'elements/commentbox.twig' with {'thread': thread.id} %}
+
+            </div>
 
         </div>
-
     </div>
-
 {% endblock %}

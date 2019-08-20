@@ -1,65 +1,66 @@
-{% extends './scaffolds/public_scaffold.twig' %}
+{% extends 'scaffolds/public_scaffold.twig' %}
 
 {% block title %}{{ user.name }} – edit profile{% endblock %}
 
 {% block body %}
-    <div class="h-centered container" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <div class="v-centered main column">
+        <div class="h-centered container" xmlns:v-on="http://www.w3.org/1999/xhtml">
 
-        <div class="h-centered main column">
+            <div class="h-centered main column">
 
-            <form id="profile" class="full form" method="POST" @submit="checkForm" enctype="multipart/form-data">
+                <form id="profile" class="full form" method="POST" @submit="checkForm" enctype="multipart/form-data">
 
-                <h2>Edit profile</h2>
+                    <h2>Edit profile</h2>
 
-                <div id="messages">
+                    <div id="messages">
 
-                    <div class="error message field" v-if="errors.length" v-on:click="errors = []">
-                        <b>Please correct the following error(s):</b>
-                        <ul>
-                            <li v-for="error in errors">${ error }</li>
-                        </ul>
-                    </div>
-
-                    {% if messages %}
-                        <div class="error message field" v-if="!errors.length">
+                        <div class="error message field" v-if="errors.length" v-on:click="errors = []">
                             <b>Please correct the following error(s):</b>
                             <ul>
-                                {% for m in messages %}
-                                    <li>{{ m }}</li>
-                                {% endfor %}
+                                <li v-for="error in errors">${ error }</li>
                             </ul>
                         </div>
-                    {% endif %}
-                </div>
 
-                <div class="full field">
-                    <label for="avatar">Avatar</label>
-                    <input id="avatar" name="avatar" v-model="avatar" type="file">
-                </div>
+                        {% if messages %}
+                            <div class="error message field" v-if="!errors.length">
+                                <b>Please correct the following error(s):</b>
+                                <ul>
+                                    {% for m in messages %}
+                                        <li>{{ m }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
 
-                <div class="full field">
-                    <label for="title">Title (${TitleCharsLeft})</label>
-                    <input id="title" name="title" v-model="title" type="text" value="{{ user.title }}">
-                </div>
+                    <div class="full field">
+                        <label for="avatar">Avatar</label>
+                        <input id="avatar" name="avatar" v-model="avatar" type="file">
+                    </div>
 
-                <div class="full field">
-                    <label for="bio">Bio (${BioCharsLeft})</label>
-                    <textarea name="bio" id="bio" rows="10" v-model="bio">{{ user.bio|raw }}</textarea>
-                </div>
+                    <div class="full field">
+                        <label for="title">Title (${TitleCharsLeft})</label>
+                        <input id="title" name="title" v-model="title" type="text" value="{{ user.title }}">
+                    </div>
 
-                <input id="token" type="hidden" name="token" value="{{ token }}">
+                    <div class="full field">
+                        <label for="bio">Bio (${BioCharsLeft})</label>
+                        <textarea name="bio" id="bio" rows="10" v-model="bio">{{ user.bio|raw }}</textarea>
+                    </div>
 
-                <div class="field">
-                    <label for="f-submit" class="hidden">Save</label>
-                    <input id="f-submit" class="submit button" type="submit" value="Save">
-                </div>
+                    <input id="token" type="hidden" name="token" value="{{ token }}">
 
-            </form>
+                    <div class="field">
+                        <label for="f-submit" class="hidden">Save</label>
+                        <input id="f-submit" class="submit button" type="submit" value="Save">
+                    </div>
+
+                </form>
+
+            </div>
+
+            <script src="{{ vasset('js/v-profile-validator', 'min.js') }}"></script>
 
         </div>
-
-        <script src="{{ vasset('js/v-profile-validator', 'min.js') }}"></script>
-
     </div>
-
 {% endblock %}

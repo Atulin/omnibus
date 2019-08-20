@@ -1,42 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="Made login and registration prettier, added doc viewer (TOS and stuff), added footer">
-      <change afterPath="$PROJECT_DIR$/public/assets/static/docs/Terms-of-Service.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/StaticDocsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/static-doc.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/scopes/Not_emails.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scopes/Not_emails.xml" afterDir="false" />
+    <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/emails/activation.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/activation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/emails/activation.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/activation.mjml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/emails/mfa-removal.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/mfa-removal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/emails/mfa-removal.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/mfa-removal.mjml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/emails/pass-forgot.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/pass-forgot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/emails/pass-forgot.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/pass-forgot.mjml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/emails/pass-recovered.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/pass-recovered.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/emails/pass-recovered.mjml" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/emails/pass-recovered.mjml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Utility/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/Email.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/public_scaffold.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/home.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/home.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/activate.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/activate.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/forgot.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/forgot.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/user/login.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/login.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/profile/account.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/account.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/profile/edit-profile.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/edit-profile.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/recover.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/recover.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/user/register.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/register.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/remove-mfa.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/remove-mfa.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/user/setup-mfa.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/setup-mfa.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -352,7 +329,8 @@
       <workItem from="1566254036133" duration="1344000" />
       <workItem from="1566256472376" duration="39000" />
       <workItem from="1566256535059" duration="6585000" />
-      <workItem from="1566275571070" duration="8294000" />
+      <workItem from="1566275571070" duration="8323000" />
+      <workItem from="1566288707711" duration="170000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -564,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566264392942</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Made login and registration prettier, added doc viewer (TOS and stuff), added footer">
+      <created>1566287787970</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1566287787970</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

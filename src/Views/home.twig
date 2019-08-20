@@ -1,18 +1,19 @@
 {% extends "scaffolds/public_scaffold.twig" %}
 
 {% block body %}
-    <div>{{ theme }}</div>
-    <div>{{ user.name }}</div>
-    <div>{{ user.code ? "inactive" : "active" }}</div>
-    <div>{{ message }}</div>
-    <div>Active: {{ active ? "true" : "false" }}</div>
+    <div class="main column">
+        <div>{{ theme }}</div>
+        <div>{{ user.name }}</div>
+        <div>{{ user.code ? "inactive" : "active" }}</div>
+        <div>{{ message }}</div>
+        <div>Active: {{ active ? "true" : "false" }}</div>
 
-    {% if user %}
-        <a href="/logout">Log out</a>
-        <img src="{{ gravatar(user.email,200) }}" alt="{{ user.name }}'s avatar">
-    {% else %}
-        <a href="/login">Log in</a>
-        <a href="/register">Register</a>
-    {% endif %}
-
+        {% if user %}
+            <a href="/logout">Log out</a>
+            <img src="{{ gravatar(user.email,200) }}" alt="{{ user.name }}'s avatar">
+        {% else %}
+            <a href="/login">Log in</a>
+            <a href="/register">Register</a>
+        {% endif %}
+    </div>
 {% endblock %}
