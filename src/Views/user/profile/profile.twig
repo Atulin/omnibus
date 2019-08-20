@@ -14,7 +14,7 @@
                     <div class="top part">
                         <h1 class="name">{{ owner.name }}</h1>
 
-                        <img class="avatar" src="{{ owner.avatar ?? gravatar(owner.email, 300) }}" alt="">
+                        <img class="avatar" src="{{ avatar(owner) }}" alt="{{ owner.name }}'s avatar">
 
                         <h2 class="title">{{ owner.title ?: "The Titleless" }}</h2>
                     </div>

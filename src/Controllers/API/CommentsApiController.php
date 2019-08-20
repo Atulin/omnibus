@@ -38,7 +38,7 @@ class CommentsApiController extends Controller
             return [
                 'user' => $a->getName(),
                 'user_id' => $a->getId(),
-                'avatar' => $a->getAvatar() ?? (new Gravatar($a->getEmail(), 50))->getGravatar(),
+                'avatar' => '//'.CONFIG['cdn domain'].'/file/Omnibus/' . $a->getAvatar() ?? (new Gravatar($a->getEmail(), 50))->getGravatar(),
                 'date' => $c->getDate()->format('d.m.Y H:i'),
                 'body' => $c->getBody(),
                 'id'   => $c->getId(),

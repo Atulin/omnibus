@@ -2,18 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Models/Article.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Models/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/TwigHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/TwigHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/elements/navbar.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/navbar.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/home.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/home.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/activate.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/activate.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/forgot.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/forgot.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/login.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/login.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/profile/account.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/account.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/profile/edit-profile.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/edit-profile.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/profile.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/recover.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/recover.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/register.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/register.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/remove-mfa.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/remove-mfa.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/setup-mfa.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/setup-mfa.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -330,7 +332,8 @@
       <workItem from="1566256472376" duration="39000" />
       <workItem from="1566256535059" duration="6585000" />
       <workItem from="1566275571070" duration="8323000" />
-      <workItem from="1566288707711" duration="170000" />
+      <workItem from="1566288707711" duration="277000" />
+      <workItem from="1566317819686" duration="5252000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -549,7 +552,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566287787970</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Fixed some leftover Twig errors">
+      <created>1566288943820</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1566288943821</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,7 +580,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Account activation" />
     <MESSAGE value="Activation emails with MJML" />
     <MESSAGE value="Better activation codes handling, beginning of recovery process, and navbar" />
     <MESSAGE value="Functional password recovery process" />
@@ -595,6 +604,7 @@
     <MESSAGE value="Added MFA removal and file headers" />
     <MESSAGE value="Added dynamic avatar and MFA field to login form" />
     <MESSAGE value="Made login and registration prettier, added doc viewer (TOS and stuff), added footer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made login and registration prettier, added doc viewer (TOS and stuff), added footer" />
+    <MESSAGE value="Fixed some leftover Twig errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some leftover Twig errors" />
   </component>
 </project>

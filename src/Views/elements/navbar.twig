@@ -41,7 +41,7 @@
             <div class="dropdown" aria-haspopup="true">
                 <div class="avatar item">
                     <p>{{ user.name }}</p>
-                    <img src="{{ user.avatar ?? gravatar(user.email, 40) }}" alt="{{ user.name }}'s avatar">
+                    <img src="{{ avatar(user) }}" alt="{{ user.name }}'s avatar">
                 </div>
                 <div class="dropdown-content">
                     <a class="dropdown-item link" href="/profile">Profile</a>

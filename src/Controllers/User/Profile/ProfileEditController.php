@@ -75,7 +75,7 @@ class ProfileEditController extends Controller
                     'FileName' => 'avatars/' . $u->getName() . '.' . explode('/', $_FILES['avatar']['type'])[1],
                     'Body' => fopen($_FILES['avatar']['tmp_name'], 'rb')
                 ]);
-                $u->setAvatar('//'.CONFIG['cdn domain'].'/file/Omnibus/' . $file->getName());
+                $u->setAvatar($file->getName());
             } else {
                 $this->messages[] = 'File too big. Maximum size is 200 KB';
             }

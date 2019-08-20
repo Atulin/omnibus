@@ -6,6 +6,7 @@
 
 namespace Core\Utility;
 
+use Models\User;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\TwigFilter;
@@ -57,6 +58,17 @@ class TwigHandler
         ///
         $twig->addFunction(new TwigFunction('gravatar', static function(string $email, int $size = null) {
             return (new Gravatar($email, $size))->getGravatar();
+        }));
+
+        ///
+        /// Get a user avatar
+        ///
+        $twig->addFunction(new TwigFunction('avatar', static function(User $user) : string {
+            if ($user->getAvatar()) {
+                return '//'.CONFIG['cdn domain'].'/file/Omnibus/' . $user->getAvatar();
+            } else {
+                return (new Gravatar($user->getEmail()))->getGravatar();
+            }
         }));
 
         ///
