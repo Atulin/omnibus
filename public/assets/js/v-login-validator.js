@@ -12,45 +12,72 @@ const app = new Vue({
     el: '#login',
     data: {
         errors: [],
+
+        // Form data
         login: null,
         pass: null,
         remember: null,
-        mfa: false,
+        has_mfa: false,
         avatar: null,
+
+        // Validation
+        validated: true,
+        mfa: null,
+
+        // Message hiding
+        msg_shown: true
     },
     methods: {
-        checkForm: function(e) {
+        checkForm: function (e) {
+
+            e.preventDefault();
+
+            this.validated = false;
+            this.msg_shown = false;
+
+            let token = document.getElementById('token').value;
+            let form = document.getElementById('login');
+
             this.errors = [];
 
             if (!this.login) {
                 this.errors.push('Name required.');
             }
-            if(!this.pass) {
+            if (!this.pass) {
                 this.errors.push('Password required.')
             }
 
-            if (this.errors.length <= 0) return true;
+            if (this.errors.length <= 0) {
 
-            e.preventDefault();
+                axios.get('/login/validate', {
+                    params: {
+                        login: this.login,
+                        token: token
+                    }
+                })
+                    .then(res => {
+                        if (res.data.data.mfa === true) {
+                            this.avatar = res.data.data.avatar;
+                            this.has_mfa = res.data.data.mfa;
+                            if (this.mfa) {
+                                form.submit();
+                            } else {
+                                e.preventDefault();
+                            }
+                        } else {
+                            form.submit();
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        this.errors = [];
+                        this.errors.push('Incorrect token. Refresh the page.')
+                    })
+                    .then(() => {
+                        this.validated = true;
+                    })
+
+            }
         },
-
-        getInfo: function (e) {
-            let token = document.getElementById('token').value;
-
-            axios.get('/login/validate', {
-                params: {
-                    login: this.login,
-                    token: token
-                }
-            })
-            .then(res => {
-                this.avatar = res.data.data.avatar;
-                this.mfa = res.data.data.mfa;
-            })
-            .catch(err => {
-                this.errors.push('Incorrect token. Refresh the page.')
-            })
-
-        }
     }
 });

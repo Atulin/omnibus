@@ -87,9 +87,12 @@ form.form
         font-size: 1rem
         height: 50px
         cursor: pointer
+        transition: color 250ms ease-in-out, border-color 250ms ease-in-out
         &:hover
           color: $accent
-          transition: color 250ms ease-in-out
+        &:disabled
+          border-color: $foreground-20
+          color: $foreground-20
 
     &.avatar
       margin-top: -120px

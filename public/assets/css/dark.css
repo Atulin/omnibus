@@ -190,10 +190,13 @@ form.form {
       border: 1px solid #eeeeee;
       font-size: 1rem;
       height: 50px;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: color 250ms ease-in-out, border-color 250ms ease-in-out; }
       form.form > div.field > .submit.button:hover {
-        color: #00cbc3;
-        transition: color 250ms ease-in-out; }
+        color: #00cbc3; }
+      form.form > div.field > .submit.button:disabled {
+        border-color: rgba(238, 238, 238, 0.2);
+        color: rgba(238, 238, 238, 0.2); }
     form.form > div.field.avatar {
       margin-top: -120px; }
       form.form > div.field.avatar > img.avatar {

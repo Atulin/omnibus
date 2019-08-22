@@ -121,15 +121,26 @@ class LoginController extends Controller
             /** @var User $u */
             $u = $this->em->getRepository(User::class)->findOneBy(['name' => $GET['login']]);
 
+            if ($u) {
+                $data = [
+                    'avatar' => $u->getAvatar()
+                        ? '//'.CONFIG['cdn domain'].'/file/Omnibus/' . $u->getAvatar()
+                        : (new Gravatar($u->getEmail()))->getGravatar(),
+                    'mfa' => $u->getMfa() !== null,
+                ];
+            } else {
+                $data = [
+                    'avatar' => (new Gravatar($GET['login'].'@mail.ph'))->getGravatar(),
+                    'mfa' => false
+                ];
+            }
+
             http_response_code(200);
             echo json_encode(new APIMessage (
                 HttpStatus::S200(),
                 'Data retrieved',
                 [],
-                [
-                    'avatar' => '//'.CONFIG['cdn domain'].'/file/Omnibus/' . $u->getAvatar() ?? (new Gravatar($u->getEmail()))->getGravatar(),
-                    'mfa' => $u->getMfa() !== null,
-                ]
+                $data
             ));
 
         } else {
