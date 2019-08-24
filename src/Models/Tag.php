@@ -6,7 +6,9 @@
 
 namespace Models;
 
+use JsonSerializable;
 use Doctrine\ORM\Mapping as ORM;
+use Core\Utility\ParsedownExtended;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
@@ -14,7 +16,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(name="tag")
  */
-class Tag
+class Tag implements JsonSerializable
 {
     /**
      * @var int $id
@@ -35,12 +37,6 @@ class Tag
      * @ORM\Column(type="string", nullable=false)
      */
     private $description;
-
-    /**
-     * @var string|null $image
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $image;
 
     /**
      * @var ArrayCollection $articles
@@ -74,10 +70,13 @@ class Tag
 
     /**
      * @param string $name
+     *
+     * @return Tag
      */
-    public function setName(string $name): void
+    public function setName(string $name): Tag
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -90,26 +89,13 @@ class Tag
 
     /**
      * @param string $description
+     *
+     * @return Tag
      */
-    public function setDescription(string $description): void
+    public function setDescription(string $description): Tag
     {
         $this->description = $description;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param string|null $image
-     */
-    public function setImage(?string $image): void
-    {
-        $this->image = $image;
+        return $this;
     }
 
     /**
@@ -122,18 +108,45 @@ class Tag
 
     /**
      * @param Article $article
+     *
+     * @return Tag
      */
-    public function addArticle(Article $article): void
+    public function addArticle(Article $article): Tag
     {
         $this->articles[] = $article;
+        return $this;
     }
 
     /**
      * @param Article $article
+     *
+     * @return Tag
      */
-    public function removeArticle(Article $article): void
+    public function removeArticle(Article $article): Tag
     {
         $this->articles->removeElement($article);
+        return $this;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link  https://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        $pd = new ParsedownExtended();
+        $pd->setSafeMode(true);
+
+        $out = [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $pd->parse($this->description),
+            'articles' => $this->articles
+        ];
+        return (object) $out;
     }
 
 }

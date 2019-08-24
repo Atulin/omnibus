@@ -11,16 +11,11 @@
     {#   EDITOR MODAL   #}
     {#==================#}
     <div id="modal" v-if="modal" transition="modal" class="v-centered h-centered modal" v-on:click.self="toggleModal">
-        <form class="form" @submit.stop.prevent="createCategory">
+        <form class="form" @submit.stop.prevent="createTag">
 
             <div class="field">
                 <label for="name">Name</label>
                 <input name="name" id="name" v-model="name" type="text">
-            </div>
-
-            <div class="field">
-                <label for="image">Image</label>
-                <input name="image" id="image" ref="image" type="file" v-on:change="handleImage">
             </div>
 
             <div class="full field">
@@ -47,27 +42,25 @@
     {#==============#}
     <div class="buttons">
         <button v-on:click="toggleModal" class="main button">Add new</button>
-        <button v-on:click="fetchCategories" class="secondary button">Fetch all</button>
+        <button v-on:click="fetchTags" class="secondary button">Fetch all</button>
     </div>
 
-    <div class="cards" v-if="categories">
-        <div class="card" v-for="c in categories">
+    <div class="cards" v-if="tags">
+        <div class="card" v-for="t in tags">
 
             <div class="actions">
-                <button v-on:click="editCategory(c)">Edit</button>
-                <button v-on:click="deleteCategory(c)" v-on:mouseout="canDelete = false" :class="{active: canDelete}">Delete</button>
+                <button v-on:click="editTag(t)">Edit</button>
+                <button v-on:click="deleteTag(t)" v-on:mouseout="canDelete = false" :class="{active: canDelete}">Delete</button>
             </div>
 
-            <img :src="c.image" alt="">
-
-            <div class="meta">
-                <h3>${ c.name }</h3>
-                <p v-html="c.description"></p>
+            <div class="unstuck meta">
+                <h3>${ t.name }</h3>
+                <p v-html="t.description"></p>
             </div>
 
         </div>
     </div>
 
 
-    <script type="application/javascript" src="{{ vasset('js/admin/v-categories', 'min.js') }}"></script>
+    <script type="application/javascript" src="{{ vasset('js/admin/v-tags', 'min.js') }}"></script>
 {% endblock %}

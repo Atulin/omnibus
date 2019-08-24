@@ -8,6 +8,7 @@ namespace Core;
 
 use AltoRouter;
 use Core\Utility\Email;
+use Controllers\Admin\TagsController;
 use Controllers\Admin\DashboardController;
 use Controllers\StaticDocsController;
 use Controllers\API\CommentsApiController;
@@ -206,6 +207,13 @@ class Application
                 ['POST', '/admin/categories/update', CategoriesController::class . '#update'    ],
                 ['POST', '/admin/categories/delete', CategoriesController::class . '#delete'    ],
                 ['GET',  '/admin/categories/fetch',  CategoriesController::class . '#fetch'     ],
+
+                // Tags
+                ['GET',  '/admin/tags',        TagsController::class . '#index'     ],
+                ['POST', '/admin/tags/create', TagsController::class . '#create'    ],
+                ['POST', '/admin/tags/update', TagsController::class . '#update'    ],
+                ['POST', '/admin/tags/delete', TagsController::class . '#delete'    ],
+                ['GET',  '/admin/tags/fetch',  TagsController::class . '#fetch'     ],
             ]);
         } catch (Exception $e) {
             echo $e;

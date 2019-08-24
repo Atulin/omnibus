@@ -28,3 +28,20 @@
   &.fluid
     width: 100%
     height: auto
+
+.buttons
+  display: flex
+  flex-direction: row
+  justify-content: stretch
+  align-items: stretch
+
+  &>.button
+    &.main
+      border-radius: 1rem 0 0 1rem
+      flex-grow: 5
+
+    &.secondary
+      border-radius: 0 1rem 1rem 0
+      border-left: none
+      flex-basis: 3rem
+      flex-grow: 1

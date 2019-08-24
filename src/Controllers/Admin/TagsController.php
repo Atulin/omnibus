@@ -1,31 +1,28 @@
 <?php
 /**
  * Copyright © 2019 by Angius
- * Last modified: 24.08.2019, 03:54
+ * Last modified: 24.08.2019, 13:28
  */
 
 namespace Controllers\Admin;
 
+use Models\Tag;
 use Core\Controller;
 use Models\Category;
-use Core\Utility\Utils;
 use Core\Utility\HttpStatus;
 use Core\Utility\APIMessage;
-use Core\Utility\FileHandler;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\OptimisticLockException;
-use GuzzleHttp\Exception\GuzzleException;
-use BackblazeB2\Exceptions\NotFoundException;
 use Doctrine\ORM\TransactionRequiredException;
 
 
-class CategoriesController extends Controller
+class TagsController extends Controller
 {
 
     public function index(): void
     {
         $this->setBaseData();
-        $this->render('/admin/categories');
+        $this->render('/admin/tags');
     }
 
 
@@ -48,30 +45,13 @@ class CategoriesController extends Controller
 
                 if (trim($POST['name'])) {
 
-                    /** @var Category $cat */
-                    $cat = new Category();
-                    $cat->setName($POST['name'])
+                    /** @var Tag $tag */
+                    $tag = new Tag();
+                    $tag->setName($POST['name'])
                         ->setDescription($POST['description']);
 
-                    if (isset($_FILES['image'])) {
-
-                        if ($_FILES['image']['size'] < CONFIG['file sizes']['category cover']) {
-                            $fh = new FileHandler();
-                            // Upload image
-                            $name = $fh->upload($_FILES['image'], 'covers/category/' . Utils::friendlify($POST['name']));
-
-                            $cat->setImage($name);
-
-                        } else {
-                            $errors[]  = 'File too big. Maximum size is ' . CONFIG['file sizes']['avatar'] / 1024 . ' KB';
-                        }
-
-                    }
-
-                    if (!$errors) {
-                        $this->em->persist($cat);
-                        $this->em->flush($cat);
-                    }
+                        $this->em->persist($tag);
+                        $this->em->flush($tag);
 
                 } else {
                     $errors[] = 'Name cannot be empty.';
@@ -87,15 +67,13 @@ class CategoriesController extends Controller
         http_response_code($errors ? 500 : 201);
         echo json_encode(new APIMessage(
             $errors ? HttpStatus::S500() : HttpStatus::S201(),
-            $errors ? 'An error has occurred.' : 'Successfully added the category.',
+            $errors ? 'An error has occurred.' : 'Successfully added the tag.',
             $errors
         ));
     }
 
 
     /**
-     * @throws GuzzleException
-     * @throws NotFoundException
      * @throws ORMException
      * @throws OptimisticLockException
      * @throws TransactionRequiredException
@@ -115,27 +93,11 @@ class CategoriesController extends Controller
 
                 if (trim($POST['name'])) {
 
-                    /** @var Category $cat */
-                    $cat = $this->em->find(Category::class, $_POST['id']);
-                    $cat->setName($POST['name'])->setDescription($POST['description']);
-                    if (isset($_FILES['image'])) {
-
-                        if ($_FILES['image']['size'] < CONFIG['file sizes']['category cover']) {
-
-                            $fh = new FileHandler();
-                            // Delete old image
-                            $fh->delete($cat->getImage());
-                            // Upload new image
-                            $name = $fh->upload($_FILES['image'], 'covers/category/' . Utils::friendlify($POST['name']));
-                            $cat->setImage($name);
-
-                        } else {
-                            $errors[] = 'File too big. Maximum size is ' . CONFIG['file sizes']['avatar'] / 1024 . ' KB';
-                        }
-                    }
-                    if (!$errors) {
-                        $this->em->flush($cat);
-                    }
+                    /** @var Tag $tag */
+                    $tag = $this->em->find(Tag::class, $_POST['id']);
+                    $tag->setName($POST['name'])
+                        ->setDescription($POST['description']);
+                        $this->em->flush($tag);
 
                 } else {
                     $errors[] = 'Name cannot be empty.';
@@ -148,18 +110,17 @@ class CategoriesController extends Controller
         } else {
             $errors[] = 'X-CSRF protection triggered.';
         }
+
         http_response_code($errors ? 500 : 200);
         echo json_encode(new APIMessage(
             $errors ? HttpStatus::S500() : HttpStatus::S200(),
-            $errors ? 'An error has occurred.' : 'Successfully updated the category.',
+            $errors ? 'An error has occurred.' : 'Successfully updated the tag.',
             $errors
         ));
     }
 
 
     /**
-     * @throws GuzzleException
-     * @throws NotFoundException
      * @throws ORMException
      * @throws OptimisticLockException
      * @throws TransactionRequiredException
@@ -176,17 +137,11 @@ class CategoriesController extends Controller
 
             if ($this->getUser()->getRole()->isAdmin()) {
 
-                /** @var Category $cat */
-                $cat = $this->em->find(Category::class, $POST['id']);
+                /** @var Tag $tag */
+                $tag = $this->em->find(Tag::class, $POST['id']);
 
-                if ($cat->getImage()) {
-                    // Delete old image
-                    $fh = new FileHandler();
-                    $fh->delete($cat->getImage());
-                }
-
-                $this->em->remove($cat);
-                $this->em->flush($cat);
+                $this->em->remove($tag);
+                $this->em->flush($tag);
 
             } else {
                 $errors[] = 'Insufficient rights.';
@@ -198,7 +153,7 @@ class CategoriesController extends Controller
         http_response_code($errors ? 500 : 200);
         echo json_encode(new APIMessage(
             $errors ? HttpStatus::S500() : HttpStatus::S200(),
-            $errors ? 'An error has occurred.' : 'Successfully deleted the category.',
+            $errors ? 'An error has occurred.' : 'Successfully deleted the tag.',
             $errors
         ));
     }
@@ -208,16 +163,14 @@ class CategoriesController extends Controller
      */
     public function fetch(): void
     {
-        $categories = $this->em->getRepository(Category::class)->findAll();
-        array_walk($categories, static function (Category $x) {
-            $x->setImage('//' . CONFIG['cdn domain'] . '/file/Omnibus/' . $x->getImage());
-        });
+        $tags = $this->em->getRepository(Tag::class)->findAll();
+
         http_response_code(200);
         echo json_encode(new APIMessage(
             HttpStatus::S200(),
             'Success.',
             [],
-            $categories
+            $tags
         ));
     }
 
