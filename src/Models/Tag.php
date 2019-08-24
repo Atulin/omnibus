@@ -143,7 +143,8 @@ class Tag implements JsonSerializable
         $out = [
             'id' => $this->id,
             'name' => $this->name,
-            'description' => $pd->parse($this->description),
+            'description' => $this->description,
+            'parsed_description' => $pd->parse($this->description),
             'articles' => $this->articles
         ];
         return (object) $out;

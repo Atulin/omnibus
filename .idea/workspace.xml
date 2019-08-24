@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/cards.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/cards.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/admin/v-tags.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/admin/v-tags.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controllers/Admin/TagsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/admin/tags.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
@@ -16,20 +9,12 @@
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/admin.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/admin/categories.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/admin/categories.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/cards.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/admin/categories.sass" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/main.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/admin/v-categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/admin/v-categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/admin/v-categories.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/admin/v-categories.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/CategoriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/links.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/links.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Category.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Tag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/admin/categories.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/admin/categories.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/admin/tags.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/admin/tags.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/admin_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/admin_scaffold.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -357,7 +342,7 @@
       <workItem from="1566288707711" duration="277000" />
       <workItem from="1566317819686" duration="10533000" />
       <workItem from="1566425948650" duration="5846000" />
-      <workItem from="1566600472372" duration="35453000" />
+      <workItem from="1566600472372" duration="36316000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -611,7 +596,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566637706297</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Tags CRUD">
+      <created>1566649312756</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1566649312756</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,7 +624,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="MFA authentication done" />
     <MESSAGE value="Made dropdowns a tad prettier" />
     <MESSAGE value="Profile and the beginning of a comment system" />
     <MESSAGE value="Comment system grows!" />
@@ -657,6 +648,7 @@
     <MESSAGE value="Added the beginning of admin-only stuff and made login form better" />
     <MESSAGE value="Better login experience" />
     <MESSAGE value="Category CRUD" />
-    <option name="LAST_COMMIT_MESSAGE" value="Category CRUD" />
+    <MESSAGE value="Tags CRUD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tags CRUD" />
   </component>
 </project>

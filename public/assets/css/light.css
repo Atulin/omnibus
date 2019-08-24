@@ -423,6 +423,7 @@ div#navbar {
  * / Last modified: 19.08.2019, 05:28
  * / */
 a.link {
+  display: inline-block;
   text-decoration: none;
   color: #060606;
   transition: color 250ms ease-in-out; }
@@ -526,6 +527,7 @@ div#profile {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   font-size: 1rem;
   text-decoration: none;
   height: 50px;

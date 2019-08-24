@@ -124,7 +124,8 @@ class Category implements JsonSerializable
         $out = [
             'id' => $this->id,
             'name' => $this->name,
-            'description' => $pd->parse($this->description),
+            'description' => $this->description,
+            'parsed_description' => $pd->parse($this->description),
             'image' => $this->image ?: 'https://via.placeholder.com/300'
         ];
         return (object) $out;
