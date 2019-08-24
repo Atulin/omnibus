@@ -31,8 +31,6 @@ class ProfileController extends Controller
         /** @var CommentThread $thread */
         $thread = $owner ? $owner->getCommentThread() : $this->getUser()->getCommentThread();
 
-        $comments = $this->em->getRepository(Comment::class)->findBy(['thread' => $thread]);
-
         $this->setBaseData();
         $this->render('user/profile/profile', [
             'data' => var_export($params, true),
