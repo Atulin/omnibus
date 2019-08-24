@@ -41,6 +41,7 @@ class TwigHandler
         /// Versioned asset loading function
         ///
         $twig->addFunction(new TwigFunction('vasset', static function (string $asset, string $extension, bool $strip = false) {
+
             $filename = ltrim(ASSETS, '/')."/$asset.$extension";
             if (file_exists($filename)) {
                 $timestamp = dechex(filemtime($filename));
@@ -69,6 +70,13 @@ class TwigHandler
             } else {
                 return (new Gravatar($user->getEmail()))->getGravatar();
             }
+        }));
+
+        ///
+        /// Get an image from cdn
+        ///
+        $twig->addFunction(new TwigFunction('cdn', static function(string $path) : string {
+            return '//'.CONFIG['cdn domain'].'/file/Omnibus/' . $path;
         }));
 
         ///

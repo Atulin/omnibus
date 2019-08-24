@@ -2,8 +2,8 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/public/assets/js/admin/v-categories.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/hamburger.min.js" />
-        <item url="file://$PROJECT_DIR$/public/assets/js/messages.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/themeswap.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/v-account-validator.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/v-comments.min.js" />
@@ -14,8 +14,8 @@
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/public/assets/js/admin/v-categories.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/hamburger.min.js" />
-      <root url="file://$PROJECT_DIR$/public/assets/js/messages.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/themeswap.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/v-account-validator.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/v-comments.min.js" />

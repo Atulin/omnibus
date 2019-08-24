@@ -12,4 +12,12 @@ define('CONFIG', [
 
     // Website owner
     'owner' => 'School for New Writers',
+
+    // File sizes in bytes
+    'file sizes' => [
+        'avatar'         => 200 * 1024,
+        'tag cover'      => 500 * 1024,
+        'category cover' => 500 * 1024,
+        'article cover'  => 500 * 1024
+    ]
 ]);

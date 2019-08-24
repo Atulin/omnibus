@@ -9,9 +9,15 @@ form.form
   padding: 20px
   width: max-content
 
+  background-color: $background
   border-radius: 20px
   border: 1px solid rgba(0, 0, 0, 0.3)
   box-shadow: $subtle-shadow
+
+  &.horizontal
+    flex-direction: row
+    @media only screen and (max-width: 768px)
+      flex-direction: column
 
   &.auto-width
     width: auto
@@ -25,10 +31,13 @@ form.form
   hr
     width: 100%
 
-  &>div.field
+  & div.field
     display: flex
     flex-direction: column
     margin: 4px
+
+    &.group
+      width: auto
 
     &.full
       width: 100%

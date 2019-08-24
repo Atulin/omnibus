@@ -13,6 +13,9 @@ div
   &.h-centered
     justify-content: center
 
+  &.spread
+    justify-content: space-around
+
   &.v-full
     min-height: calc(100vh - #{$nav-height+$foot-height})
     margin-top: $nav-height
@@ -39,16 +42,13 @@ div.column
     padding: 2rem
     transition: width 200ms ease-in-out
 
-  @media only screen and (max-width: 1600px)
-    &.main
+    @media only screen and (max-width: 1600px)
       width: 60vw
 
-  @media only screen and (max-width: 1300px)
-    &.main
+    @media only screen and (max-width: 1300px)
       width: 80vw
 
-  @media only screen and (max-width: 760px)
-    &.main
+    @media only screen and (max-width: 760px)
       width: 100vw
 
 footer

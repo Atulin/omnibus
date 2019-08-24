@@ -85,6 +85,8 @@ div.v-centered {
   align-items: center; }
 div.h-centered {
   justify-content: center; }
+div.spread {
+  justify-content: space-around; }
 div.v-full {
   min-height: calc(100vh - 80px);
   margin-top: 50px; }
@@ -104,15 +106,15 @@ div.column {
     width: 50vw;
     padding: 2rem;
     transition: width 200ms ease-in-out; }
-  @media only screen and (max-width: 1600px) {
-    div.column.main {
-      width: 60vw; } }
-  @media only screen and (max-width: 1300px) {
-    div.column.main {
-      width: 80vw; } }
-  @media only screen and (max-width: 760px) {
-    div.column.main {
-      width: 100vw; } }
+    @media only screen and (max-width: 1600px) {
+      div.column.main {
+        width: 60vw; } }
+    @media only screen and (max-width: 1300px) {
+      div.column.main {
+        width: 80vw; } }
+    @media only screen and (max-width: 760px) {
+      div.column.main {
+        width: 100vw; } }
 
 footer {
   height: 30px;
@@ -129,9 +131,15 @@ form.form {
   align-items: center;
   padding: 20px;
   width: max-content;
+  background-color: #fbfbfb;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 10px 1px rgba(6, 6, 6, 0.2); }
+  form.form.horizontal {
+    flex-direction: row; }
+    @media only screen and (max-width: 768px) {
+      form.form.horizontal {
+        flex-direction: column; } }
   form.form.auto-width {
     width: auto; }
   form.form.full {
@@ -140,29 +148,31 @@ form.form {
     margin: 5rem 0; }
   form.form hr {
     width: 100%; }
-  form.form > div.field {
+  form.form div.field {
     display: flex;
     flex-direction: column;
     margin: 4px; }
-    form.form > div.field.full {
+    form.form div.field.group {
+      width: auto; }
+    form.form div.field.full {
       width: 100%; }
-    form.form > div.field.checkbox {
+    form.form div.field.checkbox {
       flex-direction: row;
       align-items: center; }
-    form.form > div.field > label {
+    form.form div.field > label {
       font-size: 0.9rem;
       margin: 2px; }
-      form.form > div.field > label.hidden {
+      form.form div.field > label.hidden {
         visibility: collapse; }
-      form.form > div.field > label > a {
+      form.form div.field > label > a {
         color: #00cbc3;
         text-decoration: none;
         border-bottom: 1px solid transparent;
         transition: border-bottom-color 200ms ease-in-out; }
-        form.form > div.field > label > a:hover {
+        form.form div.field > label > a:hover {
           color: rgba(0, 203, 195, 0.8);
           border-bottom: 1px solid rgba(0, 203, 195, 0.8); }
-    form.form > div.field > input {
+    form.form div.field > input {
       height: 24px;
       width: 250px;
       padding: 5px 1rem;
@@ -171,19 +181,19 @@ form.form {
       font-size: 1rem;
       background-color: transparent;
       color: #060606; }
-      form.form > div.field > input[readonly] {
+      form.form div.field > input[readonly] {
         color: rgba(6, 6, 6, 0.5);
         border-color: rgba(6, 6, 6, 0.5); }
-      form.form > div.field > input[type=checkbox] {
+      form.form div.field > input[type=checkbox] {
         width: 24px; }
-    form.form > div.field > textarea {
+    form.form div.field > textarea {
       resize: vertical;
       background-color: transparent;
       border-radius: 1rem;
       padding: 1rem;
       font-family: "Inconsolata", monospace;
       color: #060606; }
-    form.form > div.field > .submit.button {
+    form.form div.field > .submit.button {
       width: 250px;
       padding: 5px;
       border-radius: 1rem;
@@ -192,14 +202,14 @@ form.form {
       height: 50px;
       cursor: pointer;
       transition: color 250ms ease-in-out, border-color 250ms ease-in-out; }
-      form.form > div.field > .submit.button:hover {
+      form.form div.field > .submit.button:hover {
         color: #00cbc3; }
-      form.form > div.field > .submit.button:disabled {
+      form.form div.field > .submit.button:disabled {
         border-color: rgba(6, 6, 6, 0.2);
         color: rgba(6, 6, 6, 0.2); }
-    form.form > div.field.avatar {
+    form.form div.field.avatar {
       margin-top: -120px; }
-      form.form > div.field.avatar > img.avatar {
+      form.form div.field.avatar > img.avatar {
         box-sizing: border-box;
         border: 2px solid #060606;
         border-radius: 50%;
@@ -291,7 +301,8 @@ div#navbar {
       align-items: center; }
       div#navbar > .items .item.avatar {
         padding: 4px;
-        margin: 0 1rem 0 0; }
+        margin: 0 1rem 0 0;
+        min-width: 110px; }
         div#navbar > .items .item.avatar > img {
           height: 40px;
           width: 40px;
@@ -520,6 +531,7 @@ div#profile {
   border-radius: 1rem;
   border: 1px solid #060606;
   cursor: pointer;
+  background-color: transparent;
   color: #060606; }
   .button:hover {
     color: #00cbc3;
@@ -751,5 +763,157 @@ div#profile {
     transition: color 100ms ease-in-out; }
     .md a.mention:hover {
       color: #00cbc3; }
+
+/*!
+ * / Copyright © 2019 by Angius
+ * / Last modified: 24.08.2019, 02:49
+ * / */
+div#admin {
+  padding-top: 2rem;
+  min-height: calc(100vh - 80px - 2rem); }
+  @media only screen and (max-width: 768px) {
+    div#admin {
+      padding-top: 50px;
+      margin: 0;
+      flex-direction: column;
+      justify-content: stretch; } }
+  div#admin > .column {
+    box-shadow: 0 0 10px 1px rgba(6, 6, 6, 0.2);
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 0.5rem;
+    border-radius: 0.5rem; }
+    @media only screen and (max-width: 768px) {
+      div#admin > .column {
+        margin: 10px 0;
+        border-radius: 0; } }
+    div#admin > .column.narrow {
+      flex-direction: column;
+      width: 200px; }
+      @media only screen and (max-width: 768px) {
+        div#admin > .column.narrow {
+          flex-direction: row;
+          justify-content: space-around;
+          width: 100vw; } }
+      div#admin > .column.narrow > button.home {
+        margin-bottom: 1rem; }
+        @media only screen and (max-width: 768px) {
+          div#admin > .column.narrow > button.home {
+            display: none; } }
+      div#admin > .column.narrow > .group {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.5rem; }
+        div#admin > .column.narrow > .group > a.link {
+          padding: 0.2rem 0;
+          display: block; }
+        div#admin > .column.narrow > .group > h3 {
+          margin: 0 0 0.5rem;
+          font-size: 0.8rem;
+          font-weight: 300; }
+      div#admin > .column.narrow > hr {
+        margin: 0;
+        width: 100%;
+        color: rgba(6, 6, 6, 0.2); }
+        @media only screen and (max-width: 768px) {
+          div#admin > .column.narrow > hr {
+            width: 0;
+            height: 100%; } }
+    div#admin > .column.wide {
+      width: 60vw;
+      /*!
+       * / Copyright © 2019 by Angius
+       * / Last modified: 24.08.2019, 07:44
+       * / */ }
+      @media only screen and (max-width: 1600px) {
+        div#admin > .column.wide {
+          width: calc(75vw - 200px); } }
+      @media only screen and (max-width: 1300px) {
+        div#admin > .column.wide {
+          width: calc(90vw - 200px); } }
+      @media only screen and (max-width: 760px) {
+        div#admin > .column.wide {
+          width: calc(100vw); } }
+      div#admin > .column.wide > form {
+        box-shadow: none;
+        border: none; }
+        div#admin > .column.wide > form > .field {
+          height: 100%; }
+      div#admin > .column.wide .cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; }
+        div#admin > .column.wide .cards > .card {
+          position: relative;
+          box-sizing: border-box;
+          overflow: hidden;
+          max-width: 300px;
+          width: 200px;
+          flex-grow: 1;
+          box-shadow: 0 0 10px 1px rgba(6, 6, 6, 0.2);
+          margin: 1rem 2%;
+          padding: 1rem;
+          border-radius: 1rem; }
+          div#admin > .column.wide .cards > .card:hover .meta {
+            background-color: #fbfbfb; }
+          div#admin > .column.wide .cards > .card:hover .actions {
+            background-color: #fbfbfb;
+            transform: scaleY(1); }
+          div#admin > .column.wide .cards > .card > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; }
+          div#admin > .column.wide .cards > .card > .actions, div#admin > .column.wide .cards > .card .meta {
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background-color: rgba(251, 251, 251, 0.8);
+            transition: background-color 200ms ease-in-out; }
+          div#admin > .column.wide .cards > .card > .actions {
+            top: 0;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 100ms ease-in-out; }
+            div#admin > .column.wide .cards > .card > .actions > button {
+              background-color: transparent;
+              border: 1px solid rgba(6, 6, 6, 0.2);
+              padding: 0.5rem;
+              width: 4rem;
+              color: #060606;
+              transition: color 200ms ease-in-out; }
+              div#admin > .column.wide .cards > .card > .actions > button:hover {
+                color: #00cbc3; }
+          div#admin > .column.wide .cards > .card > .meta {
+            bottom: 0; }
+            div#admin > .column.wide .cards > .card > .meta > h3 {
+              font-size: 1rem; }
+
+/*!
+ * / Copyright © 2019 by Angius
+ * / Last modified: 24.08.2019, 05:30
+ * / */
+div.modal {
+  z-index: 999999999;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  background-color: rgba(251, 251, 251, 0.8); }
+  div.modal.v-centered {
+    align-items: center; }
+  div.modal.h-centered {
+    justify-content: center; }
+
+.modal-transition {
+  opacity: 1;
+  transition: opacity 1s ease-in-out; }
+.modal-enter {
+  opacity: 0; }
+.modal-leave {
+  opacity: 0; }
 
 /*# sourceMappingURL=light.css.map */

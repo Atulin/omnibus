@@ -8,10 +8,11 @@ namespace Core;
 
 use AltoRouter;
 use Core\Utility\Email;
-use Controllers\Admin\Dashboard;
+use Controllers\Admin\DashboardController;
 use Controllers\StaticDocsController;
 use Controllers\API\CommentsApiController;
 use Controllers\HomeController;
+use Controllers\Admin\CategoriesController;
 use Controllers\User\ForgottenPasswordController;
 use Controllers\User\LogoutController;
 use Controllers\User\MFAController;
@@ -196,7 +197,15 @@ class Application
 
         try {
             $this->router->addRoutes([
-                ['GET',  '/dashboard', Dashboard::class . '#index'],
+                // Dashboard
+                ['GET',  '/dashboard', DashboardController::class . '#index'],
+
+                // Categories
+                ['GET',  '/admin/categories',        CategoriesController::class . '#index'     ],
+                ['POST', '/admin/categories/create', CategoriesController::class . '#create'    ],
+                ['POST', '/admin/categories/update', CategoriesController::class . '#update'    ],
+                ['POST', '/admin/categories/delete', CategoriesController::class . '#delete'    ],
+                ['GET',  '/admin/categories/fetch',  CategoriesController::class . '#fetch'     ],
             ]);
         } catch (Exception $e) {
             echo $e;
@@ -240,19 +249,20 @@ class Application
 
         // Check RememberMe
         $remember_cookie = $_COOKIE['__Secure-rememberme'] ?? '';
+
         if ($remember_cookie) {
+
             [$user_id, $token, $mac] = explode(':', $remember_cookie);
-            if (!password_verify($user_id . ':' . $token, $mac)) {
-                die('101: Corrupted rememberme cookie!');
-            }
 
-            $user = $this->em->find(User::class, $user_id);
+            if (password_verify($user_id . ':' . $token, $mac)) {
 
-            $user_token = $user === null ? '' : $user->getRememberme();
-            if (hash_equals($user_token, $token)) {
-                $this->session->set('userid', $user_id);
-            } else {
-                die('102: Corrupted rememberme cookie!');
+                $user = $this->em->find(User::class, $user_id);
+
+                $user_token = $user === null ? '' : $user->getRememberme();
+
+                if (hash_equals($user_token, $token)) {
+                    $this->session->set('userid', $user_id);
+                }
             }
         }
 

@@ -1,3 +1,3 @@
 <component name="DependencyValidationManager">
-  <scope name="Javascript" pattern="file[omnibus2]:public/assets/js/*" />
+  <scope name="Javascript" pattern="file[omnibus2]:public/assets/js//*" />
 </component>

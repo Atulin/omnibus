@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="{{ lang|default('en') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="//unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link id="style" rel="stylesheet" href="{{ vasset('css/'~theme, 'min.css') }}">
+    {% block scripts %}{% endblock %}
+
+    <title>{% block title %}{{ cfg('name') }}{% endblock %}</title>
+</head>
+
+<script src="//instant.page/2.0.0" type="module"
+        integrity="sha384-D7B5eODAUd397+f4zNFAVlnDNDtO1ppV8rPnfygILQXhqu3cUndgHvlcJR2Bhig8"></script>
+
+<body>
+
+{% include 'elements/navbar.twig' %}
+
+<div class="v-full h-full h-centered container" id="admin">
+    <nav class="narrow column">
+        <button class="fluid home button">Home</button>
+        <div class="group">
+            <h3>Categorization</h3>
+            <a class="link" href="/admin/categories">Categories</a>
+            <a class="link" href="/admin/tags">Tags</a>
+        </div>
+        <hr>
+        <div class="group">
+            <h3>UwU</h3>
+            <a class="link" href="#">DDD</a>
+            <a class="link" href="#">EEE</a>
+            <a class="link" href="#">FFF</a>
+        </div>
+        <hr>
+        <div class="group">
+            <h3>OwU</h3>
+            <a class="link" href="#">GGG</a>
+            <a class="link" href="#">HHH</a>
+            <a class="link" href="#">III</a>
+            <a class="link" href="#">JJJ</a>
+        </div>
+    </nav>
+
+    <div class="wide column" id="v-app">
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
+
+<footer>
+    Copyright © {{ 'now'|date('Y') }} {{ cfg('owner') }}
+</footer>
+
+<script src="{{ vasset('js/hamburger', 'min.js') }}"></script>
+<script src="{{ vasset('js/themeswap', 'min.js') }}"></script>
+
+</body>
+</html>

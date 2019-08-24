@@ -1,0 +1,71 @@
+{% extends 'scaffolds/admin_scaffold.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    {# TOKEN #}
+    <input type="hidden" name="token" id="token" value="{{ token }}">
+
+    {#==================#}
+    {#   EDITOR MODAL   #}
+    {#==================#}
+    <div id="modal" v-if="modal" transition="modal" class="v-centered h-centered modal" v-on:click.self="toggleModal">
+        <form class="form" @submit.stop.prevent="createCategory">
+
+            <div class="field">
+                <label for="name">Name</label>
+                <input name="name" id="name" v-model="name" type="text">
+            </div>
+
+            <div class="field">
+                <label for="image">Image</label>
+                <input name="image" id="image" ref="image" type="file" v-on:change="handleImage">
+            </div>
+
+            <div class="full field">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" v-model="description"></textarea>
+            </div>
+
+            <div class="field">
+                <label for="create" class="hidden">Create</label>
+                <input name="create" class="submit button" id="create" type="submit" :value="id ? 'Edit' : 'Create'">
+            </div>
+
+        </form>
+    </div>
+
+    {#==============#}
+    {#  LOAD MODAL  #}
+    {#==============#}
+    <div id="load" v-if="isLoading" class="loading modal"></div>
+
+
+    {#==============#}
+    {#  CATEGORIES  #}
+    {#==============#}
+    <button v-on:click="toggleModal">Add new</button>
+    <button v-on:click="fetchCategories">Fetch all</button>
+
+    <div class="cards" v-if="categories">
+        <div class="card" v-for="c in categories">
+
+            <div class="actions">
+                <button v-on:click="editCategory(c)">Edit</button>
+                <button v-on:click="deleteCategory(c)">Delete</button>
+            </div>
+
+            <img :src="c.image" alt="">
+
+            <div class="meta">
+                <h3>${ c.name }</h3>
+                <p v-html="c.description"></p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script type="application/javascript" src="{{ vasset('js/admin/v-categories', 'min.js') }}"></script>
+{% endblock %}

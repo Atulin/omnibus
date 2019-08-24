@@ -8,6 +8,7 @@ namespace Controllers\User\Profile;
 
 use BackblazeB2\File;
 use Core\Controller;
+use Core\Utility\FileHandler;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use BackblazeB2\Client;
@@ -56,28 +57,22 @@ class ProfileEditController extends Controller
                 $this->messages[] = "Bio can't be longer than 2000 characters";
             }
 
-            if ($_FILES['avatar']['size'] < 200 * 1024) {
-                $client = new Client($_SERVER['BACKBLAZE_ID'], $_SERVER['BACKBLAZE_MASTER']);
+            if ($_FILES['avatar']['size'] < CONFIG['file sizes']['avatar']) {
+
+                $fh = new FileHandler();
 
                 // Delete old avatar if it exists
                 $file_arr = explode('/', $u->getAvatar());
                 if ($u->getAvatar()) {
-                    $client->deleteFile([
-                        'FileName' => 'avatars/' . $file_arr[array_key_last($file_arr)],
-                        'BucketName' => 'Omnibus'
-                    ]);
+                    $fh->delete('avatars/' . $file_arr[array_key_last($file_arr)]);
                 }
 
                 // Upload new avatar
-                /** @var File $file */
-                $file = $client->upload([
-                    'BucketName' => 'Omnibus',
-                    'FileName' => 'avatars/' . $u->getName() . '.' . explode('/', $_FILES['avatar']['type'])[1],
-                    'Body' => fopen($_FILES['avatar']['tmp_name'], 'rb')
-                ]);
-                $u->setAvatar($file->getName());
+                $name = $fh->upload($_FILES['avatar'], 'avatars/' . $u->getName());
+                $u->setAvatar($name);
+
             } else {
-                $this->messages[] = 'File too big. Maximum size is 200 KB';
+                $this->messages[] = 'File too big. Maximum size is ' . CONFIG['file sizes']['avatar']/1024 . ' KB';
             }
 
             if (!$this->messages) {

@@ -61,6 +61,7 @@ class HttpStatus
     public static function S207() {return new HttpStatus(207, 'Multi-Status');}
     public static function S208() {return new HttpStatus(208, 'Already Reported');}
     public static function S226() {return new HttpStatus(226, 'IM Used');}
+
     public static function S300() {return new HttpStatus(300, 'Multiple Choices');}
     public static function S301() {return new HttpStatus(301, 'Moved Permanently');}
     public static function S302() {return new HttpStatus(302, 'Found');}
@@ -70,6 +71,7 @@ class HttpStatus
     public static function S306() {return new HttpStatus(306, 'Switch Proxy');}
     public static function S307() {return new HttpStatus(307, 'Temporary Redirect');}
     public static function S308() {return new HttpStatus(308, 'Permanent Redirect');}
+
     public static function S400() {return new HttpStatus(400, 'Bad Request');}
     public static function S401() {return new HttpStatus(401, 'Unauthorized');}
     public static function S402() {return new HttpStatus(402, 'Payment Required');}
@@ -108,6 +110,7 @@ class HttpStatus
     public static function S496() {return new HttpStatus(496, 'No Cert');}
     public static function S497() {return new HttpStatus(497, 'HTTP to HTTPS');}
     public static function S499() {return new HttpStatus(499, 'Client Closed Request');}
+
     public static function S500() {return new HttpStatus(500, 'Internal Server Error');}
     public static function S501() {return new HttpStatus(501, 'Not Implemented');}
     public static function S502() {return new HttpStatus(502, 'Bad Gateway');}
