@@ -71,17 +71,18 @@ $err-height: 1.1rem
         &>.counter
           margin: 0 1rem
 
-        &>button.send
-          border: none
-          background: transparent
-          color: $foreground
-          padding: 0
-          width: 6rem
-          height: 2rem
-          transition: background-color 200ms ease-in-out
+        &>.buttons
+          &>button.send
+            border: none
+            background: transparent
+            color: $foreground
+            padding: 0
+            width: 6rem
+            height: 2rem
+            transition: background-color 200ms ease-in-out
 
-          &:hover
-            background: $accent-50
+            &:hover
+              background: $accent-50
 
   // If user not logged in
   div.ph

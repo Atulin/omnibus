@@ -24,6 +24,10 @@ class ParsedownExtended extends Parsedown
     {
         $this->InlineTypes['@'][] = 'Mention';
         $this->inlineMarkerList .= '@';
+
+        $this->InlineTypes['^'][] = 'Superscript';
+        $this->inlineMarkerList .= '^';
+
     }
 
 
@@ -48,6 +52,10 @@ class ParsedownExtended extends Parsedown
         $temp = parent::inlineLink($excerpt);
         if (is_array($temp) && isset($temp['element']['attributes']['href'])) {
             $this->addLinkAttributes($temp['element']['attributes']);
+
+            if ($temp['element']['attributes']['href'][0] === '#') {
+                unset($temp['element']['attributes']['target']);
+            }
         }
         return $temp;
     }
@@ -106,4 +114,55 @@ class ParsedownExtended extends Parsedown
         }
         return [];
     }
+
+    protected function inlineSuperscript($excerpt) {
+        if (preg_match('/\^[\S]+/', $excerpt['text'], $matches)) {
+            $text = trim($matches[0], '^');
+
+            return [
+                'extent' => strlen($matches[0]),
+                'element' => [
+                    'name' => 'sup',
+                    'text' => $text,
+                ]
+            ];
+
+        }
+        return [];
+    }
+
+    protected function blockHeader($Line)
+    {
+        if (isset($Line['text'][1]))
+        {
+            $level = 1;
+
+            while (isset($Line['text'][$level]) and $Line['text'][$level] === '#')
+            {
+                $level ++;
+            }
+
+            if ($level > 6)
+            {
+                return;
+            }
+
+            $text = trim($Line['text'], '# ');
+
+            $Block = array(
+                'element' => array(
+                    'name' => 'h' . min(6, $level),
+                    'text' => $text,
+                    'handler' => 'line',
+                ),
+            );
+
+            if ($level <= 3) {
+                $Block['element']['attributes']['id'] = Utils::friendlify($text);
+            }
+
+            return $Block;
+        }
+    }
+
 }

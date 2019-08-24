@@ -128,6 +128,7 @@ class Application
 
                 // Documents
                 ['GET',  '/tos', StaticDocsController::class . '#tos'],
+                ['GET',  '/md',  StaticDocsController::class . '#md']
             ]);
         } catch (Exception $e) {
             echo $e;

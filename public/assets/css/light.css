@@ -74,6 +74,9 @@ html, body {
   font-weight: 300;
   overflow-x: hidden; }
 
+html {
+  scroll-padding-top: calc(50px + 1rem); }
+
 /*!
  * / Copyright © 2019 by Angius
  * / Last modified: 19.08.2019, 06:39
@@ -544,6 +547,10 @@ div#profile {
   .button.fluid {
     width: 100%;
     height: auto; }
+  .button.markdown {
+    height: auto;
+    width: auto;
+    border-color: rgba(6, 6, 6, 0.2); }
 
 .buttons {
   display: flex;
@@ -618,7 +625,7 @@ div#profile {
         align-items: center; }
         #comments > form > .comment-box > .bottom > .counter {
           margin: 0 1rem; }
-        #comments > form > .comment-box > .bottom > button.send {
+        #comments > form > .comment-box > .bottom > .buttons > button.send {
           border: none;
           background: transparent;
           color: #060606;
@@ -626,7 +633,7 @@ div#profile {
           width: 6rem;
           height: 2rem;
           transition: background-color 200ms ease-in-out; }
-          #comments > form > .comment-box > .bottom > button.send:hover {
+          #comments > form > .comment-box > .bottom > .buttons > button.send:hover {
             background: rgba(0, 203, 195, 0.5); }
   #comments div.ph {
     width: 100%;
@@ -718,20 +725,24 @@ div#profile {
  * / */
 .md p {
   margin: 0.2rem 0; }
-  .md p > code {
-    background-color: rgba(6, 6, 6, 0.2);
-    padding: 0.3rem;
-    border-radius: 3px; }
 .md code {
+  display: inline-block;
+  background-color: rgba(6, 6, 6, 0.2);
   font-family: "Inconsolata", monospace;
   font-size: 0.9rem;
-  line-height: 0.9rem; }
+  line-height: 0.9rem;
+  padding: 0.2rem;
+  margin: 0.1rem;
+  border-radius: 0.2rem; }
 .md pre {
   background-color: rgba(6, 6, 6, 0.2);
   padding: 0.3rem;
-  border-radius: 3px; }
+  border-radius: 0.3rem; }
   .md pre > code {
-    padding: 0; }
+    display: inline;
+    background-color: transparent;
+    padding: 0;
+    margin: 0; }
 .md img {
   width: 90%;
   margin: 0 5%;
@@ -749,20 +760,23 @@ div#profile {
     .md table tr:hover {
       background-color: rgba(0, 203, 195, 0.2); }
 .md h1, .md h2, .md h3, .md h4, .md h5, .md h6 {
-  margin: 0.2rem 0 0.5rem;
-  color: rgba(6, 6, 6, 0.5); }
+  margin: 1rem 0 0.5rem;
+  color: rgba(6, 6, 6, 0.5);
+  transition: color 200ms ease-in-out; }
+  .md h1:hover, .md h2:hover, .md h3:hover, .md h4:hover, .md h5:hover, .md h6:hover {
+    color: rgba(6, 6, 6, 0.8); }
 .md h1 {
-  font-size: 1.5rem; }
+  font-size: 2rem; }
 .md h2 {
-  font-size: 1.4rem; }
+  font-size: 1.5rem; }
 .md h3 {
-  font-size: 1.3rem; }
+  font-size: 1.4rem; }
 .md h4 {
-  font-size: 1.2rem; }
+  font-size: 1.3rem; }
 .md h5 {
-  font-size: 1.1rem; }
+  font-size: 1.2rem; }
 .md h6 {
-  font-size: 1rem; }
+  font-size: 1.1rem; }
 .md blockquote {
   margin: 0.2rem 0;
   padding-left: 1rem;
@@ -782,6 +796,9 @@ div#profile {
     transition: color 100ms ease-in-out; }
     .md a.mention:hover {
       color: #00cbc3; }
+.md hr {
+  width: 100%;
+  color: rgba(6, 6, 6, 0.2); }
 
 /*!
  * / Copyright © 2019 by Angius

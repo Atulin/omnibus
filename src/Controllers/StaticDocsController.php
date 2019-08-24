@@ -24,6 +24,11 @@ class StaticDocsController extends Controller
         $this->index('Terms-of-Service');
     }
 
+    public function md(): void
+    {
+        $this->index('Markdown-Reference');
+    }
+
     /**
      * @param string $doc
      */
@@ -32,7 +37,10 @@ class StaticDocsController extends Controller
         $text = file_get_contents(dirname(__DIR__, 2) . '/public/assets/static/docs/' . $doc . '.md');
 
         $this->setBaseData();
-        $this->render('static-doc', ['text' => $text, 'name' => str_replace('-', ' ', $doc)]);
+        $this->render('static-doc', [
+            'text' => $text,
+            'name' => str_replace('-', ' ', $doc)
+        ]);
     }
 
 }

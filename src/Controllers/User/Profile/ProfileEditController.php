@@ -57,22 +57,26 @@ class ProfileEditController extends Controller
                 $this->messages[] = "Bio can't be longer than 2000 characters";
             }
 
-            if ($_FILES['avatar']['size'] < CONFIG['file sizes']['avatar']) {
+            if (isset($_FILES['avatar']) && !$_FILES['avatar']['error']) {
 
-                $fh = new FileHandler();
+                if ($_FILES['avatar']['size'] < CONFIG['file sizes']['avatar']) {
 
-                // Delete old avatar if it exists
-                $file_arr = explode('/', $u->getAvatar());
-                if ($u->getAvatar()) {
-                    $fh->delete('avatars/' . $file_arr[array_key_last($file_arr)]);
+                    $fh = new FileHandler();
+
+                    // Delete old avatar if it exists
+                    $file_arr = explode('/', $u->getAvatar());
+                    if ($u->getAvatar()) {
+                        $fh->delete('avatars/' . $file_arr[array_key_last($file_arr)]);
+                    }
+
+                    // Upload new avatar
+                    $name = $fh->upload($_FILES['avatar'], 'avatars/' . $u->getName());
+                    $u->setAvatar($name);
+
+                } else {
+                    $this->messages[] = 'File too big. Maximum size is ' . CONFIG['file sizes']['avatar']/1024 . ' KB';
                 }
 
-                // Upload new avatar
-                $name = $fh->upload($_FILES['avatar'], 'avatars/' . $u->getName());
-                $u->setAvatar($name);
-
-            } else {
-                $this->messages[] = 'File too big. Maximum size is ' . CONFIG['file sizes']['avatar']/1024 . ' KB';
             }
 
             if (!$this->messages) {

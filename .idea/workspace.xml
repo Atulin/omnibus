@@ -2,11 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/static/docs/Markdown-Reference.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/markdown.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/markdown.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/main.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/StaticDocsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/StaticDocsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/ParsedownExtended.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/ParsedownExtended.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/static-doc.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/static-doc.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -219,6 +232,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
@@ -333,7 +347,7 @@
       <workItem from="1566288707711" duration="277000" />
       <workItem from="1566317819686" duration="10533000" />
       <workItem from="1566425948650" duration="5846000" />
-      <workItem from="1566600472372" duration="36669000" />
+      <workItem from="1566600472372" duration="44268000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -601,7 +615,21 @@
       <option name="project" value="LOCAL" />
       <updated>1566650169921</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Switched to 100% dynamically loaded comments">
+      <created>1566650482861</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1566650482861</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Switched to 100% dynamically loaded comments">
+      <created>1566650497402</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1566650497402</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -622,7 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Profile and the beginning of a comment system" />
     <MESSAGE value="Comment system grows!" />
     <MESSAGE value="Comment system DONE" />
     <MESSAGE value="Comment visuals and Markdown parsing" />
@@ -647,6 +674,7 @@
     <MESSAGE value="Category CRUD" />
     <MESSAGE value="Tags CRUD" />
     <MESSAGE value="Improved CSS here and there" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved CSS here and there" />
+    <MESSAGE value="Switched to 100% dynamically loaded comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Switched to 100% dynamically loaded comments" />
   </component>
 </project>
