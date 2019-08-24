@@ -45,25 +45,7 @@ const app = new Vue({
 
                         // Clear textarea
                         this.comment_body = '';
-
-                        // Create GET data
-                        let data = new FormData();
-                        data.append('thread', thread);
-
-                        // Get comments
-                        axios.get('/api/comments', {params: {thread: thread}})
-                            .then(response => {
-                                console.log(response);
-                                this.comments_list = [];
-
-                                for (let c of response.data.data) {
-                                    this.comments_list.push(c);
-                                }
-
-                            })
-                            .catch(err => {
-                                console.error(err)
-                            });
+                        this.fetchComments()
 
                     })
                     .catch(err => {
@@ -72,6 +54,29 @@ const app = new Vue({
 
                 return true;
             }
+        },
+
+        fetchComments: function(e) {
+            let thread = document.getElementById('thread').value;
+
+            // Create GET data
+            let data = new FormData();
+            data.append('thread', thread);
+
+            // Get comments
+            axios.get('/api/comments', {params: {thread: thread}})
+                .then(response => {
+                    console.log(response);
+                    this.comments_list = [];
+
+                    for (let c of response.data.data) {
+                        this.comments_list.push(c);
+                    }
+
+                })
+                .catch(err => {
+                    console.error(err)
+                });
         },
 
         reportComment: function (event, c) {
@@ -131,5 +136,9 @@ const app = new Vue({
 
             return limit - chars;
         }
+    },
+
+    mounted() {
+        this.fetchComments();
     }
 });

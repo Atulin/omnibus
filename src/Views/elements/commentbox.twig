@@ -78,38 +78,6 @@
 
         </div>
 
-        {# Comments shown by default #}
-        {% for c in comments %}
-            <div class="comment" v-if="comments_list.length <= 0">
-
-                <div class="avatar">
-                    <img src="{{ c.avatar }}" alt="{{ c.user }}'s avatar">
-                </div>
-
-                <div class="top">
-                    <div class="author" v-on:click="insertMention({{ c.user_id }})">{{ c.user }}</div>
-                    <time class="date item" datetime="{{ c.date|date('c') }}">{{ c.date }}</time>
-                </div>
-
-                <div class="body md">{{ c.body|raw }}</div>
-
-                <div class="meta">
-                    <div class="buttons">
-                        {% if user %}
-                        <button class="item" v-on:click.self="reportComment($event, {{ c.id }})">
-                            <i class="warning icon"></i>
-                        </button>
-                        {% endif %}
-                    </div>
-                    <div class="id item">
-                        #{{ c.id }}
-                    </div>
-                </div>
-
-            </div>
-        {% endfor %}
-
-
     </div>
 
 </div>

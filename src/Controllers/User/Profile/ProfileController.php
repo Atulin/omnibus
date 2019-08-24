@@ -38,18 +38,6 @@ class ProfileController extends Controller
             'data' => var_export($params, true),
             'profile_owner' => $owner,
             'thread' => $thread,
-            'comments' => array_map(static function(Comment $c) {
-                $c->parse();
-                $a = $c->getAuthor();
-                return [
-                    'user' => $a->getName(),
-                    'user_id' => $a->getId(),
-                    'avatar' => '//'.CONFIG['cdn domain'].'/file/Omnibus/' . $a->getAvatar() ?? (new Gravatar($a->getEmail(), 50))->getGravatar(),
-                    'date' => $c->getDate()->format('d.m.Y H:i'),
-                    'body' => $c->getBody(),
-                    'id'   => $c->getId(),
-                ];
-            }, $comments)
         ]);
     }
 
