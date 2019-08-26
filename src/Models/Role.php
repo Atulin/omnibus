@@ -37,31 +37,73 @@ class Role
     private $name;
 
     /**
-     * @var User[] $users
-     * @ORM\OneToMany(targetEntity="User", mappedBy="role")
-     */
-    private $users;
-
-    /**
-     * @var bool $is_admin
+     * Special access rights
+     * @var bool $isAdmin
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $is_admin;
-
+    private $isAdmin;
 
     /**
-     * @var bool $is_moderator
+     * Is the user even a staff member?
+     * @var bool $isStaff
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $is_moderator;
+    private $isStaff;
 
     /**
-     * Role constructor.
+     * Comment moderation rights
+     * @var bool $canModerateComments
+     * @ORM\Column(type="boolean", options={"default": false})
      */
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
+    private $canModerateComments;
+
+    /**
+     * @var bool $canAddArticles
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $canAddArticles;
+    /**
+     * @var bool $canEditArticles
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $canEditArticles;
+    /**
+     * @var bool $canDeleteArticles
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $canDeleteArticles;
+
+    /**
+     * @var bool $canAddCategories
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $canAddCategories;
+    /**
+     * @var bool $canEditCategories
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $canEditCategories;
+    /**
+     * @var bool $canDeleteCategories
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $canDeleteCategories;
+
+    /**
+     * @var bool $canAddTags
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $canAddTags;
+    /**
+     * @var bool $canEditTags
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $canEditTags;
+    /**
+     * @var bool $canDeleteTags
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $canDeleteTags;
 
 
     /**
@@ -89,43 +131,232 @@ class Role
     }
 
     /**
-     * @param User $user
-     */
-    public function addUser(User $user): void
-    {
-        $this->users[] = $user;
-    }
-
-    /**
      * @return bool
      */
     public function isAdmin(): bool
     {
-        return $this->is_admin;
+        return $this->isAdmin;
     }
 
     /**
-     * @param bool $is_admin
+     * @param bool $isAdmin
+     *
+     * @return Role
      */
-    public function setIsAdmin(bool $is_admin): void
+    public function setIsAdmin(bool $isAdmin): Role
     {
-        $this->is_admin = $is_admin;
+        $this->isAdmin = $isAdmin;
+        return $this;
     }
 
     /**
      * @return bool
      */
-    public function isModerator(): bool
+    public function isStaff(): bool
     {
-        return $this->is_moderator;
+        return $this->isStaff;
     }
 
     /**
-     * @param bool $is_moderator
+     * @param bool $isStaff
+     *
+     * @return Role
      */
-    public function setIsModerator(bool $is_moderator): void
+    public function setIsStaff(bool $isStaff): Role
     {
-        $this->is_moderator = $is_moderator;
+        $this->isStaff = $isStaff;
+        return $this;
     }
+
+    /**
+     * @return bool
+     */
+    public function canModerateComments(): bool
+    {
+        return $this->canModerateComments;
+    }
+
+    /**
+     * @param bool $canModerateComments
+     *
+     * @return Role
+     */
+    public function setCanModerateComments(bool $canModerateComments): Role
+    {
+        $this->canModerateComments = $canModerateComments;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canAddArticles(): bool
+    {
+        return $this->canAddArticles;
+    }
+
+    /**
+     * @param bool $canAddArticles
+     *
+     * @return Role
+     */
+    public function setCanAddArticles(bool $canAddArticles): Role
+    {
+        $this->canAddArticles = $canAddArticles;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canEditArticles(): bool
+    {
+        return $this->canEditArticles;
+    }
+
+    /**
+     * @param bool $canEditArticles
+     *
+     * @return Role
+     */
+    public function setCanEditArticles(bool $canEditArticles): Role
+    {
+        $this->canEditArticles = $canEditArticles;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canDeleteArticles(): bool
+    {
+        return $this->canDeleteArticles;
+    }
+
+    /**
+     * @param bool $canDeleteArticles
+     *
+     * @return Role
+     */
+    public function setCanDeleteArticles(bool $canDeleteArticles): Role
+    {
+        $this->canDeleteArticles = $canDeleteArticles;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canAddCategories(): bool
+    {
+        return $this->canAddCategories;
+    }
+
+    /**
+     * @param bool $canAddCategories
+     *
+     * @return Role
+     */
+    public function setCanAddCategories(bool $canAddCategories): Role
+    {
+        $this->canAddCategories = $canAddCategories;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canEditCategories(): bool
+    {
+        return $this->canEditCategories;
+    }
+
+    /**
+     * @param bool $canEditCategories
+     *
+     * @return Role
+     */
+    public function setCanEditCategories(bool $canEditCategories): Role
+    {
+        $this->canEditCategories = $canEditCategories;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canDeleteCategories(): bool
+    {
+        return $this->canDeleteCategories;
+    }
+
+    /**
+     * @param bool $canDeleteCategories
+     *
+     * @return Role
+     */
+    public function setCanDeleteCategories(bool $canDeleteCategories): Role
+    {
+        $this->canDeleteCategories = $canDeleteCategories;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canAddTags(): bool
+    {
+        return $this->canAddTags;
+    }
+
+    /**
+     * @param bool $canAddTags
+     *
+     * @return Role
+     */
+    public function setCanAddTags(bool $canAddTags): Role
+    {
+        $this->canAddTags = $canAddTags;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canEditTags(): bool
+    {
+        return $this->canEditTags;
+    }
+
+    /**
+     * @param bool $canEditTags
+     *
+     * @return Role
+     */
+    public function setCanEditTags(bool $canEditTags): Role
+    {
+        $this->canEditTags = $canEditTags;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canDeleteTags(): bool
+    {
+        return $this->canDeleteTags;
+    }
+
+    /**
+     * @param bool $canDeleteTags
+     *
+     * @return Role
+     */
+    public function setCanDeleteTags(bool $canDeleteTags): Role
+    {
+        $this->canDeleteTags = $canDeleteTags;
+        return $this;
+    }
+
 
 }

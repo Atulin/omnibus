@@ -7,6 +7,7 @@
 namespace Models;
 
 use DateTime;
+use JsonSerializable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,7 +23,7 @@ use Doctrine\ORM\Mapping as ORM;
  *      }
  * )
  */
-class User
+class User implements JsonSerializable
 {
     /**
      * @var int $id
@@ -319,5 +320,26 @@ class User
     }
 
 
+//    public function __toString()
+//    {
+//        return $this->name;
+//    }
 
+    /**
+     * Specify data which should be serialized to JSON.
+     *
+     * @link  http://php.net/manual/en/jsonserializable.jsonserialize.php
+     *
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     *               which is a value of any type other than a resource.
+     *
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return (object)[
+            'id' => $this->id,
+            'name' => $this->name
+        ];
+    }
 }

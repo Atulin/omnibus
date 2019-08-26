@@ -3,6 +3,7 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/public/assets/js/admin/v-categories.min.js" />
+        <item url="file://$PROJECT_DIR$/public/assets/js/admin/v-editor.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/admin/v-tags.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/hamburger.min.js" />
         <item url="file://$PROJECT_DIR$/public/assets/js/themeswap.min.js" />
@@ -16,6 +17,7 @@
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/public/assets/js/admin/v-categories.min.js" />
+      <root url="file://$PROJECT_DIR$/public/assets/js/v-editor.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/admin/v-tags.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/hamburger.min.js" />
       <root url="file://$PROJECT_DIR$/public/assets/js/themeswap.min.js" />

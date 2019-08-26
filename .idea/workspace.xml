@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/static/docs/Markdown-Reference.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/v-editor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/v-editor.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/Admin/ArticlesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/EditorController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/admin/articles.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/editor.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/pg_temp_1.zkWuFg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/pg_temp_1.zkWuFg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/pg_toast.33HYYw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/pg_toast.33HYYw.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/pg_toast_temp_1.5ixBaA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/pg_toast_temp_1.5ixBaA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
@@ -11,15 +23,17 @@
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/markdown.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/markdown.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/containers.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/src/main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/main.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/StaticDocsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/StaticDocsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/static/docs/Markdown-Reference.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/static/docs/Markdown-Reference.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Utility/ParsedownExtended.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/ParsedownExtended.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/static-doc.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/static-doc.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/admin_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/admin_scaffold.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,9 +114,9 @@
         <option value="PHP Controller" />
         <option value="Twig" />
         <option value="tsconfig.json" />
+        <option value="SASS stylesheet" />
         <option value="Twig template" />
         <option value="JavaScript File" />
-        <option value="SASS stylesheet" />
       </list>
     </option>
     <option name="SCHEME" value="Project" />
@@ -238,19 +252,19 @@
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\static" />
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\emails\src" />
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Core\Utility" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\elements" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js\admin" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\admin" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Controllers\Admin" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\scaffolds" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\user" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Views" />
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\static" />
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\emails\src" />
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -274,7 +288,12 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@c584f343" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -347,7 +366,9 @@
       <workItem from="1566288707711" duration="277000" />
       <workItem from="1566317819686" duration="10533000" />
       <workItem from="1566425948650" duration="5846000" />
-      <workItem from="1566600472372" duration="44268000" />
+      <workItem from="1566600472372" duration="44510000" />
+      <workItem from="1566761351855" duration="1232000" />
+      <workItem from="1566781444396" duration="13810000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -629,7 +650,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566650497402</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Markdown expansion:&#10; – Added markdown reference&#10; — Added automatic anchors for headers">
+      <created>1566660662128</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1566660662128</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +678,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Comment system grows!" />
     <MESSAGE value="Comment system DONE" />
     <MESSAGE value="Comment visuals and Markdown parsing" />
     <MESSAGE value="Comment responsiveness and switch to CSS Grid layout for them" />
@@ -675,6 +702,7 @@
     <MESSAGE value="Tags CRUD" />
     <MESSAGE value="Improved CSS here and there" />
     <MESSAGE value="Switched to 100% dynamically loaded comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Switched to 100% dynamically loaded comments" />
+    <MESSAGE value="Markdown expansion:&#10; – Added markdown reference&#10; — Added automatic anchors for headers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Markdown expansion:&#10; – Added markdown reference&#10; — Added automatic anchors for headers" />
   </component>
 </project>

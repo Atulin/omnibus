@@ -8,7 +8,9 @@ namespace Core;
 
 use AltoRouter;
 use Core\Utility\Email;
+use Controllers\EditorController;
 use Controllers\Admin\TagsController;
+use Controllers\Admin\ArticlesController;
 use Controllers\Admin\DashboardController;
 use Controllers\StaticDocsController;
 use Controllers\API\CommentsApiController;
@@ -191,34 +193,50 @@ class Application
                     ['GET',  '/api/comments',              CommentsApiController::class . '#get'           ],
                     ['POST', '/api/comments',              CommentsApiController::class . '#add'           ],
                     ['POST', '/api/comments/report',       CommentsApiController::class . '#report'        ],
+
                 ]);
             } catch (Exception $e) {
                 echo $e;
             }
+
+            // Staff-only routes
+            if ($this->role ? $this->role->isStaff() : false) {
+
+                try {
+                    $this->router->addRoutes([
+                        // Dashboard
+                        ['GET',  '/dashboard', DashboardController::class . '#index'],
+
+                        // Categories
+                        ['GET',  '/admin/categories',        CategoriesController::class . '#index'     ],
+                        ['POST', '/admin/categories/create', CategoriesController::class . '#create'    ],
+                        ['POST', '/admin/categories/update', CategoriesController::class . '#update'    ],
+                        ['POST', '/admin/categories/delete', CategoriesController::class . '#delete'    ],
+                        ['GET',  '/admin/categories/fetch',  CategoriesController::class . '#fetch'     ],
+
+                        // Tags
+                        ['GET',  '/admin/tags',        TagsController::class . '#index'     ],
+                        ['POST', '/admin/tags/create', TagsController::class . '#create'    ],
+                        ['POST', '/admin/tags/update', TagsController::class . '#update'    ],
+                        ['POST', '/admin/tags/delete', TagsController::class . '#delete'    ],
+                        ['GET',  '/admin/tags/fetch',  TagsController::class . '#fetch'     ],
+
+                        // Articles
+                        ['GET',  '/admin/articles',        ArticlesController::class . '#index'      ],
+                        ['GET',  '/admin/editor',          EditorController::class   . '#admin'      ],
+                        ['POST', '/admin/editor/create',   EditorController::class   . '#create'     ],
+                        ['POST', '/admin/articles/delete', ArticlesController::class . '#delete'     ],
+                        ['GET',  '/admin/articles/fetch',  ArticlesController::class . '#fetch'      ],
+                    ]);
+                } catch (Exception $e) {
+                    echo $e;
+                }
+
+            }
+
         }
 
-        try {
-            $this->router->addRoutes([
-                // Dashboard
-                ['GET',  '/dashboard', DashboardController::class . '#index'],
 
-                // Categories
-                ['GET',  '/admin/categories',        CategoriesController::class . '#index'     ],
-                ['POST', '/admin/categories/create', CategoriesController::class . '#create'    ],
-                ['POST', '/admin/categories/update', CategoriesController::class . '#update'    ],
-                ['POST', '/admin/categories/delete', CategoriesController::class . '#delete'    ],
-                ['GET',  '/admin/categories/fetch',  CategoriesController::class . '#fetch'     ],
-
-                // Tags
-                ['GET',  '/admin/tags',        TagsController::class . '#index'     ],
-                ['POST', '/admin/tags/create', TagsController::class . '#create'    ],
-                ['POST', '/admin/tags/update', TagsController::class . '#update'    ],
-                ['POST', '/admin/tags/delete', TagsController::class . '#delete'    ],
-                ['GET',  '/admin/tags/fetch',  TagsController::class . '#fetch'     ],
-            ]);
-        } catch (Exception $e) {
-            echo $e;
-        }
 
     }
 

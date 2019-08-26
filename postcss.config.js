@@ -3,8 +3,8 @@ module.exports = {
     plugins: [
         require('autoprefixer')(),
         require('postcss-discard-comments')({ removeAll: true }),
-        require('cssnano')({ preset: 'default' }),
         require('postcss-zindex')(),
-        require('css-mqpacker')()
+        require('css-mqpacker')(),
+        require('cssnano')({ preset: 'default' }),
     ],
 };

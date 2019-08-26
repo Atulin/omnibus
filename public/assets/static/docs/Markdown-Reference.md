@@ -151,8 +151,6 @@ ___
 Three or more underscores or dashes create a separator
 ___
 ---
-___
----
 The 🤘 database 🍋 is set up 🍈 to accept any 📧 emoji 😆 and other characters
 
 ⸌ ͔〠 ̖⸍⌕⁔͡⸌ ̗〠 ͕⸍⌕

@@ -32,7 +32,7 @@ class Article
 
     /**
      * @var DateTime $date
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     private $date;
 
@@ -50,21 +50,19 @@ class Article
 
     /**
      * @var string|null $image
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $image;
 
     /**
      * @var User $author
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\Column(nullable=false)
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="id")
      */
     private $author;
 
     /**
      * @var Category $category
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\Column(nullable=false)
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="id")
      */
     private $category;
 
@@ -76,8 +74,7 @@ class Article
 
     /**
      * @var CommentThread $comments
-     * @ORM\OneToOne(targetEntity="CommentThread", cascade={"persist", "remove"})
-     * @ORM\Column(nullable=false)
+     * @ORM\OneToOne(targetEntity="CommentThread", inversedBy="id", cascade={"persist", "remove"})
      */
     private $comments;
 
@@ -87,6 +84,7 @@ class Article
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->date = new DateTime();
     }
 
     /**
@@ -107,10 +105,13 @@ class Article
 
     /**
      * @param string $title
+     *
+     * @return Article
      */
-    public function setTitle(string $title): void
+    public function setTitle(string $title): Article
     {
         $this->title = $title;
+        return $this;
     }
 
     /**
@@ -123,10 +124,13 @@ class Article
 
     /**
      * @param DateTime $date
+     *
+     * @return Article
      */
-    public function setDate(DateTime $date): void
+    public function setDate(DateTime $date): Article
     {
-        $this->date = $date;
+        $this->date = $date->format('Y-m-d H:i:s');
+        return $this;
     }
 
     /**
@@ -139,10 +143,13 @@ class Article
 
     /**
      * @param string $body
+     *
+     * @return Article
      */
-    public function setBody(string $body): void
+    public function setBody(string $body): Article
     {
         $this->body = $body;
+        return $this;
     }
 
     /**
@@ -155,10 +162,13 @@ class Article
 
     /**
      * @param string $excerpt
+     *
+     * @return Article
      */
-    public function setExcerpt(string $excerpt): void
+    public function setExcerpt(string $excerpt): Article
     {
         $this->excerpt = $excerpt;
+        return $this;
     }
 
     /**
@@ -171,10 +181,13 @@ class Article
 
     /**
      * @param string|null $image
+     *
+     * @return Article
      */
-    public function setImage(?string $image): void
+    public function setImage(?string $image): Article
     {
         $this->image = $image;
+        return $this;
     }
 
     /**
@@ -187,10 +200,13 @@ class Article
 
     /**
      * @param User $author
+     *
+     * @return Article
      */
-    public function setAuthor(User $author): void
+    public function setAuthor(User $author): Article
     {
         $this->author = $author;
+        return $this;
     }
 
     /**
@@ -203,10 +219,13 @@ class Article
 
     /**
      * @param Category $category
+     *
+     * @return Article
      */
-    public function setCategory(Category $category): void
+    public function setCategory(Category $category): Article
     {
         $this->category = $category;
+        return $this;
     }
 
     /**
@@ -219,11 +238,14 @@ class Article
 
     /**
      * @param Tag $tag
+     *
+     * @return Article
      */
-    public function addTag(Tag $tag): void
+    public function addTag(Tag $tag): Article
     {
         $this->tags[] = $tag;
         $tag->addArticle($this);
+        return $this;
     }
 
     /**
@@ -245,10 +267,13 @@ class Article
 
     /**
      * @param CommentThread $comments
+     *
+     * @return Article
      */
-    public function setComments(CommentThread $comments): void
+    public function setComments(CommentThread $comments): Article
     {
         $this->comments = $comments;
+        return $this;
     }
 
 

@@ -1,0 +1,86 @@
+{% extends 'scaffolds/public_scaffold.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <div class="main column" id="v-app">
+        <form class="full form" method="post" action="editor/{{ id ? 'update' : 'create' }}" @submit="createArticle">
+
+            <input type="hidden" name="token" id="token" value="{{ token }}">
+
+            <div class="full field">
+                <label for="title">Title</label>
+                <input name="title" id="title" v-model="title" type="text">
+            </div>
+
+            <div class="full field">
+                <label for="body">Body</label>
+                <textarea name="body" id="body" v-model="body" rows="20"></textarea>
+            </div>
+
+            <div class="full field">
+                <label for="excerpt">Excerpt</label>
+                <textarea name="excerpt" id="excerpt" v-model="excerpt" rows="5"></textarea>
+            </div>
+
+            <div class="full field row">
+
+                <div class="field column">
+
+                    <div class="full field">
+                        <label for="date">Date</label>
+                        <input name="date" id="date" ref="date" type="date" value="{{ 'now'|date('Y-m-j') }}">
+                    </div>
+
+                    {% if admin and users %}
+                        <div class="full field">
+                            <label for="author">Author</label>
+                            <select name="author" id="author" ref="author">
+                                {% for u in users %}
+                                    <option value="{{ u.id }}">{{ u.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+
+                    <div class="full field">
+                        <label for="image">Cover</label>
+                        <input name="image" id="image" ref="image" type="file" v-on:change="handleImage">
+                    </div>
+
+                </div>
+
+                <div class="field column">
+
+                    <div class="full field">
+                        <label for="category">Category</label>
+                        <select name="category" id="category" ref="category">
+                            {% for c in categories %}
+                                <option value="{{ c.id }}">{{ c.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="full field">
+                        <label for="tags">Tags</label>
+                        <select name="tags[]" id="tags" ref="tags" multiple>
+                            {% for t in tags %}
+                                <option value="{{ t.id }}">{{ t.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="full field">
+                        <label for="create" class="hidden">Create</label>
+                        <input name="create" class="fluid submit button" id="create" type="submit" value="{{ id ? 'Edit' : 'Create' }}">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+    <script src="{{ vasset('js/v-editor', 'min.js') }}"></script>
+{% endblock %}
