@@ -6,6 +6,7 @@
 
 namespace Core;
 
+use Models\Role;
 use Core\Security\Token;
 use Doctrine\ORM\EntityManager;
 use Models\User;
@@ -18,17 +19,19 @@ use Core\Utility\TwigHandler;
 
 abstract class Controller
 {
-    /** @var Environment */
+    /** @var Environment $twig */
     private $twig;
-    /** @var null|User */
+    /** @var null|User $user */
     private $user;
-    /** @var bool */
+    /** @var bool $active */
     private $active;
-    /** @var string */
+    /** @var null|Role $role */
+    private $role;
+    /** @var string $token */
     private $token;
-    /** @var array */
+    /** @var array $base_data */
     private $base_data = [];
-    /** @var Session */
+    /** @var Session $session */
     protected $session;
     /** @var EntityManager $em */
     protected $em;
@@ -38,6 +41,7 @@ abstract class Controller
         $this->session = $session;
         $this->user    = $user;
         $this->active  = $active;
+        $this->role    = $user ? $user->getRole() : new Role();
         $this->em      = $em;
         $this->twig    = TwigHandler::Get();
         $this->token   = Token::Get(128);
@@ -79,6 +83,7 @@ abstract class Controller
             'theme'   => $_COOKIE['theme'] ?? 'light',
             'token'   => $this->token,
             'user'    => $this->user,
+            'role'    => $this->role,
             'active'  => $this->active,
             'message' => $this->session->get('message'),
         ];
@@ -91,6 +96,15 @@ abstract class Controller
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Returns current user role
+     * @return Role|null
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 
     /**

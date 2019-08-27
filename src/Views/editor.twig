@@ -2,85 +2,128 @@
 
 {% block title %}{% endblock %}
 
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.js"></script>
+{% endblock %}
+
 {% block body %}
     <div class="main column" id="v-app">
-        <form class="full form" method="post" action="editor/{{ id ? 'update' : 'create' }}" @submit="createArticle">
+        <form class="full form" method="post" @submit="createArticle">
 
             <input type="hidden" name="token" id="token" value="{{ token }}">
+            {% if article %}
+                <input type="hidden" name="id" id="id" value="{{ article.id }}">
+            {% endif %}
 
             <div class="full field">
                 <label for="title">Title</label>
-                <input name="title" id="title" v-model="title" type="text">
+                <input name="title" id="title" v-model="title" type="text" value="{{ article.title }}">
             </div>
 
             <div class="full field">
                 <label for="body">Body</label>
-                <textarea name="body" id="body" v-model="body" rows="20"></textarea>
+                <textarea name="body" id="body" v-model="body" rows="20">{{ article.body|raw }}</textarea>
             </div>
 
             <div class="full field">
                 <label for="excerpt">Excerpt</label>
-                <textarea name="excerpt" id="excerpt" v-model="excerpt" rows="5"></textarea>
+                <textarea name="excerpt" id="excerpt" v-model="excerpt" rows="5">{{ article.excerpt }}</textarea>
             </div>
 
-            <div class="full field row">
 
-                <div class="field column">
+
+            {% if role.isStaff %}
+
+                <div class="fields">
 
                     <div class="full field">
                         <label for="date">Date</label>
-                        <input name="date" id="date" ref="date" type="date" value="{{ 'now'|date('Y-m-j') }}">
+                        <input name="date" id="date" ref="date" type="date" value="{{ article.date|date('Y-m-j') ?: 'now'|date('Y-m-j') }}">
                     </div>
-
-                    {% if admin and users %}
-                        <div class="full field">
-                            <label for="author">Author</label>
-                            <select name="author" id="author" ref="author">
-                                {% for u in users %}
-                                    <option value="{{ u.id }}">{{ u.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    {% endif %}
-
                     <div class="full field">
-                        <label for="image">Cover</label>
-                        <input name="image" id="image" ref="image" type="file" v-on:change="handleImage">
-                    </div>
+                        <label for="author">Author</label>
+                        <select name="author" id="author" ref="author">
 
-                </div>
+                            {% set author = '' %}
+                            {% if article %}
+                                {% set author = article.author.id %}
+                            {% else %}
+                                {% set author = user.id %}
+                            {% endif %}
 
-                <div class="field column">
-
-                    <div class="full field">
-                        <label for="category">Category</label>
-                        <select name="category" id="category" ref="category">
-                            {% for c in categories %}
-                                <option value="{{ c.id }}">{{ c.name }}</option>
+                            {% for u in users %}
+                                <option value="{{ u.id }}" {{ u.id is same as(author) ? 'selected' : '' }}>{{ u.name}}</option>
                             {% endfor %}
                         </select>
                     </div>
 
-                    <div class="full field">
-                        <label for="tags">Tags</label>
-                        <select name="tags[]" id="tags" ref="tags" multiple>
-                            {% for t in tags %}
-                                <option value="{{ t.id }}">{{ t.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+                </div>
+            {% endif %}
 
-                    <div class="full field">
-                        <label for="create" class="hidden">Create</label>
-                        <input name="create" class="fluid submit button" id="create" type="submit" value="{{ id ? 'Edit' : 'Create' }}">
-                    </div>
+            <div class="fields">
 
+                <div class="full field">
+                    <label for="category">Category</label>
+                    <select name="category" id="category" ref="category">
+                        {% for c in categories %}
+                            <option value="{{ c.id }}" {{ c.id is same as(article.category.id) ? 'selected' : '' }}>{{ c.name }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
+                <div class="full field">
+                    <label for="image">Cover</label>
+                    <input name="image" id="image" ref="image" type="file" v-on:change="handleImage">
+                </div>
+
+            </div>
+
+            <div class="fields">
+
+                <div class="full field">
+                    <label for="tags">Tags</label>
+                    <select name="tags[]" id="tags" ref="tags" multiple>
+
+                        {% for t in tags %}
+                            {% set sel = '' %}
+
+                            {% for tmp in article.getTags() %}
+                                {% if t.id is same as(tmp.id) %}
+                                    {% set sel = 'selected' %}
+                                {% endif %}
+                            {% endfor %}
+
+                            <option value="{{ t.id }}" {{ sel }}>{{ t.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="full field">
+                <label for="create" class="hidden">Create</label>
+                <input name="create" class="fluid submit button" id="create" type="submit" value="{{ id ? 'Edit' : 'Create' }}">
             </div>
 
         </form>
     </div>
 
     <script src="{{ vasset('js/v-editor', 'min.js') }}"></script>
+
+    <script>
+        new SlimSelect({
+            select: '#tags'
+        });
+        new SlimSelect({
+            select: '#category'
+        });
+    </script>
+
+    {% if role.isStaff %}
+        <script>
+            new SlimSelect({
+                select: '#author'
+            })
+        </script>
+    {% endif %}
 {% endblock %}

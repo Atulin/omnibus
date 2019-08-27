@@ -20,6 +20,7 @@ use Core\Utility\HttpStatus;
 use Core\Utility\FileHandler;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\TransactionRequiredException;
 
 
 /**
@@ -33,31 +34,25 @@ class EditorController extends Controller
      */
     private $errors;
 
-    /**
-     *
-     */
-    public function index(): void
-    {
-        $this->setBaseData();
-        $this->render('/editor', [
-            'tags' => $this->em->getRepository(Tag::class)->findAll(),
-            'categories' => $this->em->getRepository(Category::class)->findAll(),
-            'id' => null,
-        ]);
-    }
+    private $article;
 
     /**
+     * @param array $params
      *
+     * @throws ORMException
+     * @throws OptimisticLockException
+     * @throws TransactionRequiredException
      */
-    public function admin(): void
+    public function index(array $params = null): void
     {
+        $this->article = isset($params['id']) ? $this->em->find(Article::class, $params['id']) : $this->article;
+
         $this->setBaseData();
         $this->render('/editor', [
             'tags' => $this->em->getRepository(Tag::class)->findAll(),
             'categories' => $this->em->getRepository(Category::class)->findAll(),
             'users' => $this->em->getRepository(User::class)->findAll(),
-            'id' => null,
-            'admin' => true
+            'article' => $this->article,
         ]);
     }
 
@@ -69,6 +64,8 @@ class EditorController extends Controller
     public function create(): void
     {
         $msg = null;
+        $art = null;
+
         $POST = filter_input_array(INPUT_POST, [
             'token' => FILTER_SANITIZE_STRING,
             'title' => FILTER_SANITIZE_STRING,
@@ -77,7 +74,7 @@ class EditorController extends Controller
         ]);
         if ($POST['token'] === $this->session->get('token')) {
 
-            if ($this->getUser()->getRole()->canAddArticles()) {
+            if ($this->getRole() && $this->getRole()->canAddArticles()) {
 
                 if (trim($POST['title'])) {
 
@@ -89,6 +86,10 @@ class EditorController extends Controller
                         ->setCategory($this->em->find(Category::class, $_POST['category']))
                         ->setAuthor($this->em->find(User::class, $_POST['author']) ?: $this->getUser())
                         ->setComments(new CommentThread());
+
+                    if ($_POST['date']) {
+                        $art->setDate(new DateTime($_POST['date']));
+                    }
 
                     foreach ($_POST['tags'] as $tag) {
                         $art->addTag($this->em->find(Tag::class, $tag));
@@ -125,12 +126,10 @@ class EditorController extends Controller
         } else {
             $this->errors[] = 'X-CSRF protection triggered.';
         }
-        http_response_code($this->errors ? 500 : 201);
-        echo json_encode(new APIMessage(
-            $this->errors ? HttpStatus::S500() : HttpStatus::S201(),
-            $this->errors ? 'An error has occurred.' : 'Successfully added the category.',
-            $this->errors ?: []
-        ));
+
+        $this->article = $art;
+        $this->index();
+
     }
 
     /**

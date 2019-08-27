@@ -42,6 +42,11 @@ class TwigHandler
         ///
         $twig->addFunction(new TwigFunction('vasset', static function (string $asset, string $extension, bool $strip = false) {
 
+            // Serve unminified files if dev
+            if (IS_DEV) {
+                $extension = str_replace('min.', '', $extension);
+            }
+
             $filename = ltrim(ASSETS, '/')."/$asset.$extension";
             if (file_exists($filename)) {
                 $timestamp = dechex(filemtime($filename));

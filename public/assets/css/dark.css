@@ -122,7 +122,6 @@ div.column {
 
 footer {
   height: 30px;
-  box-sizing: border-box;
   padding: 0 1rem; }
 
 /*!
@@ -152,15 +151,16 @@ form.form {
     margin: 5rem 0; }
   form.form hr {
     width: 100%; }
+  form.form div.fields {
+    width: 100%;
+    display: flex;
+    flex-direction: row; }
+    form.form div.fields > .field {
+      flex-grow: 1; }
   form.form div.field {
     display: flex;
     flex-direction: column;
     margin: 4px; }
-    form.form div.field.row {
-      flex-direction: row;
-      align-items: stretch; }
-    form.form div.field.column {
-      flex-grow: 1; }
     form.form div.field.full {
       width: 100%; }
       form.form div.field.full > input {
@@ -171,30 +171,34 @@ form.form {
     form.form div.field > label {
       font-size: 0.9rem;
       margin: 2px; }
+      form.form div.field > label > a {
+        margin: 0;
+        font-size: inherit; }
       form.form div.field > label.hidden {
         visibility: collapse; }
-      form.form div.field > label > a {
-        color: #00cbc3;
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-        transition: border-bottom-color 200ms ease-in-out; }
-        form.form div.field > label > a:hover {
-          color: rgba(0, 203, 195, 0.8);
-          border-bottom: 1px solid rgba(0, 203, 195, 0.8); }
-    form.form div.field > input {
+    form.form div.field a {
+      margin-top: 0.5rem;
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #00cbc3;
+      text-decoration: none;
+      transition: color 200ms ease-in-out; }
+      form.form div.field a:hover {
+        color: rgba(0, 203, 195, 0.5); }
+    form.form div.field > input, form.form div.field select {
       min-height: 40px;
-      width: 250px;
+      width: 100%;
       padding: 5px 1rem;
       border-radius: 1rem;
       border: 1px solid #eeeeee;
       font-size: 1rem;
       background-color: transparent;
       color: #eeeeee; }
-      form.form div.field > input[readonly] {
+      form.form div.field > input[readonly], form.form div.field select[readonly] {
         color: rgba(238, 238, 238, 0.5);
         border-color: rgba(238, 238, 238, 0.5); }
-      form.form div.field > input[type=checkbox] {
-        width: 24px; }
+    form.form div.field > input[type=checkbox] {
+      width: 24px; }
     form.form div.field > textarea {
       resize: vertical;
       background-color: transparent;
@@ -202,6 +206,16 @@ form.form {
       padding: 1rem;
       font-family: "Inconsolata", monospace;
       color: #eeeeee; }
+    form.form div.field > select {
+      -webkit-appearance: none; }
+      form.form div.field > select:focus {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0; }
+      form.form div.field > select[multiple]:focus {
+        border-radius: 1rem; }
+      form.form div.field > select > option {
+        background-color: #181818;
+        border-radius: 1rem; }
     form.form div.field > .submit.button {
       width: 250px;
       padding: 5px;
@@ -221,7 +235,6 @@ form.form {
     form.form div.field.avatar {
       margin-top: -120px; }
       form.form div.field.avatar > img.avatar {
-        box-sizing: border-box;
         border: 2px solid #eeeeee;
         border-radius: 50%;
         background-color: #181818;
@@ -338,7 +351,6 @@ div#navbar {
       display: flex;
       position: absolute;
       cursor: pointer;
-      box-sizing: border-box;
       align-items: center; }
       div#navbar > .hamburger > i.icon {
         height: 1rem; }
@@ -477,7 +489,6 @@ div#profile {
       div#profile > .column.left > .container > div.top > h1.name {
         font-size: 1.5rem; }
       div#profile > .column.left > .container > div.top > img.avatar {
-        box-sizing: border-box;
         border: 2px solid #eeeeee;
         border-radius: 50%;
         object-fit: cover;
@@ -536,7 +547,6 @@ div#profile {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   font-size: 1rem;
   text-decoration: none;
   height: 50px;
@@ -597,7 +607,6 @@ div#profile {
           width: 100%;
           margin-top: 1rem;
           padding: 0.5rem;
-          box-sizing: border-box;
           background-color: transparent;
           border: 1px solid transparent;
           border-bottom-color: rgba(238, 238, 238, 0.2);
@@ -643,8 +652,7 @@ div#profile {
             background: rgba(0, 203, 195, 0.5); }
   #comments div.ph {
     width: 100%;
-    padding: 2rem;
-    box-sizing: border-box; }
+    padding: 2rem; }
     #comments div.ph > .inner {
       display: block;
       text-align: center;
@@ -790,7 +798,6 @@ div#profile {
   font-style: italic; }
 .md a {
   display: inline-block;
-  box-sizing: border-box;
   border-bottom: 1px dashed rgba(238, 238, 238, 0.5);
   transition: border-bottom-color 100ms ease-in-out; }
   .md a:hover {
@@ -816,7 +823,6 @@ div#profile {
   flex-wrap: wrap; }
   .cards > .card {
     position: relative;
-    box-sizing: border-box;
     overflow: hidden;
     max-width: 200px;
     width: 150px;
@@ -915,7 +921,6 @@ div#admin {
           div#admin > .column.narrow > button.home {
             display: none; } }
       div#admin > .column.narrow > .group {
-        box-sizing: border-box;
         width: 100%;
         padding: 0.5rem; }
         div#admin > .column.narrow > .group > a.link {
@@ -975,5 +980,278 @@ div.modal {
   opacity: 0; }
 .modal-leave {
   opacity: 0; }
+
+.ss-main {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  color: #eeeeee;
+  width: 100%; }
+  .ss-main .ss-single-selected {
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    padding: 6px;
+    border: 1px solid #eeeeee;
+    border-radius: 1rem;
+    background-color: #181818;
+    outline: 0;
+    transition: background-color 0.2s; }
+    .ss-main .ss-single-selected.ss-disabled {
+      background-color: #eeeeee;
+      cursor: default; }
+    .ss-main .ss-single-selected.ss-open-above {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0; }
+    .ss-main .ss-single-selected.ss-open-below {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0; }
+    .ss-main .ss-single-selected .placeholder {
+      display: flex;
+      flex: 1 1 100%;
+      align-items: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: left;
+      width: calc(100% - 30px);
+      line-height: 1em;
+      user-select: none; }
+      .ss-main .ss-single-selected .placeholder * {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: auto; }
+      .ss-main .ss-single-selected .placeholder .ss-disabled {
+        color: rgba(238, 238, 238, 0.2); }
+    .ss-main .ss-single-selected .ss-deselect {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 0 1 auto;
+      margin: 0 6px 0 6px;
+      font-weight: bold; }
+      .ss-main .ss-single-selected .ss-deselect.ss-hide {
+        display: none; }
+    .ss-main .ss-single-selected .ss-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 0 1 auto;
+      margin: 0 6px 0 6px; }
+      .ss-main .ss-single-selected .ss-arrow span {
+        border: solid #eeeeee;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        transition: transform 0.2s, margin 0.2s; }
+        .ss-main .ss-single-selected .ss-arrow span.arrow-up {
+          transform: rotate(-135deg);
+          margin: 3px 0 0 0; }
+        .ss-main .ss-single-selected .ss-arrow span.arrow-down {
+          transform: rotate(45deg);
+          margin: -3px 0 0 0; }
+  .ss-main .ss-multi-selected {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    min-height: 40px;
+    width: 100%;
+    padding: 0 0 0 3px;
+    border: 1px solid #eeeeee;
+    border-radius: 1rem;
+    background-color: #181818;
+    outline: 0;
+    transition: background-color 0.2s; }
+    .ss-main .ss-multi-selected.ss-disabled {
+      background-color: #eeeeee;
+      cursor: default; }
+      .ss-main .ss-multi-selected.ss-disabled .ss-values .ss-disabled {
+        color: #eeeeee; }
+      .ss-main .ss-multi-selected.ss-disabled .ss-values .ss-value .ss-value-delete {
+        cursor: default; }
+    .ss-main .ss-multi-selected.ss-open-above {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0; }
+    .ss-main .ss-multi-selected.ss-open-below {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0; }
+    .ss-main .ss-multi-selected .ss-values {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      flex: 1 1 100%;
+      width: calc(100% - 30px); }
+      .ss-main .ss-multi-selected .ss-values .ss-disabled {
+        display: flex;
+        padding: 4px 5px;
+        margin: 2px 0;
+        line-height: 1em;
+        align-items: center;
+        width: 100%;
+        color: rgba(238, 238, 238, 0.2);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0; }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
+@keyframes scaleOut {
+  0% {
+    transform: scale(1);
+    opacity: 1; }
+  100% {
+    transform: scale(0);
+    opacity: 0; } }
+      .ss-main .ss-multi-selected .ss-values .ss-value {
+        display: flex;
+        user-select: none;
+        align-items: center;
+        font-size: 12px;
+        padding: 3px 5px;
+        margin: 3px 5px 3px 0;
+        color: #181818;
+        background-color: #00cbc3;
+        border-radius: 1rem;
+        animation-name: scaleIn;
+        animation-duration: 0.2s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: both; }
+        .ss-main .ss-multi-selected .ss-values .ss-value.ss-out {
+          animation-name: scaleOut;
+          animation-duration: 0.2s;
+          animation-timing-function: ease-out; }
+        .ss-main .ss-multi-selected .ss-values .ss-value .ss-value-delete {
+          margin: 0 0 0 5px;
+          cursor: pointer; }
+    .ss-main .ss-multi-selected .ss-add {
+      display: flex;
+      flex: 0 1 3px;
+      margin: 9px 12px 0 5px; }
+      .ss-main .ss-multi-selected .ss-add .ss-plus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #eeeeee;
+        position: relative;
+        height: 10px;
+        width: 2px;
+        transition: transform 0.2s; }
+        .ss-main .ss-multi-selected .ss-add .ss-plus:after {
+          background: #eeeeee;
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: 10px;
+          left: -4px;
+          top: 4px; }
+        .ss-main .ss-multi-selected .ss-add .ss-plus.ss-cross {
+          transform: rotate(45deg); }
+  .ss-main .ss-content {
+    position: absolute;
+    width: 100%;
+    margin: -1px 0 0 0;
+    border: solid 1px #eeeeee;
+    z-index: 1010;
+    background-color: #181818;
+    transform-origin: center top;
+    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0;
+    transform: scaleY(0); }
+    .ss-main .ss-content.ss-open {
+      display: block;
+      opacity: 1;
+      transform: scaleY(1); }
+    .ss-main .ss-content .ss-search {
+      display: flex;
+      flex-direction: row;
+      padding: 8px 8px 6px 8px; }
+      .ss-main .ss-content .ss-search.ss-hide {
+        height: 0;
+        opacity: 0;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0; }
+        .ss-main .ss-content .ss-search.ss-hide input {
+          height: 0;
+          opacity: 0;
+          padding: 0 0 0 0;
+          margin: 0 0 0 0; }
+      .ss-main .ss-content .ss-search input {
+        display: inline-flex;
+        font-size: inherit;
+        line-height: inherit;
+        flex: 1 1 auto;
+        width: 100%;
+        min-width: 0;
+        height: 30px;
+        padding: 6px 8px;
+        margin: 0;
+        border: 1px solid #eeeeee;
+        border-radius: 1rem;
+        background-color: #181818;
+        outline: 0;
+        text-align: left;
+        -webkit-appearance: textfield; }
+        .ss-main .ss-content .ss-search input::placeholder {
+          color: rgba(238, 238, 238, 0.8);
+          vertical-align: middle; }
+        .ss-main .ss-content .ss-search input:focus {
+          box-shadow: 0 0 5px #00cbc3; }
+      .ss-main .ss-content .ss-search .ss-addable {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 22px;
+        font-weight: bold;
+        flex: 0 0 30px;
+        height: 30px;
+        margin: 0 0 0 8px;
+        border: 1px solid #eeeeee;
+        border-radius: 1rem; }
+    .ss-main .ss-content .ss-addable {
+      padding-top: 0; }
+    .ss-main .ss-content .ss-list {
+      max-height: 200px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      text-align: left; }
+      .ss-main .ss-content .ss-list .ss-optgroup .ss-optgroup-label {
+        padding: 6px 10px 6px 10px;
+        font-weight: bold; }
+      .ss-main .ss-content .ss-list .ss-optgroup .ss-option {
+        padding: 6px 6px 6px 25px; }
+      .ss-main .ss-content .ss-list .ss-optgroup-label-selectable {
+        cursor: pointer; }
+        .ss-main .ss-content .ss-list .ss-optgroup-label-selectable:hover {
+          color: #181818;
+          background-color: #00cbc3; }
+      .ss-main .ss-content .ss-list .ss-option {
+        padding: 6px 10px 6px 10px;
+        cursor: pointer;
+        user-select: none; }
+        .ss-main .ss-content .ss-list .ss-option * {
+          display: inline-block; }
+        .ss-main .ss-content .ss-list .ss-option:hover, .ss-main .ss-content .ss-list .ss-option.ss-highlighted {
+          color: #181818;
+          background-color: #00cbc3; }
+        .ss-main .ss-content .ss-list .ss-option.ss-disabled {
+          cursor: default;
+          color: rgba(238, 238, 238, 0.2);
+          background-color: #181818; }
+        .ss-main .ss-content .ss-list .ss-option:not(.ss-disabled).ss-option-selected {
+          color: #eeeeee;
+          background-color: rgba(0, 203, 195, 0.1); }
+        .ss-main .ss-content .ss-list .ss-option.ss-hide {
+          display: none; }
+        .ss-main .ss-content .ss-list .ss-option .ss-search-highlight {
+          background-color: #fffb8c; }
 
 /*# sourceMappingURL=dark.css.map */

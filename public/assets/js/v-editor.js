@@ -16,8 +16,9 @@ const app = new Vue({
         errors: [],
 
         // Article data
-        title: null,
-        body: null,
+        title: document.getElementById('title').value,
+        body: document.getElementById('body').value,
+        excerpt: document.getElementById('excerpt').value,
 
     },
     methods: {

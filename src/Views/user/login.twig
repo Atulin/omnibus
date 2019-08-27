@@ -40,17 +40,18 @@
                 {% endif %}
             </div>
 
-            <div class="field">
+            <div class="full field">
                 <label for="login">Login</label>
                 <input type="text" name="login" id="login" v-model="login" required>
             </div>
 
-            <div class="field">
+            <div class="full field">
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" v-model="pass" required>
+                <a href="/recover">Forgot?</a>
             </div>
 
-            <div class="field" v-if="has_mfa">
+            <div class="full field" v-if="has_mfa">
                 <label for="mfa">2FA token</label>
                 <input type="password" name="mfa" id="mfa" v-model="mfa" required>
             </div>

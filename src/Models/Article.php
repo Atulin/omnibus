@@ -8,6 +8,7 @@ namespace Models;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
@@ -56,25 +57,25 @@ class Article
 
     /**
      * @var User $author
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="User")
      */
     private $author;
 
     /**
      * @var Category $category
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="Category")
      */
     private $category;
 
     /**
-     * @var ArrayCollection $tags
+     * @var Collection $tags
      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="articles")
      */
     private $tags;
 
     /**
      * @var CommentThread $comments
-     * @ORM\OneToOne(targetEntity="CommentThread", inversedBy="id", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="CommentThread", cascade={"persist", "remove"})
      */
     private $comments;
 
@@ -129,7 +130,7 @@ class Article
      */
     public function setDate(DateTime $date): Article
     {
-        $this->date = $date->format('Y-m-d H:i:s');
+        $this->date = $date;
         return $this;
     }
 
@@ -229,9 +230,9 @@ class Article
     }
 
     /**
-     * @return ArrayCollection
+     * @return Collection
      */
-    public function getTags(): ArrayCollection
+    public function getTags(): Collection
     {
         return $this->tags;
     }

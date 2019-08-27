@@ -31,17 +31,18 @@ form.form
   hr
     width: 100%
 
+  & div.fields
+    width: 100%
+    display: flex
+    flex-direction: row
+
+    &>.field
+      flex-grow: 1
+
   & div.field
     display: flex
     flex-direction: column
     margin: 4px
-
-    &.row
-      flex-direction: row
-      align-items: stretch
-
-    &.column
-      flex-grow: 1
 
     &.full
       width: 100%
@@ -56,21 +57,26 @@ form.form
       font-size: 0.9rem
       margin: 2px
 
+      &>a
+        margin: 0
+        font-size: inherit
+
       &.hidden
         visibility: collapse
 
-      &>a
-        color: $accent
-        text-decoration: none
-        border-bottom: 1px solid transparent
-        transition: border-bottom-color 200ms ease-in-out
-        &:hover
-          color: $accent-80
-          border-bottom: 1px solid $accent-80
+    & a
+      margin-top: .5rem
+      display: inline-block
+      font-size: .9rem
+      color: $accent
+      text-decoration: none
+      transition: color 200ms ease-in-out
+      &:hover
+        color: $accent-50
 
-    &>input
+    &>input, select
       min-height: 40px
-      width: 250px
+      width: 100%
       padding: 5px 1rem
       border-radius: 1rem
       border: 1px solid $foreground
@@ -82,7 +88,7 @@ form.form
         color: $foreground-50
         border-color: $foreground-50
 
-      &[type=checkbox]
+    &>input[type=checkbox]
         width: 24px
 
     &>textarea
@@ -92,6 +98,19 @@ form.form
       padding: 1rem
       font-family: "Inconsolata", monospace
       color: $foreground
+
+    &>select
+      -webkit-appearance: none
+      &:focus
+        border-bottom-left-radius: 0
+        border-bottom-right-radius: 0
+
+      &[multiple]:focus
+        border-radius: 1rem
+
+      &>option
+        background-color: $background
+        border-radius: 1rem
 
     &>.submit
       &.button
@@ -114,7 +133,7 @@ form.form
     &.avatar
       margin-top: -120px
       &>img.avatar
-        box-sizing: border-box
+
         border: 2px solid $foreground
         border-radius: 50%
         background-color: $background

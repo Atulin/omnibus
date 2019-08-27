@@ -172,27 +172,31 @@ class Application
             try {
                 $this->router->addRoutes([
                     //Logout
-                    ['GET',  '/logout',                    LogoutController::class . '#index', 'logout'    ],
+                    ['GET',  '/logout',              LogoutController::class . '#index', 'logout'    ],
 
                     // Set up MFA
-                    ['GET',  '/mfa',                       MFAController::class . '#index', 'mfa'          ],
-                    ['POST', '/setup-mfa',                 MFAController::class . '#setup'                 ],
-                    ['POST', '/remove-mfa',                MFAController::class . '#remove'                ],
+                    ['GET',  '/mfa',                 MFAController::class . '#index', 'mfa'          ],
+                    ['POST', '/setup-mfa',           MFAController::class . '#setup'                 ],
+                    ['POST', '/remove-mfa',          MFAController::class . '#remove'                ],
 
                     // User profile
-                    ['GET',  '/profile/edit',              ProfileEditController::class . '#index'         ],
-                    ['POST', '/profile/edit',              ProfileEditController::class . '#edit'          ],
-                    ['GET',  '/profile',                   ProfileController::class . '#index', 'profile'  ],
+                    ['GET',  '/profile/edit',        ProfileEditController::class . '#index'         ],
+                    ['POST', '/profile/edit',        ProfileEditController::class . '#edit'          ],
+                    ['GET',  '/profile',             ProfileController::class . '#index', 'profile'  ],
 
                     // User account
-                    ['GET',  '/account',                   AccountEditController::class . '#index'         ],
-                    ['POST', '/account',                   AccountEditController::class . '#edit'          ],
-                    ['GET',  '/account/validate',          AccountEditController::class . '#validate'      ],
+                    ['GET',  '/account',             AccountEditController::class . '#index'         ],
+                    ['POST', '/account',             AccountEditController::class . '#edit'          ],
+                    ['GET',  '/account/validate',    AccountEditController::class . '#validate'      ],
 
                     // Comments API
-                    ['GET',  '/api/comments',              CommentsApiController::class . '#get'           ],
-                    ['POST', '/api/comments',              CommentsApiController::class . '#add'           ],
-                    ['POST', '/api/comments/report',       CommentsApiController::class . '#report'        ],
+                    ['GET',  '/api/comments',        CommentsApiController::class . '#get'           ],
+                    ['POST', '/api/comments',        CommentsApiController::class . '#add'           ],
+                    ['POST', '/api/comments/report', CommentsApiController::class . '#report'        ],
+
+                    // Editor
+                    ['GET',  '/editor/[i:id]?',      EditorController::class . '#index'              ],
+                    ['POST', '/editor/[i:id]?',      EditorController::class . '#create'             ],
 
                 ]);
             } catch (Exception $e) {
@@ -223,8 +227,6 @@ class Application
 
                         // Articles
                         ['GET',  '/admin/articles',        ArticlesController::class . '#index'      ],
-                        ['GET',  '/admin/editor',          EditorController::class   . '#admin'      ],
-                        ['POST', '/admin/editor/create',   EditorController::class   . '#create'     ],
                         ['POST', '/admin/articles/delete', ArticlesController::class . '#delete'     ],
                         ['GET',  '/admin/articles/fetch',  ArticlesController::class . '#fetch'      ],
                     ]);
