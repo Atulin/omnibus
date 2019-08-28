@@ -5,7 +5,9 @@ use Models\Database;
 use Symfony\Component\Dotenv\Dotenv;
 
 // Load .env file
-(new Dotenv())->load(__DIR__.'/.env');
+if (!isset($_ENV['APP_ENV'])) {
+    (new Dotenv())->load(__DIR__.'/.env');
+}
 
 $entityManager = (new Database())->Get();
 
