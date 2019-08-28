@@ -61,6 +61,7 @@ class EditorController extends Controller
             'categories' => $this->em->getRepository(Category::class)->findAll(),
             'users' => $this->em->getRepository(User::class)->findAll(),
             'article' => $this->article,
+            'errors' => $this->errors
         ]);
     }
 

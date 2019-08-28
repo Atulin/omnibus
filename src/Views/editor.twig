@@ -10,6 +10,19 @@
     <div class="main column" id="v-app">
         <form class="full form" method="post" @submit="createArticle">
 
+
+            {% if errors %}
+                <div class="error message field">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                        {% for e in errors %}
+                            <li>{{ e }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+
             <input type="hidden" name="token" id="token" value="{{ token }}">
             {% if article %}
                 <input type="hidden" name="id" id="id" value="{{ article.id }}">
