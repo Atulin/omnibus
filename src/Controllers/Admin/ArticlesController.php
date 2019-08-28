@@ -15,7 +15,7 @@ class ArticlesController extends Controller
     public function index(): void
     {
         $this->setBaseData();
-        $this->render('/admin/articles', []);
+        $this->render('/admin/articles');
     }
 
 

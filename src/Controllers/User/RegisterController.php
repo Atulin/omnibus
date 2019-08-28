@@ -93,7 +93,7 @@ class RegisterController extends Controller
 
             // Generate a unique activation code
             do {
-                $code = Token::Get(32);
+                $code = Token::Get();
             } while ($this->em->getRepository(ActivationCode::class)->count(['code' => $code]) !== 0);
 
             // If all's fine, create user

@@ -76,8 +76,11 @@ class AccountEditController extends Controller
     public function validate(): void
     {
         if ($this->session->get('token') === $_GET['token']) {
+
+            $user = $this->getUser();
+
             $email = $this->em->getRepository(User::class)->count(['email' => $_GET['email']]) === 0
-                     && $_GET['email'] !== $this->getUser()->getEmail();
+                     && $_GET['email'] !== $user->getEmail();
 
             $is_email = filter_var($_GET['email'], FILTER_VALIDATE_EMAIL);
 

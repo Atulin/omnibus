@@ -283,7 +283,6 @@ class User implements JsonSerializable
      */
     public function setRole(Role $role): void
     {
-        $role->addUser($this);
         $this->role = $role;
     }
 

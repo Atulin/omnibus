@@ -37,7 +37,7 @@ class ForgottenPasswordController extends Controller
                     // Generate a unique activation code
                     $code = null;
                     do {
-                        $code = Token::Get(32);
+                        $code = Token::Get();
                     } while ($this->em->getRepository(RecoveryCode::class)->count(['code' => $code]) !== 0);
 
                     $rc = new RecoveryCode();

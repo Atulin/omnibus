@@ -33,7 +33,8 @@ class MFAController extends Controller
         $data = ['messages' => $this->messages];
         $template = 'user/setup-mfa';
 
-        if (!$this->getUser()->getMfa()) {
+        $user = $this->getUser();
+        if (!$user->getMfa()) {
 
             // Set MFA
             $this->mfa = new TwoFactorAuth('Omnibus');
