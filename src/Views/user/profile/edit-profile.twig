@@ -39,13 +39,23 @@
                     </div>
 
                     <div class="full field">
-                        <label for="title">Title (${TitleCharsLeft})</label>
+                        <label for="title">Title</label>
                         <input id="title" name="title" v-model="title" type="text" value="{{ user.title }}">
+                        <div class="counters">
+                            <div class="counter">
+                                Characters left: <p class="num">${TitleCharsLeft}</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="full field">
-                        <label for="bio">Bio (${BioCharsLeft})</label>
+                        <label for="bio">Bio</label>
                         <textarea name="bio" id="bio" rows="10" v-model="bio">{{ user.bio|raw }}</textarea>
+                        <div class="counters">
+                            <div class="counter">
+                                Characters left: <p class="num">${BioCharsLeft}</p>
+                            </div>
+                        </div>
                     </div>
 
                     <input id="token" type="hidden" name="token" value="{{ token }}">

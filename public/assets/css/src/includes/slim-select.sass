@@ -2,11 +2,10 @@ $height: 40px !default
 $white: $background !default
 $font-color: $foreground !default
 $font-placeholder-color: $foreground-80 !default
-$font-disabled-color: $foreground-20 !default
+$font-disabled-color: $foreground-50 !default
 $primary-color: $accent !default
-$border-color: $foreground !default
+$border-color: $foreground-50 !default
 $search-highlight-color: #fffb8c !default
-$border-radius: 1rem !default
 $spacing-l: 8px !default
 $spacing-m: 6px !default
 $spacing-s: 4px !default
@@ -23,12 +22,15 @@ $spacing-s: 4px !default
     width: 100%
     height: $height
     padding: $spacing-m
-    border: 1px solid $border-color
-    border-radius: $border-radius
+    border: 1px solid transparent
+    border-bottom: 1px solid $border-color
     background-color: $white
     outline: 0
 
-    transition: background-color .2s
+    transition: background-color .2s, border 200ms ease-in-out
+    &:hover
+      border-color: $foreground-20
+      border-bottom-color: $foreground
     &.ss-disabled
       background-color: $border-color
       cursor: default
@@ -105,12 +107,15 @@ $spacing-s: 4px !default
     min-height: $height
     width: 100%
     padding: 0 0 0 3px
-    border: 1px solid $border-color
-    border-radius: $border-radius
+    border: 1px solid transparent
+    border-bottom: 1px solid $border-color
     background-color: $white
     outline: 0
 
-    transition: background-color .2s
+    transition: background-color .2s, border 200ms ease-in-out
+    &:hover
+      border-color: $foreground-20
+      border-bottom-color: $foreground
     &.ss-disabled
       background-color: $border-color
       cursor: default
@@ -176,7 +181,6 @@ $spacing-s: 4px !default
         margin: 3px 5px 3px 0
         color: $white
         background-color: $primary-color
-        border-radius: $border-radius
         animation-name: scaleIn
         animation-duration: .2s
         animation-timing-function: ease-out
@@ -264,19 +268,20 @@ $spacing-s: 4px !default
         height: 30px
         padding: $spacing-m $spacing-l
         margin: 0
-        border: 1px solid $border-color
-        border-radius: $border-radius
+        border: 1px solid $foreground-20
         background-color: $white
         outline: 0
         text-align: left
 
         -webkit-appearance: textfield
+        transition: border-color 200ms ease-in-out
+        &:hover
+          border-color: $foreground-50
+        &:focus
+          border-color: $accent
         &::placeholder
           color: $font-placeholder-color
           vertical-align: middle
-
-        &:focus
-          box-shadow: 0 0 5px $primary-color
 
 
       .ss-addable
@@ -289,8 +294,7 @@ $spacing-s: 4px !default
         flex: 0 0 30px
         height: 30px
         margin: 0 0 0 8px
-        border: 1px solid $border-color
-        border-radius: $border-radius
+        border-bottom: 1px solid $border-color
 
 
 

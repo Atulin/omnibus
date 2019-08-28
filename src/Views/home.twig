@@ -2,18 +2,17 @@
 
 {% block body %}
     <div class="main column">
-        <div>{{ theme }}</div>
-        <div>{{ user.name }}</div>
-        <div>{{ user.code ? "inactive" : "active" }}</div>
         <div>{{ message }}</div>
-        <div>Active: {{ active ? "true" : "false" }}</div>
 
-        {% if user %}
-            <a href="/logout">Log out</a>
-            <img src="{{ avatar(user) }}" alt="{{ user.name }}'s avatar">
-        {% else %}
-            <a href="/login">Log in</a>
-            <a href="/register">Register</a>
-        {% endif %}
+        <div id="articles">
+            {% for a in articles %}
+                <div>{{ a.title }}</div>
+                <div>{{ a.author.name }}</div>
+                <div>{{ a.category.name }}</div>
+                <div>{{ a.excerpt|md|raw }}</div>
+                <div>{{ a.body|md|raw }}</div>
+            {% endfor %}
+        </div>
+
     </div>
 {% endblock %}

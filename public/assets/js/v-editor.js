@@ -23,10 +23,6 @@ const app = new Vue({
     },
     methods: {
 
-        handleImage: function (e) {
-            this.image = this.$refs.image.files[0];
-        },
-
         createArticle: function (e) {
             let token = document.getElementById('token').value;
 
@@ -35,6 +31,20 @@ const app = new Vue({
             } else {
 
             }
+        }
+
+    },
+
+    computed: {
+
+        charsBody: function(e) {
+            return this.body.length
+        },
+        noWhitespaceBody: function (e) {
+            return this.body.replace(/\s/g,'').length
+        },
+        wordsBody: function (e) {
+            return this.body.split(/\s/g).filter((x)=>{ return x !== '' }).length
         }
 
     },

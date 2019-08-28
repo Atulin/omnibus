@@ -33,39 +33,37 @@
                         {% endif %}
                     </div>
 
-                    <div class="field">
-                        {% if user.mfa is empty %}
-                            <a href="/mfa" class="button">Set up 2FA</a>
-                        {% else %}
-                            <a href="/mfa" class="button">Remove 2FA</a>
-                        {% endif %}
-                    </div>
+                    {% if user.mfa is empty %}
+                        <a href="/mfa" class="button">Set up 2FA</a>
+                    {% else %}
+                        <a href="/mfa" class="button">Remove 2FA</a>
+                    {% endif %}
 
                     <hr>
 
-                    <div class="field">
+                    <div class="full field">
                         <label for="name">Name</label>
                         <input id="name" name="name" v-model="name" type="text" value="{{ user.name }}" readonly>
                     </div>
 
-                    <div class="field">
+                    <div class="full field">
                         <label for="email">New email</label>
                         <input id="email" name="email" v-model="email" type="email" value="{{ user.email }}">
                     </div>
 
-                    <div class="field">
+                    <div class="full field">
                         <label for="new_password">New password</label>
                         <input id="new_password" name="new_password" v-model="new_password" type="password">
                     </div>
 
-                    <div class="field">
+                    <div class="full field">
                         <label for="password">Current password</label>
                         <input id="password" name="password" v-model="password" type="password" required>
                     </div>
 
                     <input id="token" type="hidden" name="token" value="{{ token }}">
 
-                    <div class="field">
+                    <div class="full field">
                         <label for="f-submit" class="hidden">Save</label>
                         <input id="f-submit" class="submit button" type="submit" value="Save">
                     </div>

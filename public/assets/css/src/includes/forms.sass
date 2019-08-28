@@ -36,13 +36,18 @@ form.form
     display: flex
     flex-direction: row
 
-    &>.field
+    &>div.field
       flex-grow: 1
+      margin-top: 1rem
 
   & div.field
     display: flex
     flex-direction: column
-    margin: 4px
+    margin: 1rem 4px 4px
+    &:first-child
+      margin-top: 0
+    &:focus-within .counters
+      color: $foreground
 
     &.full
       width: 100%
@@ -74,19 +79,25 @@ form.form
       &:hover
         color: $accent-50
 
-    &>input, select
+    &>input
       min-height: 40px
       width: 100%
-      padding: 5px 1rem
-      border-radius: 1rem
-      border: 1px solid $foreground
+      padding: 5px
+      border: 1px solid transparent
+      border-bottom: 1px solid $foreground-50
       font-size: 1rem
       background-color: transparent
       color: $foreground
+      transition: border 200ms ease-in-out
+      &:hover
+        border-color: $foreground-20
+        border-bottom-color: $foreground
+      &:focus
+        border: 1px solid $accent
 
       &[readonly]
-        color: $foreground-50
-        border-color: $foreground-50
+        color: $foreground-20
+        border-bottom-color: $foreground-20
 
     &>input[type=checkbox]
         width: 24px
@@ -94,23 +105,17 @@ form.form
     &>textarea
       resize: vertical
       background-color: transparent
-      border-radius: 1rem
       padding: 1rem
       font-family: "Inconsolata", monospace
       color: $foreground
-
-    &>select
-      -webkit-appearance: none
+      border: 1px solid transparent
+      border-bottom: 1px solid $foreground-50
+      transition: border 200ms ease-in-out
+      &:hover
+        border-color: $foreground-20
+        border-bottom-color: $foreground
       &:focus
-        border-bottom-left-radius: 0
-        border-bottom-right-radius: 0
-
-      &[multiple]:focus
-        border-radius: 1rem
-
-      &>option
-        background-color: $background
-        border-radius: 1rem
+        border: 1px solid $accent
 
     &>.submit
       &.button
@@ -129,6 +134,30 @@ form.form
           color: $foreground-20
         &.fluid
           width: 100%
+
+    &>.counters
+      display: flex
+      padding: .2rem 0
+      //border-bottom: 1px solid $foreground-20
+      color: $foreground-20
+      font-family: "Inconsolata", monospace
+      transition: color 200ms ease-in-out
+      &:hover
+        color: $foreground
+
+      &>.counter
+        padding: 0 .5rem
+        &:first-child
+          padding-left: 0
+        &:last-child
+          padding-right: 0
+        &>p.num
+          display: inline-block
+          margin: 0
+          width: 3rem
+
+
+
 
     &.avatar
       margin-top: -120px

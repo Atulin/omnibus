@@ -13,12 +13,12 @@
     <div id="modal" v-if="modal" transition="modal" class="v-centered h-centered modal" v-on:click.self="toggleModal">
         <form class="form" @submit.stop.prevent="createCategory">
 
-            <div class="field">
+            <div class="full field">
                 <label for="name">Name</label>
                 <input name="name" id="name" v-model="name" type="text">
             </div>
 
-            <div class="field">
+            <div class="full field">
                 <label for="image">Image</label>
                 <input name="image" id="image" ref="image" type="file" v-on:change="handleImage">
             </div>

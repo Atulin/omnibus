@@ -13,7 +13,7 @@
     <div id="modal" v-if="modal" transition="modal" class="v-centered h-centered modal" v-on:click.self="toggleModal">
         <form class="form" @submit.stop.prevent="createTag">
 
-            <div class="field">
+            <div class="full field">
                 <label for="name">Name</label>
                 <input name="name" id="name" v-model="name" type="text">
             </div>

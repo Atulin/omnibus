@@ -36,6 +36,11 @@
             <div class="full field">
                 <label for="body">Body</label>
                 <textarea name="body" id="body" v-model="body" rows="20">{{ article.body|raw }}</textarea>
+                <div class="counters">
+                    <div class="counter">Characters: <p class="num">${charsBody}</p></div>
+                    <div class="counter">Except whitespace: <p class="num">${noWhitespaceBody}</p></div>
+                    <div class="counter">Words: <p class="num">${wordsBody}</p></div>
+                </div>
             </div>
 
             <div class="full field">
@@ -88,7 +93,7 @@
 
                 <div class="full field">
                     <label for="image">Cover</label>
-                    <input name="image" id="image" ref="image" type="file" v-on:change="handleImage">
+                    <input name="image" id="image" ref="image" type="file">
                 </div>
 
             </div>
