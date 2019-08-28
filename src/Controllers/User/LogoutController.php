@@ -4,9 +4,10 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Controllers\User;
+namespace Omnibus\Controllers\User;
 
-use Core\Controller;
+use Omnibus\Core\Controller;
+
 
 class LogoutController extends Controller
 {

@@ -4,10 +4,11 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Core\Security;
+namespace Omnibus\Core\Security;
 
 use Exception;
 use RuntimeException;
+
 
 class Token
 {

@@ -4,7 +4,7 @@
  * Last modified: 20.08.2019, 18:30
  */
 
-namespace Models;
+namespace Omnibus\Models;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;

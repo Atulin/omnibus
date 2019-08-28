@@ -4,11 +4,11 @@
  * Last modified: 20.08.2019, 18:30
  */
 
-namespace Models;
+namespace Omnibus\Models;
 
 use JsonSerializable;
 use Doctrine\ORM\Mapping as ORM;
-use Core\Utility\ParsedownExtended;
+use Omnibus\Core\Utility\ParsedownExtended;
 use Doctrine\Common\Collections\ArrayCollection;
 
 

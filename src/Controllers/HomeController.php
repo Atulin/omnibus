@@ -4,10 +4,10 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Controllers;
+namespace Omnibus\Controllers;
 
-use Models\Article;
-use Core\Controller;
+use Omnibus\Models\Article;
+use Omnibus\Core\Controller;
 
 
 class HomeController extends Controller

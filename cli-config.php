@@ -1,8 +1,9 @@
 <?php
 // cli-config.php
-use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use Models\Database;
+use Omnibus\Models\Database;
 use Symfony\Component\Dotenv\Dotenv;
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+
 
 // Load .env file
 if (!isset($_ENV['APP_ENV'])) {

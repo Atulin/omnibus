@@ -4,15 +4,16 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Controllers\User;
+namespace Omnibus\Controllers\User;
 
-use Core\Controller;
-use Core\Security\Token;
-use Core\Utility\Email;
-use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Models\User;
+use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
-use Models\RecoveryCode;
-use Models\User;
+use Omnibus\Core\Utility\Email;
+use Omnibus\Models\RecoveryCode;
+use Omnibus\Core\Security\Token;
+use Doctrine\ORM\OptimisticLockException;
+
 
 class ForgottenPasswordController extends Controller
 {

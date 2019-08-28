@@ -4,14 +4,14 @@
  * Last modified: 20.08.2019, 07:41
  */
 
-namespace Controllers;
+namespace Omnibus\Controllers;
 
-use Core\Controller;
+use Omnibus\Core\Controller;
 
 
 /**
  * Class StaticDocsController
- * @package Controllers
+ * @package Omnibus\Controllers
  */
 class StaticDocsController extends Controller
 {

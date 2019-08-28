@@ -4,13 +4,14 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Models;
+namespace Omnibus\Models;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Class ActivationCode
- * @package Models
+ * @package Omnibus\Models
  * @ORM\Entity
  * @ORM\Table(name="activation_codes")
  */

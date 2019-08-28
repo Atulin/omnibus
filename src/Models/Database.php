@@ -4,15 +4,16 @@
  * Last modified: 19.08.2019, 07:38
  */
 
-namespace Models;
+namespace Omnibus\Models;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\ORMException;
+use Doctrine\ORM\EntityManager;
+
 
 /**
  * Class Database
- * @package Models
+ * @package Omnibus\Models
  */
 class Database
 {

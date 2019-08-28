@@ -4,12 +4,13 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Controllers\User\Profile;
+namespace Omnibus\Controllers\User\Profile;
 
-use Core\Controller;
-use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Models\User;
+use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
-use Models\User;
+use Doctrine\ORM\OptimisticLockException;
+
 
 class AccountEditController extends Controller
 {

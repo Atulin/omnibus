@@ -4,14 +4,13 @@
  * Last modified: 24.08.2019, 13:28
  */
 
-namespace Controllers\Admin;
+namespace Omnibus\Controllers\Admin;
 
-use Models\Tag;
-use Core\Controller;
-use Models\Category;
-use Core\Utility\HttpStatus;
-use Core\Utility\APIMessage;
+use Omnibus\Models\Tag;
+use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
+use Omnibus\Core\Utility\APIMessage;
+use Omnibus\Core\Utility\HttpStatus;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\TransactionRequiredException;
 

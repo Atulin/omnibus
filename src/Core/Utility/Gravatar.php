@@ -4,7 +4,7 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Core\Utility;
+namespace Omnibus\Core\Utility;
 
 class Gravatar
 {

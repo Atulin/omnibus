@@ -4,11 +4,12 @@
  * Last modified: 20.08.2019, 20:15
  */
 
-namespace Controllers\Admin;
+namespace Omnibus\Controllers\Admin;
 
-use Models\User;
-use Models\Article;
-use Core\Controller;
+use Omnibus\Models\User;
+use Omnibus\Models\Article;
+use Omnibus\Core\Controller;
+
 
 class DashboardController extends Controller
 {

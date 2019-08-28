@@ -4,15 +4,13 @@
  * Last modified: 19.08.2019, 07:06
  */
 
-namespace Controllers\User\Profile;
+namespace Omnibus\Controllers\User\Profile;
 
-use BackblazeB2\File;
-use Core\Controller;
-use Core\Utility\FileHandler;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
-use BackblazeB2\Client;
 use Exception;
+use Omnibus\Core\Controller;
+use Doctrine\ORM\ORMException;
+use Omnibus\Core\Utility\FileHandler;
+use Doctrine\ORM\OptimisticLockException;
 use GuzzleHttp\Exception\GuzzleException;
 
 

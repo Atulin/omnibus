@@ -4,29 +4,33 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Controllers\API;
+namespace Omnibus\Controllers\API;
 
-use Core\Controller;
-use Core\Utility\APIMessage;
-use Core\Utility\Gravatar;
-use Core\Utility\HttpStatus;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Models\Report;
+use Omnibus\Models\Comment;
+use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
+use Omnibus\Models\CommentThread;
+use Omnibus\Core\Utility\Gravatar;
+use Omnibus\Core\Utility\APIMessage;
+use Omnibus\Core\Utility\HttpStatus;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\TransactionRequiredException;
-use Models\Comment;
-use Models\CommentThread;
-use Models\Report;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+
 
 /**
  * Class CommentsApiController
- * @package Controllers\API
+ * @package Omnibus\Controllers\API
  */
 class CommentsApiController extends Controller
 {
 
     /**
-     *
+     * @api {get} ?thread=:thread
+     * @apiName Get Comments
+     * @apiDescription Gets all comments that belong to the given thread
+     * @apiParam {int} thread Thread from which to get comments
      */
     public function get(): void
     {
@@ -38,7 +42,7 @@ class CommentsApiController extends Controller
             return [
                 'user' => $a->getName(),
                 'user_id' => $a->getId(),
-                'avatar' => '//'.CONFIG['cdn domain'].'/file/Omnibus/' . $a->getAvatar() ?? (new Gravatar($a->getEmail(), 50))->getGravatar(),
+                'avatar' => $a->getAvatar() ? '//'.CONFIG['cdn domain'].'/file/Omnibus/' . $a->getAvatar() : (new Gravatar($a->getEmail(), 50))->getGravatar(),
                 'date' => $c->getDate()->format('d.m.Y H:i'),
                 'body' => $c->getBody(),
                 'id'   => $c->getId(),
@@ -56,7 +60,12 @@ class CommentsApiController extends Controller
 
 
     /**
-     *
+     * @api {post}
+     * @apiName Add Comment
+     * @apiDescription Adds a comment to the given thread
+     * @apiParam {string} token X-CSRF token
+     * @apiParam {int} thread Thread to which add the comment
+     * @apiParam {string} body Body of the comment
      */
     public function add(): void
     {
@@ -123,8 +132,14 @@ class CommentsApiController extends Controller
     }
 
 
+
     /**
-     *
+     * @api {post}
+     * @apiName Report Comment
+     * @apiDescription Reports the given comment
+     * @apiParam {string} token X-CSRF token
+     * @apiParam {int} comment Comment to report
+     * @apiParam {string} reason Reason for the report
      */
     public function report(): void
     {
@@ -176,7 +191,7 @@ class CommentsApiController extends Controller
             }
 
         } else {
-            $errors[] = 'X-CSRD protection triggered';
+            $errors[] = 'X-CSRF protection triggered';
         }
 
         // Set status
@@ -193,6 +208,142 @@ class CommentsApiController extends Controller
             $errors
         ));
 
+    }
+
+
+    /**
+     * @api {post}
+     * @apiName Accept Comment
+     * @apiDescription Removes all reports from the given comment
+     * @apiParam {string} token X-CSRF token
+     * @apiParam {int} comment Comment to accept
+     */
+    public function accept(): void
+    {
+        $errors = [];
+
+        $POST = filter_input_array(INPUT_POST, [
+            'token'   => FILTER_SANITIZE_STRING,
+            'comment' => FILTER_VALIDATE_INT,
+        ]);
+
+
+        if ($POST['token'] === $this->session->get('token')) {
+
+            $role = $this->getRole();
+            if ($role && $role->canModerateComments()) {
+
+                $reports = $this->em->getRepository(Report::class)->findAll(['comment_id', $POST['comment']]);
+
+                try {
+                    foreach ($reports as $r) {
+                        $this->em->remove($r);
+                    }
+                } catch (ORMException $e) {
+                    $errors[] = $e->getMessage();
+                }
+
+                try {
+                    $this->em->flush();
+                } catch (OptimisticLockException $e) {
+                    $errors[] = $e->getMessage();
+                } catch (ORMException $e) {
+                    $errors[] = $e->getMessage();
+                }
+
+            } else {
+                $errors[] = 'Insufficient permissions';
+            }
+
+        } else {
+            $errors[] = 'X-CSRF protection triggered';
+        }
+
+        // Set status
+        if ($errors) {
+            $status = HttpStatus::S500();
+        } else {
+            $status = HttpStatus::S200();
+        }
+
+        http_response_code($status->code);
+        echo json_encode(new APIMessage(
+            $status,
+            $errors ? 'An error has occurred:' : 'Comment approved',
+            $errors
+        ));
+    }
+
+
+    /**
+     * @api {post}
+     * @apiName Delete Comment
+     * @apiDescription Removes the given comment
+     * @apiParam {string} token X-CSRF token
+     * @apiParam {int} comment Comment to delete
+     */
+    public function delete(): void
+    {
+        $errors = [];
+
+        $POST = filter_input_array(INPUT_POST, [
+            'token'   => FILTER_SANITIZE_STRING,
+            'comment' => FILTER_VALIDATE_INT,
+        ]);
+
+
+        if ($POST['token'] === $this->session->get('token')) {
+
+            $role = $this->getRole();
+            if ($role && $role->canModerateComments()) {
+
+                /** @var Comment $comment */
+                $comment = null;
+                try {
+                    $comment = $this->em->find(Comment::class, ['id' => $POST['comment']]);
+                } catch (OptimisticLockException $e) {
+                    $errors[] = $e->getMessage();
+                } catch (TransactionRequiredException $e) {
+                    $errors[] = $e->getMessage();
+                } catch (ORMException $e) {
+                    $errors[] = $e->getMessage();
+                }
+
+                try {
+                    $this->em->remove($comment);
+                } catch (ORMException $e) {
+                    $errors[] = $e->getMessage();
+                }
+
+                try {
+                    $this->em->flush();
+                } catch (OptimisticLockException $e) {
+                    $errors[] = $e->getMessage();
+                } catch (ORMException $e) {
+                    $errors[] = $e->getMessage();
+                }
+
+            } else {
+                $errors[] = 'Insufficient permissions';
+            }
+
+        } else {
+            $errors[] = 'X-CSRF protection triggered';
+        }
+
+        // Set status
+        if ($errors) {
+            $status = HttpStatus::S500();
+        } else {
+            $status = HttpStatus::S200();
+        }
+
+        http_response_code($status->code);
+        echo json_encode(new APIMessage(
+            $status,
+            $errors ? 'An error has occurred:' : 'Deleted succesfully',
+            $errors
+        ));
     }
 
 }

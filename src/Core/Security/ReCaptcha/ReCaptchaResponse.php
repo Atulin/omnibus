@@ -4,13 +4,14 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Core\Security\ReCaptcha;
+namespace Omnibus\Core\Security\ReCaptcha;
 
 use DateTime;
 
+
 /**
  * Class ReCaptcha
- * @package Core\Security
+ * @package Omnibus\Core\Security
  */
 class ReCaptchaResponse
 {

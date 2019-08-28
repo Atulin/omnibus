@@ -4,15 +4,16 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Models;
+namespace Omnibus\Models;
 
-use Core\Utility\ParsedownExtended;
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Omnibus\Core\Utility\ParsedownExtended;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
- * @package Models
+ * @package Omnibus\Models
  * @ORM\Entity
  * @ORM\Table(name="comments")
  */

@@ -4,16 +4,17 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Core\Utility;
+namespace Omnibus\Core\Utility;
 
-use Doctrine\ORM\ORMException;
-use Models\Database;
-use Models\User;
 use Parsedown;
+use Omnibus\Models\User;
+use Omnibus\Models\Database;
+use Doctrine\ORM\ORMException;
+
 
 /**
  * Class ParsedownExt
- * @package Core\Utility
+ * @package Omnibus\Core\Utility
  */
 class ParsedownExtended extends Parsedown
 {

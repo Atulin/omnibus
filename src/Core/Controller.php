@@ -4,18 +4,19 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Core;
+namespace Omnibus\Core;
 
-use Models\Role;
-use Core\Security\Token;
-use Doctrine\ORM\EntityManager;
-use Models\User;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 use Twig\Environment;
-use Core\Utility\TwigHandler;
+use Omnibus\Models\Role;
+use Omnibus\Models\User;
+use Twig\Error\LoaderError;
+use Twig\Error\SyntaxError;
+use Twig\Error\RuntimeError;
+use Doctrine\ORM\EntityManager;
+use Omnibus\Core\Security\Token;
+use Omnibus\Core\Utility\TwigHandler;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 
 abstract class Controller
 {

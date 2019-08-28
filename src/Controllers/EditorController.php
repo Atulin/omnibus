@@ -4,28 +4,26 @@
  * Last modified: 26.08.2019, 05:02
  */
 
-namespace Controllers;
+namespace Omnibus\Controllers;
 
 use DateTime;
 use Exception;
-use Models\Tag;
-use Models\User;
-use Models\Article;
-use Core\Controller;
-use Models\Category;
-use Core\Utility\Utils;
-use Models\CommentThread;
-use Core\Utility\APIMessage;
-use Core\Utility\HttpStatus;
-use Core\Utility\FileHandler;
+use Omnibus\Models\Tag;
+use Omnibus\Models\User;
+use Omnibus\Models\Article;
+use Omnibus\Models\Category;
+use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
+use Omnibus\Core\Utility\Utils;
+use Omnibus\Models\CommentThread;
+use Omnibus\Core\Utility\FileHandler;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\TransactionRequiredException;
 
 
 /**
  * Class EditorController
- * @package Controllers
+ * @package Omnibus\Controllers
  */
 class EditorController extends Controller
 {

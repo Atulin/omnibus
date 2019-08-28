@@ -4,10 +4,9 @@
  * Last modified: 26.08.2019, 04:14
  */
 
-namespace Controllers\Admin;
+namespace Omnibus\Controllers\Admin;
 
-use Models\User;
-use Core\Controller;
+use Omnibus\Core\Controller;
 
 
 class ArticlesController extends Controller

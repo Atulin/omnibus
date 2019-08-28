@@ -4,16 +4,15 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Controllers\User\Profile;
+namespace Omnibus\Controllers\User\Profile;
 
-use Core\Controller;
-use Core\Utility\Gravatar;
-use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Models\User;
+use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
+use Omnibus\Models\CommentThread;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\TransactionRequiredException;
-use Models\Comment;
-use Models\CommentThread;
-use Models\User;
+
 
 class ProfileController extends Controller
 {

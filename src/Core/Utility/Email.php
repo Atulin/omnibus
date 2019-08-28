@@ -4,7 +4,7 @@
  * Last modified: 19.08.2019, 05:50
  */
 
-namespace Core\Utility;
+namespace Omnibus\Core\Utility;
 
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -12,7 +12,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 /**
  * Class Email
- * @package Core\Utility
+ * @package Omnibus\Core\Utility
  */
 class Email
 {

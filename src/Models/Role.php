@@ -4,14 +4,14 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Models;
+namespace Omnibus\Models;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Class Role
- * @package Models
+ * @package Omnibus\Models
  * @ORM\Entity
  * @ORM\Table(
  *      name="roles",

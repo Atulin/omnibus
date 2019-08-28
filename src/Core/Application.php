@@ -4,43 +4,43 @@
  * Last modified: 19.08.2019, 05:52
  */
 
-namespace Core;
+namespace Omnibus\Core;
 
-use AltoRouter;
-use Core\Utility\Email;
-use Controllers\EditorController;
-use Controllers\Admin\TagsController;
-use Controllers\Admin\ArticlesController;
-use Controllers\Admin\DashboardController;
-use Controllers\StaticDocsController;
-use Controllers\API\CommentsApiController;
-use Controllers\HomeController;
-use Controllers\Admin\CategoriesController;
-use Controllers\User\ForgottenPasswordController;
-use Controllers\User\LogoutController;
-use Controllers\User\MFAController;
-use Controllers\User\Profile\AccountEditController;
-use Controllers\User\Profile\ProfileController;
-use Controllers\User\Profile\ProfileEditController;
-use Controllers\User\RecoverController;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
-use Doctrine\ORM\TransactionRequiredException;
 use Exception;
-use Models\ActivationCode;
-use Models\Database;
-use Models\Role;
-use Models\User;
-use Symfony\Component\Dotenv\Dotenv;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler;
-use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
-use Whoops\Handler\PrettyPageHandler;
+use AltoRouter;
 use Whoops\Run;
-use Controllers\User\LoginController;
-use Controllers\User\RegisterController;
-use Controllers\User\ActivateController;
+use Omnibus\Models\Role;
+use Omnibus\Models\User;
+use Omnibus\Models\Database;
+use Doctrine\ORM\ORMException;
+use Doctrine\ORM\EntityManager;
+use Omnibus\Models\ActivationCode;
+use Symfony\Component\Dotenv\Dotenv;
+use Whoops\Handler\PrettyPageHandler;
+use Omnibus\Controllers\HomeController;
+use Omnibus\Controllers\EditorController;
+use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Controllers\User\MFAController;
+use Omnibus\Controllers\Admin\TagsController;
+use Omnibus\Controllers\StaticDocsController;
+use Omnibus\Controllers\User\LoginController;
+use Omnibus\Controllers\User\LogoutController;
+use Doctrine\ORM\TransactionRequiredException;
+use Omnibus\Controllers\User\RecoverController;
+use Omnibus\Controllers\User\RegisterController;
+use Omnibus\Controllers\User\ActivateController;
+use Omnibus\Controllers\Admin\ArticlesController;
+use Omnibus\Controllers\Admin\DashboardController;
+use Omnibus\Controllers\API\CommentsApiController;
+use Omnibus\Controllers\Admin\CategoriesController;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Omnibus\Controllers\User\Profile\ProfileController;
+use Omnibus\Controllers\User\ForgottenPasswordController;
+use Omnibus\Controllers\User\Profile\AccountEditController;
+use Omnibus\Controllers\User\Profile\ProfileEditController;
+use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
+use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler;
+
 
 class Application
 {

@@ -4,14 +4,15 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Core\Utility;
+namespace Omnibus\Core\Utility;
 
-use Models\User;
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
 use Twig\TwigFilter;
+use Twig\Environment;
 use Twig\TwigFunction;
+use Omnibus\Models\User;
+use Twig\Loader\FilesystemLoader;
 use Twig_Extensions_Extension_Date;
+
 
 class TwigHandler
 {

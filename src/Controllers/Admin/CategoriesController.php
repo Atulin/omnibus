@@ -4,15 +4,15 @@
  * Last modified: 24.08.2019, 03:54
  */
 
-namespace Controllers\Admin;
+namespace Omnibus\Controllers\Admin;
 
-use Core\Controller;
-use Models\Category;
-use Core\Utility\Utils;
-use Core\Utility\HttpStatus;
-use Core\Utility\APIMessage;
-use Core\Utility\FileHandler;
+use Omnibus\Models\Category;
+use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
+use Omnibus\Core\Utility\Utils;
+use Omnibus\Core\Utility\HttpStatus;
+use Omnibus\Core\Utility\APIMessage;
+use Omnibus\Core\Utility\FileHandler;
 use Doctrine\ORM\OptimisticLockException;
 use GuzzleHttp\Exception\GuzzleException;
 use BackblazeB2\Exceptions\NotFoundException;

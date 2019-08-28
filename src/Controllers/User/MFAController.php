@@ -4,11 +4,11 @@
  * Last modified: 19.08.2019, 06:53
  */
 
-namespace Controllers\User;
+namespace Omnibus\Controllers\User;
 
-use Core\Controller;
-use Core\Utility\Email;
+use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
+use Omnibus\Core\Utility\Email;
 use RobThree\Auth\TwoFactorAuth;
 use Doctrine\ORM\OptimisticLockException;
 use RobThree\Auth\TwoFactorAuthException;
@@ -16,7 +16,7 @@ use RobThree\Auth\TwoFactorAuthException;
 
 /**
  * Class MFAController
- * @package Controllers\User
+ * @package Omnibus\Controllers\User
  */
 class MFAController extends Controller
 {

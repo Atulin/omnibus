@@ -4,25 +4,26 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Controllers\User;
+namespace Omnibus\Controllers\User;
 
-use Core\Controller;
-use Core\Security\PasswordUtils;
-use Core\Security\ReCaptcha\ReCaptchaHandler;
-use Core\Security\Token;
-use Core\Utility\APIMessage;
-use Core\Utility\Email;
-use Core\Utility\HttpStatus;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
 use Exception;
-use Models\ActivationCode;
-use Models\User;
+use Omnibus\Models\User;
+use Omnibus\Core\Controller;
+use Doctrine\ORM\ORMException;
+use Omnibus\Core\Utility\Email;
+use Omnibus\Core\Security\Token;
+use Omnibus\Models\ActivationCode;
+use Omnibus\Core\Utility\APIMessage;
+use Omnibus\Core\Utility\HttpStatus;
+use Omnibus\Core\Security\PasswordUtils;
+use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Core\Security\ReCaptcha\ReCaptchaHandler;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+
 
 /**
  * Class RegisterController
- * @package Controllers\User
+ * @package Omnibus\Controllers\User
  */
 class RegisterController extends Controller
 {

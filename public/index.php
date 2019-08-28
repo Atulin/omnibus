@@ -10,7 +10,8 @@ require '../config.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-use Core\Application;
+use Omnibus\Core\Application;
+
 
 define('IS_DEV', true);
 define('ASSETS', '/assets');//'/assets');

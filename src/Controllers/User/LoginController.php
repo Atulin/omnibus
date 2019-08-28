@@ -4,22 +4,22 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Controllers\User;
+namespace Omnibus\Controllers\User;
 
 use Exception;
-use Models\User;
-use Core\Controller;
-use Core\Utility\Gravatar;
-use Core\Utility\APIMessage;
-use Core\Utility\HttpStatus;
+use Omnibus\Models\User;
+use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
 use RobThree\Auth\TwoFactorAuth;
+use Omnibus\Core\Utility\Gravatar;
+use Omnibus\Core\Utility\APIMessage;
+use Omnibus\Core\Utility\HttpStatus;
 use Doctrine\ORM\OptimisticLockException;
 
 
 /**
  * Class LoginController
- * @package Controllers\User
+ * @package Omnibus\Controllers\User
  */
 class LoginController extends Controller
 {

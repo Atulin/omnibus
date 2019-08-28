@@ -4,12 +4,13 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Controllers\User;
+namespace Omnibus\Controllers\User;
 
-use Core\Controller;
-use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
-use Models\ActivationCode;
+use Omnibus\Models\ActivationCode;
+use Doctrine\ORM\OptimisticLockException;
+
 
 class ActivateController extends Controller
 {

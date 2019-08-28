@@ -4,7 +4,7 @@
  * Last modified: 24.08.2019, 06:28
  */
 
-namespace Core\Utility;
+namespace Omnibus\Core\Utility;
 use Exception;
 use BackblazeB2\File;
 use BackblazeB2\Client;

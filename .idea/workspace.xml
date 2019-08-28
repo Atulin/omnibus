@@ -1,25 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
+    <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="Better form CSS">
+      <change afterPath="$PROJECT_DIR$/src/Controllers/Admin/CommentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/omnibus2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/omnibus2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/slim-select.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/slim-select.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-editor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-editor.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-editor.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cli-config.php" beforeDir="false" afterPath="$PROJECT_DIR$/cli-config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/ArticlesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/ArticlesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/CategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/TagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/TagsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/EditorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/EditorController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/admin/categories.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/admin/categories.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/admin/tags.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/admin/tags.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/editor.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/editor.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/home.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/home.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/profile/account.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/account.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/user/profile/edit-profile.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/profile/edit-profile.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/StaticDocsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/StaticDocsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LogoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LogoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/MFAController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/MFAController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/AccountEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/AccountEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Security/PasswordUtils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Security/PasswordUtils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Security/ReCaptcha/ReCaptchaHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Security/ReCaptcha/ReCaptchaHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Security/ReCaptcha/ReCaptchaResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Security/ReCaptcha/ReCaptchaResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Security/Token.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Security/Token.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/APIMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/APIMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/Email.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/FileHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/FileHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/Gravatar.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/Gravatar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/HttpStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/HttpStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/ParsedownExtended.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/ParsedownExtended.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/TwigHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/TwigHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Utility/Utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/Utils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/ActivationCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/ActivationCode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/CommentThread.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/CommentThread.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/RecoveryCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/RecoveryCode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,12 +131,12 @@
       <list>
         <option value="SASS" />
         <option value="Twig Template" />
-        <option value="PHP Controller" />
         <option value="Twig" />
         <option value="tsconfig.json" />
         <option value="Twig template" />
         <option value="JavaScript File" />
         <option value="SASS stylesheet" />
+        <option value="PHP Controller" />
       </list>
     </option>
     <option name="SCHEME" value="Project" />
@@ -135,7 +169,11 @@
   <component name="PHPCSFixerProjectConfiguration">
     <option name="selectedConfigurationId" value="DEFAULT_INTERPRETER" />
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpServers">
+    <servers>
+      <server host="omnibus2.test" id="7837cb51-bae0-4ad4-97fb-82ac863aa9f3" name="omnibus2.test" port="443" />
+    </servers>
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3)">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/erusev/parsedown-extra" />
@@ -206,6 +244,11 @@
       <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
       <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
+      <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OWPddnVaLOc6EVcytSMjS5EiH7" />
@@ -213,6 +256,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Constants" value="false" />
     <property name="DatabaseDriversLRU" value="mariadb&#10;postgresql" />
     <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -238,19 +282,19 @@
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js\admin" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\admin" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Controllers\Admin" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\scaffolds" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\user" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views" />
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\static" />
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\emails\src" />
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js\admin" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\admin" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Controllers\Admin" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\scaffolds" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Views\user" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -354,7 +398,8 @@
       <workItem from="1566864145260" duration="10004000" />
       <workItem from="1566950519311" duration="203000" />
       <workItem from="1566950741472" duration="1239000" />
-      <workItem from="1566962692265" duration="8653000" />
+      <workItem from="1566962692265" duration="8733000" />
+      <workItem from="1567022265303" duration="3865000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -664,7 +709,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566964030307</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Better form CSS">
+      <created>1566971387554</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1566971387554</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -685,7 +737,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Report system and comment body styling" />
     <MESSAGE value=" – Fixed dropdowns to be usable anywhere&#10; – Added page title block to scaffolding&#10; – Modified comments look slightly" />
     <MESSAGE value="Implemented themes and theme switching" />
     <MESSAGE value="Improved look for comments" />
@@ -710,6 +761,7 @@
     <MESSAGE value="Article adding" />
     <MESSAGE value="Made article editor better" />
     <MESSAGE value="Article editor works for adding and editing now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Article editor works for adding and editing now" />
+    <MESSAGE value="Better form CSS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better form CSS" />
   </component>
 </project>

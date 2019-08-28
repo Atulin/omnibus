@@ -4,7 +4,7 @@
  * Last modified: 24.08.2019, 06:58
  */
 
-namespace Core\Utility;
+namespace Omnibus\Core\Utility;
 class Utils
 {
     public static function friendlify(string $str): string

@@ -4,16 +4,16 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Models;
+namespace Omnibus\Models;
 
 use DateTime;
 use JsonSerializable;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Class User
- * @package Models
+ * @package Omnibus\Models
  * @ORM\Entity
  * @ORM\Table(
  *     name="users",

@@ -4,14 +4,16 @@
  * Last modified: 19.08.2019, 05:28
  */
 
-namespace Models;
+namespace Omnibus\Models;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Omnibus\Models\Comment;
+
 
 /**
  * Class CommentThread
- * @package Models
+ * @package Omnibus\Models
  * @ORM\Entity
  * @ORM\Table(name="threads")
  */
@@ -27,7 +29,7 @@ class CommentThread
 
     /**
      * @var ArrayCollection $comments
-     * @ORM\OneToMany(targetEntity="Models\Comment", mappedBy="thread", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="thread", orphanRemoval=true)
      */
     private $comments;
 
