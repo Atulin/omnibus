@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cli-config.php" beforeDir="false" afterPath="$PROJECT_DIR$/cli-config.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -348,7 +347,7 @@
       <workItem from="1566864145260" duration="10004000" />
       <workItem from="1566950519311" duration="203000" />
       <workItem from="1566950741472" duration="1239000" />
-      <workItem from="1566962692265" duration="3237000" />
+      <workItem from="1566962692265" duration="3486000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
