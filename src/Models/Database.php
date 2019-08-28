@@ -42,13 +42,19 @@ class Database
             false
         );
 
-        $conn = [
-            'driver'   => 'pdo_pgsql',
-            'host'     => $host,
-            'dbname'   => $db,
-            'usser'    => $username,
-            'password' => $password
-        ];
+        if (isset($_ENV['DATABASE_URL'])) {
+            $conn = [
+                'url' => $_ENV['DATABASE_URL']
+            ];
+        } else {
+            $conn = [
+                'driver' => 'pdo_pgsql',
+                'host' => $host,
+                'dbname' => $db,
+                'user' => $username,
+                'password' => $password
+            ];
+        }
 
         $this->entityManager = EntityManager::create($conn, $config);
     }
