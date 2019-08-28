@@ -45,6 +45,14 @@ class EditorController extends Controller
      */
     public function index(array $params = null): void
     {
+        $role = $this->getRole();
+        if (isset($params['id']) && (!$role || !$role->canEditArticles())) {
+            header('Location: /editor');
+        }
+        if (!$role || !$role->canAddArticles()) {
+            header('Location: /');
+        }
+
         $this->article = isset($params['id']) ? $this->em->find(Article::class, $params['id']) : $this->article;
 
         $this->setBaseData();
@@ -65,6 +73,7 @@ class EditorController extends Controller
     {
         $msg = null;
         $art = null;
+        $role = $this->getRole();
 
         $POST = filter_input_array(INPUT_POST, [
             'token' => FILTER_SANITIZE_STRING,
@@ -72,22 +81,35 @@ class EditorController extends Controller
             'body' => FILTER_SANITIZE_STRING,
             'excerpt' => FILTER_SANITIZE_STRING,
         ]);
+
         if ($POST['token'] === $this->session->get('token')) {
 
-            if ($this->getRole() && $this->getRole()->canAddArticles()) {
+            /** @var Article $art */
+            $art = null;
+            if (isset($_POST['id'])) {
+                if ($role && $role->canEditArticles()) {
+                    $art = $this->em->find(Article::class, $_POST['id']);
+                } else {
+                    $this->errors[] = 'Insufficient permissions';
+                }
+            } else if ($role && $role->canAddArticles()) {
+                $art = new Article();
+            } else {
+                $this->errors[] = 'Insufficient permissions';
+            }
+
+            if (!$this->errors && $art) {
 
                 if (trim($POST['title'])) {
 
-                    /** @var Article $art */
-                    $art = new Article();
                     $art->setTitle($POST['title'])
                         ->setBody($POST['body'])
                         ->setExcerpt($POST['excerpt'])
                         ->setCategory($this->em->find(Category::class, $_POST['category']))
-                        ->setAuthor($this->em->find(User::class, $_POST['author']) ?: $this->getUser())
+                        ->setAuthor(isset($_POST['author']) ? $this->em->find(User::class, $_POST['author']) : $this->getUser())
                         ->setComments(new CommentThread());
 
-                    if ($_POST['date']) {
+                    if (isset($_POST['date'])) {
                         $art->setDate(new DateTime($_POST['date']));
                     }
 
@@ -119,8 +141,6 @@ class EditorController extends Controller
                     $this->errors[] = 'Name cannot be empty.';
                 }
 
-            } else {
-                $this->errors[] = 'Insufficient rights.';
             }
 
         } else {

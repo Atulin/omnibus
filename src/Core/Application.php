@@ -195,8 +195,8 @@ class Application
                     ['POST', '/api/comments/report', CommentsApiController::class . '#report'        ],
 
                     // Editor
-                    ['GET',  '/editor/[i:id]?',      EditorController::class . '#index'              ],
-                    ['POST', '/editor/[i:id]?',      EditorController::class . '#create'             ],
+                    ['GET',  '/editor/[i:id]?',          EditorController::class . '#index'         ],
+                    ['POST', '/editor/[i:id]?',          EditorController::class . '#create'        ],
 
                 ]);
             } catch (Exception $e) {
@@ -219,16 +219,16 @@ class Application
                         ['GET',  '/admin/categories/fetch',  CategoriesController::class . '#fetch'     ],
 
                         // Tags
-                        ['GET',  '/admin/tags',        TagsController::class . '#index'     ],
-                        ['POST', '/admin/tags/create', TagsController::class . '#create'    ],
-                        ['POST', '/admin/tags/update', TagsController::class . '#update'    ],
-                        ['POST', '/admin/tags/delete', TagsController::class . '#delete'    ],
-                        ['GET',  '/admin/tags/fetch',  TagsController::class . '#fetch'     ],
+                        ['GET',  '/admin/tags',              TagsController::class . '#index'           ],
+                        ['POST', '/admin/tags/create',       TagsController::class . '#create'          ],
+                        ['POST', '/admin/tags/update',       TagsController::class . '#update'          ],
+                        ['POST', '/admin/tags/delete',       TagsController::class . '#delete'          ],
+                        ['GET',  '/admin/tags/fetch',        TagsController::class . '#fetch'           ],
 
                         // Articles
-                        ['GET',  '/admin/articles',        ArticlesController::class . '#index'      ],
-                        ['POST', '/admin/articles/delete', ArticlesController::class . '#delete'     ],
-                        ['GET',  '/admin/articles/fetch',  ArticlesController::class . '#fetch'      ],
+                        ['GET',  '/admin/articles',          ArticlesController::class . '#index'       ],
+                        ['POST', '/admin/articles/delete',   ArticlesController::class . '#delete'      ],
+                        ['GET',  '/admin/articles/fetch',    ArticlesController::class . '#fetch'       ],
                     ]);
                 } catch (Exception $e) {
                     echo $e;

@@ -238,12 +238,17 @@ class Article
     }
 
     /**
-     * @param Tag $tag
+     * @param Tag  $tag
+     *
+     * @param bool $unique
      *
      * @return Article
      */
-    public function addTag(Tag $tag): Article
+    public function addTag(Tag $tag, bool $unique = true): Article
     {
+        if ($unique && $this->tags->contains($tag)) {
+            return $this;
+        }
         $this->tags[] = $tag;
         $tag->addArticle($this);
         return $this;
