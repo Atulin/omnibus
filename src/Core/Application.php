@@ -30,6 +30,7 @@ use Omnibus\Controllers\User\RecoverController;
 use Omnibus\Controllers\User\RegisterController;
 use Omnibus\Controllers\User\ActivateController;
 use Omnibus\Controllers\Admin\ArticlesController;
+use Omnibus\Controllers\Admin\CommentsController;
 use Omnibus\Controllers\Admin\DashboardController;
 use Omnibus\Controllers\API\CommentsApiController;
 use Omnibus\Controllers\Admin\CategoriesController;
@@ -130,7 +131,10 @@ class Application
 
                 // Documents
                 ['GET',  '/tos', StaticDocsController::class . '#tos'],
-                ['GET',  '/md',  StaticDocsController::class . '#md']
+                ['GET',  '/md',  StaticDocsController::class . '#md'],
+
+                // Comments API
+                ['GET',  '/api/comments',        CommentsApiController::class . '#get'           ],
             ]);
         } catch (Exception $e) {
             echo $e;
@@ -190,7 +194,6 @@ class Application
                     ['GET',  '/account/validate',    AccountEditController::class . '#validate'      ],
 
                     // Comments API
-                    ['GET',  '/api/comments',        CommentsApiController::class . '#get'           ],
                     ['POST', '/api/comments',        CommentsApiController::class . '#add'           ],
                     ['POST', '/api/comments/report', CommentsApiController::class . '#report'        ],
 
@@ -229,6 +232,12 @@ class Application
                         ['GET',  '/admin/articles',          ArticlesController::class . '#index'       ],
                         ['POST', '/admin/articles/delete',   ArticlesController::class . '#delete'      ],
                         ['GET',  '/admin/articles/fetch',    ArticlesController::class . '#fetch'       ],
+
+                        // Comments
+                        ['GET',  '/admin/comments',          CommentsController::class    . '#index'       ],
+                        ['POST', '/admin/comments/delete',   CommentsApiController::class . '#delete'      ],
+                        ['POST', '/admin/comments/accept',   CommentsApiController::class . '#accept'      ],
+                        ['GET',  '/admin/comments/reports',  CommentsApiController::class . '#getReports'  ],
                     ]);
                 } catch (Exception $e) {
                     echo $e;

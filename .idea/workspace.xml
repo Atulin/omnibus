@@ -2,16 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin/comments.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin/comments.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin/comments.sass" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/admin/v-comments.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/admin/v-comments.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/log.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Views/admin/comments.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/ArticlesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/ArticlesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/CategoriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/TagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/TagsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/MFAController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/MFAController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/AccountEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/AccountEditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Utility/HttpStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/HttpStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/admin.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/icons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/icons.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/modal.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/modal.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/CommentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/CommentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/elements/navbar.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/navbar.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/admin_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/admin_scaffold.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,8 +115,8 @@
         <option value="tsconfig.json" />
         <option value="Twig template" />
         <option value="JavaScript File" />
-        <option value="SASS stylesheet" />
         <option value="PHP Controller" />
+        <option value="SASS stylesheet" />
       </list>
     </option>
     <option name="SCHEME" value="Project" />
@@ -127,6 +149,7 @@
   <component name="PHPCSFixerProjectConfiguration">
     <option name="selectedConfigurationId" value="DEFAULT_INTERPRETER" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" notify_if_session_was_finished_without_being_paused="false" />
   <component name="PhpServers">
     <servers>
       <server host="omnibus2.test" id="7837cb51-bae0-4ad4-97fb-82ac863aa9f3" name="omnibus2.test" port="443" />
@@ -236,7 +259,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
@@ -272,11 +295,30 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="PHP Script.CommentsApiController.php">
+    <configuration name="Comment.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/Models/Comment.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="CommentsApiController.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.CommentsApiController.php" />
+        <item itemvalue="PHP Script.Comment.php" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@c7b3fd0f" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -357,7 +399,7 @@
       <workItem from="1566950519311" duration="203000" />
       <workItem from="1566950741472" duration="1239000" />
       <workItem from="1566962692265" duration="8733000" />
-      <workItem from="1567022265303" duration="4471000" />
+      <workItem from="1567022265303" duration="21552000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -681,7 +723,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567026339508</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Fixed some issues">
+      <created>1567026890731</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1567026890731</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -702,7 +751,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Implemented themes and theme switching" />
     <MESSAGE value="Improved look for comments" />
     <MESSAGE value="Account and profile editing DONE" />
     <MESSAGE value="Markdown rendering improvements and mention system" />
@@ -727,6 +775,7 @@
     <MESSAGE value="Article editor works for adding and editing now" />
     <MESSAGE value="Better form CSS" />
     <MESSAGE value="Namespaced all src to `Omnibus\`" />
-    <option name="LAST_COMMIT_MESSAGE" value="Namespaced all src to `Omnibus\`" />
+    <MESSAGE value="Fixed some issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some issues" />
   </component>
 </project>

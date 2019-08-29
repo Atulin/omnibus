@@ -34,6 +34,16 @@ class CommentsApiController extends Controller
      */
     public function get(): void
     {
+        if (!isset($_GET['thread'])) {
+            http_response_code(400);
+            echo json_encode(new APIMessage(
+                HttpStatus::S400(),
+                'No thread supplied',
+                []
+            ));
+            die();
+        }
+
         $comments = $this->em->getRepository(Comment::class)->findBy(['thread' => $_GET['thread']]);
 
         $data = array_map(static function(Comment $c) {
@@ -56,6 +66,7 @@ class CommentsApiController extends Controller
             [],
             $data
         ));
+        die();
     }
 
 
@@ -128,6 +139,7 @@ class CommentsApiController extends Controller
             $errors ? 'An error has occurred:' : 'Successfully added the comment.',
             $errors
         ));
+        die();
 
     }
 
@@ -207,7 +219,28 @@ class CommentsApiController extends Controller
             $errors ? 'An error has occurred:' : 'Report successful',
             $errors
         ));
+        die();
 
+    }
+
+    public function getReports(): void
+    {
+        $comments = $this->em->getRepository(Comment::class)
+                             ->createQueryBuilder('comments')
+                             ->select('c')
+                             ->from(Comment::class, 'c')
+                             ->innerJoin('c.reports', 'r')//, 'WITH', 'c.id = ?1', 'r.comment')
+                             ->getQuery()
+                             ->getResult();
+
+        http_response_code(200);
+        echo json_encode(new APIMessage(
+            HttpStatus::S200(),
+            'Retrieved succesfully',
+            [],
+            $comments
+        ));
+        die();
     }
 
 
@@ -224,7 +257,7 @@ class CommentsApiController extends Controller
 
         $POST = filter_input_array(INPUT_POST, [
             'token'   => FILTER_SANITIZE_STRING,
-            'comment' => FILTER_VALIDATE_INT,
+            'id' => FILTER_VALIDATE_INT,
         ]);
 
 
@@ -233,22 +266,35 @@ class CommentsApiController extends Controller
             $role = $this->getRole();
             if ($role && $role->canModerateComments()) {
 
-                $reports = $this->em->getRepository(Report::class)->findAll(['comment_id', $POST['comment']]);
-
+                $comment = null;
                 try {
-                    foreach ($reports as $r) {
-                        $this->em->remove($r);
-                    }
+                    $comment = $this->em->find(Comment::class, $POST['id']);
+                } catch (OptimisticLockException $e) {
+                    $errors[] = '1::'.$e->getMessage();
+                } catch (TransactionRequiredException $e) {
+                    $errors[] = '2::'.$e->getMessage();
                 } catch (ORMException $e) {
-                    $errors[] = $e->getMessage();
+                    $errors[] = '3::'.$e->getMessage();
                 }
 
-                try {
-                    $this->em->flush();
-                } catch (OptimisticLockException $e) {
-                    $errors[] = $e->getMessage();
-                } catch (ORMException $e) {
-                    $errors[] = $e->getMessage();
+                if (!$errors && $comment) {
+                    try {
+                        foreach ($comment->getReports() as $r) {
+                            $this->em->remove($r);
+                        }
+                    } catch (ORMException $e) {
+                        $errors[] = '4::'.$e->getMessage();
+                    }
+
+                    try {
+                        $this->em->flush();
+                    } catch (OptimisticLockException $e) {
+                        $errors[] = '5::'.$e->getMessage();
+                    } catch (ORMException $e) {
+                        $errors[] = '6::'.$e->getMessage();
+                    }
+                } else {
+                    $errors[] = 'Could not approve comment';
                 }
 
             } else {
@@ -272,6 +318,7 @@ class CommentsApiController extends Controller
             $errors ? 'An error has occurred:' : 'Comment approved',
             $errors
         ));
+        die();
     }
 
 
@@ -288,7 +335,7 @@ class CommentsApiController extends Controller
 
         $POST = filter_input_array(INPUT_POST, [
             'token'   => FILTER_SANITIZE_STRING,
-            'comment' => FILTER_VALIDATE_INT,
+            'id' => FILTER_VALIDATE_INT,
         ]);
 
 
@@ -300,7 +347,7 @@ class CommentsApiController extends Controller
                 /** @var Comment $comment */
                 $comment = null;
                 try {
-                    $comment = $this->em->find(Comment::class, ['id' => $POST['comment']]);
+                    $comment = $this->em->find(Comment::class, ['id' => $POST['id']]);
                 } catch (OptimisticLockException $e) {
                     $errors[] = $e->getMessage();
                 } catch (TransactionRequiredException $e) {
@@ -344,6 +391,7 @@ class CommentsApiController extends Controller
             $errors ? 'An error has occurred:' : 'Deleted succesfully',
             $errors
         ));
+        die();
     }
 
 }

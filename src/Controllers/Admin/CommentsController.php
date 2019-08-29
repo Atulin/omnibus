@@ -14,7 +14,8 @@ class CommentsController extends Controller
 
     public function index(): void
     {
-
+        $this->setBaseData();
+        $this->render('/admin/comments');
     }
 
 }

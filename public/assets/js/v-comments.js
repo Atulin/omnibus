@@ -17,7 +17,9 @@ const app = new Vue({
         error: null,
         comment_body: '',
         chars_left: limit,
-        comments_list: []
+        comments_list: [],
+
+        report_modal: false,
     },
 
     methods: {
@@ -79,13 +81,14 @@ const app = new Vue({
                 });
         },
 
+        reportModal: function(event, c) {
+           this.report_modal = !this.report_modal;
+        },
+
         reportComment: function (event, c) {
             let token = document.getElementById('token').value;
 
             let btn = event.target;
-
-            console.log(btn);
-            console.log(btn.childNodes);
 
             let icon = btn.querySelector('i');
             icon.className = 'spinning spinner icon';

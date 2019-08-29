@@ -2,15 +2,27 @@
      xmlns:v-bind="http://www.w3.org/1999/xhtml"
      xmlns:v-on="http://www.w3.org/1999/xhtml">
 
+
+    <div class="v-centered h-centered modal" v-if="report_modal" v-on:click.self="reportModal">
+        <form @submit.stop.prevent="reportComment">
+            <div class="field">
+                <label for="reason">Reason</label>
+                <input id="reason" name="reason" type="text">
+            </div>
+        </form>
+    </div>
+
+    <p v-on:click="reportModal">AAA</p>
+
     {#====================#}
     {#    COMMENT FORM    #}
     {#====================#}
+    <input id="token" type="hidden" name="token" value="{{ token }}">
+    <input id="thread" type="hidden" name="thread" value="{{ thread }}">
 
     {% if user %}
 
         <form method="post" @submit.stop.prevent="sendComment" xmlns:v-bind="http://www.w3.org/1999/xhtml">
-            <input id="token" type="hidden" name="token" value="{{ token }}">
-            <input id="thread" type="hidden" name="thread" value="{{ thread }}">
 
             <div class="comment-box">
 

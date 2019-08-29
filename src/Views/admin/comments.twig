@@ -1,0 +1,48 @@
+{% extends 'scaffolds/admin_scaffold.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    {# TOKEN #}
+    <input type="hidden" name="token" id="token" value="{{ token }}">
+
+    {#==============#}
+    {#  LOAD MODAL  #}
+    {#==============#}
+    <div id="load" v-if="isLoading" class="loading modal"></div>
+
+    <div class="buttons">
+        <button v-on:click="fetchReports" class="button">Refresh</button>
+    </div>
+
+    <div class="comments" v-if="comments">
+        <div class="comment" v-for="c in comments">
+
+            <div class="main">
+                <div class="header">
+                    <img v-bind:src="c.author.avatar" alt="" class="avatar">
+                    <a class="name link" :href="'/profile/'+c.author.id">${ c.author.name }</a>
+                    <span class="date">${ c.date }</span>
+                </div>
+                <p v-html="c.body" class="body md"></p>
+            </div>
+
+            <table class="reports">
+                <tr class="report" v-for="r in c.reports">
+                    <td>${ r.reporter.name }</td>
+                    <td>${ r.date }</td>
+                    <td>${ r.reason }</td>
+                </tr>
+            </table>
+
+            <div class="actions">
+                <button v-on:click="approveComment(c)" v-on:mouseout="canApprove = false" :class="{active: canApprove}">Approve</button>
+                <button v-on:click="deleteComment(c)" v-on:mouseout="canDelete = false" :class="{active: canDelete}">Delete</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="application/javascript" src="{{ vasset('js/admin/v-comments', 'min.js') }}"></script>
+{% endblock %}

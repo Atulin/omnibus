@@ -1,0 +1,75 @@
+/*!
+ / Copyright © 2019 by Angius
+ / Last modified: 29.08.2019, 08:44
+ /
+
+.comments
+  width: 100%
+  display: flex
+  flex-direction: column
+
+  &>.comment
+    border: 1px solid $foreground-50
+    border-radius: 1rem
+    margin: .5rem
+    box-shadow: $subtle-shadow
+
+    &>.main
+      margin: 1rem
+
+      &>.header
+        height: 2rem
+        display: flex
+        align-items: center
+
+        &>.avatar
+          height: 2rem
+          width: 2rem
+        &>.name
+          margin: 1rem
+        &>.date
+          color: $foreground-50
+          font-family: "Inconsolata", monospace
+          transition: color 200ms ease-in-out
+          &:hover
+            color: $foreground-80
+
+    &>.reports
+      width: 100%
+      border: 1px solid $foreground-50
+      border-left: none
+      border-right: none
+      border-collapse: collapse
+
+      & .report
+        background-color: transparent
+        transition: background-color 200ms ease-in-out
+        &:hover
+          background-color: $foreground-20
+
+      & td
+        border: 1px solid $foreground-50
+        padding: .5rem 1rem
+        &:first-child
+          border-left: none
+          width: 5rem
+        &:nth-child(2)
+          width: 10rem
+        &:last-child
+          border-right: none
+
+    &>.actions
+      margin: 1rem
+      &>button
+        background-color: transparent
+        border: 1px solid $foreground-20
+        padding: .5rem
+        width: 4rem
+        color: $foreground
+        transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border-color 200ms ease-in-out
+        &:hover
+          color: $accent
+        &.active
+          background-color: $error-dark
+          color: $error-text
+          border-color: $error

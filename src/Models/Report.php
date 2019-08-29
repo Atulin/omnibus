@@ -7,35 +7,53 @@
 namespace Omnibus\Models;
 
 use DateTime;
+use JsonSerializable;
 use Doctrine\ORM\Mapping as ORM;
 
 
 /**
  * @package Omnibus\Models
  * @ORM\Entity
- * @ORM\Table(name="reports")
+ * @ORM\Table(name="reports",
+ *      uniqueConstraints={
+ *         @ORM\UniqueConstraint(
+ *              name="report_unique",
+ *              columns={"comment_id", "user_id"}
+ *          )
+ *     }
+ * )
  */
-class Report
+class Report implements JsonSerializable
 {
 
-    /** @var Comment $comment
+    /**
+     * @var int $id
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @var Comment $comment
      * @ORM\ManyToOne(targetEntity="Comment", inversedBy="reports")
      */
     private $comment;
 
-    /** @var User $user
-     * @ORM\Id
+    /**
+     * @var User $user
      * @ORM\ManyToOne(targetEntity="User")
      */
     private $user;
 
-    /** @var DateTime $date
+    /**
+     * @var DateTime $date
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $date;
 
-    /** @var string $reason
+    /**
+     * @var string $reason
      * @ORM\Column(type="string", nullable=true)
      */
     private $reason;
@@ -49,6 +67,14 @@ class Report
         $this->date = new DateTime('now');
     }
 
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     /**
      * @return Comment
@@ -115,5 +141,20 @@ class Report
         $this->reason = $reason;
     }
 
-
+    /**
+     * Specify data which should be serialized to JSON
+     * @link  https://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'date' => $this->date->format('d.m.Y H:i'),
+            'reason' => $this->reason,
+            'comment' => $this->comment->getId(),
+            'reporter' => $this->user
+        ];
+    }
 }

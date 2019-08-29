@@ -7,8 +7,11 @@
 namespace Omnibus\Models;
 
 use DateTime;
+use JsonSerializable;
 use Doctrine\ORM\Mapping as ORM;
+use Omnibus\Core\Utility\Gravatar;
 use Omnibus\Core\Utility\ParsedownExtended;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
@@ -17,7 +20,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(name="comments")
  */
-class Comment
+class Comment implements JsonSerializable
 {
     /**
      * @var int $id
@@ -35,7 +38,7 @@ class Comment
     private $author;
 
     /**
-     * @var
+     * @var CommentThread $thread
      * @ORM\ManyToOne(targetEntity="CommentThread", inversedBy="comments")
      * @ORM\JoinColumn(name="thread_id", referencedColumnName="id")
      */
@@ -55,7 +58,7 @@ class Comment
 
 
     /**
-     * @var ArrayCollection $reports
+     * @var Collection $reports
      * @ORM\OneToMany(targetEntity="Report", mappedBy="comment", orphanRemoval=true)
      */
     private $reports;
@@ -127,7 +130,7 @@ class Comment
     }
 
     /**
-     * @return mixed
+     * @return CommentThread
      */
     public function getThread()
     {
@@ -135,17 +138,17 @@ class Comment
     }
 
     /**
-     * @param mixed $thread
+     * @param CommentThread $thread
      */
-    public function setThread($thread): void
+    public function setThread(CommentThread $thread): void
     {
         $this->thread = $thread;
     }
 
     /**
-     * @return ArrayCollection
+     * @return Collection
      */
-    public function getReports(): ArrayCollection
+    public function getReports(): Collection
     {
         return $this->reports;
     }
@@ -168,4 +171,42 @@ class Comment
         $this->body = $pd->parse($this->body);
     }
 
+    /**
+     * Specify data which should be serialized to JSON
+     * @link  https://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        $pd = new ParsedownExtended();
+        $pd->setSafeMode(true);
+
+        $a = $this->author;
+        $data = [
+            'id' => $this->id,
+            'thread' => $this->thread->getId(),
+            'date' => $this->date->format('d.m.Y H:i'),
+            'body' => $pd->parse($this->body),
+            'author' => [
+                'id' => $a->getId(),
+                'name' => $a->getName(),
+                'avatar' => $a->getAvatar() ? '//'.CONFIG['cdn domain'].'/file/Omnibus/' . $a->getAvatar() : (new Gravatar($a->getEmail(), 50))->getGravatar(),
+                'role' => null
+            ],
+            'reports' => $this->reports->map(static function(Report $e) { return $e->jsonSerialize(); })->toArray()
+        ];
+
+        $role = $this->author->getRole();
+        if ($role) {
+            $data['author']['role'] = [
+                'name' => $role->getName(),
+            ];
+        }
+
+        file_put_contents('log.log',json_encode($this->getReports(), JSON_PRETTY_PRINT));
+
+        return $data;
+    }
 }

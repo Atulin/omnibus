@@ -19,8 +19,8 @@
  * / */
 @font-face {
   font-family: "icomoon";
-  src: url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.eot?v=2.0.0");
-  src: url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.eot?v=2.0.0") format("embedded-opentype"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.ttf?v=2.0.0") format("truetype"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.woff?v=2.0.0") format("woff"), url("https://f002.backblazeb2.com/file/Omnibus/fonts/icomoon.svg?v=2.0.0") format("svg");
+  src: url("https://cdn.sfnw.site/file/Omnibus/fonts/icomoon.eot?v=2.0.1");
+  src: url("https://cdn.sfnw.site/file/Omnibus/fonts/icomoon.eot?v=2.0.1") format("embedded-opentype"), url("https://cdn.sfnw.site/file/Omnibus/fonts/icomoon.ttf?v=2.0.1") format("truetype"), url("https://cdn.sfnw.site/file/Omnibus/fonts/icomoon.woff?v=2.0.1") format("woff"), url("https://cdn.sfnw.site/file/Omnibus/fonts/icomoon.svg?v=2.0.1") format("svg");
   font-weight: normal;
   font-style: normal; }
 .icon {
@@ -928,7 +928,11 @@ div#admin {
     flex-direction: column;
     margin: 10px;
     padding: 0.5rem;
-    border-radius: 0.5rem; }
+    border-radius: 0.5rem;
+    /*!
+     * / Copyright © 2019 by Angius
+     * / Last modified: 29.08.2019, 08:44
+     * / */ }
     @media only screen and (max-width: 768px) {
       div#admin > .column {
         margin: 10px 0;
@@ -980,6 +984,68 @@ div#admin {
         border: none; }
         div#admin > .column.wide > form > .field {
           height: 100%; }
+    div#admin > .column .comments {
+      width: 100%;
+      display: flex;
+      flex-direction: column; }
+      div#admin > .column .comments > .comment {
+        border: 1px solid rgba(238, 238, 238, 0.5);
+        border-radius: 1rem;
+        margin: 0.5rem;
+        box-shadow: 0 0 10px 1px rgba(238, 238, 238, 0.2); }
+        div#admin > .column .comments > .comment > .main {
+          margin: 1rem; }
+          div#admin > .column .comments > .comment > .main > .header {
+            height: 2rem;
+            display: flex;
+            align-items: center; }
+            div#admin > .column .comments > .comment > .main > .header > .avatar {
+              height: 2rem;
+              width: 2rem; }
+            div#admin > .column .comments > .comment > .main > .header > .name {
+              margin: 1rem; }
+            div#admin > .column .comments > .comment > .main > .header > .date {
+              color: rgba(238, 238, 238, 0.5);
+              font-family: "Inconsolata", monospace;
+              transition: color 200ms ease-in-out; }
+              div#admin > .column .comments > .comment > .main > .header > .date:hover {
+                color: rgba(238, 238, 238, 0.8); }
+        div#admin > .column .comments > .comment > .reports {
+          width: 100%;
+          border: 1px solid rgba(238, 238, 238, 0.5);
+          border-left: none;
+          border-right: none;
+          border-collapse: collapse; }
+          div#admin > .column .comments > .comment > .reports .report {
+            background-color: transparent;
+            transition: background-color 200ms ease-in-out; }
+            div#admin > .column .comments > .comment > .reports .report:hover {
+              background-color: rgba(238, 238, 238, 0.2); }
+          div#admin > .column .comments > .comment > .reports td {
+            border: 1px solid rgba(238, 238, 238, 0.5);
+            padding: 0.5rem 1rem; }
+            div#admin > .column .comments > .comment > .reports td:first-child {
+              border-left: none;
+              width: 5rem; }
+            div#admin > .column .comments > .comment > .reports td:nth-child(2) {
+              width: 10rem; }
+            div#admin > .column .comments > .comment > .reports td:last-child {
+              border-right: none; }
+        div#admin > .column .comments > .comment > .actions {
+          margin: 1rem; }
+          div#admin > .column .comments > .comment > .actions > button {
+            background-color: transparent;
+            border: 1px solid rgba(238, 238, 238, 0.2);
+            padding: 0.5rem;
+            width: 4rem;
+            color: #eeeeee;
+            transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border-color 200ms ease-in-out; }
+            div#admin > .column .comments > .comment > .actions > button:hover {
+              color: #00cbc3; }
+            div#admin > .column .comments > .comment > .actions > button.active {
+              background-color: rgba(255, 76, 80, 0.64);
+              color: rgba(255, 233, 234, 0.92);
+              border-color: rgba(255, 30, 35, 0.6); }
 
 /*!
  * / Copyright © 2019 by Angius
@@ -989,7 +1055,7 @@ div.modal {
   z-index: 999999999;
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
