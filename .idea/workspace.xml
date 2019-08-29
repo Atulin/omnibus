@@ -2,38 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin/comments.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin/comments.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin/comments.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/admin/v-comments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/admin/v-comments.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/log.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Views/admin/comments.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/admin.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/icons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/icons.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/modal.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/modal.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/CommentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/CommentsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Report.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/elements/navbar.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/navbar.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/scaffolds/admin_scaffold.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/scaffolds/admin_scaffold.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -399,7 +372,7 @@
       <workItem from="1566950519311" duration="203000" />
       <workItem from="1566950741472" duration="1239000" />
       <workItem from="1566962692265" duration="8733000" />
-      <workItem from="1567022265303" duration="21552000" />
+      <workItem from="1567022265303" duration="22834000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -730,7 +703,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567026890731</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Comment moderation done">
+      <created>1567064628371</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1567064628371</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -751,7 +731,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Improved look for comments" />
     <MESSAGE value="Account and profile editing DONE" />
     <MESSAGE value="Markdown rendering improvements and mention system" />
     <MESSAGE value="Improved report system" />
@@ -776,6 +755,7 @@
     <MESSAGE value="Better form CSS" />
     <MESSAGE value="Namespaced all src to `Omnibus\`" />
     <MESSAGE value="Fixed some issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some issues" />
+    <MESSAGE value="Comment moderation done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment moderation done" />
   </component>
 </project>

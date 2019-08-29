@@ -20,6 +20,8 @@ const app = new Vue({
         comments_list: [],
 
         report_modal: false,
+        report_id: null,
+        reason: null,
     },
 
     methods: {
@@ -82,19 +84,24 @@ const app = new Vue({
         },
 
         reportModal: function(event, c) {
-           this.report_modal = !this.report_modal;
+           if (this.report_modal) {
+               this.report_modal = false;
+               this.report_id = null;
+               this.reason = null;
+           } else {
+               this.report_modal = true;
+               this.report_id = c;
+           }
         },
 
-        reportComment: function (event, c) {
+        reportComment: function (event) {
             let token = document.getElementById('token').value;
 
-            let btn = event.target;
-
-            let icon = btn.querySelector('i');
-            icon.className = 'spinning spinner icon';
+            console.log(event, this.report_id);
 
             let data = new FormData();
-            data.append('comment', c);
+            data.append('comment', this.report_id);
+            data.append('reason', this.reason);
             data.append('token', token);
 
             // Report comment
@@ -102,11 +109,14 @@ const app = new Vue({
                 .then(response => {
                     console.log('Reported!');
                     console.info(response.data);
-                    icon.className = 'check icon';
                 })
                 .catch(err => {
                     console.error(err);
-                    icon.className = 'cross icon';
+                })
+                .then(x => {
+                    this.report_modal = false;
+                    this.report_id = null;
+                    this.reason = null;
                 });
         },
 

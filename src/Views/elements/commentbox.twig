@@ -4,11 +4,18 @@
 
 
     <div class="v-centered h-centered modal" v-if="report_modal" v-on:click.self="reportModal">
-        <form @submit.stop.prevent="reportComment">
-            <div class="field">
+        <form class="form" @submit.stop.prevent="reportComment()">
+
+            <div class="full field">
                 <label for="reason">Reason</label>
-                <input id="reason" name="reason" type="text">
+                <input id="reason" name="reason" type="text" v-model="reason">
             </div>
+
+            <div class="field">
+                <label for="report" class="hidden">Report</label>
+                <input name="report" class="submit button" id="report" type="submit" value="Report">
+            </div>
+
         </form>
     </div>
 
@@ -82,7 +89,7 @@
             <div class="meta">
                 <div class="buttons">
                     {% if user %}
-                    <button class="item" v-on:click.self="reportComment($event, c.id)">
+                    <button class="item" v-on:click.self="reportModal($event, c.id)">
                         <i class="warning icon"></i>
                     </button>
                     {% endif %}

@@ -162,7 +162,6 @@ class CommentsApiController extends Controller
         $POST = filter_input_array(INPUT_POST, [
             'token'   => FILTER_SANITIZE_STRING,
             'comment' => FILTER_VALIDATE_INT,
-            'reason'  => FILTER_SANITIZE_STRING
         ]);
 
 
@@ -183,7 +182,7 @@ class CommentsApiController extends Controller
             $report = new Report();
             $report->setUser($this->getUser());
             $report->setComment($comment);
-            $report->setReason($POST['reason'] ?: '');
+            $report->setReason($_POST['reason'] ?: '');
 
             try {
                 $this->em->persist($report);
