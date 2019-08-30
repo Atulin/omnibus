@@ -44,6 +44,7 @@ class ActivateController extends Controller
                 $this->em->remove($ac);
                 $this->em->flush();
                 $this->session->set('message', 'Your account has been activated successfully!');
+                $this->session->set('token', $this->getToken());
                 header('Location: /login');
                 die();
             }

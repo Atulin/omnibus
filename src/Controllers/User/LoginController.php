@@ -86,6 +86,7 @@ class LoginController extends Controller
                             $this->em->flush();
                         }
 
+                        $this->session->set('token', $this->getToken());
                         header('Location: /');
                         die();
 
@@ -105,6 +106,7 @@ class LoginController extends Controller
             $this->messages[] = 'X-CSRF protection triggered.';
         }
 
+        $this->session->set('token', $this->getToken());
         $this->index();
     }
 

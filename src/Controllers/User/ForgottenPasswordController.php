@@ -56,6 +56,7 @@ class ForgottenPasswordController extends Controller
                         ->setBody('pass-forgot', ['name' => $user->getName(), 'code' => $code])
                         ->Send();
 
+                    $this->session->set('token', $this->getToken());
                     $this->session->set('message', 'An email with password recovery instructions should arrive shortly.');
                     header('Location: /');
                     die();

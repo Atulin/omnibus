@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/v-comments.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -372,7 +374,9 @@
       <workItem from="1566950519311" duration="203000" />
       <workItem from="1566950741472" duration="1239000" />
       <workItem from="1566962692265" duration="8733000" />
-      <workItem from="1567022265303" duration="22834000" />
+      <workItem from="1567022265303" duration="23075000" />
+      <workItem from="1567191889053" duration="121000" />
+      <workItem from="1567192036462" duration="497000" />
     </task>
     <task id="LOCAL-00001" summary="Added Database and User models">
       <created>1562996381195</created>
@@ -710,7 +714,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567064628371</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Better reporting system">
+      <created>1567066116004</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1567066116004</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -731,7 +742,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Account and profile editing DONE" />
     <MESSAGE value="Markdown rendering improvements and mention system" />
     <MESSAGE value="Improved report system" />
     <MESSAGE value=" – Improved comments handling&#10; – Added Backblaze B2 backend for avatars&#10; – Moved API response to objects" />
@@ -756,6 +766,7 @@
     <MESSAGE value="Namespaced all src to `Omnibus\`" />
     <MESSAGE value="Fixed some issues" />
     <MESSAGE value="Comment moderation done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comment moderation done" />
+    <MESSAGE value="Better reporting system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better reporting system" />
   </component>
 </project>

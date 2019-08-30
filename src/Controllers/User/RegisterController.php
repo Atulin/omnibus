@@ -133,6 +133,7 @@ class RegisterController extends Controller
 
         if (count($this->messages) > 0) {
 
+            $this->session->set('token', $this->getToken());
             $this->index();
 
         } else {
@@ -146,6 +147,7 @@ class RegisterController extends Controller
                 ->setBody('activation', ['name' => $name, 'code' => $code])
                 ->Send();
 
+            $this->session->set('token', $this->getToken());
             $this->session->set('message', 'Registration successful! Confirmation email should arrive shortly.');
             header('Location: /');
             die();

@@ -102,6 +102,7 @@ class RecoverController extends Controller
 
         if (count($this->messages) > 0) {
 
+            $this->session->set('token', $this->getToken());
             $this->index([]);
 
         } else {
