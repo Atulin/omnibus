@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller.php" afterDir="false" />
-    </list>
+    <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -376,14 +368,7 @@
       <workItem from="1566962692265" duration="8733000" />
       <workItem from="1567022265303" duration="23075000" />
       <workItem from="1567191889053" duration="121000" />
-      <workItem from="1567192036462" duration="497000" />
-    </task>
-    <task id="LOCAL-00001" summary="Added Database and User models">
-      <created>1562996381195</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1562996381195</updated>
+      <workItem from="1567192036462" duration="577000" />
     </task>
     <task id="LOCAL-00002" summary="Moved to Doctrine, added user roles">
       <created>1563074130884</created>
@@ -721,7 +706,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567066116004</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Changed per-request X-CSRF token to a per-session X-CSRF token">
+      <created>1567192603098</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1567192603099</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -742,7 +734,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Markdown rendering improvements and mention system" />
     <MESSAGE value="Improved report system" />
     <MESSAGE value=" – Improved comments handling&#10; – Added Backblaze B2 backend for avatars&#10; – Moved API response to objects" />
     <MESSAGE value=" – Improved comment handling for not-registered users&#10; – Added hamburger and palette icons&#10; – Improved styling" />
@@ -767,6 +758,7 @@
     <MESSAGE value="Fixed some issues" />
     <MESSAGE value="Comment moderation done" />
     <MESSAGE value="Better reporting system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Better reporting system" />
+    <MESSAGE value="Changed per-request X-CSRF token to a per-session X-CSRF token" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed per-request X-CSRF token to a per-session X-CSRF token" />
   </component>
 </project>
