@@ -4,17 +4,20 @@
  * Last modified: 19.08.2019, 05:29
  */
 
+declare(strict_types=1);
+
 require '../vendor/autoload.php';
 require '../config.php';
 
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', '1');
+
 
 use Omnibus\Core\Application;
 
 
 define('IS_DEV', true);
-define('ASSETS', '/assets');//'/assets');
+define('ASSETS', '/assets');
 
 $application = new Application();
 $application->run();

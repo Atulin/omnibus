@@ -262,8 +262,7 @@ class CommentsApiController extends Controller
 
         if ($POST['token'] === $this->session->get('token')) {
 
-            $role = $this->getRole();
-            if ($role && $role->canModerateComments()) {
+            if ($this->getRole()->canModerateComments()) {
 
                 $comment = null;
                 try {
@@ -340,8 +339,7 @@ class CommentsApiController extends Controller
 
         if ($POST['token'] === $this->session->get('token')) {
 
-            $role = $this->getRole();
-            if ($role && $role->canModerateComments()) {
+            if ($this->getRole()->canModerateComments()) {
 
                 /** @var Comment $comment */
                 $comment = null;

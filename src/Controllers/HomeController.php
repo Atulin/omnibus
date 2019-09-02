@@ -20,6 +20,5 @@ class HomeController extends Controller
         $this->render('home', [
             'articles' => $this->em->getRepository(Article::class)->findAll()
         ]);
-
     }
 }

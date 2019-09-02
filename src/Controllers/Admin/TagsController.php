@@ -40,8 +40,7 @@ class TagsController extends Controller
         ]);
         if ($POST['token'] === $this->session->get('token')) {
 
-            $role = $this->getRole();
-            if ($role && $role->isAdmin()) {
+            if ($this->getRole()->isAdmin()) {
 
                 if (trim($POST['name'])) {
 
@@ -136,8 +135,7 @@ class TagsController extends Controller
         ]);
         if ($POST['token'] === $this->session->get('token')) {
 
-            $role = $this->getRole();
-            if ($role && $role->isAdmin()) {
+            if ($this->getRole()->isAdmin()) {
 
                 /** @var Tag $tag */
                 $tag = $this->em->find(Tag::class, $POST['id']);

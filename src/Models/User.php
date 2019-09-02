@@ -271,11 +271,11 @@ class User implements JsonSerializable
     }
 
     /**
-     * @return Role|null
+     * @return Role
      */
-    public function getRole(): ?Role
+    public function getRole(): Role
     {
-        return $this->role;
+        return $this->role ?: new Role();
     }
 
     /**

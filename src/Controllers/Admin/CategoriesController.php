@@ -44,8 +44,7 @@ class CategoriesController extends Controller
         ]);
         if ($POST['token'] === $this->session->get('token')) {
 
-            $role = $this->getRole();
-            if ($role && $role->isAdmin()) {
+            if ($this->getRole()->isAdmin()) {
 
                 if (trim($POST['name'])) {
 
@@ -112,8 +111,7 @@ class CategoriesController extends Controller
         ]);
         if ($POST['token'] === $this->session->get('token')) {
 
-            $role = $this->getRole();
-            if ($role && $role->isAdmin()) {
+            if ($this->getRole()->isAdmin()) {
 
                 if (trim($POST['name'])) {
 
@@ -176,8 +174,7 @@ class CategoriesController extends Controller
         ]);
         if ($POST['token'] === $this->session->get('token')) {
 
-            $role = $this->getRole();
-            if ($role && $role->isAdmin()) {
+            if ($this->getRole()->isAdmin()) {
 
                 /** @var Category $cat */
                 $cat = $this->em->find(Category::class, $POST['id']);

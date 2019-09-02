@@ -79,6 +79,7 @@ abstract class Controller
         $this->session->remove('message');
     }
 
+
     /**
      * Sets base data to be displayed by most views
      */
@@ -94,6 +95,7 @@ abstract class Controller
         ];
     }
 
+
     /**
      * Returns the current user
      * @return null|string|User
@@ -103,14 +105,16 @@ abstract class Controller
         return $this->user;
     }
 
+
     /**
      * Returns current user role
-     * @return Role|null
+     * @return Role
      */
-    public function getRole()
+    public function getRole(): Role
     {
         return $this->role;
     }
+
 
     /**
      * Returns generated token
@@ -120,6 +124,7 @@ abstract class Controller
     {
         return $this->token;
     }
+
 
     /**
      * @return bool

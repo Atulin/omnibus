@@ -205,8 +205,6 @@ class Comment implements JsonSerializable
             ];
         }
 
-        file_put_contents('log.log',json_encode($this->getReports(), JSON_PRETTY_PRINT));
-
         return $data;
     }
 }

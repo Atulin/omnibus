@@ -106,6 +106,7 @@ class Role
     private $canDeleteTags;
 
 
+
     /**
      * @return int
      */
