@@ -434,7 +434,7 @@ div#navbar {
   .dropdown > i {
     font-size: 1.5em;
     margin: 10px; }
-  .dropdown a.dropdown-item {
+  .dropdown .dropdown-item {
     border: none;
     padding: 4px 6px;
     margin: 4px 0;

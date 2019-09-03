@@ -129,7 +129,7 @@ class CommentsApiController extends Controller
             }
 
         } else {
-            $errors[] = 'X-CSRF protection triggered';
+            $errors[] = 'Something went wrong. Refresh the page';
         }
 
 
@@ -202,7 +202,7 @@ class CommentsApiController extends Controller
             }
 
         } else {
-            $errors[] = 'X-CSRF protection triggered';
+            $errors[] = 'Something went wrong. Refresh the page';
         }
 
         // Set status
@@ -300,7 +300,7 @@ class CommentsApiController extends Controller
             }
 
         } else {
-            $errors[] = 'X-CSRF protection triggered';
+            $errors[] = 'Something went wrong. Refresh the page';
         }
 
         // Set status
@@ -372,7 +372,7 @@ class CommentsApiController extends Controller
             }
 
         } else {
-            $errors[] = 'X-CSRF protection triggered';
+            $errors[] = 'Something went wrong. Refresh the page';
         }
 
         // Set status

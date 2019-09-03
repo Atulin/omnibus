@@ -17,7 +17,7 @@ class ActivateController extends Controller
     /**
      * @var array
      */
-    private $messages = [];
+    private $errors = [];
 
     /**
      * Render the page
@@ -25,13 +25,11 @@ class ActivateController extends Controller
     public function index(): void
     {
         $this->setBaseData();
-        $this->render('user/activate', ['messages' => $this->messages]);
+        $this->render('user/activate', ['messages' => $this->errors]);
     }
 
     /**
      * @param $params
-     * @throws ORMException
-     * @throws OptimisticLockException
      */
     public function activate($params): void
     {
@@ -40,19 +38,30 @@ class ActivateController extends Controller
 
             $ac = $this->em->getRepository(ActivationCode::class)->findOneBy(['code' => $code]);
 
-            if($ac !== null) {
-                $this->em->remove($ac);
-                $this->em->flush();
+            if ($ac !== null) {
+
+                try {
+                    $this->em->remove($ac);
+                } catch (ORMException $e) {
+                    $this->errors[] = 'Could not activate account. Contact the administrator.';
+                }
+
+                try {
+                    $this->em->flush();
+                } catch (OptimisticLockException | ORMException $e) {
+                    $this->errors[] = 'Could not activate account. Contact the administrator.';
+                }
+
                 $this->session->set('message', 'Your account has been activated successfully!');
                 $this->session->set('token', $this->getToken());
                 header('Location: /login');
                 die();
             }
 
-            $this->messages[] = 'Incorrect code.';
+            $this->errors[] = 'Incorrect code.';
 
         } else {
-            $this->messages[] = 'Code cannot be empty.';
+            $this->errors[] = 'Code cannot be empty.';
         }
 
         $this->index();

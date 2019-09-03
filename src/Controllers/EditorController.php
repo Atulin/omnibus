@@ -36,22 +36,24 @@ class EditorController extends Controller
 
     /**
      * @param array $params
-     *
-     * @throws ORMException
-     * @throws OptimisticLockException
-     * @throws TransactionRequiredException
      */
     public function index(array $params = null): void
     {
         $role = $this->getRole();
+
         if (isset($params['id']) && (!$role || !$role->canEditArticles())) {
             header('Location: /editor');
         }
+
         if (!$role || !$role->canAddArticles()) {
             header('Location: /');
         }
 
-        $this->article = isset($params['id']) ? $this->em->find(Article::class, $params['id']) : $this->article;
+        try {
+            $this->article = isset($params['id']) ? $this->em->find(Article::class, $params['id']) : $this->article;
+        } catch (OptimisticLockException | TransactionRequiredException | ORMException $e) {
+            $this->errors[] = 'Could not get the article.';
+        }
 
         $this->setBaseData();
         $this->render('/editor', [
@@ -64,9 +66,6 @@ class EditorController extends Controller
     }
 
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
-     * @throws Exception
      */
     public function create(): void
     {
@@ -87,7 +86,11 @@ class EditorController extends Controller
             $art = null;
             if (isset($_POST['id'])) {
                 if ($role && $role->canEditArticles()) {
-                    $art = $this->em->find(Article::class, $_POST['id']);
+                    try {
+                        $art = $this->em->find(Article::class, $_POST['id']);
+                    } catch (OptimisticLockException | TransactionRequiredException | ORMException $e) {
+                        $this->errors[] = 'Could not get the article.';
+                    }
                 } else {
                     $this->errors[] = 'Insufficient permissions';
                 }
@@ -101,19 +104,30 @@ class EditorController extends Controller
 
                 if (trim($POST['title'])) {
 
-                    $art->setTitle($POST['title'])
-                        ->setBody($POST['body'])
-                        ->setExcerpt($POST['excerpt'])
-                        ->setCategory($this->em->find(Category::class, $_POST['category']))
-                        ->setAuthor(isset($_POST['author']) ? $this->em->find(User::class, $_POST['author']) : $this->getUser())
-                        ->setComments(new CommentThread());
-
+                    try {
+                        $art->setTitle($POST['title'])
+                            ->setBody($POST['body'])
+                            ->setExcerpt($POST['excerpt'])
+                            ->setCategory($this->em->find(Category::class, $_POST['category']))
+                            ->setAuthor(isset($_POST['author']) ? $this->em->find(User::class, $_POST['author']) : $this->getUser())
+                            ->setComments(new CommentThread());
+                    } catch (OptimisticLockException | TransactionRequiredException | ORMException $e) {
+                        $this->errors[] = 'Could not get the selected category or author.';
+                    }
                     if (isset($_POST['date'])) {
-                        $art->setDate(new DateTime($_POST['date']));
+                        try {
+                            $art->setDate(new DateTime($_POST['date']));
+                        } catch (Exception $e) {
+                            $this->errors[] = 'Could not parse the date format.';
+                        }
                     }
 
                     foreach ($_POST['tags'] as $tag) {
-                        $art->addTag($this->em->find(Tag::class, $tag));
+                        try {
+                            $art->addTag($this->em->find(Tag::class, $tag));
+                        } catch (OptimisticLockException | TransactionRequiredException | ORMException $e) {
+                            $this->errors[] = 'Could not add one of the tags.';
+                        }
                     }
 
                     if (isset($_FILES['image'])) {
@@ -132,8 +146,19 @@ class EditorController extends Controller
                     }
 
                     if (!$this->errors) {
-                        $this->em->persist($art);
-                        $this->em->flush($art);
+
+                        try {
+                            $this->em->persist($art);
+                        } catch (ORMException $e) {
+                            $this->errors[] = isset($_POST['id']) ? 'Could not edit the article' :'Could not create the article.';
+                        }
+
+                        try {
+                            $this->em->flush($art);
+                        } catch (OptimisticLockException | ORMException $e) {
+                            $this->errors[] = isset($_POST['id']) ? 'Could not edit the article' :'Could not create the article.';
+                        }
+
                     }
 
                 } else {
@@ -143,19 +168,11 @@ class EditorController extends Controller
             }
 
         } else {
-            $this->errors[] = 'X-CSRF protection triggered.';
+            $this->errors[] = 'Something went wrong. Refresh the page.';
         }
 
         $this->article = $art;
         $this->index();
-
-    }
-
-    /**
-     *
-     */
-    public function update(): void
-    {
 
     }
 

@@ -2,6 +2,7 @@
   <dictionary name="Angius">
     <words>
       <w>csrf</w>
+      <w>friendlify</w>
       <w>gravatar</w>
       <w>navbar</w>
       <w>opacify</w>

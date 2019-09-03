@@ -12,6 +12,7 @@ use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
 use RobThree\Auth\TwoFactorAuth;
 use Omnibus\Core\Utility\Gravatar;
+use Omnibus\Models\ActivationCode;
 use Omnibus\Core\Utility\APIMessage;
 use Omnibus\Core\Utility\HttpStatus;
 use Doctrine\ORM\OptimisticLockException;
@@ -59,51 +60,52 @@ class LoginController extends Controller
         if ($this->session->get('token') === $_POST['token']) {
 
             // Check if user exists and verify the password
-            if ($user && password_verify($pass, $user->getPassword())) {
-
-                // Check if user has an active account
-                if (!$this->isActive()) {
-
-                    // Check MFA code
-                    if ((!$user->getMfa() && $mfa_code === null) ||                         // User has no MFA set up, no MFA sent from form
-                        ($user->getMfa() && $mfa->verifyCode($user->getMfa(), $mfa_code))   // User has MFA set up, MFA sent from form is correct
-                    ) {
-
-                        // Log the user in via session
-                        $this->session->set('userid', $user->getId());
-                        $this->session->set('message', "Welcome back, {$user->getName()}");
-
-                        // Set RememberMe
-                        if ($remember !== null) {
-                            $r_token = bin2hex(random_bytes(256));
-
-                            $cookie = $user->getId() . ':' . $r_token;
-                            $mac = password_hash($cookie, PASSWORD_BCRYPT);
-                            $cookie .= ':' . $mac;
-                            setcookie('__Secure-rememberme', $cookie, time() + 2592000, '/', '', true, true);
-
-                            $user->setRememberme($r_token);
-                            $this->em->flush();
-                        }
-
-                        $this->session->set('token', $this->getToken());
-                        header('Location: /');
-                        die();
-
-                    } else {
-                        $this->messages[] = 'Incorrect 2FA token.';
-                    }
-
-                } else {
-                    $this->messages[] = 'Account not activated.';
-                }
-
-            } else {
+            if (!($user && password_verify($pass, $user->getPassword()))) {
                 $this->messages[] = 'Incorrect credentials.';
             }
 
+            // Check if user has an active account
+            if ($this->em->getRepository(ActivationCode::class)->findOneBy(['user_id' => $user->getId()]) !== null) {
+                $this->messages[] = 'Account not activated.';
+            }
+
+            // Check MFA code
+            if (!(
+                (!$user->getMfa() && $mfa_code === null) ||                         // User has no MFA set up, no MFA sent from form
+                ($user->getMfa() && $mfa->verifyCode($user->getMfa(), $mfa_code))   // User has MFA set up, MFA sent from form is correct
+            ))
+            {
+                $this->messages[] = 'Incorrect 2FA token.';
+            }
+
+            // Log the user in
+            if (!$this->messages) {
+
+                // Log the user in via session
+                $this->session->set('userid', $user->getId());
+                $this->session->set('message', "Welcome back, {$user->getName()}");
+
+                // Set RememberMe
+                if ($remember !== null) {
+                    $r_token = bin2hex(random_bytes(256));
+
+                    $cookie = $user->getId() . ':' . $r_token;
+                    $mac = password_hash($cookie, PASSWORD_BCRYPT);
+                    $cookie .= ':' . $mac;
+                    setcookie('__Secure-rememberme', $cookie, time() + 2592000, '/', '', true, true);
+
+                    $user->setRememberme($r_token);
+                    $this->em->flush();
+                }
+
+                $this->session->set('token', $this->getToken());
+                header('Location: /');
+                die();
+
+            }
+
         } else {
-            $this->messages[] = 'X-CSRF protection triggered.';
+            $this->messages[] = 'Something went wrong. Refresh the page.';
         }
 
         $this->session->set('token', $this->getToken());

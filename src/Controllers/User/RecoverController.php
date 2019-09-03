@@ -18,12 +18,16 @@ use Omnibus\Core\Security\ReCaptcha\ReCaptchaHandler;
 
 class RecoverController extends Controller
 {
-    private $messages = [];
+    private $errors = [];
+
+    public function index($params): void
+    {
+        $this->setBaseData();
+        $this->render('user/recover', ['messages' => $this->errors]);
+    }
 
     /**
      * @param $params
-     * @throws ORMException
-     * @throws OptimisticLockException
      */
     public function recover($params)
     {
@@ -32,7 +36,7 @@ class RecoverController extends Controller
         $email   = (string)$_POST['email'];
         $pass    = (string)$_POST['password'];
         $pass2   = (string)$_POST['password2'];
-        $captcha = $_POST['g-recaptcha-response'];
+        $captcha = $_POST['g-recaptcha-response'] ?? '';
         $code    = $params['code'];
 
         if ($this->session->get('token') === $_POST['token']) {
@@ -45,7 +49,7 @@ class RecoverController extends Controller
             $res = $ch->Check();
 
             if (!$res->isSuccess()) {
-                $this->messages[] = 'Incorrect ReCaptcha';
+                $this->errors[] = 'Incorrect ReCaptcha';
             }
 
             // Try to get the user
@@ -53,7 +57,7 @@ class RecoverController extends Controller
             $user = $this->em->getRepository(User::class)->findOneBy(['name' => $name, 'email' => $email]);
 
             if (!$user) {
-                $this->messages[] = 'User does not exist';
+                $this->errors[] = 'User does not exist';
             }
 
             // Try to get the token
@@ -61,70 +65,67 @@ class RecoverController extends Controller
             $token = $this->em->getRepository(RecoveryCode::class)->findOneBy(['code' => $code]);
 
             if (!$token) {
-                $this->messages[] = 'Incorrect recovery code';
+                $this->errors[] = 'Incorrect recovery code';
             }
 
             // Check if user matches the token
-            if (!$this->messages && $user->getId() === $token->getUserId()) {
-
-                // Check identical passwords
-                if ($pass !== $pass2) {
-                    $this->messages[] = 'Passwords have to be identical.';
-                }
-
-                // Validate password
-                $messages = PasswordUtils::Check($pass);
-
-                if ($messages) {
-                    $this->messages = array_merge($this->messages, $messages);
-                } else {
-
-                    // Set new password
-                    $hash = password_hash($pass, PASSWORD_ARGON2I);
-                    $user->setPassword($hash);
-
-                    // Remove token
-                    $this->em->remove($token);
-
-                    // Flush
-                    $this->em->flush();
-
-                }
-
-            } else {
-                $this->messages[] = 'The user and code don\'t match';
+            if ($user->getId() !== $token->getUserId()) {
+                $this->errors[] = 'The user and code don\'t match';
             }
 
+            // Check identical passwords
+            if ($pass !== $pass2) {
+                $this->errors[] = 'Passwords have to be identical.';
+            }
+
+            // Validate password
+            $messages = PasswordUtils::Check($pass);
+            if ($messages) {
+                $this->errors = array_merge($this->errors, $messages);
+            }
+
+            if (!$this->errors) {
+
+                // Set new password
+                $hash = password_hash($pass, PASSWORD_ARGON2I);
+                $user->setPassword($hash);
+
+                // Remove token
+                try {
+                    $this->em->remove($token);
+                } catch (ORMException $e) {
+                    $this->errors[] = 'Could not fully restore account. Contact the administrator.';
+                }
+
+                // Flush
+                try {
+                    $this->em->flush();
+                } catch (OptimisticLockException | ORMException $e) {
+                    $this->errors[] = 'Could not fully restore account. Contact the administrator.';
+                }
+
+                // Send an email
+                $em = new Email();
+                $em->setSubject('Omnibus – restore password')
+                    ->setToEmail($email)
+                    ->setToName($name)
+                    ->setFromEmail('admin@omnibus.org')
+                    ->setFromName('Admin')
+                    ->setBody('pass-recovered', ['name' => $name])
+                    ->Send();
+
+                $this->session->set('message', 'Recovery successful! You can log in with your new password now.');
+                header('Location: /');
+
+            } else {
+
+                $this->session->set('token', $this->getToken());
+                $this->index([]);
+
+            }
 
         } else {
-            $this->messages[] = 'X-CSRF protection triggered.';
+            $this->errors[] = 'Something went wrong. Refresh the page.';
         }
-
-        if (count($this->messages) > 0) {
-
-            $this->session->set('token', $this->getToken());
-            $this->index([]);
-
-        } else {
-
-            $em = new Email();
-            $em->setSubject('Omnibus – restore password')
-                ->setToEmail($email)
-                ->setToName($name)
-                ->setFromEmail('admin@omnibus.org')
-                ->setFromName('Admin')
-                ->setBody('pass-recovered', ['name' => $name])
-                ->Send();
-
-            $this->session->set('message', 'Registration successful! Confirmation email should arrive shortly.');
-            header('Location: /');
-
-        }
-    }
-
-    public function index($params): void
-    {
-        $this->setBaseData();
-        $this->render('user/recover', ['messages' => $this->messages]);
     }
 }

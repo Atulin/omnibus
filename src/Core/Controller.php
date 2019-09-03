@@ -45,10 +45,12 @@ abstract class Controller
         $this->role    = $user ? $user->getRole() : new Role();
         $this->em      = $em;
         $this->twig    = TwigHandler::Get();
+
         if ($this->session->has('token')) {
             $this->token = $this->session->get('token');
         } else {
             $this->token = Token::Get(128);
+            $this->session->set('token', $this->token);
         }
     }
 
@@ -75,7 +77,6 @@ abstract class Controller
             die($e->getMessage());
         }
 
-        $this->session->set('token', $this->token);
         $this->session->remove('message');
     }
 

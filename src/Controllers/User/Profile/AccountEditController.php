@@ -15,17 +15,15 @@ use Doctrine\ORM\OptimisticLockException;
 class AccountEditController extends Controller
 {
 
-    private $messages;
+    private $errors;
 
     public function index(): void
     {
         $this->setBaseData();
-        $this->render('user/profile/account', ['messages' => $this->messages]);
+        $this->render('user/profile/account', ['messages' => $this->errors]);
     }
 
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
      */
     public function edit(): void
     {
@@ -44,7 +42,7 @@ class AccountEditController extends Controller
                 if ($POST['email'] && filter_var($POST['email'], FILTER_VALIDATE_EMAIL)) {
                     $u->setEmail($POST['email']);
                 } else {
-                    $this->messages[] = 'The email format is invalid.';
+                    $this->errors[] = 'The email format is invalid.';
                 }
 
                 if ($_POST['new_password']) {
@@ -52,19 +50,23 @@ class AccountEditController extends Controller
                     $u->setPassword($pass);
                 }
 
-                if (!$this->messages) {
-                    $this->em->flush();
+                if (!$this->errors) {
+                    try {
+                        $this->em->flush();
+                    } catch (OptimisticLockException | ORMException $e) {
+                        $this->errors[] = 'Could not update information.';
+                    }
                 }
 
             } else {
-                $this->messages[] = 'Incorrect password';
+                $this->errors[] = 'Incorrect password';
             }
 
         } else {
-            $this->messages[] = 'X-CSRF protection triggered';
+            $this->errors[] = 'Something went wrong. Refresh the page';
         }
 
-        if ($this->messages) {
+        if ($this->errors) {
             $this->index();
         } else {
             $this->session->set('message', 'Account information edited successfully!');

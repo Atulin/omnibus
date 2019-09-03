@@ -12,6 +12,7 @@ use Omnibus\Core\Utility\Email;
 use RobThree\Auth\TwoFactorAuth;
 use Doctrine\ORM\OptimisticLockException;
 use RobThree\Auth\TwoFactorAuthException;
+use Symfony\Component\Console\Exception\CommandNotFoundException;
 
 
 /**
@@ -20,8 +21,8 @@ use RobThree\Auth\TwoFactorAuthException;
  */
 class MFAController extends Controller
 {
-    /** @var array $messages */
-    private $messages;
+    /** @var array $errors */
+    private $errors;
     /** @var */
     private $mfa;
 
@@ -30,18 +31,18 @@ class MFAController extends Controller
      */
     public function index(): void
     {
-        $data = ['messages' => $this->messages];
+        $data = ['messages' => $this->errors];
         $template = 'user/setup-mfa';
 
         $user = $this->getUser();
         if (!$user->getMfa()) {
 
             // Set MFA
-            $this->mfa = new TwoFactorAuth('Omnibus');
+            $this->mfa = new TwoFactorAuth(CONFIG['name']);
 
             // Set secret
             $secret = $this->mfa->createSecret();
-            $this->session->set('mfa-secret', $secret);
+            $this->session->set('mfa-secret', $secret ?? '');
 
             // Get QR code
             $qr = $this->mfa->getQRCodeImageAsDataUri('Omnibus', $secret);
@@ -59,8 +60,6 @@ class MFAController extends Controller
 
     /**
      * @throws TwoFactorAuthException
-     * @throws ORMException
-     * @throws OptimisticLockException
      */
     public function setup(): void
     {
@@ -81,7 +80,11 @@ class MFAController extends Controller
                 if ($result) {
 
                     $user->setMfa($this->session->get('mfa-secret'));
-                    $this->em->flush();
+                    try {
+                        $this->em->flush();
+                    } catch (OptimisticLockException | ORMException $e) {
+                        $this->errors[] = 'Could not set up 2FA.';
+                    }
 
                     $this->session->remove('mfa-secret');
                     $this->session->set('message', 'Multi-factor authentication set up succesfully!');
@@ -90,15 +93,15 @@ class MFAController extends Controller
                     die();
 
                 } else {
-                    $this->messages[] = 'Error setting up MFA. Try again.';
+                    $this->errors[] = 'Error setting up MFA. Try again.';
                 }
 
             } else {
-                $this->messages[] = '2FA has already been set up.';
+                $this->errors[] = '2FA has already been set up.';
             }
 
         } else {
-            $this->messages[] = 'X-CSRF protection triggered.';
+            $this->errors[] = 'Something went wrong. Refresh the page.';
         }
 
         $this->index();
@@ -106,8 +109,6 @@ class MFAController extends Controller
 
     /**
      * @throws TwoFactorAuthException
-     * @throws ORMException
-     * @throws OptimisticLockException
      */
     public function remove(): void
     {
@@ -119,9 +120,13 @@ class MFAController extends Controller
 
                 // Remove MFA token
                 $user->setMfa(null);
+                try {
+                    $this->em->flush();
+                } catch (OptimisticLockException | ORMException $e) {
+                    $this->errors[] = 'Could not remove 2FA.';
+                }
 
-                $this->em->flush();
-                $this->session->set('message', 'Multi-factor authentication removed succesfully!');
+                $this->session->set('message', 'Multi-factor authentication removed successfully!');
 
                 // Send information email
                 $em = new Email();
@@ -137,11 +142,11 @@ class MFAController extends Controller
                 die();
 
             } else {
-                $this->messages[] = 'No 2FA has been set up.';
+                $this->errors[] = 'No 2FA has been set up.';
             }
 
         } else {
-            $this->messages[] = 'X-CSRF protection triggered.';
+            $this->errors[] = 'Something went wrong. Refresh the page.';
         }
         $this->index();
     }

@@ -1,1 +1,1 @@
-cd public/assets/emails && code . -n
+cd public/assets/static/emails && code . -n

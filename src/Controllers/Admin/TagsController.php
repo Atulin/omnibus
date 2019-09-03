@@ -61,7 +61,7 @@ class TagsController extends Controller
             }
 
         } else {
-            $errors[] = 'X-CSRF protection triggered.';
+            $errors[] = 'Something went wrong. Refresh the page.';
         }
         http_response_code($errors ? 500 : 201);
         echo json_encode(new APIMessage(
@@ -108,7 +108,7 @@ class TagsController extends Controller
             }
 
         } else {
-            $errors[] = 'X-CSRF protection triggered.';
+            $errors[] = 'Something went wrong. Refresh the page.';
         }
 
         http_response_code($errors ? 500 : 200);
@@ -148,7 +148,7 @@ class TagsController extends Controller
             }
 
         } else {
-            $errors[] = 'X-CSRF protection triggered.';
+            $errors[] = 'Something went wrong. Refresh the page.';
         }
         http_response_code($errors ? 500 : 200);
         echo json_encode(new APIMessage(

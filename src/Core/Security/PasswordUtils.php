@@ -8,7 +8,7 @@ namespace Omnibus\Core\Security;
 
 class PasswordUtils
 {
-    public static function Check(string $password, int $length = 10, bool $needs_numbers = true, bool $needs_capitals = true, bool $needs_special = true): ?array
+    public static function Check(string $password, int $length = 10, bool $needs_numbers = true, bool $needs_capitals = true, bool $needs_special = true): array
     {
         $messages = [];
 
@@ -29,6 +29,6 @@ class PasswordUtils
             $messages[] = 'Password needs at least one capital letter.';
         }
 
-        return count($messages) > 0 ? $messages : null;
+        return $messages;
     }
 }

@@ -17,6 +17,7 @@ use Omnibus\Core\Utility\APIMessage;
 use Omnibus\Core\Utility\HttpStatus;
 use Omnibus\Core\Security\PasswordUtils;
 use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\NonUniqueResultException;
 use Omnibus\Core\Security\ReCaptcha\ReCaptchaHandler;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
@@ -27,10 +28,8 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
  */
 class RegisterController extends Controller
 {
-    /**
-     * @var array
-     */
-    private $messages = [];
+    /** @var array $errors */
+    private $errors = [];
 
     /**
      * Render the page
@@ -38,13 +37,11 @@ class RegisterController extends Controller
     public function index(): void
     {
         $this->setBaseData();
-        $this->render('user/register', ['messages' => $this->messages]);
+        $this->render('user/register', ['messages' => $this->errors]);
     }
 
     /**
      * Register new user
-     * @throws ORMException
-     * @throws OptimisticLockException
      */
     public function register(): void
     {
@@ -54,7 +51,7 @@ class RegisterController extends Controller
         $pass    = (string)$_POST['password'];
         $pass2   = (string)$_POST['password2'];
         $tos     = $_POST['tos'] ?? '';
-        $captcha = $_POST['g-recaptcha-response'];
+        $captcha = $_POST['g-recaptcha-response'] ?? '';
         $code    = null;
 
         if ($this->session->get('token') === $_POST['token']) {
@@ -67,71 +64,93 @@ class RegisterController extends Controller
             $res = $ch->Check();
 
             if (!$res->isSuccess()) {
-                $this->messages[] = 'Incorrect ReCaptcha';
+                $this->errors[] = 'Incorrect ReCaptcha';
             }
 
             // Check identical passwords
             if ($pass !== $pass2) {
-                $this->messages[] = 'Passwords have to be identical.';
+                $this->errors[] = 'Passwords have to be identical.';
             }
 
             // Validate password
             $messages = PasswordUtils::Check($pass);
-
             if ($messages) {
-                $this->messages = array_merge($this->messages, $messages);
+                $this->errors = array_merge($this->errors, $messages);
             }
 
             // Check email
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $this->messages[] = 'The email format is invalid.';
+                $this->errors[] = 'The email format is invalid.';
             }
+
             // Check TOS
             if (!$tos) {
-                $this->messages[] = 'You have to agree to Terms of Service.';
+                $this->errors[] = 'You have to agree to Terms of Service.';
             }
 
-            // Generate a unique activation code
-            do {
-                $code = Token::Get();
-            } while ($this->em->getRepository(ActivationCode::class)->count(['code' => $code]) !== 0);
+            // Check if user exists
+            try {
+                $u = $this->em->createQuery('SELECT COUNT(u) FROM Omnibus\Models\User u WHERE u.name = :name OR u.email = :email')
+                    ->setParameter('name', $name)
+                    ->setParameter('email', $email)
+                    ->getOneOrNullResult();
+            } catch (NonUniqueResultException $e) {
+                $this->errors[] = 'Something went wrong. Contact the administrator.';
+            }
+
+            if (isset($u) && $u) {
+                $this->errors[] = 'User already exists.';
+            }
 
             // If all's fine, create user
-            if (count($this->messages) <= 0) {
+            if (count($this->errors) <= 0) {
+
+                // Generate a unique activation code
+                do {
+                    $code = Token::Get();
+                } while ($this->em->getRepository(ActivationCode::class)->count(['code' => $code]) !== 0);
+
+                // Insert user
                 $u = new User();
                 $u->setName($name);
                 $u->setEmail($email);
                 $u->setPassword(password_hash($pass, PASSWORD_ARGON2I));
 
-                $this->em->persist($u);
+                try {
+                    $this->em->persist($u);
+                } catch (ORMException $e) {
+                    $this->errors[] = 'Could not create user. Contact the administrator.';
+                }
 
-                // Check if user exists
                 try {
                     $this->em->flush();
+                } catch (OptimisticLockException | ORMException $e) {
+                    $this->errors[] = 'Could not create user. Contact the administrator.';
+                }
 
-                    // Insert activation code
-                    $ac = new ActivationCode();
-                    $ac->setUserId($u->getId());
-                    $ac->setCode($code);
+                // Insert activation code
+                $ac = new ActivationCode();
+                $ac->setUserId($u->getId());
+                $ac->setCode($code);
 
+                try {
                     $this->em->persist($ac);
+                } catch (ORMException $e) {
+                    $this->errors[] = 'Could not create activation token. Contact the administrator.';
+                }
 
-                    try {
-                        $this->em->flush();
-                    } catch (Exception $e) {
-                        $this->messages[] = 'Could not create activation token.';
-                        $this->messages[] = $e->getMessage();
-                    }
-
-                } catch (UniqueConstraintViolationException $e) {
-                    $this->messages[] = 'User with that name or email already exists.';
+                try {
+                    $this->em->flush();
+                } catch (Exception $e) {
+                    $this->errors[] = 'Could not create activation token. Contact the administrator.';
                 }
             }
+
         } else {
-            $this->messages[] = 'X-CSRF protection triggered.';
+            $this->errors[] = 'Something went wrong. Refresh the page.';
         }
 
-        if (count($this->messages) > 0) {
+        if (count($this->errors) > 0) {
 
             $this->session->set('token', $this->getToken());
             $this->index();
@@ -167,6 +186,7 @@ class RegisterController extends Controller
     public function validate(): void
     {
         if ($this->session->get('token') === $_GET['token']) {
+
             $name = $this->em->getRepository(User::class)->count(['name' => $_GET['name']]) === 0;
             $email = $this->em->getRepository(User::class)->count(['email' => $_GET['email']]) === 0;
 

@@ -17,11 +17,9 @@ use Doctrine\ORM\OptimisticLockException;
 
 class ForgottenPasswordController extends Controller
 {
-    private $messages = [];
+    private $errors = [];
 
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
      */
     public function forgot(): void
     {
@@ -34,7 +32,8 @@ class ForgottenPasswordController extends Controller
                 $user = $this->em->getRepository(User::class)->findOneBy(['email' => $email]);
 
                 if ($user) {
-                    // Generate a unique activation code
+
+                    // Generate a unique restore code
                     $code = null;
                     do {
                         $code = Token::Get();
@@ -44,8 +43,17 @@ class ForgottenPasswordController extends Controller
                     $rc->setUserId($user->getId());
                     $rc->setCode($code);
 
-                    $this->em->persist($rc);
-                    $this->em->flush($rc);
+                    try {
+                        $this->em->persist($rc);
+                    } catch (ORMException $e) {
+                        $this->errors[] = 'Could not create restoration token. Contact the administrator.';
+                    }
+
+                    try {
+                        $this->em->flush($rc);
+                    } catch (OptimisticLockException| ORMException $e) {
+                        $this->errors[] = 'Could not create restoration token. Contact the administrator.';
+                    }
 
                     $em = new Email();
                     $em->setSubject('Omnibus – forgotten password')
@@ -62,14 +70,15 @@ class ForgottenPasswordController extends Controller
                     die();
 
                 } else {
-                    $this->messages[] = 'User does not exist';
+                    $this->errors[] = 'User does not exist';
                 }
 
             } else {
-                $this->messages[] = 'Invalid email.';
+                $this->errors[] = 'Invalid email.';
             }
+
         } else {
-            $this->messages[] = 'X-CSRF protection triggered.';
+            $this->errors[] = 'Something went wrong. Refresh the page.';
         }
 
         $this->index();
@@ -78,6 +87,6 @@ class ForgottenPasswordController extends Controller
     public function index(): void
     {
         $this->setBaseData();
-        $this->render('user/forgot', ['messages' => $this->messages]);
+        $this->render('user/forgot', ['messages' => $this->errors]);
     }
 }
