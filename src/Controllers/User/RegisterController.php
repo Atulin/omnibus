@@ -6,20 +6,17 @@
 
 namespace Omnibus\Controllers\User;
 
-use Exception;
 use Omnibus\Models\User;
 use Omnibus\Core\Controller;
-use Doctrine\ORM\ORMException;
 use Omnibus\Core\Utility\Email;
 use Omnibus\Core\Security\Token;
 use Omnibus\Models\ActivationCode;
 use Omnibus\Core\Utility\APIMessage;
 use Omnibus\Core\Utility\HttpStatus;
 use Omnibus\Core\Security\PasswordUtils;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\NonUniqueResultException;
+use Omnibus\Models\Repositories\UserRepository;
 use Omnibus\Core\Security\ReCaptcha\ReCaptchaHandler;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Omnibus\Models\Repositories\ActivationCodeRepository;
 
 
 /**
@@ -88,61 +85,29 @@ class RegisterController extends Controller
                 $this->errors[] = 'You have to agree to Terms of Service.';
             }
 
-            // Check if user exists
-            try {
-                $u = $this->em->createQuery('SELECT COUNT(u) FROM Omnibus\Models\User u WHERE u.name = :name OR u.email = :email')
-                    ->setParameter('name', $name)
-                    ->setParameter('email', $email)
-                    ->getOneOrNullResult();
-            } catch (NonUniqueResultException $e) {
-                $this->errors[] = 'Something went wrong. Contact the administrator.';
-            }
-
-            if (isset($u) && $u) {
-                $this->errors[] = 'User already exists.';
-            }
-
             // If all's fine, create user
-            if (count($this->errors) <= 0) {
-
-                // Generate a unique activation code
-                do {
-                    $code = Token::Get();
-                } while ($this->em->getRepository(ActivationCode::class)->count(['code' => $code]) !== 0);
+            if (!$this->errors) {
 
                 // Insert user
                 $u = new User();
-                $u->setName($name);
-                $u->setEmail($email);
-                $u->setPassword(password_hash($pass, PASSWORD_ARGON2I));
+                $ur = new UserRepository();
+                $u->setName($name)
+                  ->setEmail($email)
+                  ->setPassword(password_hash($pass, PASSWORD_ARGON2I));
+                $this->errors = array_merge($this->errors, $ur->save($u));
 
-                try {
-                    $this->em->persist($u);
-                } catch (ORMException $e) {
-                    $this->errors[] = 'Could not create user. Contact the administrator.';
-                }
+                if (!$this->errors) {
+                    // Generate a unique activation code
+                    do {
+                        $code = Token::Get();
+                    } while ($this->em->getRepository(ActivationCode::class)->count(['code' => $code]) !== 0);
 
-                try {
-                    $this->em->flush();
-                } catch (OptimisticLockException | ORMException $e) {
-                    $this->errors[] = 'Could not create user. Contact the administrator.';
-                }
-
-                // Insert activation code
-                $ac = new ActivationCode();
-                $ac->setUserId($u->getId());
-                $ac->setCode($code);
-
-                try {
-                    $this->em->persist($ac);
-                } catch (ORMException $e) {
-                    $this->errors[] = 'Could not create activation token. Contact the administrator.';
-                }
-
-                try {
-                    $this->em->flush();
-                } catch (Exception $e) {
-                    $this->errors[] = 'Could not create activation token. Contact the administrator.';
+                    // Insert activation code
+                    $ac = new ActivationCode();
+                    $acr = new ActivationCodeRepository();
+                    $ac->setUserId($u->getId())
+                        ->setCode($code);
+                    $this->errors = array_merge($this->errors, $acr->save($ac));
                 }
             }
 
@@ -150,7 +115,7 @@ class RegisterController extends Controller
             $this->errors[] = 'Something went wrong. Refresh the page.';
         }
 
-        if (count($this->errors) > 0) {
+        if ($this->errors) {
 
             $this->session->set('token', $this->getToken());
             $this->index();

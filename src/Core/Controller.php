@@ -36,6 +36,8 @@ abstract class Controller
     protected $session;
     /** @var EntityManager $em */
     protected $em;
+    /** @var array $role_permissions */
+    protected $role_permissions;
 
     public function __construct(Session $session, ?User $user, EntityManager $em, bool $active)
     {
@@ -45,6 +47,7 @@ abstract class Controller
         $this->role    = $user ? $user->getRole() : new Role();
         $this->em      = $em;
         $this->twig    = TwigHandler::Get();
+        $this->role_permissions = get_class_methods(Role::class);
 
         if ($this->session->has('token')) {
             $this->token = $this->session->get('token');
@@ -133,5 +136,22 @@ abstract class Controller
     public function isActive(): bool
     {
         return $this->active;
+    }
+
+    /**
+     * @param mixed ...$checks
+     *
+     * @return bool
+     */
+    public function auth(...$checks): bool
+    {
+        $permission_checks = [];
+        foreach ($checks as $c) {
+            $permission_checks[] = (bool) $this->role->$c();
+        }
+        if (in_array(false, $permission_checks, true)) {
+            die('404');
+        }
+        return true;
     }
 }

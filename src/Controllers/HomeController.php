@@ -8,6 +8,7 @@ namespace Omnibus\Controllers;
 
 use Omnibus\Models\Article;
 use Omnibus\Core\Controller;
+use Omnibus\Models\Repositories\UserRepository;
 
 
 class HomeController extends Controller
@@ -20,5 +21,13 @@ class HomeController extends Controller
         $this->render('home', [
             'articles' => $this->em->getRepository(Article::class)->findAll()
         ]);
+
+        $ur = new UserRepository();
+        echo '<pre>'.var_export($ur->checkNameOrEmailTaken('Angius', 'aaa'), true).'</pre>'; // false
+        echo '<pre>'.var_export($ur->checkNameOrEmailTaken('Trem', 'bbb'), true).'</pre>'; // false
+        echo '<pre>'.var_export($ur->checkNameOrEmailTaken('aaa', 'koumarin@gmail.com'), true).'</pre>'; // false
+        echo '<pre>'.var_export($ur->checkNameOrEmailTaken('bbb', 'a@b.c'), true).'</pre>'; // false
+        echo '<pre>'.var_export($ur->checkNameOrEmailTaken('AAA', 'aaa'), true).'</pre>'; // true
+        echo '<pre>'.var_export($ur->checkNameOrEmailTaken('BBB', 'bbb'), true).'</pre>'; // true
     }
 }

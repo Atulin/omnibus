@@ -127,10 +127,13 @@ class User implements JsonSerializable
 
     /**
      * @param string|null $bio
+     *
+     * @return User
      */
-    public function setBio(?string $bio): void
+    public function setBio(?string $bio): User
     {
         $this->bio = $bio;
+        return $this;
     }
 
     /**
@@ -143,10 +146,13 @@ class User implements JsonSerializable
 
     /**
      * @param string|null $title
+     *
+     * @return User
      */
-    public function setTitle(?string $title): void
+    public function setTitle(?string $title): User
     {
         $this->title = $title;
+        return $this;
     }
 
 
@@ -168,10 +174,13 @@ class User implements JsonSerializable
 
     /**
      * @param string $name
+     *
+     * @return User
      */
-    public function setName(string $name): void
+    public function setName(string $name): User
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -184,10 +193,13 @@ class User implements JsonSerializable
 
     /**
      * @param string|null $avatar
+     *
+     * @return User
      */
-    public function setAvatar(?string $avatar): void
+    public function setAvatar(?string $avatar): User
     {
         $this->avatar = $avatar;
+        return $this;
     }
 
     /**
@@ -200,10 +212,13 @@ class User implements JsonSerializable
 
     /**
      * @param string $email
+     *
+     * @return User
      */
-    public function setEmail(string $email): void
+    public function setEmail(string $email): User
     {
         $this->email = $email;
+        return $this;
     }
 
     /**
@@ -216,10 +231,13 @@ class User implements JsonSerializable
 
     /**
      * @param string $password
+     *
+     * @return User
      */
-    public function setPassword(string $password): void
+    public function setPassword(string $password): User
     {
         $this->password = $password;
+        return $this;
     }
 
     /**
@@ -232,10 +250,13 @@ class User implements JsonSerializable
 
     /**
      * @param string $remember_me
+     *
+     * @return User
      */
-    public function setRememberMe(string $remember_me): void
+    public function setRememberMe(string $remember_me): User
     {
         $this->remember_me = $remember_me;
+        return $this;
     }
 
     /**
@@ -248,10 +269,13 @@ class User implements JsonSerializable
 
     /**
      * @param DateTime $creation_date
+     *
+     * @return User
      */
-    public function setCreationDate(DateTime $creation_date): void
+    public function setCreationDate(DateTime $creation_date): User
     {
         $this->creation_date = $creation_date;
+        return $this;
     }
 
     /**
@@ -264,10 +288,13 @@ class User implements JsonSerializable
 
     /**
      * @param DateTime $last_seen
+     *
+     * @return User
      */
-    public function setLastSeen(DateTime $last_seen): void
+    public function setLastSeen(DateTime $last_seen): User
     {
         $this->last_seen = $last_seen;
+        return $this;
     }
 
     /**
@@ -280,10 +307,13 @@ class User implements JsonSerializable
 
     /**
      * @param Role $role
+     *
+     * @return User
      */
-    public function setRole(Role $role): void
+    public function setRole(Role $role): User
     {
         $this->role = $role;
+        return $this;
     }
 
     /**
@@ -296,10 +326,13 @@ class User implements JsonSerializable
 
     /**
      * @param mixed $comment_thread
+     *
+     * @return User
      */
-    public function setCommentThread($comment_thread): void
+    public function setCommentThread($comment_thread): User
     {
         $this->comment_thread = $comment_thread;
+        return $this;
     }
 
     /**
@@ -312,17 +345,15 @@ class User implements JsonSerializable
 
     /**
      * @param string|null $mfa
+     *
+     * @return User
      */
-    public function setMfa(?string $mfa): void
+    public function setMfa(?string $mfa): User
     {
         $this->mfa = $mfa;
+        return $this;
     }
 
-
-//    public function __toString()
-//    {
-//        return $this->name;
-//    }
 
     /**
      * Specify data which should be serialized to JSON.

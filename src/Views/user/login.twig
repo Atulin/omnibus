@@ -40,32 +40,41 @@
                 {% endif %}
             </div>
 
+            {# First auth step — LOGIN #}
             <div class="full field">
                 <label for="login">Login</label>
                 <input type="text" name="login" id="login" v-model="login" required>
             </div>
 
-            <div class="full field">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" v-model="pass" required>
-                <a href="/forgot">Forgot?</a>
-            </div>
+            {# Second auth step — PASSWORD and MFA #}
+            <transition name="fade">
+                <div class="full field" v-if="step==2">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" v-model="pass" required>
+                    <a href="/forgot">Forgot?</a>
+                </div>
+            </transition>
 
-            <div class="full field" v-if="has_mfa">
-                <label for="mfa">2FA token</label>
-                <input type="password" name="mfa" id="mfa" v-model="mfa" required>
-            </div>
+            <transition name="fade">
+                <div class="full field" v-if="has_mfa">
+                    <label for="mfa">2FA token</label>
+                    <input type="password" name="mfa" id="mfa" v-model="mfa" required>
+                </div>
+            </transition>
 
-            <div class="checkbox field">
-                <label for="remember">Remember me</label>
-                <input id="remember" name="remember" v-model="remember" type="checkbox">
-            </div>
+            <transition name="fade">
+                <div class="checkbox field" v-if="step==2">
+                    <label for="remember">Remember me</label>
+                    <input id="remember" name="remember" v-model="remember" type="checkbox">
+                </div>
+            </transition>
+
 
             <input id="token" type="hidden" name="token" value="{{ token }}">
 
             <div class="field">
                 <label for="login" class="hidden">Log in</label>
-                <input id="login" class="submit button" type="submit" value="Log in" :disabled="!validated">
+                <input id="login" class="submit button" type="submit" :value="button_text">
             </div>
 
         </form>
@@ -73,6 +82,6 @@
     </div>
 </div>
 
-    <script type="application/javascript" src="{{ vasset('js/v-login-validator', 'min.js') }}"></script>
+    <script type="application/javascript" src="{{ vasset('js/v-login-validator-2', 'min.js') }}"></script>
 
 {% endblock %}

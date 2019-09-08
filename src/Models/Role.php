@@ -136,7 +136,7 @@ class Role
      */
     public function isAdmin(): bool
     {
-        return $this->isAdmin;
+        return $this->isAdmin ?? false;
     }
 
     /**
@@ -155,7 +155,7 @@ class Role
      */
     public function isStaff(): bool
     {
-        return $this->isStaff;
+        return $this->isStaff ?? false;
     }
 
     /**
@@ -174,7 +174,7 @@ class Role
      */
     public function canModerateComments(): bool
     {
-        return $this->canModerateComments;
+        return $this->canModerateComments ?? false;
     }
 
     /**
@@ -193,7 +193,7 @@ class Role
      */
     public function canAddArticles(): bool
     {
-        return $this->canAddArticles;
+        return $this->canAddArticles ?? false;
     }
 
     /**
@@ -212,7 +212,7 @@ class Role
      */
     public function canEditArticles(): bool
     {
-        return $this->canEditArticles;
+        return $this->canEditArticles ?? false;
     }
 
     /**
@@ -231,7 +231,7 @@ class Role
      */
     public function canDeleteArticles(): bool
     {
-        return $this->canDeleteArticles;
+        return $this->canDeleteArticles ?? false;
     }
 
     /**
@@ -250,7 +250,7 @@ class Role
      */
     public function canAddCategories(): bool
     {
-        return $this->canAddCategories;
+        return $this->canAddCategories ?? false;
     }
 
     /**
@@ -269,7 +269,7 @@ class Role
      */
     public function canEditCategories(): bool
     {
-        return $this->canEditCategories;
+        return $this->canEditCategories ?? false;
     }
 
     /**
@@ -288,7 +288,7 @@ class Role
      */
     public function canDeleteCategories(): bool
     {
-        return $this->canDeleteCategories;
+        return $this->canDeleteCategories ?? false;
     }
 
     /**
@@ -307,7 +307,7 @@ class Role
      */
     public function canAddTags(): bool
     {
-        return $this->canAddTags;
+        return $this->canAddTags ?? false;
     }
 
     /**
@@ -326,7 +326,7 @@ class Role
      */
     public function canEditTags(): bool
     {
-        return $this->canEditTags;
+        return $this->canEditTags ?? false;
     }
 
     /**
@@ -345,7 +345,7 @@ class Role
      */
     public function canDeleteTags(): bool
     {
-        return $this->canDeleteTags;
+        return $this->canDeleteTags ?? false;
     }
 
     /**

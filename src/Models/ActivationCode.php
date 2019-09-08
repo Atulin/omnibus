@@ -6,7 +6,10 @@
 
 namespace Omnibus\Models;
 
+use Omnibus\Core\Model;
+use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\OptimisticLockException;
 
 
 /**
@@ -15,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="activation_codes")
  */
-class ActivationCode
+class ActivationCode extends Model
 {
 
     /**
@@ -30,7 +33,7 @@ class ActivationCode
      * @var int $user_id
      * @ORM\OneToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * @ORM\Column(type="integer")
+//     * @ORM\Column(type="integer")
      */
     private $user_id;
 
@@ -58,10 +61,13 @@ class ActivationCode
 
     /**
      * @param int $user_id
+     *
+     * @return ActivationCode
      */
-    public function setUserId(int $user_id): void
+    public function setUserId(int $user_id): ActivationCode
     {
         $this->user_id = $user_id;
+        return $this;
     }
 
     /**
@@ -74,10 +80,12 @@ class ActivationCode
 
     /**
      * @param string $code
+     *
+     * @return ActivationCode
      */
-    public function setCode(string $code): void
+    public function setCode(string $code): ActivationCode
     {
         $this->code = $code;
+        return $this;
     }
-
 }

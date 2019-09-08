@@ -16,6 +16,8 @@ class DashboardController extends Controller
 
     public function index(): void
     {
+        $this->auth('isStaff');
+
         $this->setBaseData();
         $this->render('admin/dashboard', [
             'counters' => [

@@ -7,9 +7,8 @@
 namespace Omnibus\Controllers\User;
 
 use Omnibus\Core\Controller;
-use Doctrine\ORM\ORMException;
 use Omnibus\Models\ActivationCode;
-use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Models\Repositories\ActivationCodeRepository;
 
 
 class ActivateController extends Controller
@@ -36,29 +35,22 @@ class ActivateController extends Controller
         $code = ($_POST['code'] ?? $params['code']) ?? null;
         if (!empty($code)) {
 
+            /** @var ActivationCode $ac */
             $ac = $this->em->getRepository(ActivationCode::class)->findOneBy(['code' => $code]);
 
-            if ($ac !== null) {
+            if ($ac) {
+                $acr = new ActivationCodeRepository();
+                $this->errors = array_merge($this->errors, $acr->remove($ac));
+            } else {
+                $this->errors[] = 'Incorrect code.';
+            }
 
-                try {
-                    $this->em->remove($ac);
-                } catch (ORMException $e) {
-                    $this->errors[] = 'Could not activate account. Contact the administrator.';
-                }
-
-                try {
-                    $this->em->flush();
-                } catch (OptimisticLockException | ORMException $e) {
-                    $this->errors[] = 'Could not activate account. Contact the administrator.';
-                }
-
+            if (!$this->errors) {
                 $this->session->set('message', 'Your account has been activated successfully!');
                 $this->session->set('token', $this->getToken());
                 header('Location: /login');
                 die();
             }
-
-            $this->errors[] = 'Incorrect code.';
 
         } else {
             $this->errors[] = 'Code cannot be empty.';

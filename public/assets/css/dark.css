@@ -137,7 +137,7 @@ form.form {
   background-color: #181818;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 10px 1px rgba(238, 238, 238, 0.2); }
+  box-shadow: 0 2px 5px 1px rgba(238, 238, 238, 0.2); }
   form.form.horizontal {
     flex-direction: row; }
     @media only screen and (max-width: 768px) {
@@ -172,7 +172,8 @@ form.form {
         width: 100%; }
     form.form div.field.checkbox {
       flex-direction: row;
-      align-items: center; }
+      align-items: center;
+      height: 1.2rem; }
     form.form div.field > label {
       font-size: 0.9rem;
       margin: 2px; }
@@ -261,9 +262,10 @@ form.form {
     form.form div.field.avatar {
       margin-top: -120px; }
       form.form div.field.avatar > img.avatar {
-        border: 2px solid #eeeeee;
+        border: 1px solid rgba(238, 238, 238, 0.2);
         border-radius: 50%;
         background-color: #181818;
+        box-shadow: 0 0 5px 1px rgba(238, 238, 238, 0.2);
         object-fit: cover;
         width: 190px;
         height: 190px; }
@@ -326,7 +328,7 @@ div#navbar {
   height: 50px;
   align-items: center;
   z-index: 9999;
-  box-shadow: 0 0 10px 1px rgba(238, 238, 238, 0.2); }
+  box-shadow: 0 2px 5px 1px rgba(238, 238, 238, 0.2); }
   div#navbar hr {
     height: 30px;
     color: rgba(238, 238, 238, 0.2); }
@@ -414,7 +416,7 @@ div#navbar {
     color: #eeeeee;
     background: #181818;
     min-width: 110px;
-    box-shadow: 0 0 10px 1px rgba(238, 238, 238, 0.2);
+    box-shadow: 0 2px 5px 1px rgba(238, 238, 238, 0.2);
     padding: 2px 0 12px;
     margin-top: 10px;
     z-index: 0;
@@ -498,7 +500,7 @@ div#profile {
   display: flex;
   justify-content: space-between; }
   div#profile > .column > .container {
-    box-shadow: 0 0 10px 1px rgba(238, 238, 238, 0.2);
+    box-shadow: 0 2px 5px 1px rgba(238, 238, 238, 0.2);
     margin: 10px;
     padding: 0.5rem;
     border-radius: 0.5rem; }
@@ -841,6 +843,16 @@ div#profile {
 
 /*!
  * / Copyright © 2019 by Angius
+ * / Last modified: 07.09.2019, 22:07
+ * / */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 800ms; }
+
+.fade-enter, .fade-leave-to {
+  opacity: 0; }
+
+/*!
+ * / Copyright © 2019 by Angius
  * / Last modified: 24.08.2019, 13:34
  * / */
 .cards {
@@ -853,7 +865,7 @@ div#profile {
     max-width: 200px;
     width: 150px;
     flex-grow: 1;
-    box-shadow: 0 0 10px 1px rgba(238, 238, 238, 0.2);
+    box-shadow: 0 2px 5px 1px rgba(238, 238, 238, 0.2);
     margin: 1rem 2%;
     padding: 1rem;
     border-radius: 1rem; }
@@ -923,7 +935,7 @@ div#admin {
       flex-direction: column;
       justify-content: stretch; } }
   div#admin > .column {
-    box-shadow: 0 0 10px 1px rgba(238, 238, 238, 0.2);
+    box-shadow: 0 2px 5px 1px rgba(238, 238, 238, 0.2);
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -992,7 +1004,7 @@ div#admin {
         border: 1px solid rgba(238, 238, 238, 0.5);
         border-radius: 1rem;
         margin: 0.5rem;
-        box-shadow: 0 0 10px 1px rgba(238, 238, 238, 0.2); }
+        box-shadow: 0 2px 5px 1px rgba(238, 238, 238, 0.2); }
         div#admin > .column .comments > .comment > .main {
           margin: 1rem; }
           div#admin > .column .comments > .comment > .main > .header {

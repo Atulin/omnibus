@@ -12,7 +12,7 @@ form.form
   background-color: $background
   border-radius: 20px
   border: 1px solid rgba(0, 0, 0, 0.3)
-  box-shadow: $subtle-shadow
+  box-shadow: $offset-shadow
 
   &.horizontal
     flex-direction: row
@@ -57,6 +57,7 @@ form.form
     &.checkbox
       flex-direction: row
       align-items: center
+      height: 1.2rem
 
     &>label
       font-size: 0.9rem
@@ -100,7 +101,7 @@ form.form
         border-bottom-color: $foreground-20
 
     &>input[type=checkbox]
-        width: 24px
+      width: 24px
 
     &>textarea
       resize: vertical
@@ -162,10 +163,10 @@ form.form
     &.avatar
       margin-top: -120px
       &>img.avatar
-
-        border: 2px solid $foreground
+        border: 1px solid $foreground-20
         border-radius: 50%
         background-color: $background
+        box-shadow: $subtle-shadow
         object-fit: cover
         width: 190px
         height: 190px

@@ -1,0 +1,9 @@
+array (
+  0 => 
+  array (
+    0 => 'Name taken.',
+    1 => 'Account with this email already exists.',
+  ),
+  1 => true,
+  2 => true,
+)
