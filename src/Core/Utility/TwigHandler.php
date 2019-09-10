@@ -21,7 +21,10 @@ class TwigHandler
         $loader = new FilesystemLoader([dirname(__DIR__, 2) . '/Views',
             dirname(__DIR__, 3) . '/public/assets'
         ]);
-        $twig = new Environment($loader);
+        $twig = new Environment($loader, [
+            'cache' => dirname(__DIR__, 3).'/cache/twig',
+            'auto_reload' => IS_DEV
+        ]);
 
         ///
         /// Markdown parse filter

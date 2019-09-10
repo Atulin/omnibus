@@ -6,6 +6,7 @@
 
 namespace Omnibus\Core;
 
+use Redis;
 use Exception;
 use AltoRouter;
 use Whoops\Run;
@@ -42,6 +43,7 @@ use Omnibus\Models\Repositories\ActivationCodeRepository;
 use Omnibus\Controllers\User\Profile\AccountEditController;
 use Omnibus\Controllers\User\Profile\ProfileEditController;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
+use Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler;
 
 
@@ -282,11 +284,22 @@ class Application
         ini_set('display_startup_errors', '1');
         error_reporting(E_ALL);
 
+        // Load .env file
+        (new Dotenv())->load(dirname(__DIR__, 2).'/.env');
+
+        // Set up Redis
+        $redis = new Redis();
+        $redis->connect($_ENV['REDIS_HOST'], $_ENV['REDIS_PORT']);//('127.0.0.1', '6379');
+
+        // Set up session
         $sessionStorage = new NativeSessionStorage([
             'cookie_httponly' => true,
             'cookie_samesite' => 'Strict',
             'cookie_secure'   => true,
-        ], new NativeFileSessionHandler());
+            ],
+            new RedisSessionHandler($redis)
+//         new NativeFileSessionHandler()
+        );
         $this->session = new Session($sessionStorage);
         $this->session->start();
 
@@ -295,12 +308,9 @@ class Application
         $this->router->addMatchTypes(['f' => '[a-zA-Z0-9\-]++']);
 
         // Set up Whoops
-//        $this->whoops = new Run;
-//        $this->whoops->appendHandler(new PrettyPageHandler);
-//        $this->whoops->register();
-
-        // Load .env file
-        (new Dotenv())->load(dirname(__DIR__, 2).'/.env');
+        $this->whoops = new Run;
+        $this->whoops->appendHandler(new PrettyPageHandler);
+        $this->whoops->register();
 
         // Set up database connection
         $ds = microtime(true);

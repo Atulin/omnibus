@@ -49,7 +49,7 @@ abstract class Controller
             $this->token = Token::Get(128);
             $this->session->set('token', $this->token);
         }
-        $this->session->save();
+//        $this->session->save();
     }
 
 

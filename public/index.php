@@ -27,4 +27,4 @@ $application->run();
 $end = microtime(true);
 $diff = $end - $start;
 
-echo "<div style='position:fixed;bottom:0;right:0;z-index:99999;background:#ffd503;color:black;'>Request took <strong>$diff</strong> seconds</div>";
+//echo "<div style='position:fixed;bottom:0;right:0;z-index:99999;background:#ffd503;color:black;'>Request took <strong>$diff</strong> seconds</div>";

@@ -3,3 +3,4 @@ vendor
 .env
 private.key
 public.key
+/cache/
