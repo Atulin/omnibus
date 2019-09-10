@@ -295,43 +295,54 @@ class Application
         $this->router->addMatchTypes(['f' => '[a-zA-Z0-9\-]++']);
 
         // Set up Whoops
-        $this->whoops = new Run;
-        $this->whoops->appendHandler(new PrettyPageHandler);
-        $this->whoops->register();
+//        $this->whoops = new Run;
+//        $this->whoops->appendHandler(new PrettyPageHandler);
+//        $this->whoops->register();
 
         // Load .env file
         (new Dotenv())->load(dirname(__DIR__, 2).'/.env');
 
         // Set up database connection
+        $ds = microtime(true);
         $this->em = (new Database())->Get();
+        $ds = microtime(true) - $ds;
+//        echo "<div style='position:fixed;top:200px;right:0;color:black;background:red;'>$ds</div>";
+
+        // Get user id
+        $USERID = $this->session->get('userid');
+        $this->session->save();
 
         // Check RememberMe
-        $remember_cookie = $_COOKIE['__Secure-rememberme'] ?? '';
+        if (!$USERID) {
+            $remember_cookie = $_COOKIE['__Secure-rememberme'] ?? '';
 
-        if ($remember_cookie) {
+            if ($remember_cookie) {
 
-            [$user_id, $token, $mac] = explode(':', $remember_cookie);
+                [$user_id, $token, $mac] = explode(':', $remember_cookie);
 
-            if (password_verify($user_id . ':' . $token, $mac)) {
+                if (password_verify($user_id . ':' . $token, $mac)) {
 
-                $user = $this->em->find(User::class, $user_id);
+                    $user = $this->em->find(User::class, $user_id);
 
-                $user_token = $user === null ? '' : $user->getRememberme();
+                    $user_token = $user === null ? '' : $user->getRememberme();
 
-                if (hash_equals($user_token, $token)) {
-                    $this->session->set('userid', $user_id);
+                    if (hash_equals($user_token, $token)) {
+                        $this->session->set('userid', $user_id);
+                    }
                 }
             }
         }
 
         // Get user
-        $this->user = $this->session->has('userid')
-            ? (new UserRepository())->find($this->session->get('userid'))
+        $this->user = $USERID
+            ? (new UserRepository())->find($USERID)
             : null;
 
         // Get user role
-        $this->role = ($this->session->has('userid') && $this->user !== null)
+        $this->role = ($USERID && $this->user !== null)
             ? $this->user->GetRole()
             : new Role();
+
+//        $this->session->save();
     }
 }
