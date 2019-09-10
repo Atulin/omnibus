@@ -14,6 +14,7 @@ class UserRepository extends Repository
 {
     protected const ENTITY = User::class;
 
+
     /**
      * @param string $name
      * @param string $email
@@ -35,4 +36,11 @@ class UserRepository extends Repository
         }
         return $c !== 0;
     }
+
+    public function find($id): ?User
+    {
+        $out = parent::find($id);
+        return $out instanceof User ? $out : null;
+    }
+
 }

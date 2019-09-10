@@ -2,44 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/transitions.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/transitions.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/src/includes/transitions.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/v-login-validator-2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/v-login-validator-2.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/em.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/log.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/Model.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/Repository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Repositories/ActivationCodeRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/Repositories/UserRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Models/gen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d14479c-bf2a-4a1d-ab81-fe8da138e5f0/storage_v2/_src_/database/Omnibus.p9dLEw/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/light.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/admin.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/admin/comments.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/admin/comments.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/cards.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/cards.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/dropdown.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/forms.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/profile.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/profile.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/src/main.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/main.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/EditorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/EditorController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Repository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Repository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/ActivationCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/ActivationCode.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Repositories/CategoryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Repositories/UserRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/user/login.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/user/login.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -410,14 +390,10 @@
       <workItem from="1567473625697" duration="10407000" />
       <workItem from="1567800292128" duration="9460000" />
       <workItem from="1567819214235" duration="155000" />
-      <workItem from="1567886599240" duration="12712000" />
-    </task>
-    <task id="LOCAL-00005" summary="Login and logout&#10; – User login and logout now work&#10; – Made the forms look prettier&#10; – Fixed double error messages">
-      <created>1563249469056</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1563249469056</updated>
+      <workItem from="1567886599240" duration="14529000" />
+      <workItem from="1568011104493" duration="1246000" />
+      <workItem from="1568085190582" duration="3281000" />
+      <workItem from="1568102120494" duration="4554000" />
     </task>
     <task id="LOCAL-00006" summary="Initial commit for Omnibus">
       <created>1563912003042</created>
@@ -755,7 +731,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567484371173</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Introducing entity repositories">
+      <created>1567904730390</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1567904730391</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -776,7 +759,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added cascade to users, users' comment threads, and those threads' comments" />
     <MESSAGE value="Added MFA removal and file headers" />
     <MESSAGE value="Added dynamic avatar and MFA field to login form" />
     <MESSAGE value="Made login and registration prettier, added doc viewer (TOS and stuff), added footer" />
@@ -801,6 +783,7 @@
     <MESSAGE value="Updated Monolog" />
     <MESSAGE value="Prevented `User-&gt;getRole()` from returning `null`.&#10;Returns `new Role()` filled with `null`s instead." />
     <MESSAGE value="Better exception handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Better exception handling" />
+    <MESSAGE value="Introducing entity repositories" />
+    <option name="LAST_COMMIT_MESSAGE" value="Introducing entity repositories" />
   </component>
 </project>

@@ -35,11 +35,11 @@ class ActivateController extends Controller
         $code = ($_POST['code'] ?? $params['code']) ?? null;
         if (!empty($code)) {
 
-            /** @var ActivationCode $ac */
-            $ac = $this->em->getRepository(ActivationCode::class)->findOneBy(['code' => $code]);
+            $acr = new ActivationCodeRepository();
+
+            $ac = $acr->findOneBy(['code' => $code]);
 
             if ($ac) {
-                $acr = new ActivationCodeRepository();
                 $this->errors = array_merge($this->errors, $acr->remove($ac));
             } else {
                 $this->errors[] = 'Incorrect code.';

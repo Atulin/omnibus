@@ -90,11 +90,10 @@ class RegisterController extends Controller
 
                 // Insert user
                 $u = new User();
-                $ur = new UserRepository();
                 $u->setName($name)
                   ->setEmail($email)
                   ->setPassword(password_hash($pass, PASSWORD_ARGON2I));
-                $this->errors = array_merge($this->errors, $ur->save($u));
+                $this->errors = array_merge($this->errors, (new UserRepository())->save($u));
 
                 if (!$this->errors) {
                     // Generate a unique activation code

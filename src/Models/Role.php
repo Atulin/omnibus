@@ -63,15 +63,10 @@ class Role
      */
     private $canAddArticles;
     /**
-     * @var bool $canEditArticles
+     * @var bool $canManageArticles
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $canEditArticles;
-    /**
-     * @var bool $canDeleteArticles
-     * @ORM\Column(type="boolean", options={"default": false})
-     */
-    private $canDeleteArticles;
+    private $canManageArticles;
 
     /**
      * @var bool $canAddCategories
@@ -79,15 +74,10 @@ class Role
      */
     private $canAddCategories;
     /**
-     * @var bool $canEditCategories
+     * @var bool $canManageCategories
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $canEditCategories;
-    /**
-     * @var bool $canDeleteCategories
-     * @ORM\Column(type="boolean", options={"default": false})
-     */
-    private $canDeleteCategories;
+    private $canManageCategories;
 
     /**
      * @var bool $canAddTags
@@ -95,15 +85,10 @@ class Role
      */
     private $canAddTags;
     /**
-     * @var bool $canEditTags
+     * @var bool $canManageTags
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $canEditTags;
-    /**
-     * @var bool $canDeleteTags
-     * @ORM\Column(type="boolean", options={"default": false})
-     */
-    private $canDeleteTags;
+    private $canManageTags;
 
 
 
@@ -210,38 +195,19 @@ class Role
     /**
      * @return bool
      */
-    public function canEditArticles(): bool
+    public function canManageArticles(): bool
     {
-        return $this->canEditArticles ?? false;
+        return $this->canManageArticles ?? false;
     }
 
     /**
-     * @param bool $canEditArticles
+     * @param bool $canManageArticles
      *
      * @return Role
      */
-    public function setCanEditArticles(bool $canEditArticles): Role
+    public function setCanManageArticles(bool $canManageArticles): Role
     {
-        $this->canEditArticles = $canEditArticles;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function canDeleteArticles(): bool
-    {
-        return $this->canDeleteArticles ?? false;
-    }
-
-    /**
-     * @param bool $canDeleteArticles
-     *
-     * @return Role
-     */
-    public function setCanDeleteArticles(bool $canDeleteArticles): Role
-    {
-        $this->canDeleteArticles = $canDeleteArticles;
+        $this->canManageArticles = $canManageArticles;
         return $this;
     }
 
@@ -267,38 +233,19 @@ class Role
     /**
      * @return bool
      */
-    public function canEditCategories(): bool
+    public function canManageCategories(): bool
     {
-        return $this->canEditCategories ?? false;
+        return $this->canManageCategories ?? false;
     }
 
     /**
-     * @param bool $canEditCategories
+     * @param bool $canManageCategories
      *
      * @return Role
      */
-    public function setCanEditCategories(bool $canEditCategories): Role
+    public function setCanManageCategories(bool $canManageCategories): Role
     {
-        $this->canEditCategories = $canEditCategories;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function canDeleteCategories(): bool
-    {
-        return $this->canDeleteCategories ?? false;
-    }
-
-    /**
-     * @param bool $canDeleteCategories
-     *
-     * @return Role
-     */
-    public function setCanDeleteCategories(bool $canDeleteCategories): Role
-    {
-        $this->canDeleteCategories = $canDeleteCategories;
+        $this->canManageCategories = $canManageCategories;
         return $this;
     }
 
@@ -324,38 +271,19 @@ class Role
     /**
      * @return bool
      */
-    public function canEditTags(): bool
+    public function canManageTags(): bool
     {
-        return $this->canEditTags ?? false;
+        return $this->canManageTags ?? false;
     }
 
     /**
-     * @param bool $canEditTags
+     * @param bool $canManageTags
      *
      * @return Role
      */
-    public function setCanEditTags(bool $canEditTags): Role
+    public function setCanManageTags(bool $canManageTags): Role
     {
-        $this->canEditTags = $canEditTags;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function canDeleteTags(): bool
-    {
-        return $this->canDeleteTags ?? false;
-    }
-
-    /**
-     * @param bool $canDeleteTags
-     *
-     * @return Role
-     */
-    public function setCanDeleteTags(bool $canDeleteTags): Role
-    {
-        $this->canDeleteTags = $canDeleteTags;
+        $this->canManageTags = $canManageTags;
         return $this;
     }
 

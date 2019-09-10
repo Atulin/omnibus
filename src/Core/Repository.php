@@ -113,11 +113,7 @@ class Repository
     {
         try {
             return $this->em->find($this->getEntity(), $id);
-        } catch (OptimisticLockException $e) {
-            $this->errors[] = 'Could not find.';
-        } catch (TransactionRequiredException $e) {
-            $this->errors[] = 'Could not find.';
-        } catch (ORMException $e) {
+        } catch (OptimisticLockException | TransactionRequiredException | ORMException $e) {
             $this->errors[] = 'Could not find.';
         }
         return null;
@@ -130,7 +126,7 @@ class Repository
      * @param int|null $offset
      * @return array
      */
-    protected function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null): array
+    public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null): array
     {
         return $this->em->getRepository($this->getEntity())->findBy($criteria, $orderBy, $limit, $offset);
     }
@@ -139,7 +135,7 @@ class Repository
      * @param mixed[] $criteria The criteria.
      * @return object|null The object.
      */
-    protected function findOneBy(array $criteria)
+    public function findOneBy(array $criteria)
     {
         return $this->em->getRepository($this->getEntity())->findOneBy($criteria);
     }

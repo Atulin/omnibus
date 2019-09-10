@@ -49,9 +49,8 @@
             {# Second auth step — PASSWORD and MFA #}
             <transition name="fade">
                 <div class="full field" v-if="step==2">
-                    <label for="password">Password</label>
+                    <label for="password">Password <a href="/forgot">(forgot?)</a></label>
                     <input type="password" name="password" id="password" v-model="pass" required>
-                    <a href="/forgot">Forgot?</a>
                 </div>
             </transition>
 

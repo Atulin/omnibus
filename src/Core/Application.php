@@ -27,6 +27,7 @@ use Omnibus\Controllers\User\LoginController;
 use Omnibus\Controllers\User\LogoutController;
 use Doctrine\ORM\TransactionRequiredException;
 use Omnibus\Controllers\User\RecoverController;
+use Omnibus\Models\Repositories\UserRepository;
 use Omnibus\Controllers\User\RegisterController;
 use Omnibus\Controllers\User\ActivateController;
 use Omnibus\Controllers\Admin\ArticlesController;
@@ -37,6 +38,7 @@ use Omnibus\Controllers\Admin\CategoriesController;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Omnibus\Controllers\User\Profile\ProfileController;
 use Omnibus\Controllers\User\ForgottenPasswordController;
+use Omnibus\Models\Repositories\ActivationCodeRepository;
 use Omnibus\Controllers\User\Profile\AccountEditController;
 use Omnibus\Controllers\User\Profile\ProfileEditController;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
@@ -52,10 +54,8 @@ class Application
 
     /** @var null|User */
     protected $user;
-    /** @var null|Role */
+    /** @var Role */
     protected $role;
-    /** @var bool */
-    private $active;
 
     /** @var Session */
     public $session;
@@ -77,9 +77,29 @@ class Application
      */
     public function run(): void
     {
+        $bs = microtime(true);
         $this->bootstrap();
+        $be = microtime(true);
+        $bd = $be-$bs;
+
+        $rs = microtime(true);
         $this->addRoutes();
+        $re = microtime(true);
+        $rd = $re-$rs;
+
+        $hs = microtime(true);
         $this->handleRequest();
+        $he = microtime(true);
+        $hd = $he-$hs;
+
+        echo "
+        <table style='position:fixed;bottom:0;left:0;z-index:99999;background:#ffd503;color:black;'>
+        <tr><th>What</th><th>Time</th></tr>
+        <tr><td>Bootstrap</td><td>$bd</td></tr>
+        <tr><td>Router</td><td>$rd</td></tr>
+        <tr><td>Handler</td><td>$hd</td></tr>
+        </table>
+        ";
     }
 
     private function handleRequest(): void
@@ -98,7 +118,7 @@ class Application
                 $parts = explode('#', $target);
                 if (count($parts) === 2) {
                     // instantiate a new controller
-                    $controller = new $parts[0]($this->session, $this->user, $this->em, $this->active);
+                    $controller = new $parts[0]($this->session, $this->user, $this->em);
                     // run the controller's method
                     $controller->{$parts[1]}(((array)$match)['params']);
                 }
@@ -306,17 +326,12 @@ class Application
 
         // Get user
         $this->user = $this->session->has('userid')
-            ? $this->em->find(User::class, $this->session->get('userid'))
+            ? (new UserRepository())->find($this->session->get('userid'))
             : null;
 
         // Get user role
         $this->role = ($this->session->has('userid') && $this->user !== null)
             ? $this->user->GetRole()
-            : null;
-
-        // Check if user is activated
-        $this->active = $this->user
-            ? ($this->em->getRepository(ActivationCode::class)->findOneBy(['user_id' => $this->user->getId()]) === null)
-            : false;
+            : new Role();
     }
 }

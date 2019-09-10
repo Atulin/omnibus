@@ -13,6 +13,7 @@ use Omnibus\Core\Utility\Email;
 use Omnibus\Models\RecoveryCode;
 use Omnibus\Core\Security\Token;
 use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Models\Repositories\UserRepository;
 
 
 class ForgottenPasswordController extends Controller
@@ -29,7 +30,7 @@ class ForgottenPasswordController extends Controller
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
                 /** @var User $user */
-                $user = $this->em->getRepository(User::class)->findOneBy(['email' => $email]);
+                $user = (new UserRepository())->findOneBy(['email' => $email]);
 
                 if ($user) {
 

@@ -10,12 +10,15 @@ use Exception;
 use Omnibus\Models\User;
 use Omnibus\Core\Controller;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\EntityManager;
 use RobThree\Auth\TwoFactorAuth;
 use Omnibus\Core\Utility\Gravatar;
 use Omnibus\Models\ActivationCode;
 use Omnibus\Core\Utility\APIMessage;
 use Omnibus\Core\Utility\HttpStatus;
 use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Models\Repositories\UserRepository;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 /**
@@ -28,6 +31,7 @@ class LoginController extends Controller
      * @var array
      */
     private $messages = [];
+
 
     /**
      *
@@ -54,7 +58,7 @@ class LoginController extends Controller
         $mfa_code = $_POST['mfa'] ?? null;
 
         /** @var User $user */
-        $user = $this->em->getRepository(User::class)->findOneBy(['name' => $login]);
+        $user = (new UserRepository())->findOneBy(['name' => $login]);
 
         // Check X-CSRF
         if ($this->session->get('token') === $_POST['token']) {

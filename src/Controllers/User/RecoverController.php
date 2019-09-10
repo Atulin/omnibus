@@ -13,7 +13,9 @@ use Omnibus\Core\Utility\Email;
 use Omnibus\Models\RecoveryCode;
 use Omnibus\Core\Security\PasswordUtils;
 use Doctrine\ORM\OptimisticLockException;
+use Omnibus\Models\Repositories\UserRepository;
 use Omnibus\Core\Security\ReCaptcha\ReCaptchaHandler;
+use Omnibus\Models\Repositories\RecoveryCodeRepository;
 
 
 class RecoverController extends Controller
@@ -54,7 +56,7 @@ class RecoverController extends Controller
 
             // Try to get the user
             /** @var User $user */
-            $user = $this->em->getRepository(User::class)->findOneBy(['name' => $name, 'email' => $email]);
+            $user = (new UserRepository())->findOneBy(['name' => $name, 'email' => $email]);
 
             if (!$user) {
                 $this->errors[] = 'User does not exist';
@@ -62,7 +64,7 @@ class RecoverController extends Controller
 
             // Try to get the token
             /** @var RecoveryCode $token */
-            $token = $this->em->getRepository(RecoveryCode::class)->findOneBy(['code' => $code]);
+            $token = (new RecoveryCodeRepository())->findOneBy(['code' => $code]);
 
             if (!$token) {
                 $this->errors[] = 'Incorrect recovery code';

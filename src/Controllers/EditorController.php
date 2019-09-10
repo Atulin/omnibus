@@ -19,6 +19,9 @@ use Omnibus\Models\CommentThread;
 use Omnibus\Core\Utility\FileHandler;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\TransactionRequiredException;
+use Omnibus\Models\Repositories\TagRepository;
+use Omnibus\Models\Repositories\ArticleRepository;
+use Omnibus\Models\Repositories\CategoryRepository;
 
 
 /**
@@ -28,10 +31,11 @@ use Doctrine\ORM\TransactionRequiredException;
 class EditorController extends Controller
 {
     /**
-     * @var
+     * @var array $errors
      */
     private $errors;
 
+    /** @var Article $article */
     private $article;
 
     /**
@@ -41,7 +45,7 @@ class EditorController extends Controller
     {
         $role = $this->getRole();
 
-        if (isset($params['id']) && (!$role || !$role->canEditArticles())) {
+        if (isset($params['id']) && (!$role || !$role->canManageArticles())) {
             header('Location: /editor');
         }
 
@@ -49,11 +53,7 @@ class EditorController extends Controller
             header('Location: /');
         }
 
-        try {
-            $this->article = isset($params['id']) ? $this->em->find(Article::class, $params['id']) : $this->article;
-        } catch (OptimisticLockException | TransactionRequiredException | ORMException $e) {
-            $this->errors[] = 'Could not get the article.';
-        }
+        $this->article = isset($params['id']) ? (new ArticleRepository())->find($params['id']) : $this->article;
 
         $this->setBaseData();
         $this->render('/editor', [
@@ -84,13 +84,17 @@ class EditorController extends Controller
 
             /** @var Article $art */
             $art = null;
+
+            /** @var ArticleRepository $ar */
+            $ar = new ArticleRepository();
+            /** @var CategoryRepository $cr */
+            $cr = new CategoryRepository();
+            /** @var TagRepository $tr */
+            $tr = new TagRepository();
+
             if (isset($_POST['id'])) {
-                if ($role && $role->canEditArticles()) {
-                    try {
-                        $art = $this->em->find(Article::class, $_POST['id']);
-                    } catch (OptimisticLockException | TransactionRequiredException | ORMException $e) {
-                        $this->errors[] = 'Could not get the article.';
-                    }
+                if ($role && $role->canManageArticles()) {
+                    $art = $ar->find($_POST['id']);
                 } else {
                     $this->errors[] = 'Insufficient permissions';
                 }
@@ -146,19 +150,7 @@ class EditorController extends Controller
                     }
 
                     if (!$this->errors) {
-
-                        try {
-                            $this->em->persist($art);
-                        } catch (ORMException $e) {
-                            $this->errors[] = isset($_POST['id']) ? 'Could not edit the article' :'Could not create the article.';
-                        }
-
-                        try {
-                            $this->em->flush($art);
-                        } catch (OptimisticLockException | ORMException $e) {
-                            $this->errors[] = isset($_POST['id']) ? 'Could not edit the article' :'Could not create the article.';
-                        }
-
+                        $ar->save($art);
                     }
 
                 } else {
