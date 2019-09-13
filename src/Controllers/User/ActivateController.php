@@ -7,8 +7,8 @@
 namespace Omnibus\Controllers\User;
 
 use Omnibus\Core\Controller;
+use Doctrine\ORM\ORMException;
 use Omnibus\Models\ActivationCode;
-use Omnibus\Models\Repositories\ActivationCodeRepository;
 
 
 class ActivateController extends Controller
@@ -35,12 +35,15 @@ class ActivateController extends Controller
         $code = ($_POST['code'] ?? $params['code']) ?? null;
         if (!empty($code)) {
 
-            $acr = new ActivationCodeRepository();
-
-            $ac = $acr->findOneBy(['code' => $code]);
+            $ac = $this->em->getRepository(ActivationCode::class)->findOneBy(['code' => $code]);
 
             if ($ac) {
-                $this->errors = array_merge($this->errors, $acr->remove($ac));
+                try {
+                    $this->em->remove($ac);
+                    $this->em->flush($ac);
+                } catch (ORMException $e) {
+                    $this->errors[] = 'Could not activate user.';
+                }
             } else {
                 $this->errors[] = 'Incorrect code.';
             }

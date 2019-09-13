@@ -2,14 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffc64ed-f68f-44dd-a22a-4c52f27a8883" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.sample" beforeDir="false" afterPath="$PROJECT_DIR$/.env.sample" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logs/main.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/perf.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/dark.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/dark.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/light.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/light.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/buttons.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/comments.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/links.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/links.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/src/includes/navbar.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/em.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/log.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/API/CommentsApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/EditorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/EditorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ActivateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/ForgottenPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/LogoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/LogoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/Profile/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RecoverController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/User/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Application.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/Utility/TwigHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/Utility/TwigHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/Repository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Report.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/ActivationCodeRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/ArticleRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/CategoryRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/CommentRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/CommentThreadRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/DatabaseRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/RecoveryCodeRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/ReportRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/RoleRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/TagRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Repositories/UserRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/gen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/elements/commentbox.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,6 +144,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/public/assets/static/emails/activation.html" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="E:\Software\Laragon\www\omnibus2\.idea" />
+      </set>
+    </option>
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -240,19 +284,19 @@
     <property name="sql.rename.search.for.storage.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js" />
-      <recent name="E:\Software\Laragon\www\omnibus2\src\Views" />
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\static" />
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\emails\src" />
-      <recent name="E:\Software\Laragon\www\omnibus2\public\assets" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Software\Laragon\www\omnibus2\src\Models\Repositories" />
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js" />
       <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js\admin" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Views\admin" />
       <recent name="E:\Software\Laragon\www\omnibus2\src\Controllers\Admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\js" />
+      <recent name="E:\Software\Laragon\www\omnibus2\src\Views" />
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\static" />
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets\emails\src" />
+      <recent name="E:\Software\Laragon\www\omnibus2\public\assets" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -389,14 +433,10 @@
       <workItem from="1568134506816" duration="753000" />
       <workItem from="1568135281165" duration="10000" />
       <workItem from="1568135869865" duration="747000" />
-      <workItem from="1568136640533" duration="431000" />
-    </task>
-    <task id="LOCAL-00008" summary="Activation emails with MJML">
-      <created>1564016419412</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1564016419412</updated>
+      <workItem from="1568136640533" duration="531000" />
+      <workItem from="1568237458663" duration="25000" />
+      <workItem from="1568237511972" duration="7620000" />
+      <workItem from="1568341130503" duration="3474000" />
     </task>
     <task id="LOCAL-00009" summary="Better activation codes handling, beginning of recovery process, and navbar">
       <created>1564198466765</created>
@@ -734,7 +774,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568124387821</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Repositories are still weird, but now Twig is cached and sessions are in Redis.&#10;Also, use 127.0.0.1, not localhost, or connections will always be slow.">
+      <created>1568137153466</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1568137153466</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -755,7 +802,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Made login and registration prettier, added doc viewer (TOS and stuff), added footer" />
     <MESSAGE value="Fixed some leftover Twig errors" />
     <MESSAGE value="Added Article, Category and Tag models" />
     <MESSAGE value="Added the beginning of admin-only stuff and made login form better" />
@@ -780,6 +826,7 @@
     <MESSAGE value="Introducing entity repositories" />
     <MESSAGE value="Repositories are weird" />
     <MESSAGE value="Repositories are weird 2: Electric Boogaloo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Repositories are weird 2: Electric Boogaloo" />
+    <MESSAGE value="Repositories are still weird, but now Twig is cached and sessions are in Redis.&#10;Also, use 127.0.0.1, not localhost, or connections will always be slow." />
+    <option name="LAST_COMMIT_MESSAGE" value="Repositories are still weird, but now Twig is cached and sessions are in Redis.&#10;Also, use 127.0.0.1, not localhost, or connections will always be slow." />
   </component>
 </project>

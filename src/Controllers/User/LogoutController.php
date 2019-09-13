@@ -19,10 +19,12 @@ class LogoutController extends Controller
         }
 
         // Invalidate session
+        $this->session->remove('userid');
         $this->session->invalidate();
 
         // Redirect
         $this->session->set('message', 'See you soon!');
+        $this->session->save();
         header('Location: /');
         die();
     }

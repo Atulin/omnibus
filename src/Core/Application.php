@@ -10,12 +10,13 @@ use Redis;
 use Exception;
 use AltoRouter;
 use Whoops\Run;
+use Monolog\Logger;
 use Omnibus\Models\Role;
 use Omnibus\Models\User;
 use Omnibus\Models\Database;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\EntityManager;
-use Omnibus\Models\ActivationCode;
+use Monolog\Handler\StreamHandler;
 use Symfony\Component\Dotenv\Dotenv;
 use Whoops\Handler\PrettyPageHandler;
 use Omnibus\Controllers\HomeController;
@@ -28,7 +29,6 @@ use Omnibus\Controllers\User\LoginController;
 use Omnibus\Controllers\User\LogoutController;
 use Doctrine\ORM\TransactionRequiredException;
 use Omnibus\Controllers\User\RecoverController;
-use Omnibus\Models\Repositories\UserRepository;
 use Omnibus\Controllers\User\RegisterController;
 use Omnibus\Controllers\User\ActivateController;
 use Omnibus\Controllers\Admin\ArticlesController;
@@ -39,30 +39,31 @@ use Omnibus\Controllers\Admin\CategoriesController;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Omnibus\Controllers\User\Profile\ProfileController;
 use Omnibus\Controllers\User\ForgottenPasswordController;
-use Omnibus\Models\Repositories\ActivationCodeRepository;
 use Omnibus\Controllers\User\Profile\AccountEditController;
 use Omnibus\Controllers\User\Profile\ProfileEditController;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler;
-use Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler;
 
 
 class Application
 {
-    /** @var AltoRouter */
+    /** @var AltoRouter $router */
     protected $router;
-    /** @var Run */
+    /** @var Run $whoops */
     protected $whoops;
 
-    /** @var null|User */
+    /** @var null|User $user */
     protected $user;
-    /** @var Role */
+    /** @var Role $role */
     protected $role;
 
-    /** @var Session */
+    /** @var Session $session */
     public $session;
-    /** @var EntityManager|string */
+    /** @var EntityManager $em */
     private $em;
+    /** @var Redis $redis*/
+    private $redis;
+    private $logger;
 
     /**
      * Application constructor.
@@ -82,26 +83,21 @@ class Application
         $bs = microtime(true);
         $this->bootstrap();
         $be = microtime(true);
-        $bd = $be-$bs;
 
         $rs = microtime(true);
         $this->addRoutes();
         $re = microtime(true);
-        $rd = $re-$rs;
 
         $hs = microtime(true);
         $this->handleRequest();
         $he = microtime(true);
-        $hd = $he-$hs;
 
-        echo "
-        <table style='position:fixed;bottom:0;left:0;z-index:99999;background:#ffd503;color:black;'>
-        <tr><th>What</th><th>Time</th></tr>
-        <tr><td>Bootstrap</td><td>$bd</td></tr>
-        <tr><td>Router</td><td>$rd</td></tr>
-        <tr><td>Handler</td><td>$hd</td></tr>
-        </table>
-        ";
+        file_put_contents('perf.log', json_encode([
+            'bootstrap' => $be - $bs,
+            'router'    => $re - $rs,
+            'handler'   => $he - $hs,
+            'total'     => $he - $bs
+        ], JSON_PRETTY_PRINT));
     }
 
     private function handleRequest(): void
@@ -120,7 +116,7 @@ class Application
                 $parts = explode('#', $target);
                 if (count($parts) === 2) {
                     // instantiate a new controller
-                    $controller = new $parts[0]($this->session, $this->user, $this->em);
+                    $controller = new $parts[0]($this->session, $this->user, $this->em, $this->logger);
                     // run the controller's method
                     $controller->{$parts[1]}(((array)$match)['params']);
                 }
@@ -269,8 +265,6 @@ class Application
 
         }
 
-
-
     }
 
     /**
@@ -288,17 +282,17 @@ class Application
         (new Dotenv())->load(dirname(__DIR__, 2).'/.env');
 
         // Set up Redis
-        $redis = new Redis();
-        $redis->connect($_ENV['REDIS_HOST'], $_ENV['REDIS_PORT']);//('127.0.0.1', '6379');
+        $this->redis = new Redis();
+        $this->redis->connect($_ENV['REDIS_HOST'], $_ENV['REDIS_PORT']);
 
         // Set up session
-        $sessionStorage = new NativeSessionStorage([
+        $sessionStorage = new NativeSessionStorage(
+            [
             'cookie_httponly' => true,
             'cookie_samesite' => 'Strict',
             'cookie_secure'   => true,
             ],
-            new RedisSessionHandler($redis)
-//         new NativeFileSessionHandler()
+            new RedisSessionHandler($this->redis)
         );
         $this->session = new Session($sessionStorage);
         $this->session->start();
@@ -312,11 +306,12 @@ class Application
         $this->whoops->appendHandler(new PrettyPageHandler);
         $this->whoops->register();
 
+        // Set up Monolog
+        $this->logger = new Logger('main');
+        $this->logger->pushHandler(new StreamHandler('logs/main.log', Logger::DEBUG));
+
         // Set up database connection
-        $ds = microtime(true);
         $this->em = (new Database())->Get();
-        $ds = microtime(true) - $ds;
-//        echo "<div style='position:fixed;top:200px;right:0;color:black;background:red;'>$ds</div>";
 
         // Get user id
         $USERID = $this->session->get('userid');
@@ -345,7 +340,7 @@ class Application
 
         // Get user
         $this->user = $USERID
-            ? (new UserRepository())->find($USERID)
+            ? $this->em->getRepository(User::class)->find($USERID)
             : null;
 
         // Get user role
@@ -353,6 +348,6 @@ class Application
             ? $this->user->GetRole()
             : new Role();
 
-//        $this->session->save();
+        $this->session->save();
     }
 }

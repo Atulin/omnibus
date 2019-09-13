@@ -27,12 +27,12 @@ class ProfileController extends Controller
     {
         /** @var User $owner */
         $owner = ($params && $params['id']) ? $this->em->find(User::class, $params['id']) : null;
+
         /** @var CommentThread $thread */
         $thread = $owner ? $owner->getCommentThread() : $this->getUser()->getCommentThread();
 
         $this->setBaseData();
         $this->render('user/profile/profile', [
-            'data' => var_export($params, true),
             'profile_owner' => $owner,
             'thread' => $thread,
         ]);

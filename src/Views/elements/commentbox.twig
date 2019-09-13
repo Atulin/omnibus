@@ -42,7 +42,7 @@
                     <div class="counter">${charsLeft}</div>
 
                     <div class="buttons">
-                        <a href="/md" class="markdown button" target="_blank">MD</a>
+                        <a href="/md" class="small link" target="_blank">Markdown</a>
                         <button class="send" @click="sendComment">
                             <i class="send icon"></i>
                         </button>
@@ -87,7 +87,7 @@
             <div class="meta">
                 <div class="buttons">
                     {% if user %}
-                    <button class="item" v-on:click.self="reportModal($event, c.id)">
+                    <button class="item" v-on:click.self="reportModal($event, c.id)" title="Report comment">
                         <i class="warning icon"></i>
                     </button>
                     {% endif %}

@@ -10,6 +10,7 @@ use DateTime;
 use Exception;
 use Omnibus\Models\Tag;
 use Omnibus\Models\User;
+use Omnibus\Models\Role;
 use Omnibus\Models\Article;
 use Omnibus\Models\Category;
 use Omnibus\Core\Controller;
@@ -17,11 +18,6 @@ use Doctrine\ORM\ORMException;
 use Omnibus\Core\Utility\Utils;
 use Omnibus\Models\CommentThread;
 use Omnibus\Core\Utility\FileHandler;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\TransactionRequiredException;
-use Omnibus\Models\Repositories\TagRepository;
-use Omnibus\Models\Repositories\ArticleRepository;
-use Omnibus\Models\Repositories\CategoryRepository;
 
 
 /**
@@ -53,7 +49,7 @@ class EditorController extends Controller
             header('Location: /');
         }
 
-        $this->article = isset($params['id']) ? (new ArticleRepository())->find($params['id']) : $this->article;
+        $this->article = isset($params['id']) ? $this->em->getRepository(Article::class)->find($params['id']) : $this->article;
 
         $this->setBaseData();
         $this->render('/editor', [
@@ -65,12 +61,12 @@ class EditorController extends Controller
         ]);
     }
 
-    /**
-     */
+
     public function create(): void
     {
-        $msg = null;
+        /** @var Article $art */
         $art = null;
+        /** @var Role $role */
         $role = $this->getRole();
 
         $POST = filter_input_array(INPUT_POST, [
@@ -82,23 +78,13 @@ class EditorController extends Controller
 
         if ($POST['token'] === $this->session->get('token')) {
 
-            /** @var Article $art */
-            $art = null;
-
-            /** @var ArticleRepository $ar */
-            $ar = new ArticleRepository();
-            /** @var CategoryRepository $cr */
-            $cr = new CategoryRepository();
-            /** @var TagRepository $tr */
-            $tr = new TagRepository();
-
             if (isset($_POST['id'])) {
-                if ($role && $role->canManageArticles()) {
-                    $art = $ar->find($_POST['id']);
+                if ($role->canManageArticles()) {
+                    $art = $this->em->getRepository(Article::class)->find($_POST['id']);
                 } else {
                     $this->errors[] = 'Insufficient permissions';
                 }
-            } else if ($role && $role->canAddArticles()) {
+            } else if ($role->canAddArticles()) {
                 $art = new Article();
             } else {
                 $this->errors[] = 'Insufficient permissions';
@@ -108,6 +94,7 @@ class EditorController extends Controller
 
                 if (trim($POST['title'])) {
 
+                    // Try to create an article
                     try {
                         $art->setTitle($POST['title'])
                             ->setBody($POST['body'])
@@ -115,9 +102,11 @@ class EditorController extends Controller
                             ->setCategory($this->em->find(Category::class, $_POST['category']))
                             ->setAuthor(isset($_POST['author']) ? $this->em->find(User::class, $_POST['author']) : $this->getUser())
                             ->setComments(new CommentThread());
-                    } catch (OptimisticLockException | TransactionRequiredException | ORMException $e) {
+                    } catch (ORMException $e) {
                         $this->errors[] = 'Could not get the selected category or author.';
                     }
+
+                    // Try to parse the given date
                     if (isset($_POST['date'])) {
                         try {
                             $art->setDate(new DateTime($_POST['date']));
@@ -126,37 +115,42 @@ class EditorController extends Controller
                         }
                     }
 
+                    // Try to add tags
                     foreach ($_POST['tags'] as $tag) {
                         try {
                             $art->addTag($this->em->find(Tag::class, $tag));
-                        } catch (OptimisticLockException | TransactionRequiredException | ORMException $e) {
+                        } catch (ORMException $e) {
                             $this->errors[] = 'Could not add one of the tags.';
                         }
                     }
 
+                    // Upload cover image if specified
                     if (isset($_FILES['image'])) {
-
                         if ($_FILES['image']['size'] < CONFIG['file sizes']['article cover']) {
+
                             $fh = new FileHandler();
                             // Upload image
                             $name = $fh->upload($_FILES['image'], 'covers/article/' . Utils::friendlify($POST['title']));
-
                             $art->setImage($name);
 
                         } else {
                             $this->errors[]  = 'File too big. Maximum size is ' . CONFIG['file sizes']['article cover'] / 1024 . ' KB';
                         }
-
                     }
 
+                    // Try to save the article
                     if (!$this->errors) {
-                        $ar->save($art);
+                        try {
+                            $this->em->persist($art);
+                            $this->em->flush($art);
+                        } catch (ORMException $e) {
+                            $this->errors[] = 'Could not create the article.';
+                        }
                     }
 
                 } else {
                     $this->errors[] = 'Name cannot be empty.';
                 }
-
             }
 
         } else {

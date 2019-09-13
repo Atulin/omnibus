@@ -6,6 +6,7 @@
 
 namespace Omnibus\Core;
 
+use Monolog\Logger;
 use Twig\Environment;
 use Omnibus\Models\Role;
 use Omnibus\Models\User;
@@ -34,14 +35,17 @@ abstract class Controller
     protected $session;
     /** @var EntityManager $em */
     protected $em;
+    /** @var Logger */
+    protected $logger;
 
-    public function __construct(Session $session, ?User $user, EntityManager $em)
+    public function __construct(Session $session, ?User $user, EntityManager $em, Logger $logger)
     {
         $this->session = $session;
         $this->user    = $user;
         $this->role    = $user ? $user->getRole() : new Role();
         $this->em      = $em;
         $this->twig    = TwigHandler::Get();
+        $this->logger  = $logger;
 
         if ($this->session->has('token')) {
             $this->token = $this->session->get('token');
@@ -49,7 +53,7 @@ abstract class Controller
             $this->token = Token::Get(128);
             $this->session->set('token', $this->token);
         }
-//        $this->session->save();
+        $this->session->save();
     }
 
 
@@ -93,7 +97,6 @@ abstract class Controller
         ];
     }
 
-
     /**
      * Returns the current user
      * @return null|string|User
@@ -102,7 +105,6 @@ abstract class Controller
     {
         return $this->user;
     }
-
 
     /**
      * Returns current user role
@@ -113,7 +115,6 @@ abstract class Controller
         return $this->role;
     }
 
-
     /**
      * Returns generated token
      * @return string
@@ -123,7 +124,6 @@ abstract class Controller
         return $this->token;
     }
 
-
     /**
      * @param mixed ...$checks
      *
@@ -131,12 +131,10 @@ abstract class Controller
      */
     public function auth(...$checks): bool
     {
-        $permission_checks = [];
         foreach ($checks as $c) {
-            $permission_checks[] = (bool) $this->role->$c();
-        }
-        if (in_array(false, $permission_checks, true)) {
-            die('404');
+            if (!$this->role->$c()) {
+                die('404');
+            }
         }
         return true;
     }

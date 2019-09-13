@@ -8,15 +8,14 @@ namespace Omnibus\Controllers\User;
 
 use Omnibus\Models\User;
 use Omnibus\Core\Controller;
+use Doctrine\ORM\ORMException;
 use Omnibus\Core\Utility\Email;
 use Omnibus\Core\Security\Token;
 use Omnibus\Models\ActivationCode;
 use Omnibus\Core\Utility\APIMessage;
 use Omnibus\Core\Utility\HttpStatus;
 use Omnibus\Core\Security\PasswordUtils;
-use Omnibus\Models\Repositories\UserRepository;
 use Omnibus\Core\Security\ReCaptcha\ReCaptchaHandler;
-use Omnibus\Models\Repositories\ActivationCodeRepository;
 
 
 /**
@@ -93,7 +92,12 @@ class RegisterController extends Controller
                 $u->setName($name)
                   ->setEmail($email)
                   ->setPassword(password_hash($pass, PASSWORD_ARGON2I));
-                $this->errors = array_merge($this->errors, (new UserRepository())->save($u));
+                try {
+                    $this->em->persist($u);
+                    $this->em->flush($u);
+                } catch (ORMException $e) {
+                    $this->errors[] = 'Could not create new user.';
+                }
 
                 if (!$this->errors) {
                     // Generate a unique activation code
@@ -103,10 +107,14 @@ class RegisterController extends Controller
 
                     // Insert activation code
                     $ac = new ActivationCode();
-                    $acr = new ActivationCodeRepository();
                     $ac->setUserId($u->getId())
                         ->setCode($code);
-                    $this->errors = array_merge($this->errors, $acr->save($ac));
+                    try {
+                        $this->em->persist($ac);
+                        $this->em->flush($ac);
+                    } catch (ORMException $e) {
+                        $this->errors[] = 'Could not create an activation code.';
+                    }
                 }
             }
 

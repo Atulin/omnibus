@@ -111,7 +111,7 @@ class CommentsApiController extends Controller
                 $comment->setThread($thread);
 
                 try {
-                    $this->em->persist($comment);
+                    $this->em->merge($comment);
                 } catch (ORMException $e) {
                     $errors[] = $e->getMessage();
                 }
@@ -168,16 +168,7 @@ class CommentsApiController extends Controller
         if($POST['token'] === $this->session->get('token')) {
 
             /** @var Comment $comment */
-            $comment = null;
-            try {
-                $comment = $this->em->find(Comment::class, ['id' => $POST['comment']]);
-            } catch (OptimisticLockException $e) {
-                $errors[] = $e->getMessage();
-            } catch (TransactionRequiredException $e) {
-                $errors[] = $e->getMessage();
-            } catch (ORMException $e) {
-                $errors[] = $e->getMessage();
-            }
+            $comment = $this->em->getRepository(Comment::class)->find($POST['comment']);
 
             $report = new Report();
             $report->setUser($this->getUser());
@@ -185,7 +176,7 @@ class CommentsApiController extends Controller
             $report->setReason($_POST['reason'] ?: '');
 
             try {
-                $this->em->persist($report);
+                $this->em->merge($report);
             } catch (ORMException $e) {
                 $errors[] = $e->getMessage();
             }
