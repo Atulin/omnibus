@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b7e112021e4c969529cc71d62ca9cdd",
+    "content-hash": "240198719456069efc959108ba020ad4",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -1125,9 +1125,9 @@
             "authors": [
                 {
                     "name": "Ramesh Mhetre",
-                    "role": "Developer",
                     "email": "mhetreramesh@gmail.com",
-                    "homepage": "https://gliterd.com"
+                    "homepage": "https://gliterd.com",
+                    "role": "Developer"
                 }
             ],
             "description": "PHP SDK for working with backblaze B2 cloud storage.",
@@ -1419,8 +1419,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "role": "Developer",
-                    "email": "lcobucci@gmail.com"
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -1527,15 +1527,15 @@
             "authors": [
                 {
                     "name": "Alex Bilbie",
-                    "role": "Developer",
                     "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com"
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Andy Millington",
-                    "role": "Developer",
                     "email": "andrew@noexceptions.io",
-                    "homepage": "https://www.noexceptions.io"
+                    "homepage": "https://www.noexceptions.io",
+                    "role": "Developer"
                 }
             ],
             "description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
@@ -1593,9 +1593,9 @@
             "authors": [
                 {
                     "name": "Serban Ghita",
-                    "role": "Developer",
                     "email": "serbanghita@gmail.com",
-                    "homepage": "http://mobiledetect.net"
+                    "homepage": "http://mobiledetect.net",
+                    "role": "Developer"
                 }
             ],
             "description": "Mobile_Detect is a lightweight PHP class for detecting mobile devices. It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.",
@@ -1798,16 +1798,16 @@
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v6.0.7",
+            "version": "v6.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "0c41a36d4508d470e376498c1c0c527aa36a2d59"
+                "reference": "c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/0c41a36d4508d470e376498c1c0c527aa36a2d59",
-                "reference": "0c41a36d4508d470e376498c1c0c527aa36a2d59",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3",
+                "reference": "c2796cb1cb99d7717290b48c4e6f32cb6c60b7b3",
                 "shasum": ""
             },
             "require": {
@@ -1816,13 +1816,9 @@
                 "php": ">=5.5.0"
             },
             "require-dev": {
-                "doctrine/annotations": "1.2.*",
+                "doctrine/annotations": "^1.2",
                 "friendsofphp/php-cs-fixer": "^2.2",
-                "phpdocumentor/phpdocumentor": "2.*",
-                "phpunit/phpunit": "^4.8 || ^5.7",
-                "zendframework/zend-eventmanager": "3.0.*",
-                "zendframework/zend-i18n": "2.7.3",
-                "zendframework/zend-serializer": "2.7.*"
+                "phpunit/phpunit": "^4.8 || ^5.7"
             },
             "suggest": {
                 "ext-mbstring": "Needed to send email in multibyte encoding charset",
@@ -1840,16 +1836,16 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-2.1"
+                "LGPL-2.1-only"
             ],
             "authors": [
                 {
-                    "name": "Jim Jagielski",
-                    "email": "jimjag@gmail.com"
-                },
-                {
                     "name": "Marcus Bointon",
                     "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
                 },
                 {
                     "name": "Andy Prevost",
@@ -1860,7 +1856,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2019-02-01T15:04:28+00:00"
+            "time": "2020-05-27T12:24:03+00:00"
         },
         {
             "name": "psr/container",
@@ -2081,8 +2077,8 @@
             "authors": [
                 {
                     "name": "Rob Janssen",
-                    "role": "Developer",
-                    "homepage": "http://robiii.me"
+                    "homepage": "http://robiii.me",
+                    "role": "Developer"
                 }
             ],
             "description": "Two Factor Authentication",
@@ -3523,8 +3519,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -3643,9 +3639,9 @@
             "authors": [
                 {
                     "name": "Christian Weiske",
-                    "role": "Developer",
                     "email": "cweiske@cweiske.de",
-                    "homepage": "http://github.com/cweiske/jsonmapper/"
+                    "homepage": "http://github.com/cweiske/jsonmapper/",
+                    "role": "Developer"
                 }
             ],
             "description": "Map nested JSON structures onto PHP classes",
@@ -4759,7 +4755,8 @@
         "ext-pdo": "*",
         "ext-json": "*",
         "ext-curl": "*",
-        "ext-iconv": "*"
+        "ext-iconv": "*",
+        "ext-redis": "*"
     },
     "platform-dev": []
 }
